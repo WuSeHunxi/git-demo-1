@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        #top{
+            padding:20px;
+        }
+        #bottom{
+            position:relative;
+        }
+        .box{
+            background-color:#e8e8e8;
+            width:220px;
+            height:360px;
+            margin:0 15px 15px 0;
+        }
+        .box p:last-child{/* //最后一个p标签 */
+            color:#f40;
+            font-size:13px;
+        }
+    </style>
+</head>
+<body>
+    <div id="top">
+        <button>3行</button>
+        <button>4行</button>
+        <button>5行</button>
+    </div>
+    <div id="bottom">
+        <div class="box">
+            <img src="images/a1.png" alt="">
+            <p>声入人心</p>
+            <p>阿云嘎 郑云龙带我们了解音乐剧</p>
+        </div>
+        <div class="box">
+            <img src="images/a1.png" alt="">
+            <p>声入人心</p>
+            <p>阿云嘎 郑云龙带我们了解音乐剧</p>
+        </div>
+        <div class="box">
+            <img src="images/a1.png" alt="">
+            <p>声入人心</p>
+            <p>阿云嘎 郑云龙带我们了解音乐剧</p>
+        </div>
+        <div class="box">
+            <img src="images/a1.png" alt="">
+            <p>声入人心</p>
+            <p>阿云嘎 郑云龙带我们了解音乐剧</p>
+        </div>
+        <div class="box">
+            <img src="images/a1.png" alt="">
+            <p>声入人心</p>
+            <p>阿云嘎 郑云龙带我们了解音乐剧</p>
+        </div>
+        <div class="box">
+            <img src="images/a1.png" alt="">
+            <p>声入人心</p>
+            <p>阿云嘎 郑云龙带我们了解音乐剧</p>
+        </div>
+        <div class="box">
+            <img src="images/a1.png" alt="">
+            <p>声入人心</p>
+            <p>阿云嘎 郑云龙带我们了解音乐剧</p>
+        </div>
+    <div>
+    <script>
+        var btn=document.getElementById("top").children;
+        var bottom=document.getElementById("bottom");
+        console.log(btn);
+        btn[0].onclick=function(){
+            var boxH=360,boxW=220,marginXY=15,cols=3;
+            for(var i=0;i<bottom.children.length;i++){           
+                var row=parseInt(i/3);
+                var col=parseInt(i%3);
+                var currentBox=bottom.children[i];
+                currentBox.style.position='absolute';
+                currentBox.style.left=col*(boxW+marginXY)+'px';
+                currentBox.style.top=row*(boxH+marginXY)+'px';
+            }
+        }
+        btn[1].onclick=function(){
+            var boxH=360,boxW=220,marginXY=15,cols=3;
+            for(var i=0;i<bottom.children.length;i++){           
+                var row=parseInt(i/4);
+                var col=parseInt(i%4);
+                var currentBox=bottom.children[i];
+                currentBox.style.position='absolute';
+                currentBox.style.left=col*(boxW+marginXY)+'px';
+                currentBox.style.top=row*(boxH+marginXY)+'px';
+            }
+        }
+        btn[2].onclick=function(){
+            var boxH=360,boxW=220,marginXY=15,cols=3;
+            for(var i=0;i<bottom.children.length;i++){           
+                var row=parseInt(i/5);
+                var col=parseInt(i%5);
+                var currentBox=bottom.children[i];
+                currentBox.style.position='absolute';
+                currentBox.style.left=col*(boxW+marginXY)+'px';
+                currentBox.style.top=row*(boxH+marginXY)+'px';
+            }
+        }
+    </script>
+</body>
+</html>

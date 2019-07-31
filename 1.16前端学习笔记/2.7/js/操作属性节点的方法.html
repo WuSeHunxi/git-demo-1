@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(function(){
+            /*
+            attr(name/pro/key,val/fn)
+            作用：获取或者设置属性节点的值(在HTML标签中添加的属性就是属性节点)
+                可以传递一个参数也可以传递两个参数
+                如果传递一个参数，代表获取属性节点的值
+                如果传递两个参数，代表设置属性节点的值
+            注意点：如果是获取，无论找到多少个元素，都只会返回的一个元素指定的属性节点的值
+                   如果是设置，找到多少个就设置多少个
+                   如果是设置，且设置的属性节点不存在，系统会自动新增
+            */
+           console.log($("span").attr("class"));//只会返回第一个标签的属性节点的值
+           $("span").attr("class","box");//会把class都变成box
+           /*
+           removeAttr(name)
+           作用：删除属性节点
+           注意点：会删除所有找到元素指定的属性节点(可以同时删除多个属性节点)
+           */
+          $("span").removeAttr("class");
+          $("span").removeAttr("class name");//会把class和name都删除
+        });
+    </script>
+</head>
+<body>
+    <span class="span1" name="it666"></span>
+    <span class="span2" name="lnj"></span>
+</body>
+</html>

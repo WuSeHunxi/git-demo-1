@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .content{
+            position: relative;
+            width: 1200px;
+            height: 367px;
+            margin: 80px auto 0;
+        }
+        .imgList ul{
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        .imgList{
+            width: 1200px;
+            height: 336px;
+        }
+        .imgList ul li{
+            position: absolute;
+            width: 730px;
+            height: 336px;
+            transition: 0.5s;
+        }
+        /*
+        让元素偏移的方法
+        1.left
+        2.margin
+        3.padding
+        4.translate：消耗性能最少（只会对自己有影响 对其他元素没有影响）
+        */
+        /*
+        浏览器渲染动画的原理
+        1.js css改变元素的样式值
+          1.1：改变元素的样式
+          1.2：浏览器计算当前元素的最终样式
+          1.3：布局（整个元素的布局 牵一发而动全身 最耗性能）
+          1.4：绘制
+          1.5：合并渲染
+        2.js在canvas绘制
+        */
+        .list1{
+            z-index: 1;
+            transform: scale(0.81);
+            transform-origin:0% 100%;
+        }
+        .list2{
+            transform:translateX(235px);
+            z-index: 2;
+        }
+        .list3{
+            z-index: 1;
+            transform:translateX(730px) scale(0.81);
+            transform-origin:100% 100%;
+        }
+        .list4{
+            transform: translateX(965px) scale(0.81);
+            transform-origin:100% 100%;
+        }
+        .list5{
+            transform: translateX(1200px) scale(0.81);
+            transform-origin:100% 100%;
+        }
+        .list6{
+            transform: translateX(1435px) scale(0.81);
+            transform-origin:100% 100%;
+        }
+        .line{
+            text-align: center;
+            width: 1200px;
+            height: 31px;
+        }
+        .btnleft,.btnright{
+            width: 50px;
+            position: absolute;
+            height: 50px;
+            margin-top: -25px;/*让该元素居中的操作*/
+            top: 50%;
+            background-color: rgba(0,0,0,0.7);
+            font-size:12px;
+            text-align: center;
+            line-height: 50px;
+        }
+        .btnleft{
+            left: 0;
+        }
+        .btnright{
+            right: 0;
+        }
+        .line span{
+            display: inline-block;
+            width: 35px;
+            height: 3px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="imgList">
+            <ul>
+                <li><img src="" alt=""></li>
+                <li><img src="" alt=""></li>
+                <li><img src="" alt=""></li>
+                <li><img src="" alt=""></li>
+                <li><img src="" alt=""></li>
+                <li><img src="" alt=""></li>
+            </ul>
+        </div>
+        <div class="line">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="btnleft"><</div>
+        <div class="btnright">></div>
+    </div>
+    <script>
+        /*
+        实现按钮的颜色：
+          1.1：确定是给哪一个按钮加颜色
+          1.2：找到按钮元素
+          1.3：先给所有的span加一个灰色
+          1.4：根据当前index值所指向的按钮设定一个绿色
+        */
+        var index=0;
+        var aSpan=document.querySelectorAll("span");
+        var aLiName=["list1","list2","list3","list4","list5","list6"];
+        var aLi=document.querySelectorAll("li");
+        var btnright=document.querySelector(".btnright");
+        btnright.onclick=nextPic;//右按钮点击的时候向下翻页
+        function setLinebColor(){
+            for(var i=0;i<aSpan.length;i++){
+                aSpan[i].style.backgroundColor="#ccc";
+            }
+            aSpan[index].style.backgroundColor="#45c17c";
+        }
+        setLinebColor();
+        function nextPic(){
+            //把名字的顺序掉个，把最后一个塞到第一个的位置
+            aLiName.unshift(aLiName[5]);//把最后一个复制并塞到第一个前面
+            aLiName.pop();//删除最后一个
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].setAttribute("class",aLiName[i]);
+            }
+            index++;//点亮下一个按钮
+            if(index>5){
+                index=0;//超出范围的时候回到第一个
+            }
+            setLinebColor();//重新设置按钮颜色
+        }
+        /*
+        听课笔记：
+            1.老师实现该堂课项目的思路？
+            2.老师为了实现该思路用了哪些技术？
+            3.老师的该思路除了本案例外还能用在那些地方？
+            4.老师的代码哪些地方是可以优化的？
+        */
+    </script>
+</body>
+</html>

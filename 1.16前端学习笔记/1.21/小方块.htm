@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            background-color: #000;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <button>开始运动</button>
+    <script>
+        var div=document.getElementsByTagName("div")[0];
+        var timer=null;
+        var btn=document.getElementsByTagName("button")[0];
+        var begin=0,target=600,step=10;
+        btn.onclick=function(){
+            timer=setInterval(function(){
+                begin=begin+step;
+                if(begin>=target){
+                    begin=target;
+                }
+                div.style.marginLeft=begin+"px";
+            },100);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            list-style:none;
+        }
+        #box{
+            width:800px;
+            height:200px;
+            border:1px solid #ccc;
+            position:relative;
+            margin:100px auto;
+            overflow:hidden;
+        }
+        #box ul{
+            position:absolute;
+            top:20px;
+            left:0;
+            width:2600px;
+        }
+        #box ul li{
+            float:left;
+        }
+        #box_bottom{
+            position:absolute;
+            left:0;
+            bottom:0;
+            background-color:#e8e8e8;
+            width:100%;
+            height:25px;
+        }
+        .mask{
+            position:absolute;
+            left:0;
+            top:0;
+            height:25px;
+            background-color:orange;
+            border-radius:12px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="box">
+        <ul id="box_top">
+            <li><img src="images/a1.png" alt=""></li>
+            <li><img src="images/a2.png" alt=""></li>
+            <li><img src="images/a3.png" alt=""></li>
+            <li><img src="images/a4.png" alt=""></li>
+            <li><img src="images/a1.png" alt=""></li>
+            <li><img src="images/a2.png" alt=""></li>
+            <li><img src="images/a3.png" alt=""></li>
+            <li><img src="images/a4.png" alt=""></li>
+            <li><img src="images/a1.png" alt=""></li>
+            <li><img src="images/a2.png" alt=""></li>
+            <li><img src="images/a1.png" alt=""></li>
+            <li><img src="images/a2.png" alt=""></li>
+            <li><img src="images/a3.png" alt=""></li>
+            <li><img src="images/a4.png" alt=""></li>
+            <li><img src="images/a1.png" alt=""></li>
+            <li><img src="images/a2.png" alt=""></li>
+            <li><img src="images/a3.png" alt=""></li>
+            <li><img src="images/a4.png" alt=""></li>
+            <li><img src="images/a1.png" alt=""></li>
+            <li><img src="images/a2.png" alt=""></li><li><img src="images/a1.png" alt=""></li>
+            <li><img src="images/a2.png" alt=""></li>
+            <li><img src="images/a3.png" alt=""></li>
+            <li><img src="images/a4.png" alt=""></li>
+            <li><img src="images/a1.png" alt=""></li>
+            <li><img src="images/a2.png" alt=""></li>
+            <li><img src="images/a3.png" alt=""></li>
+            <li><img src="images/a4.png" alt=""></li>
+            <li><img src="images/a1.png" alt=""></li>
+            <li><img src="images/a2.png" alt=""></li><li><img src="images/a1.png" alt=""></li>
+            <li><img src="images/a2.png" alt=""></li>
+            <li><img src="images/a3.png" alt=""></li>
+            <li><img src="images/a4.png" alt=""></li>
+            <li><img src="images/a1.png" alt=""></li>
+            <li><img src="images/a2.png" alt=""></li>
+            <li><img src="images/a3.png" alt=""></li>
+            <li><img src="images/a4.png" alt=""></li>
+            <li><img src="images/a1.png" alt=""></li>
+            <li><img src="images/a2.png" alt=""></li>
+        </ul>
+        <div id="box_bottom">
+            <span class="mask"></span>
+        </div>
+    </div>
+    <script>
+        var box=document.getElementById("box");
+        var box_top=document.getElementById("box_top");
+        var box_bottom=document.getElementById("box_bottom");
+        var mask=box_bottom.children[0];
+        //设置滚动条的长度
+        var mask_len=(box.offsetWidth/box_top.offsetWidth)*box.offsetWidth;
+        mask.style.width=mask_len+'px';
+        //鼠标操作
+        mask.onmousedown=function(event){
+            var e=event||window.event;
+            //求出滚动条的初始值
+            var beginX=e.clientX-mask.offsetLeft;
+            //鼠标移动
+            document.onmousemove=function(event){
+                var e=event||window.event;
+                //求出移动的距离
+                var x=e.clientX-beginX;
+                //边界值
+                if(x<0){
+                    x=0;
+                }else if(x>=box.offsetWidth-mask.offsetWidth){
+                    x=box.offsetWidth-mask.offsetWidth;
+                }
+                //动起来
+                mask.style.left=x+'px';
+                //内容走的距离
+                var content_len=(box_top.offsetWidth-box.offsetWidth)/(box.offsetWidth-mask.offsetWidth)*x;
+                
+                box_top.style.left=-content_len+'px';
+                return false;
+            }
+            document.onmouseup=function(){
+                document.onmousemove=null;
+            }
+        }
+    </script>
+</body>
+</html>

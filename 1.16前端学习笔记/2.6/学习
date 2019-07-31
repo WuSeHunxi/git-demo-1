@@ -1,0 +1,9 @@
+1.对象有三种：  
+    dom对象
+    内置对象(Date)
+    自定义对象
+2.正则表达式：进行字符串匹配的强大工具
+    RegExp: Regular Expression
+    search(RegExp):参数可以是正则表达式也可以是字符串
+    indexOf(string):参数只能是字符串
+    \d:匹配的是数字;'+':表示的是一个或多个

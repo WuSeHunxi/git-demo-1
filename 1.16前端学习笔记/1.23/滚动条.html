@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style:none;
+            border:none;
+        }
+        #progress{
+            width:1000px;
+            height:35px;
+            margin:100px auto;
+            line-height:35px;
+            position:relative;
+        }
+        #progress_bar{
+            width:900px;
+            height:100%;
+            background-color:#ccc;
+            border-radius:8px;
+            position:relative;
+        }
+        #progress_value{
+            position:absolute;
+            right:30px;
+            top:0;
+        }
+        #progress_bar_fg{
+            width:0;
+            height:100%;
+            border-top-left-radius:8px;
+            border-bottom-left-radius:8px;
+            background-color:orange;
+        }
+        span{
+            width:25px;
+            height:50px;
+            background-color:orange;
+            position:absolute;
+            left:0;
+            top:-7px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="progress">
+        <div id="progress_bar">
+            <div id="progress_bar_fg"></div>
+            <span></span>
+        </div>
+        <div id="progress_value">0%</div>
+    </div>
+    <script>
+        var progress=document.getElementById("progress");
+        var progress_bar=progress.children[0];
+        var progress_bar_fg=progress_bar.children[0];
+        var progress_value=progress.children[1];
+        var mask=progress_bar.children[1];
+        //监听鼠标在mask里按下的事件
+        mask.onmousedown=function(event){
+            var e=event||window.event;
+            //获取鼠标的初始位置（点击时鼠标的位置）
+            //当前的分界线必须得是以mask对象来进行分割（这样在鼠标再次点击的时候进度条不会回去）
+            var offsetLeft=e.clientX-mask.offsetLeft;//当前事件的clientX
+            // console.log(offsetLeft);
+            //鼠标移动事件
+            document.onmousemove=function(event){//为保证当按下之后能够在页面中的那个位置都可以进行拖拽，所以把时间作用在document上
+                var e=event||window.event;//事件源不一样
+                //获取移动的位置（移动时鼠标的位置-最初的分界线的值就是此时进度条的移动距离）
+                var x=e.clientX-offsetLeft;
+                // console.log(e.clientX);
+                //边界值的处理
+                if(x<0){
+                    x=0;
+                }else if(x>=progress_bar.offsetWidth-mask.offsetWidth){
+                    x=progress_bar.offsetWidth-mask.offsetWidth;
+                }
+                //走起来
+                mask.style.left=x+'px';
+                progress_bar_fg.style.width=x+'px';//填充前景色
+                //用此时移动的距离除以总长度
+                progress_value.innerHTML=parseInt(x/(progress_bar.offsetWidth-mask.offsetWidth)*100)+'%';
+                return false;//取消该事件（确保移动事件函数不会再执行）
+            }
+            //鼠标只有按下去之后才能抬起 因此抬起事件要在按下事件内部
+            document.onmouseup=function(){
+                document.onmousemove=null;
+            }/*
+                如果想将移动事件和鼠标抬起事件都写在鼠标的按下事件里的话(即：在鼠标按下的事件中有两个document事件
+                会造成事件冲突，即鼠标不知道是该移动还是该抬起)，因此需要在鼠标移动事件的最末位写上return false;
+            */
+        }
+        
+        
+        
+    </script>
+</body>
+</html>

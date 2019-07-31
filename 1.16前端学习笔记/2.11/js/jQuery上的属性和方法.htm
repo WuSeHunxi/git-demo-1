@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(function(){
+            /*
+            jQ原型上的核心方法和属性
+            1.jquery 获取jQuery版本号
+            2.selector 实力默认的选择器取值
+            3.length 实力默认的长度
+            4.sort 对实例中的元素进行排序
+            5.splice 按照指定下标指定数量删除元素，也可以替换删除的元素
+            6.toArray 把实例转换成数组返回：将伪数组转化成真数组的方法
+            7.get 获取指定下标的元素，获取的是原生的DOM
+            8.eq 获取指定下标的元素，获取jQuery类型的实例对象
+            9.first 获取实例中的第一个元素，是jQuery类型的实例对象
+            10.last 获取实例中的最后一个元素，是jQuery类型的实例对象
+            11.each 遍历实例，把遍历到的数据传给回调使用(可以遍历真数组 伪数组 对象)
+            12.map 遍历实例，把遍历到的数据传给回调使用，然后把回调的返回值收集起来组成一个新的数组返回
+            */
+            // console.log($().jquery);
+            /*var res=$("div");
+            console.log(res);
+            var res2=res.toArray();
+            console.log(res2);*/
+            //get方法如果不传递参数 相当于调用了toArray()
+            console.log(res.get());
+            console.log(res.get(0));
+            console.log(res.get(-2));//(3 + -2)=1
+            //first
+            console.log(res.first());
+            //last
+            console.log(res.last());
+            //jQuery的工具each方法 当该方法return true的时候，表示可以继续遍历 当该方法return false的时候，表示遍历结束
+            var arr=[1,2,3];
+            jQuery.each(arr,function(key,value){
+                if(key===2){
+                    return true;
+                    // return false;
+                }
+                console.log(key,value);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+</body>
+</html>

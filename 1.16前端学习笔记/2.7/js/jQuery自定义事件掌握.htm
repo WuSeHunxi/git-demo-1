@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .father{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .son{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+    <script>
+        //自定义事件
+        $(function(){
+            // $(".son").click(function(){
+            //     alert("son");
+            // });
+            // $(".son").trigger("click");
+            /*
+            想要自定义事件，必须满足两个条件
+            1.事件必须是通过on绑定的
+            2.事件必须通过trigger来触发
+            */
+           $(".son").on("myClick",function(){
+               alert("SON");
+           });
+           $(".son").trigger("myClick");
+        });
+    </script>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <a href="http://www.baidu.com"><span>我是百度</span></a>
+    <form action="http://www.taobao.com">
+        <input type="text">
+        <input type="submit">
+    </form>
+</body>
+</html>

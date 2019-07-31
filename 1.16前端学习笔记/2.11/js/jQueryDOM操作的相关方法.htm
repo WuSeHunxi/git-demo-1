@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(function(){
+            /*
+            DOM操作：
+            1.empty 清空指定元素中的所有内容
+            2.remove 删除所有元素或指定元素
+            
+            3.html 设置所有元素内容，获取第一个元素的内容
+            4.text 设置所有元素的文本内容，获取所有元素的文本内容
+            
+            5.appendTo 将元素添加到指定元素的最后
+              //将接收到的参数都放在jQuery的核心函数中 最后都会得到jQuery对象
+              //接收一个字符串 $(".item") ==> jQuery
+              $("p").appendTo(".item");
+              //接收一个jQuery对象 $($("div")) ==> jQuery
+              $("p").appendTo($("div"));
+              //接收一个DOM元素 $(divs) ==> jQuery
+              $("p").appendTo(divs);
+            6.append 将元素添加到指定元素内部的最后
+            
+            7.prependTo 将元素添加到指定元素内部的最前面
+            8.prepend 将元素添加到指定元素内部的最前面
+
+            9.insertAfter 将元素添加到指定元素外部的后面
+            10.after 将元素添加到指定元素外部的后面
+            
+            11.insertBefore 将元素添加到指定元素外部的前面
+            12.before 将元素添加到指定元素外部的前面
+
+            13.replaceAll 替换所有的指定元素
+            14.replaceWith 替换所有的指定元素
+
+            15.clone 复制节点（深复制true，浅复制false）
+            */
+            // var btn=document.getElementsByTagName("button")[0];
+            // btn.click(function(){
+            //    console.log($("div").empty());
+            //    $("div").remove(".box");//根据.box找到对应的元素（div和p）
+               //要删除的是和传入的元素类型匹配的：通过.box找到了两个对应的元素 但是要删除的是传入的元素$("div")
+               //要遍历找到的元素 即：div和p 然后看看他们哪个是和传入的指定元素相匹配 
+               //匹配的就删掉
+            //    console.log($("div").text());
+            // });
+            console.log($("div").text());
+            function appendTo(source,target){
+                //要将source添加到target中去
+                for(var i=0;i<target.length;i++){
+                    var targetEle=target[i];
+                    for(var j=0;j<source.length;j++){
+                        var sourceEle=source[j];//要添加的source元素可能也是多个 每一个都要添加到target中去
+                        //判断当前遍历到的是第几个
+                        if(i===0){//如果是第一个就可以直接添加
+                            targetEle.appendChild(sourceEle);
+                        }else{//如果不是第一个需要先克隆 再添加
+                            //先克隆
+                            var temp=sourceEle.cloneNode(true);
+                            //再添加
+                            targetEle.appendChild(temp);
+                        }
+                    }
+                }
+            }
+            
+            // target.insertBefore(source,target.firstChild);
+            function insertBefore(source,target){
+            /*
+            原生JSinserBefore的特点：
+            调用者.insertBefore(插入的元素，参考的元素);
+            insertBefore方法，调用者是谁就会将谁插入到谁的里面
+            */
+                var parent=target.parentNode;
+                parent.insertBefore(source,target);
+            }
+            var p=document.querySelector("p");
+            var div=document.querySelector("div");
+            insertBefore(p,div);
+        });
+    </script>
+</head>
+<body>
+    <p>hahah</p>
+    <div>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+    </div>
+</body>
+</html>

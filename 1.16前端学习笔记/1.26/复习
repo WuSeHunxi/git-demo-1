@@ -1,0 +1,295 @@
+1.获取用户选中的内容
+    在网页中对一些文字进行选择 分享等操作
+    兼容性写法：
+        var selectedText;
+        if(window.getSelection){//标准模式
+            selectedText=window.getSelection().toString();
+        }else{//IE
+            selectedText=document.selection.createRange().text();
+        }
+2.防止拖拽时选中内容
+    防止拖拽时选中拖拽区域的内容
+    window.getSelection?window.getSelection().removeRanges:document.selection.empty();
+3.综合动画函数的封装(匀速动画)
+    例如：帧动画，核心动画，转场动画等复杂动画，其基本原理是：盒子的offsetLeft+步长
+    匀速动画的封装
+        function animation(obj,target,step){
+        //清除定时器
+        clearInterval(obj.time);
+        //判断方向
+        var dir=obj.offsetLeft<target?step:-step;
+        //设置定时器
+        obj.time=setInterval(function(){
+            obj.style.left=obj.offsetLeft+dir+"px";
+            if(Math.abs(target-obj.offsetLeft)<Math.abs(dir)){
+                clearInterval(obj.time);
+                obj.style.left=target+"px";
+            }
+        },20);
+    }
+4.无限轮播::匀速动画
+    (利用综合动画函数：自动轮播+鼠标进入小圆点时轮播)
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        img{
+            vertical-align: top;
+        }
+        #slider{
+            width: 750px;
+            height: 320px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 100px auto;
+            position: relative;
+        }
+        #top{
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        #top ul{
+            width: 4500px;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #top ul li{
+            width: 750px;
+            height: 320px;
+            float: left;
+        }
+        #slider ol{
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+        ol li{
+            width: 20px;
+            height: 20px;
+            background-color: darkgrey;
+            display: inline-block;
+            border-radius: 50%;
+            margin-right: 3px;
+            cursor:pointer;
+        }
+        li.current{
+            background-color: orangered;
+        }
+    </style>
+    <div id="slider">
+        <div id="top">
+            <ul id="ul">
+                <li><img src="images/a1.png" alt=""></li>
+                <li><img src="images/a2.png" alt=""></li>
+                <li><img src="images/a3.png" alt=""></li>
+                <li><img src="images/a4.png" alt=""></li>
+                <li><img src="images/a1.png" alt=""></li>
+            </ul>
+        </div>
+        <ol id="ol"></ol>
+    </div>
+    <script src="js/my_func.js"></script>
+    <script>
+        var currentIndex=0,indicatorIndex=0;//第一个是图片，第二个是圆点
+        //获取所有的li标签
+        var Lis=$("ul").children;
+        //要把第一张图片克隆一份放在最后的位置上
+        $("ul").appendChild(Lis[0].cloneNode(true));
+        //创建ol里的li
+        for(var i=0;i<Lis.length;i++){
+            var li=document.createElement("li");
+            $("ol").appendChild(li);
+        }
+        //第一个选中
+        $("ol").children[0].className="current";
+        //拿到所有的ol里的li
+        var olLis=$("ol").children;
+        for(var j=0;j<olLis.length;j++){
+            //自动滚 鼠标进入圆点的话也会滚动
+            //监听鼠标进入圆点的事件
+            (function(j){
+                var li=olLis[j];
+                li.onmouseover=function(){
+                    for(var i=0;i<olLis.length-1;i++){//这层循环很重要
+                        olLis[i].className='';
+                    }
+                    this.className="current";
+                    //利用动画动起来
+                    animation($("ul"),-(750*j),60);
+                    currentIndex=indicatorIndex=j;
+                };
+            })(j);
+        } 
+        //自动轮播
+        var time=setInterval(autoPlay,1000);
+        //清除和设置定时器，当鼠标图片的话，就不应该再继续轮播了，出去再接着轮播
+        $("slider").onmouseover=function(){
+            clearInterval(time);
+        }
+        $("slider").onmouseout=function(){
+            time=setInterval(autoPlay,1000);
+        }
+        function autoPlay(){
+            //让ul滚动起来
+            currentIndex++;
+            if(currentIndex>Lis.length-1){
+                //最后一张和第一张重合，因此要回到第二张
+                $("ul").style.left=0;
+                currentIndex=1;
+            }
+            animation($("ul"),-currentIndex*750,100);
+            indicatorIndex++;
+            if(indicatorIndex>olLis.length-1){
+                indicatorIndex=0;
+            }
+            for(var i=0;i<Lis.length-1;i++){//这层循环很重要
+                olLis[i].className='';
+            }
+            olLis[indicatorIndex].className="current";
+        }
+    </script>
+5.Math函数
+    //四舍五入
+    console.log(Math.round(10.61));
+    //天花板
+    console.log(Math.ceil(10.99999));
+    //地板
+    console.log(Math.floor(10.8888));
+    //取绝对值
+    console.log(Math.abs(-12.99));    
+6.缓动动画:(非匀速运动,需要向上取整)
+    其原理：盒子本身的位置+步长(不断变化的，由大变小)
+                    步长:begin=begin+(end-begin)/缓动系数
+    缓动动画函数:
+        function buffer(obj,target){
+        clearInterval(obj.time);
+        obj.time=setInterval(function(){
+            var speed=(target-obj.offsetLeft)*0.2;//步长
+            //判断是否向上取整
+            speed=(target>obj.offsetLeft)?Math.ceil(speed):Math.floor(speed);
+            //让盒子动起来
+            obj.style.left=obj.offsetLeft+speed+"px";
+            //判断
+            if(obj.offsetLeft===target){
+                clearInterval(obj.time);
+            }
+        },20);
+    }
+7.常见的js访问CSS属性
+    []:var h="left"; box.style[h]="10px";//可以动态传递参数作为属性
+    (.):box.style.left="10px";//不可以动态传递参数
+    function changeCss(obj,attr,value){
+        obj.style[attr]=value;
+    }
+8.js获取CSS的样式
+    box.style.top,box.style.backgroundColor等这些只能得到行内样式，而在平常用到最多的是页内样式或者外部样式
+    因此：在IE和OPera浏览器:
+            obj.currentStyle
+          在W3C标准下：
+            window.getComputedStyle("元素","伪类")
+          兼容性写法：
+            function getStyleAttr(obj,attr){
+                if(obj.currentStyle){ //IE Opera
+                    return obj.currentStyle[attr];
+                }else{ //W3C
+                    return window.getComputedStyle(obj,null)[attr];
+                }
+            }
+9.缓动动画单值
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+    <button id="btn">往右走</button>
+    <div id="box"></div>
+<script src="../js/my_func.js"></script>
+<script>
+        var target=800;
+        var box=$("box");
+        $("btn").onclick=function(){
+            buffer(box,target,"left");
+        }
+        function buffer(obj,target,attr){
+            clearInterval(obj.time);
+            obj.time=setInterval(function(){
+                var begin=parseInt(getCssAttrValue(obj,attr));
+                var speed=(target-begin)*0.2;//步长
+                //向上取整
+                speed=(target>begin)?Math.ceil(speed):Math.floor(speed);
+                //让盒子动起来
+                obj.style[attr]=begin+speed+"px";
+                //判断
+                if(begin===target){
+                    clearInterval(obj.time);
+                }
+            },20);
+        }
+</script>
+10.json的遍历
+    for in关键字进行遍历
+    for(var k in json){
+        console.log(k);       //k(键)
+        console.log(json[k]); //value(值)
+    }
+11.缓动动画多值
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+    <button id="btn">往右走</button>
+    <div id="box"></div>
+<script src="../js/my_func.js"></script>
+<script>
+    var box=$("box");
+    var begin=0,speed=0,target=0,flag=true;
+    $("btn").onclick=function(){
+        buffer(box,{"left":800,"top":400});
+    }
+    function buffer(obj,json){//obj:对象，attr:属性值，target:目标值
+        clearInterval(obj.time);
+        obj.time=setInterval(function(){
+            for(var k in json){
+                begin=parseInt(getCssAttrValue(obj,k))||0;//每一个传入的属性
+                target=parseInt(json[k]);//每一个传入的属性值
+                speed=(target-begin)*0.2;//步长
+                //向上取整
+                speed=(target>begin)?Math.ceil(speed):Math.floor(speed);
+                //让盒子动起来
+                obj.style[k]=begin+speed+"px";
+                //判断是否继续运行，得保证传入的每一个值和最后运动的距离相同
+                if(begin!==target){
+                    flag=false;//当为false时，继续运动
+                }
+            }
+            if(flag){//当为true时，停止运动，清除定时器
+                clearInterval(obj.time);
+            }
+        },20);
+    }
+</script>
+12.回调函数只要有就会被执行
+13.透明度
+    opacity:0.5;
+    filter:alpha(Opacity=50);

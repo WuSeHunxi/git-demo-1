@@ -1,0 +1,161 @@
+*{
+    padding: 0;
+    margin: 0;
+    border:none;
+    list-style: none;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    background-color: #DB4D6D;
+    display:flex;
+    /*沿主轴居中 默认的主轴为x轴
+    flex-direction:row  column(可以改变轴的方向)
+    */
+    justify-content: center;
+    /*沿侧轴居中 默认的侧轴为y轴*/
+    align-items: center;
+}
+.text{
+    color:#fff;
+    text-align: center;
+}
+.text h2{
+    font-size:40px;
+}
+.text h3{
+    opacity: 0.5;
+}
+.monster{
+    flex-direction: column;/*主轴方向变成纵轴*/
+    width: 110px;
+    height: 100px;
+    border: 1px solid #000;
+    border-radius:20px;
+    margin: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items:  center;
+    position: relative;
+    /*水平偏移量 竖直偏移量 模糊半径 阴影颜色*/
+    box-shadow: 0px 20px 20px rgba(0,0,0,0.2);
+    /*关键帧动画的名称 运动相隔的时间 运动次数 运动方向(来回往返运动)*/
+    animation: jumping 0.8s infinite alternate;
+}
+@keyframes jumping{
+    50%{
+        top:0px;
+        box-shadow: 0px 20px 20px rgba(0,0,0,0.5);
+    }
+    100%{
+        top:-50px;
+        box-shadow: 0px 100px 50px rgba(0,0,0,0.2);
+    }
+}
+.monster .red{
+    background-color: #e55A54;
+}
+.monster .blue{
+    background-color: #0c4475;
+    animation-delay: 0.5s;
+}
+.eye{
+    width: 40%;
+    height: 40%;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    display :flex;
+    justify-content: center;
+    align-items: center;
+}
+@keyframes eyemove{
+    0%{
+        transform:translateX(-50%);
+    }
+    100%{
+        transform:translateX(50%);
+    }
+}
+.eye .eyeball{
+    width: 50%;
+    border-radius:50%;
+    height: 50%;
+    animation:eyemove 
+}
+.mouth .red .eye .eyeball{
+    background-color: #0c4474;
+}
+.mouth .blue .eye .eyeball{
+    background-color: #db4d6d;    
+}
+.mouth{
+    width: 35%;
+    border-radius:10px;
+    margin-top: 15px;
+    background-color: #fff;
+    height: 10px;
+}
+.monster .blue .mouth{
+    background-color: #db4d6d;
+}
+.monster::before .monster::after{/*伪类*/
+    width: 20%;
+    height: 10px;
+    content:"";
+    background-color: #fff;
+    position: absolute;
+    top:-10px;
+    left: 50%;
+    /* transform: translateX(-50%); */
+    border-radius:10px;
+}
+.monster::before{
+    transform: translateX(-70%) rotateZ(45deg);/*旋转和平移不能反*/
+}
+.monster::after{
+    transform: translateX(-30%) rotateZ(-45deg);
+}
+.page-loading{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #0c4475;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    transition: opacity 0.5s;/*淡入淡出*/
+}
+.page-loading .loading{
+    height: 8px;
+    width: 200px;
+    background-color: #fff;
+    border-radius:8px;
+    margin-top: 50px; 
+}
+.page-loading .monster{
+    transition: transform 0.5s;
+}
+.page-loading .monster .bar{
+    background-color: #bd4d6d;
+    height: 100%;
+    width: 0;
+}
+.page-loading .complete .monster{
+    transform: rotate(360deg) scale(0.01);
+}
+/*
+rotate():默认沿Z轴旋转  先旋转的话坐标轴也是旋转的 要想让坐标轴不旋转只能先平移再旋转
+rotateX():沿x轴旋转
+rotateY():沿y轴旋转
+rotateZ():沿z轴旋转
+rotate3d(1,1,1,旋转角度) 前三个是向量
+translate(50px,100px) 默认 沿x轴平移50px 沿y轴平移100px
+translateX() x轴平移
+translayeY() y轴平移
+translayeZ() z轴平移 沿z轴平移看不到
+如果平移的括号中写% 代表的是相对于元素自身
+transform3d(x,y,z)
+*/

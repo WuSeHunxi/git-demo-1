@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        /*
+        onload事件会等到DOM元素加载完毕，并且还会等到资源也加载完毕后才会执行
+        DOMContentLoaded事件只会等到DOM元素加载完毕就会执行
+        */
+       window.onload=function(){
+
+       };
+       //只能用在高级浏览器
+       document.addEventListener("DOMContentLoaded",function(){
+
+       });
+       //下面的比上面的快
+       //在低级浏览器中用attachEvent事件
+       /*
+        document.readState属性有如下状态：
+            uninitialized 还未开始载入
+            loading 载入中
+            interactive 已加载，文档与用户可以开始互交
+            complete 载入完成
+        onreadystatechange事件是用于专门用于监听document.readyState属性的改变的
+       */
+        document.attachEvent("onreadystatechange",function(){
+            if(document.readyState=="complete"){
+                console.log("onreadystatechange");
+            }
+        })
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

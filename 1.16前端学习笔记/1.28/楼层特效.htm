@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border:0;
+        }
+        html,body,ul{
+            width: 100%;
+            height: 100%;
+        }
+        #ul li{
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size:30px;
+            /* background-color: red; */
+            color:#fff;
+        }
+        #ol{
+            width: 80px;
+            background-color: #ccc;
+            position: fixed;
+            left: 50px;
+            top: 50px;
+            border:1px solid #fff;
+        }
+        #ol li{
+            text-align: center;
+            line-height: 30px;
+            cursor:pointer;
+            color:#fff;
+            border-bottom: 1px solid #fff;
+        }
+        .current{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <ol id="ol">
+        <li class="current">第1层</li>
+        <li>第2层</li>
+        <li>第3层</li>
+        <li>第4层</li>
+        <li>第5层</li>
+    </ol>
+    <ul id="ul">
+        <li>第1层内容</li>
+        <li>第2层内容</li>
+        <li>第3层内容</li>
+        <li>第4层内容</li>
+        <li>第4层内容</li>
+    </ul>
+    <script src="js/my_func.js"></script>
+    <script>
+        //获取需要的标签
+        var ol=$("ol"),ul=$("ul");
+        var ulLis=ul.children;
+        var olLis=ol.children;
+        var isClick=false;
+        var scrollTop=0;
+        //上色
+        var colorArr=['red','green','blue','purple','yellow'];
+        for(var i=0;i<colorArr.length;i++){
+            ulLis[i].style.backgroundColor=colorArr[i];
+        }
+        //监听点击事件
+        for(var j=0;j<olLis.length;j++){
+            (function(index){//利用闭包确保index和j同步
+                var olLi=olLis[index];
+                olLi.onclick=function(){
+                    isClick=true;
+                    for(var i=0;i<olLis.length;i++){
+                        olLis[i].className="";
+                        console.log(i);
+                    }
+                    this.className="current";
+                    document.documentElement.scrollTop=index*client().height;
+                    buffer(document.documentElement,{scrollTop:index*client().height},function(){
+                        isClick=false;                       
+                    });
+                }
+            })(j);
+        }
+        //监听滚动
+        window.onscroll=function(){
+            if(!isClick){
+                //获取滚动时产生的高度
+                var roll=Math.ceil(scroll().top);
+                for(var i=0;i<olLis.length;i++){
+                    if(roll>=ulLis[i].offsetTop){
+                        for(var j=0;j<olLis.length;j++){
+                            olLis[j].className="";
+                        }
+                        olLis[i].className="current";
+                        //让内容滚动起来
+                    }
+                }
+            }
+        }
+        function buffer(obj,json,fn){//obj:对象，attr:属性值，target:目标值
+            clearInterval(obj.time);        
+            obj.time=setInterval(function(){
+                var flag=true;
+                for(var k in json){
+                    if("opacity"===k){
+                        begin=Math.round(parseFloat(getCssAttrValue(obj,k))*100)||100;
+                        target=parseInt(json[k]*100);
+                    }else if("scrollTop"===k){
+                        begin=Math.ceil(obj.scrollTop);//每一个传入的属性
+                        console.log(top);
+                        target=parseInt(json[k]);//每一个传入的属性值      
+                    }else{
+                        begin=parseInt(getCssAttrValue(obj,k))||0;//每一个传入的属性
+                        target=parseInt(json[k]);//每一个传入的属性值
+                    }          
+                    
+                    speed=(target-begin)*0.2;//步长
+                    //判断是否要向上取整
+                    speed=(target>begin)?Math.ceil(speed):Math.floor(speed);
+                    if("opacity"===k){
+                        obj.style.opacity=(begin+speed)/100;
+                        obj.style.filter='alpha(opacity:'+(begin+speed)+')';
+                    }else if("scrollTop"===k){
+                        obj.scrollTop=begin+speed;
+                    }else{
+                        obj.style[k]=begin+speed+"px";
+                    }
+                    //让盒子动起来
+                    obj.style[k]=begin+speed+"px";
+                    
+                    //判断是否继续运行，得保证传入的每一个值和最后运动的距离相同
+                    if(begin!==target){
+                        flag=false;//当为false时，继续运动
+                    }
+                }
+                if(flag){//当为true时，停止运动，清除定时器
+                    clearInterval(obj.time);
+                    //判断有没有回调函数
+                    if(fn){
+                        fn();
+                    }                
+                }
+            },20);
+        }
+    </script>
+</body>
+</html>

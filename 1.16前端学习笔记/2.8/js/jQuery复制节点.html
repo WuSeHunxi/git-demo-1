@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(function(){
+            /*
+            浅复制：clone(false) 只能复制元素
+            深复制：clone(true) 不仅能复制元素，还能复制事件
+            */
+            $("button").eq(0).click(function(){
+                //浅复制
+                var $li=$("li:first").clone(false);
+                $("ul").append($li);
+                $("ul").click(function(){//事件委托(点击的是li)
+                    alert("hahhah");
+                });
+            });
+            $("button").eq(1).click(function(){
+                var $li=$("li:first").clone(false);
+                $("ul").append($li);
+                $("li").click(function(){//深复制
+                    alert("pp");
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <button>浅复制节点</button>
+    <button>深复制节点</button>
+    <ul>
+        <li>我是第1个li</li>
+        <li>我是第2个li</li>
+        <li>我是第3个li</li>
+        <li>我是第4个li</li>
+        <li>我是第5个li</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            border:1px solid #ccc;
+            background-color: red;;
+        }    
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <button id="btn">获取属性值</button>
+    <script>
+        var btn=document.getElementById("btn");
+        var box=document.getElementById("box");
+        console.log(getStyleAttr(box,"width"));//拿不到
+        function getStyleAttr(obj,attr){
+            if(obj.currentStyle){
+                return obj.currentStyle[attr];
+            }else{
+                return window.getComputedStyle(obj,null)[attr];
+            }
+        }
+    </script>
+</body>
+</html>

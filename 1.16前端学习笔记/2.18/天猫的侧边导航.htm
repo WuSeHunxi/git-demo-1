@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style:none;
+        }
+        .content{
+            overflow: hidden;
+            position: relative;
+            margin-left: 400px;
+            margin-top: 100px;
+            width: 700px;
+            height: 500px;
+            color: #fff;
+        }
+        .content ul{
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: 1s;/*CSS3过渡属性 即属性的改变在一秒钟之内完成*/
+        }
+        .content li{
+            width: 700px;
+            height: 500px;
+            background-color: #096;
+        }
+        .wrap{
+            position: absolute;
+            left: 0;
+            top: 200px;
+            width: 40px;
+            height: 30px;
+        }
+        .wrap ul li{
+            background-color: #000;
+            color:#fff;
+            margin-bottom: 4px;
+            cursor:pointer;
+            text-align: center;
+        }
+        .wrap .top,.wrap .last{
+            background-color: red;
+        }
+        .wrap ul li:hover{
+            opacity: 0.5;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <ul>
+            <li style='background-color: #64c333'></li>
+            <li style='background-color: #000'></li>
+            <li style='background-color: #e15f8d'></li>
+            <li style='background-color: #0aa6e8'></li>
+            <li style='background-color: #64c333'></li>
+            <li style='background-color: #f15453'></li>
+            <li style='background-color: #19c8a9'></li>
+            <li style='background-color: #000'></li>
+        </ul>
+    </div>
+    <div class="wrap">
+        <ul>
+            <li class="top">导航</li>
+            <li class="list">天猫超市</li>
+            <li class="list">天猫国际</li>
+            <li class="list">美丽人生</li>
+            <li class="list">酷玩</li>
+            <li class="list">居家生活</li>
+            <li class="list">打造爱巢</li>
+            <li class="list">户外出行</li>
+            <li class="list">猜你喜欢</li>
+            <li class="last">
+                <span>^</span>
+                <div>顶部</div>
+            </li>
+        </ul>
+    </div>
+    <script>
+        //互联网的一线标准：要在0.3s之内打开网页
+        //可维护性
+        //弱类型 脚本 基于原型
+        /*
+        需要监听鼠标的点击事件
+        需要在JS中改变CSS3属性：改变content中ul对象的top值就可以
+        */
+        //建议写完一点检查一点
+        var aList=document.querySelectorAll(".list");
+        var oUl=document.querySelector(".content ul");
+        // for(var i=0;i<aList.length;i++){//需要用闭包来解决
+        //     aList[i].onclick=function(){//鼠标的点击事件
+        //         oUl.style.top=i*(-500)+"px";//改变ul的top值
+        //     };
+        // }  所有的i都是8
+        // for(var i=0;i<aList.length;i++){//利用闭包解决刚才的问题
+        //     (function(j){
+        //         aList[j].onclick=function(){
+        //             console.log(j);
+        //         };
+        //     }(i));
+        // }
+        //自定义属性  也要解决刚才的问题
+        for(var i=0;i<aList.length;i++){
+            aList[i].index=i;//自定义属性i保存下标
+            /*
+            aList[0].index=0;
+            aList[1].index=1;
+            ...
+            */
+                aList[i].onclick=function(){
+                    oUl.style.top=-500*this.index+"px";//改变ul的top值
+            };
+        }
+    </script>
+</body>
+</html>

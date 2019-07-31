@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .father{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .son{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(function(){
+            /*
+            mouseover/mouseout事件，子元素被移入移出也会触发父元素的事件
+            */
+            // $(".father").mouseover(function(){
+            //     console.log("father被移入了");
+            // });
+            // $(".father").mouseout(function(){
+            //     console.log("father被移出了");
+            // });
+            /*
+            mouseenter/mouseleave事件，子元素的移入移出不会触发父元素的事件
+                推荐使用
+            */
+            $(".father").mouseenter(function(){
+                console.log("father被移入了");
+            });
+            $(".father").mouseleave(function(){
+                console.log("father被移出了");
+            });
+            /*
+            同时监听移入和移出事件(内部是由mouseenter和mouseleave组成)
+            hover事件可以有两个参数也可以只有一个参数
+            */
+           $(".father").hover(function(){
+                console.log("father被移入了");
+           },function(){
+                console.log("father被移出了");
+           });
+        });
+    </script>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        /*function njQuery(){//一个njQuery类
+
+        }
+        njQuery.extend=function(obj){
+            //此时this就是njQuery这个类(谁调用extend，this就是谁)
+            console.log(this);
+            for(var key in obj){
+                //遍历对象的key就是isTest value就是function
+                //njQuery["isTest"]=function(){console.log("test");}
+                this[key]=obj[key];
+            }
+        }
+        njQuery.extend({//在函数中传递一个对象
+            isTest:function(){
+                console.log("test");
+            }
+        });*/
+        //下面的几行代码是上面注释掉的代码合在一起的结果
+        njQuery.extend=njQuery.prototype.extend=function(obj){
+            for(var key in obj){
+                this[key]=obj[key];
+            }
+        }
+        njQuery.isTest();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
