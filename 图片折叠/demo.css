@@ -1,0 +1,86 @@
+/*直接通过CSS设置属性*/
+*{
+    margin:0;
+    padding:0;
+    list-style: none;
+}/*在设置一些通用的属性时 通常要将其保存在一个文件中然后导入*/
+html,body{
+    width:100%;
+    height:100%;
+    /* height:700px; */
+    /*井深CSS3的属性*/
+    background:linear-gradient(to left top ,#f5A1D5 0%,#cdd3e9);
+}
+.cards-stack{ /*一整块的大小*/
+    width:600px;
+    margin:100px auto;
+    position:relative;
+    cursor: pointer;
+}
+.stack{/*开始的时候以列为单位 图片是叠在一起的*/
+    position:absolute;
+    left:0;
+    /* transition:all 0.4s linear; */
+    transition: all 0.4s cubic-bezier(0.63, 0.15, 0.03, 1.22);
+}
+
+.card{/*给图片设置样式*/
+    position: absolute;
+    height:200px;
+    width:200px;
+    border-radius:10px;
+    /* border:1px solid black;   */
+    background-color:#fff;
+    left:0;
+    top:0;
+    box-shadow: 1px 2px 2px 0 #aaa;/*可以有立体的感觉*/
+    padding:5px;  /*内边距*/
+    transition: all 0.4s cubic-bezier(0.63, 0.15, 0.03, 1.22);
+    transition-delay: 0.4s;    
+}
+
+.card img{
+    width:100%;
+    border-radius:10px;
+}
+.card .con{
+    padding:5px 10px;
+    text-align: center;
+    line-height:40px; 
+    height:40px;
+    font-size:20px;
+}
+
+/*以列为单位将每一张都旋转一个角度 transform是CSS3的属性*/
+.stack .card1{
+    z-index: 10;
+    transform: rotateZ(-2deg);
+}
+.stack .card2{
+    z-index: 9;
+    transform: rotateZ(-7deg);
+}
+.stack .card3{
+    z-index: 8;
+    transform: rotateZ(5deg);
+}
+/*在进行点击的时候才会添加或者删除的属性*/
+.transition .stack1 {
+    left: 0px;
+}
+.transition .stack2 {
+    left: 220px;
+  }
+.transition .stack3 {
+    left: 440px;
+}
+/*都展开之后图片要旋转为0度*/
+.transition .stack ul .card {
+    transform: rotateZ(0deg);
+}
+.transition .stack ul .card.card1 {
+    top: 440px;
+}
+.transition .stack ul .card.card2 {
+    top: 220px;
+}
