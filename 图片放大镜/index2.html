@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        img{
+            display:block;
+        }
+        .leftcon{
+            margin: 100px 20px 0px 312px;
+            height: 300px;
+            width: 300px;
+            border:1px solid black;
+            position:relative;
+            box-shadow:3px 3px 3px 1px #000; 
+            float:left;
+        }
+        .leftcon img{
+            height: 100%;
+            width: 100%;           
+           
+            /* position:absolute; */
+        }
+        .leftcon .slide_box{
+            left: 0;
+            top:0;
+            height: 100px;
+            width: 100px;
+            background-color: #000;
+            opacity:0.3;
+            cursor:move;
+            position:absolute;
+
+
+        }
+        .rightcon{
+            height: 300px;
+            width: 300px;
+            position:relative;
+            margin-top: 100px;
+            float:left;
+            overflow:hidden;
+
+        }
+        .rightcon img{
+            height: 200%;
+            width: 200%;
+            position:absolute;
+            left:0 ;
+            top: 0;
+        }
+    </style>
+</head>  
+<body>
+    <div class="leftcon" id="left">
+        <img src="img/风景-1.jpg" alt="">
+        <div class="slide_box"></div>
+    </div>
+    <div class="rightcon" id="rigth">
+        <img src="img/风景-1.jpg" alt="">
+    </div>
+    <script>
+        var letfone=document.getElementById("left");
+        var rightone=document.getElementById("right");
+        var box=document.getElementById("box");
+        var rimg=document.getElementsByTagName("img")[0];
+        function getPosition(e){
+            var e=e||window.event;
+            // 想要获取鼠标在遮盖层的中心位置
+            var top=e.clientY-leftone.offsetTop-box.offsetHeight/2;
+            console.log(top);
+            var left=e.clientX-leftone.offsetLeft-box.offsetWidth/2;
+            var maxtop=leftone.offsetHeight-box.offsetHeight;
+            var mintop=0;
+            var minleft=0;
+            var maxleft=leftone.offsetWidth-box.offsetWidth;
+            var mvtop;
+            var mvleft;
+            if(top<mintop){
+                box.style.top=mintop+"px";
+                mvtop=mintop;
+            }else if(top>maxtop){
+                box.style.top=maxtop+"px";
+                mvtop=maxtop;
+            }else{
+                box.style.top=top+"px";
+                mvtop=top;
+            }
+            if(left<minleft){
+                box.style.left=minleft+"px";
+                mvleft=left;
+
+            }else if(left>maxletf){
+                box.style.left=maxletf+"px";
+                mvletf=left;
+            }else{
+                box.style.left=left+"px";
+                mvleft=left;
+            }
+        }
+
+    </script>
+</body>
+</html>
