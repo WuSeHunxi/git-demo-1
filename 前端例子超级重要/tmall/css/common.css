@@ -1,0 +1,21 @@
+/* 通用的样式 */
+
+/* 样式重置 */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.wrapper{
+    width: 1230px;
+    height: 100%;
+    margin: 0 auto;
+}

@@ -1,0 +1,57 @@
+.nav-bar .am-navbar{
+  background-color: #06c1ae;
+}
+
+/* 轮播图 start */
+.slider-bar{
+  background: #fff;
+}
+.slider-bar .slider-item{
+  width: 20%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.slider-bar .slider-item img{
+  height: 50px;
+}
+/* 轮播图 end */
+
+.middle-bar{
+  background: #fff;
+}
+.middle-bar .am-flexbox-item{
+  text-align: center
+}
+.middle-bar .am-flexbox-item h3{
+  font-size: 16px;
+  font-weight: bolder;
+}
+.middle-bar .am-flexbox-item img{
+  height: 80px;
+  width: 80px;
+}
+
+.shop-list{
+  background: #fff;
+}
+.shop-list .am-list-line .am-list-brief{
+  margin-top:0;
+  font-size: 12px;
+}
+.shop-list .sl-info{
+  position: relative;
+}
+.shop-list .sl-info>span{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.shop-list .am-list-thumb img{
+  height: 65px;
+  width: 65px;
+}
+.shop-list .sl-price{
+  color: #06c1ae;
+  font-size: 18px;
+  padding-right: 5px;
+}
