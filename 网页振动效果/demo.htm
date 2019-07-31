@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <script>
+       window.onload=function(){
+				var text=document.querySelector("#banner .text");
+				var child=text.children;
+				
+				//文字的动画状态
+				text.style.transition='.2s all ease-in';
+				text.style.width='424px';
+				text.style.opacity='1';
+				
+				text.num=0;//用来判断文字是否处于执行完动画的状态   
+				text.addEventListener('transitionend',function(){
+					text.num++;
+					
+					if(text.num==1){
+						//文字变形 
+						child[0].style.animation='1s left';
+						child[1].style.animation='1s right';
+							
+						//震动
+						var html=document.querySelector("html");
+						html.style.animation='.9s shake';
+						
+						//声音
+						var iframe=document.createElement('iframe');
+
+						iframe.allow="autoplay";
+						iframe.style="display:none";
+						iframe.src="video/3660.mp3";
+
+						document.body.appendChild(iframe);
+
+					}
+				});
+			};
+
+    </script>
+</head>
+
+<body>
+    <nav class="clear">
+        <ul>
+            <li><a href="http://www.apeclass.com/" target="_blank">首页 </a></li>
+            <li><a href="javascript:;">教学亮点 </a></li>
+            <li><a href="javascript:;">课程大纲 </a></li>
+            <li><a href="javascript:;">常见问题 </a></li>
+        </ul>
+    </nav>
+    <section id="banner">
+        <div class="center">
+            <div class="title">
+                <p>就业保障合同签订</p>
+                <div class="text">
+                    <div>渡一好</div>
+                    <div>渡一好</div>
+                </div>
+                <p>全国知名企业内部直推</p>
+            </div>
+            <div class="btn">
+                <!-- <a href="#">案例</a> -->
+                <a href="#">详情</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- <script src="index.js"></script> -->
+    <!-- <iframe allow="autoplay" style="display:none" src="video/3660.mp3"></iframe> -->
+</body>
+
+</html>
