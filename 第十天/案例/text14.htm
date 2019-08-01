@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        nav{
+            border:1px solid #ccc;
+            width: 700px;
+            height: 100px;
+            margin: 100px auto;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        nav ul{
+            width: 1400px;
+            animation: moving 4s infinite;
+        }
+        @keyframes moving{
+            0%{
+                transform:translateX(0);
+            }
+            100%{
+                transform: translateX(-700px);
+            }
+        }
+        nav li{
+            float: left;
+            list-style: none;
+            height: 100px;
+            width: 100px;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        nav:hover ul{
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><img src="images/mm1.jpg" alt=""></li>
+            <li><img src="images/mm2.jpg" alt=""></li>
+            <li><img src="images/mm3.jpg" alt=""></li>
+            <li><img src="images/mm4.jpg" alt=""></li>
+            <li><img src="images/mm5.jpg" alt=""></li>
+            <li><img src="images/mm6.jpg" alt=""></li>
+            <li><img src="images/mm7.jpg" alt=""></li>
+            <li><img src="images/mm1.jpg" alt=""></li>
+            <li><img src="images/mm2.jpg" alt=""></li>
+            <li><img src="images/mm3.jpg" alt=""></li>
+            <li><img src="images/mm4.jpg" alt=""></li>
+            <li><img src="images/mm5.jpg" alt=""></li>
+            <li><img src="images/mm6.jpg" alt=""></li>
+            <li><img src="images/mm7.jpg" alt=""></li>
+        </ul>
+    </nav>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            width: 600px;
+            border:1px solid #ccc;
+            margin: 0 auto;
+        }
+        .box dl{
+            margin: 15px 0  ;
+            overflow: hidden;
+        }
+        .box dl dt,.box dl dd{
+            float: left;
+        }
+        .box dl dd{
+            width: 200px;
+        }
+        .box dl dt{
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <div class="box">
+            <dl>
+                <dt>您的邮箱</dt>
+                <dd><input type="email"></dd>
+                <dd>*注册后不可更改</dd>
+            </dl>
+            <dl>
+                <dt>手机号码</dt>
+                <dd><input type="tel"></dd>
+                <dd>*注册后不可更改</dd>
+            </dl>
+            <dl>
+                <dt>网址</dt>
+                <dd><input type="url"></dd>
+                <dd>*注册后不可更改</dd>
+            </dl>
+            <dl>
+                <dt>邮政编码</dt>
+                <dd><input type="number"></dd>
+                <dd>*注册后不可更改</dd>
+            </dl>
+            <dl>
+                <dt>拖动滑块</dt>
+                <dd><input type="range"></dd>
+                <dd>*注册后不可更改</dd>
+            </dl>
+            <dl>
+                <dt>时间</dt>
+                <dd><input type="time"></dd>
+                <dd>*注册后不可更改</dd>
+            </dl>
+            <dl>
+                <dt>出生日期</dt>
+                <dd><input type="date"></dd>
+                <dd>*注册后不可更改</dd>
+            </dl>
+            <input type="submit" value="提交">
+            <input type="reset" value="重置">
+        </div>
+    </form>
+</body>
+
+</html>

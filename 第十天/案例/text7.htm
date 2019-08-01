@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        @font-face {
+            font-family: 'icomoon';
+            src: url('fonts/icomoon.eot?hrstq9');
+            src: url('fonts/icomoon.eot?hrstq9#iefix') format('embedded-opentype'),
+                url('fonts/icomoon.ttf?hrstq9') format('truetype'),
+                url('fonts/icomoon.woff?hrstq9') format('woff'),
+                url('fonts/icomoon.svg?hrstq9#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        div {
+            width: 200px;
+            height: 30px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        div:after {
+            content: "\ea51";
+            position: absolute;
+            right: 10px;
+            top: 5px;
+        }
+
+        div:hover {
+            border-color: red;
+            color:red;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>
