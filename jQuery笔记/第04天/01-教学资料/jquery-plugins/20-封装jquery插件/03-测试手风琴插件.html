@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        ul {
+            width: 1300px;
+        }
+
+        #box {
+            width: 1200px;
+            height: 400px;
+            border: 1px solid #000;
+            margin: 100px auto;
+        }
+        
+        #box li {
+            width: 120px;
+            height: 400px;
+            float: left;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script src="../jquery-1.12.4.js"></script>
+<script src="jquery.accord.js"></script>
+<script>
+    $(function () {
+        var colorArr = ["gray","green","pink","yellow","cyan","hotpink", "red","yellowgreen", "teal", "skyblue"];
+        $("#box").accord(colorArr, 50);
+    });
+</script>
+</body>
+</html>
