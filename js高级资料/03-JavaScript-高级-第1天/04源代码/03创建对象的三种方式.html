@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>title</title>
+  <script>
+    //对象:特指的某个事物,具有属性和方法(一组无序的属性的集合)
+    //特征---->属性
+    //行为---->方法
+    //小苏:------>姓名,性别,年龄,吃,睡觉,玩
+    
+    
+    //创建对象三种方式:
+    
+    //1  字面量的方式
+    //2  调用系统的构造函数
+    //3  自定义构造函数方式
+    
+    //实例对象
+//    var per1={
+//      name:"卡卡西",
+//      age:20,
+//      sex:"男",
+//      eat:function () {
+//        console.log("吃臭豆腐");
+//      },
+//      readBook:function () {
+//        console.log("亲热天堂");
+//      }
+//    };
+//
+//    //调用系统的构造函数
+//    var per2=new Object();
+//    per2.name="大蛇丸";
+//    per2.age=30;
+//    per2.sex="男";
+//    per2.eat=function () {
+//      console.log("吃榴莲");
+//    };
+//    per2.play=function () {
+//      console.log("这个小蛇真好玩");
+//    };
+//
+//    function Person() {
+//
+//    }
+//    console.log(per2 instanceof Object);
+//
+//    var dog=new Object();
+
+
+    //自定义构造函数
+    function Person(name,age,sex) {
+      this.name=name;
+      this.age=age;
+      this.sex=sex;
+      this.play=function () {
+        console.log("天天打游戏");
+      };
+    }
+    var per=new Person("雏田",18,"女");
+    console.log(per instanceof Person);
+
+
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>

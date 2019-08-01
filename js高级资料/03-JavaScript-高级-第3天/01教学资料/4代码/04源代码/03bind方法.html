@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script>
+
+    function f1(x,y) {
+      console.log((x+y)+this);
+    }
+    //调用函数
+    //f1(10,20);
+//    f1.apply(null,[1,2]);
+//    f1.call(null,1,2);
+
+    //bind也是一个方法,在ECMAScript5中,新的
+    //函数名.bind()方法,相当于是复制了这个函数,返回值就是复制后的一个函数
+//   var ff= f1.bind(null,10,20);
+//    ff();
+
+    var obj={
+      age:10,
+      sayHi:function () {
+        console.log("年龄是:"+this.age);
+      }
+    };
+    //此时把obj传入到了bind中,那么f1函数就不是window的,是obj的了
+    var ff=f1.bind(obj,100,200);//复制
+    ff();
+
+    /*
+    *
+    * 无论是apply还是call或者是bind中第一个参数不传,或者是传的是null,那么函数中的this都是window
+    *
+    * bind方法的参数传入方式和call是一样的
+    *
+    * 函数名.bind(对象A,参数1,参数2,...);就相当于是把函数复制了一份,相当于复制到了对象A中了,------>改变了函数中的this指向
+    *
+    * 改变this指向的方法:apply和call和bind(bind不是调用,是复制了一份)
+    *
+    * 想要改变this指向就可以使用这三个方法中的任意一个,比较推荐的是apply和call
+    * 想要改变this指向,并且想要复制一个函数或者方法,就用bind
+    * */
+
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>

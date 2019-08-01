@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script>
+
+    //构造函数
+    function F1() {
+      //属性---中存储的是一个随机数
+      this.number=Math.ceil(Math.random()*10)+1;
+    }
+
+
+    //原型中添加了一个方法
+    F1.prototype.show1=function () {
+      //this---->实例对象
+      //定时器---一次性的定时器
+      //改变了定时器中的this的指向
+      //如果没有使用bind.那么定时器中的show2中的this就是window
+      //调用了bind,把this传到show2,中此时show2中的this不是window,而是实例对象
+      window.setTimeout(this.show2.bind(this),1000);
+    };
+    //原型中添加了一个方法
+    F1.prototype.show2=function () {
+      //this---->实例对象
+      //输出了自己产生的随机数
+      console.log(this.number+"产生了一个数字");
+    };
+    var f1=new F1();
+    f1.show1();//也调用了show的方法
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>

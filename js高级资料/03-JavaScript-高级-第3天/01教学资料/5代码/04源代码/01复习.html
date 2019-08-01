@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>$永远的24k纯帅$</title>
+  <script>
+
+    /*
+    *
+    * 复习:
+    *
+    *
+    * apply和call和bind
+    *
+    * apply和call和bind都可以改变this的指向
+    * apply和call都是函数或者方法的调用
+    * bind方法是方法的复制,如果想要调用需要接收,接收的这个变量此时就是这个函数,然后才能调用
+    *
+    * function f1(){}
+    * f1.apply(对象,[参数1,参数2]);是f1函数的调用
+    * f1.call(对象,参数1,参数2...);是f1函数的调用
+    * var ff=f1.bind(对象,参数1,参数2);是复制f1这个函数,ff()才是调用f1这个函数
+    *
+    * 函数中的其他的常见的成员
+    *
+    * function f2(){
+    *   f2.name---->该函数的名字
+    *   f2.arguments.length--->函数调用的实参的个数
+    *   f2.length---->函数定义的时候形参的个数
+    *   f2.caller--->f2这个函数在哪个函数中调用的,就是那个函数--->就是调用者-->f3
+    * }
+    * function f3(){
+    *   f2();
+    * }
+    *
+    * 函数可以作为参数使用
+    * 函数可以作为返回值使用
+    * 闭包:函数A中有一个函数B(对象),函数B(对象)中可以使用函数A中的变量或者数据
+    * 闭包模式:
+    * 函数模式: function f1(){return function(){}}
+    * 对象模式: function f1(){return {}}
+    * 闭包的作用:缓存数据,这是优点也是缺点,缓存数据就会延长作用域链,该释放的没有释放
+    * 沙箱:就是一个环境(就是一个封闭的环境),黑盒
+    * (function(){}());//函数的自调用
+    * (function(){})(); //函数的自调用
+    *
+    * 递归:函数A中调用函数A自己,就是递归,递归一定要有结束的条件,否则就是死循环
+    *
+    *
+    *
+    *
+    *
+    *
+    *
+    * */
+
+    //计算阶乘:  5     5*4*3*2*1
+    //递归的效率极低
+    function getJieCheng(x) {
+      if(x==1){
+        return 1;
+      }
+      return x*getJieCheng(x-1);
+    }
+    console.log(getJieCheng(5));
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script>
+    //函数作为返回值使用
+    //    function f1(x) {
+    //      console.log("哈哈,我又变帅了");
+    //      return function (y) {
+    //        console.log("我是f1函数的返回值,但是我是函数"+x+"===>"+y);
+    //      };
+    //    }
+    //    var ff=f1(10);
+    //    ff(20);
+
+    //获取的是小括号中的内容的数据类型
+    //type---是变量---->中存储的是: "[object 数据类型的名字]"
+
+    //函数的作用就是判断当前的这个对象是不是某个数据类型
+    function getFunc(type) {
+      return function (obj) {//obj中存储的就是一个对象
+        //判断[10,20,30] 和[object Array]是否相等
+        return Object.prototype.toString.call(obj) == type;
+      }
+    }
+    //ff是一个变量,但是这个变量中存储的是一个函数(匿名函数)
+
+    var ff = getFunc("[object Array]");
+    var obj = [10, 20, 30];//数组是对象
+    var result = ff(obj);
+    console.log(result);
+
+
+    //    var ff=getFunc("[object Object]");
+    //    var result1=ff({});
+    //    console.log(result1);
+
+
+    //函数名.call(对象)或者方法名.call(对象);函数中的this和方法中的this指向改变了
+    //判断数据类型: instanceof   Date instanceof Object
+    //Object.prototype.toString.call({}) 可以获取当前的这个括号中的东西是什么类型的  [object 某个数据类型大写的]
+
+
+    //
+    //    var arr=[10,20,30];
+    //    var obj={};
+    //    console.log(Object.prototype.toString.call(Math)=="[object Math]");
+
+    //typeof 变量---变量的数据类型
+    //变量 instanceof 对象  判断变量是不是这个类型
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>

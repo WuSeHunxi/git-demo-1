@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script>
+    //函数可以作为参数使用,命名函数或者是匿名函数都可以,注意:命名函数只传入函数的名字
+
+
+//    function f1(fn) {
+//      console.log("函数f1调用开始");
+//      fn();//fn就是一个函数
+//      console.log("函数f1调用结束");
+//    }
+////    f1(function () {
+////      console.log("我是函数,是作为参数使用的");
+////    });
+//
+//    function f2() {
+//      console.log("我是f2函数");
+//    }
+//    f1(f2);
+
+
+    function f1(fn) {
+      setInterval(function () {
+        console.log("我是定时器中的,我开始执行了");
+        fn();//作为函数使用
+        console.log("哎呀,马上就结束了");
+        console.log("========");
+      },1000);
+    }
+    f1(function () {
+      console.log("我在执行喽");
+    });
+
+
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>

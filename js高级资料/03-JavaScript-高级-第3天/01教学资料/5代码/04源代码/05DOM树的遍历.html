@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>遍历DOM树</title>
+</head>
+
+<body>
+<h1>遍历 DOM 树</h1>
+<p style="color: green;">Tip: 可以在遍历的回调函数中任意定制需求</p>
+<div>
+  <ul>
+    <li>123</li>
+    <li>456</li>
+    <li>789</li>
+  </ul>
+  <div>
+    <div>
+      <span>haha</span>
+    </div>
+  </div>
+</div>
+<div id="demo_node">
+  <ul>
+    <li>123</li>
+  </ul>
+  <p>hello</p>
+  <h2>world</h2>
+  <div>
+    <p>dsa</p>
+    <h3>
+      <span>dsads</span>
+    </h3>
+  </div>
+</div>
+<script>
+
+
+  //获取这个页面中的最基本的根标签(根节点)
+  var root=document.documentElement;//html
+  //遍历这个页面的DOM树,fn是用来显示每个标签的名字的(只要给我这个节点,我就显示该节点的名字)
+  function forDom(root,fn) {
+    //获取html中的所有的子节点(是html的直接的子节点--儿子)
+    var children = root.children;
+    //fn(root);
+    //给我一个节点.我就把这个节点中的所有的子节点全都找到
+    forChildren(children,fn);
+  }
+  //给我节点.我把这个节点中的所有的儿子节点找到
+  function forChildren(children,fn) {
+    //此时children是每个子节点,for遍历每个子节点
+      for(var i=0;i<children.length;i++){
+        var child=children[i];//child就是每个子节点
+        fn(child);//输出每个子节点的名字
+        child.children&&forDom(child,fn);
+      }
+  }
+
+  forDom(root,function (node) {
+    console.log("节点名字:--->"+node.nodeName);
+  });
+
+
+
+
+
+
+
+//  function forInDom(root,fn) {
+//    var children=root.children;//获取传入进来的根节点的所有子节点
+//    //把子节点作为参数传递到函数中
+//    walkDom(children,fn);
+//  }
+//  function walkDom(children,fn) {
+//    for(var i=0;i<children.length;i++){
+//      var child=children[i];
+//      //如果该节点的子节点存在,那么就继续的循环
+//      fn(child);
+//      child.children&&walkDom(child.children,fn);
+//    }
+//  }
+//  var root=document.documentElement;//html
+//  forInDom(root,function (node) {
+//    console.log("节点的名字:---->"+node.nodeName);
+//  });
+
+
+
+</script>
+</body>
+
+</html>
