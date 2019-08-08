@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //求阶乘和
+        function jieCheng(n){
+            var result=1;
+            var newResult=[];
+            for(var i=1;i<=n;i++){
+                result*=i;
+                newResult.push(result);
+            }
+            // console.log(newResult);
+            return newResult;
+        }
+        // jieCheng(4);
+        function jieChengSum(n){
+            var sum=0;
+            for(var i=0;i<n;i++){
+                sum+=jieCheng(n)[i];
+            }
+            console.log(sum);
+        }
+        jieChengSum(5);
+    </script>
+</body>
+</html>
