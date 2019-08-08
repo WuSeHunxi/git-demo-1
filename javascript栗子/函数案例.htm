@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //求1-n之间所有数之和
+        
+        function sum(){
+            var result=0;
+            for(var i=0;i<arguments.length;i++){
+                result=result+arguments[i];
+            }
+            console.log(result);
+        }
+        sum(2,3,5);  
+
+        //求圆的面积
+        function radiusArea(r){
+            var area=1;
+            area=r*r*Math.PI;
+            return area;
+        }
+        console.log(radiusArea(3));
+
+        //判断素数
+        function suNum(){
+            var result=[];
+            for(var i=2;i<=100;i++){
+                for(var j=2;j<i;j++){
+                    if(i%j==0){
+                        continue;
+                    }
+                    result.push(i);
+                }
+            }
+            return result;
+        }
+        console.log(suNum());
+    </script>
+</body>
+</html>
