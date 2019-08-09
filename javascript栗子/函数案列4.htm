@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //函数作为参数
+        function fn(ff){
+            console.log("调用了");
+            ff();
+        }
+        function f(){
+            console.log("被调用了");
+        }
+        fn(f);
+
+        //函数作为返回值
+        function ffn(){
+            return function(){
+                console.log("hahha");
+            }
+        }
+        var re=ffn();
+        re();
+    </script>
+</body>
+</html>
