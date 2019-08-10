@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //字面量
+        var obj={
+            name:"jaj",
+            age:19
+        }
+        console.log(obj.name+" "+obj.age);
+
+        //自定义构造方法
+        function Person(name,age){
+            this.name=name;
+            this.age=age;
+            this.eat=function(){
+                console.log(this.age+" "+this.name);
+            }
+        }
+        var p=new Person("ll",19);
+        p.eat();
+
+        //系统Object函数
+        var oo=new Object();
+        oo.name="pp";
+        oo.age=10;
+        console.log(oo);
+    </script>
+</body>
+</html>
