@@ -15,6 +15,18 @@
         every(函数)：用来进行筛选判断，函数作为参数，函数中有三个参数(数组的值，该值的索引，原数组),
                     如果数组中的每一个值都符合条件，那么返回值就是true，否则的话就是false
         filter(函数)：数组中的每一个元素都要执行一次filter方法中的函数，然后把满足的返回
+        push(xxx)：把之加入到数组的最后，返回值是新数组的长度
+        pop()：删除数组中最后一个元素的值，返回值是删除的值
+        shift()：删除数组中的第一个元素，返回值是删除的值
+        unshift()：向数组中的第一个元素前面添加值，返回值是新数组的长度
+        forEach()：遍历数组的方法
+        indexOf()：返回一个指定元素的第一个索引
+        join(xxx)：拼接数组中的每一项，返回的是一个字符串
+        map(函数)：数组中的每一个元素都要执行该函数，然后把执行之后所得的结果放在一个新的数组中
+        reverse()：反转数组
+        sort()：排序
+        slice(start,end)：从start开始到end-1结束，截取的部分组成一个新的数组
+        splice(start,要删除的个数,替换元素的值)：可用来添加，删除，替换元素
         */
 
         //concat()方法
@@ -37,6 +49,53 @@
             return ele%2==0;
         })
         console.log(result);
+
+        //forEach()方法
+        array3.forEach(function(ele,index){
+            console.log(ele+"   "+index);
+        });
+
+        //indexOf()方法
+        console.log(array3.indexOf(0));
+
+        //join()方法
+        console.log(array3.join("+++"));
+
+        //map()方法
+        var str=[4,9,16];
+        var re=str.map(Math.sqrt);
+        console.log(re);
+
+        //reverse()方法
+        console.log(str.reverse());
+
+        //sort()方法
+        array3.sort(function(a,b){
+            if(a>b){
+                return 1;
+            }else if(a==b){
+                return 0;
+            }else{
+                return -1;
+            } 
+        });
+        console.log(array3);
+
+        //slice()方法
+        var str1=[10,20,30,40,7,8];
+        console.log(str1.slice(2,4));
+
+        //splice()方法
+        var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
+        
+        //三个参数
+        myFish.splice(2, 0, 'drum'); // 在索引为2的位置插入'drum'
+        // myFish变为 ["angel", "clown", "drum", "mandarin", "sturgeon"]
+
+        //两个参数
+        myFish.splice(2, 1); // 从索引为2的位置删除一项（也就是'drum'这一项）
+        console.log(myFish);
+        // myFish 变为 ["angel", "clown", "mandarin", "sturgeon"]
     </script>
 </body>
 </html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>title</title>
+  <script>
+    function Person(age,sex) {
+      this.age=age;//年龄
+      this.sex=sex;
+      this.eat=function () {
+        console.log("构造函数中的吃");
+      };
+    }
+    Person.prototype.sex="女";
+    Person.prototype.eat=function () {
+      console.log("原型对象中的吃");
+    };
+
+
+    var per=new Person(20,"男");
+    console.log(per.sex);//男
+    per.eat();
+    console.dir(per);
+
+
+    /*
+    * 实例对象使用的属性或者方法,先在实例中查找,找到了则直接使用,找不到则,去实例对象的__proto__指向的原型对象prototype中找,找到了则使用,找不到则报错
+    *
+    *
+    * */
+
+
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>
