@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        Array.isArray(对象)：判断这个对象是不是数组
+        Array.from()：产生一个新数组
+        concat()：用于数组的合并
+        every(函数)：用来进行筛选判断，函数作为参数，函数中有三个参数(数组的值，该值的索引，原数组),
+                    如果数组中的每一个值都符合条件，那么返回值就是true，否则的话就是false
+        filter(函数)：数组中的每一个元素都要执行一次filter方法中的函数，然后把满足的返回
+        */
+
+        //concat()方法
+        var array=[10,20,3];
+        console.log(array.concat(30,40,50));
+
+        //Array.isArray()方法
+        console.log(Array.isArray(array));
+
+        //every()
+        var array1=[100,200,400];
+        var flag=array1.every(function(ele,index){
+            return ele>30;
+        });
+        console.log(flag);
+
+        //filter()方法
+        var array3=[10,0,30,40,5,7,6];
+        var result=array3.filter(function(ele){
+            return ele%2==0;
+        })
+        console.log(result);
+    </script>
+</body>
+</html>

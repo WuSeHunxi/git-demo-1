@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //输出字符串中的特定的某一部分
+        var str="hello";
+        var index=str.indexOf("ell");
+        console.log(str.substr(index,3));
+
+        //找到字符中所有的o的位置
+        var str2="hello wo ai odd";
+        var index=str2.indexOf("o");
+        while((index=(str2.indexOf("o",index)))!=-1){
+            index++;//每次查找之后index的值都需要+1，要找到多个"o"就需要两个参数
+            console.log(index);
+        }
+
+        //找到字符串中每个字符出现的次数--->利用对象的键值对来进行处理
+        var arr="hello every this is gun";
+        var obj={};
+        for(var i=0;i<arr.length;i++){
+            var temp=arr[i];
+            if(obj[temp]){
+                obj[temp]++;//表示的是值，初始的时候=1
+            }else{
+                obj[temp]=1;//属性值最开始的时候都是从1开始，然后接着判断看看是否继续+1
+            }
+        }
+        for(var key in obj){
+            console.log(key+"出现了"+obj[key]+"次");
+        }
+    </script>
+</body>
+</html>
