@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //构造函数不能够共享空间，会资源浪费，例如：
+            function Person(name,age){
+                this.name=name;
+                this.age=age;
+                this.eat=function(){
+                    console.log("kkk");
+                }
+            }
+            var p1=new Person("lll",10);
+            var p2=new Person("pp",11);
+            console.log(p1.eat==p2.eat);  //-->false
+
+
+            //原型链则会共享空间，节省资源
+            function Animal(name,age){
+                this.name=name;
+                this.age=age;
+            }
+            Animal.prototype.eat=function(){
+                console.log("eating");
+            }
+            var a1=new Animal("ll",111);
+            var a2=new Animal("ii",122);
+            console.log(a1.eat==a2.eat); //-->true
+
+            //原型链解决了构造函数的问题
+    </script>
+</body>
+</html>
