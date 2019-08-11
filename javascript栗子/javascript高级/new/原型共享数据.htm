@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Student(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Student.prototype.eat = function () {
+            console.log("eating");
+        }
+        Student.prototype.height = "188";
+
+        var stu = new Student("nana", 19);
+        // console.log(stu.height);
+        // stu.eat();
+        console.log(Student.prototype);
+        console.log(stu.__proto__);
+        console.log(stu.__proto__==Student.prototype);
+    </script>
+</body>
+
+</html>
