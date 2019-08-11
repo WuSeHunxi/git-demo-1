@@ -36,8 +36,6 @@
 
 
     //实例化对象
-
-
     var json = { "width": "500px", "height": "800px", "backgroundColor": "blue", "opacity": "0.2" };
     var cs = new ChangeStyle(my$("btn"), my$("dv"), json);
     cs.init();//调用方法
@@ -48,11 +46,17 @@
   </script>
   <script>
 
-    //点击按钮,改变div的背景颜色
+    //面向过程：点击按钮,改变div的背景颜色
 
     document.getElementById("btn").onclick = function () {
       document.getElementById("dv").style.backgroundColor = "yellow";
     };
+
+
+
+
+
+
 
     //面向对象思想----初级的
     //按钮是一个对象,div是一个对象,颜色是一个属性
@@ -76,6 +80,11 @@
     //实例化对象
     var cs = new ChangeStyle("btn", "dv", "yellow");
     cs.init();
+
+
+
+
+
 
 
     function Person() {

@@ -5,9 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
 </head>
 <body>
+    <button id="btn">点击</button>
+    <div id="div"></div>
     <script>
+        function ChangStyle(btnId,divId,color){
+            this.btnobj=document.getElementById(btnId);
+            this.divobj=document.getElementById(divId);
+            this.color=color;
+        }
+        ChangStyle.prototype.init=function(){
+            var that=this;
+            this.btnobj.onclick=function(){
+                that.divobj.style.backgroundColor=that.color;
+            }
+        }
+        var cs=new ChangStyle("btn","div","yellow");
+        cs.init();
+
+
         
     </script>
 </body>
