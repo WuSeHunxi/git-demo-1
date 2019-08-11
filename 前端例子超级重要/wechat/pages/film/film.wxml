@@ -1,5 +1,0 @@
-<view bindtap='gotoDetail' data-movieid="{{item.id}}" class="movie" wx:for="{{movieList}}" wx:key="{{item.id}}">
-  <image class='movie-img' src="{{item.images.large}}"></image>
-  <text class='movie-title'>{{item.title}}</text>
-  
-</view>

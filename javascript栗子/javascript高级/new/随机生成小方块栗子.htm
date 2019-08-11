@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #map{
+            width: 800px;
+            height: 600px;
+            background-color: #CCC;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="map">
+        <!-- <div id="div"></div> -->
+    </div>
+    <script>
+        //自己写一个随机数对象，可能比系统给的更加好用
+        (function(window){
+            function Random(){
+            }
+            Random.prototype.getRandom=function(min,max){
+                return Math.floor(Math.random()*(max-min)+min);
+            }
+            window.Random=new Random();
+        })(window);
+
+        //完成一个小方块对象
+        (function(window){
+            var map=document.getElementById("map");
+            function Food(width,height,color,mapId){
+                this.width=width;
+                this.height=height;
+                this.color=color;
+                this.x=0;
+                this.y=0;
+                this.element=document.createElement("div");
+            }
+            Food.prototype.init=function(map){
+                var div=this.element;
+                div.style.position="absolute";
+                div.style.width=this.width+"px";
+                div.style.height=this.height+"px";
+                div.style.backgroundColor=this.color;
+                map.appendChild(div);
+                this.render(map);
+            }
+            Food.prototype.render=function(map){
+                var div=this.element;
+                var x=Random.getRandom(0,map.offsetWidth/this.width)*this.width;
+                var y=Random.getRandom(0,map.offsetHeight/this.height)*this.height;
+                this.x=x;
+                this.y=y;
+                div.style.left=x+"px";
+                div.style.top=y+"px";
+            }
+            var div=new Food(20,20,"green");
+            div.init(map);
+        })(window);
+        
+    </script>
+</body>
+</html>

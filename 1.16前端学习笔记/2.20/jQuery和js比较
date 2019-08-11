@@ -1,8 +1,0 @@
-基本过滤选择器：
-:first  :last   :eq  :lt   :gt   odd()奇数选择器  even()偶数选择器
-子代过滤：
-first-child
-last-childnth-child(i/odd/even/3n-1)
-only-child
-内容选择器
-contains(text)  empty()  has(selector) parent
