@@ -16,7 +16,10 @@
 <body>
     <button id="btn">点击</button>
     <div id="div"></div>
+    <script src="common.js"></script>
     <script>
+
+        //面向对象的方法
         function ChangStyle(btnId,divId,color){
             this.btnobj=document.getElementById(btnId);
             this.divobj=document.getElementById(divId);
@@ -32,7 +35,22 @@
         cs.init();
 
 
-        
+        function Change(btnobj,divobj,json){
+            this.btnobj=btnobj;
+            this.divobj=divobj;
+            this.json=json;
+        }
+        Change.prototype.init=function(){
+            var that =this;
+            this.btnobj.onclick=function(){
+                for(var key in that.json){
+                    that.divobj.style[key]=that.json[key];
+                }
+            }
+        }
+        var json = { "width": "500px", "height": "800px", "backgroundColor": "blue", "opacity": "0.2" };
+        var css = new Change(my$("btn"), my$("div"), json);
+        css.init();
     </script>
 </body>
 </html> 
