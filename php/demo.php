@@ -26,5 +26,22 @@
     <?php else: ?>
         <p>ooo</p>
     <?php endif ?>
+
+
+    <?php
+        //线性数组
+        $arr=[1,2,3,4];
+        foreach($arr as $value){
+            echo $value.' ';
+        }
+
+        //关联数组
+        $assoc=['name'=>'kk','age'=>19];
+        foreach ($assoc as $key => $value) {
+            echo $key.' '.$value.' ';
+        }
+
+        
+    ?>
 </body>
 </html>
