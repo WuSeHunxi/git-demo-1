@@ -13,9 +13,7 @@
 			echo "<tr bgColor=".$color.">";
 			for($j=1;$j<=$cols;$j++){
 				echo "<td>".$j."</td>";
-			}
-			
-			
+			}			
 			echo "</tr>";
 		}
 		
