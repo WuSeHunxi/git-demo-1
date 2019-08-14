@@ -9,6 +9,8 @@
     //获取中文字符串的长度
     echo strlen('你好'); //strlen()只能获取英文字母的长度，无法获取中文字符长度
 
+    echo '<br>';
+
     //php中的宽字符集api，这些API不在内置函数中，而是在一个模块中，模块成员必须通过配置文件载入模块后才能使用
     echo mb_strlen('你好');
 
@@ -21,4 +23,13 @@
         // 5. 可以通过 Apache 的配置文件修改默认加载路径 PHPIniDir
 
     phpinfo();
+
+    //字符串的替换
+    $str='hello';
+    echo str_replace('e','o',$str);
+
+    echo '<br>';
+    
+    //某个字符重复出现多次
+    echo str_repeat('aaa',4);
 ?>
