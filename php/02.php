@@ -12,12 +12,14 @@
         //读取文件中的内容  --->包含文本内容的字符串数组
         $contents=file_get_contents('names.txt');
         //按照特定的规则解析文件内容  --->数组
+        $data=array();//用来存放的到的数据
             //按照换行拆分
         $lines=explode("\n",$contents); //因为\n是转义字符，所以需要使用双引号，其余情况就是用''即可
             //按照遍历每一行分别解析每一行中的数据
         foreach ($lines as $item ) {
             //使用竖线进行分割
-            $cols=explode('|',$item);
+            $cols=explode('|',$item);//将得到的数据存起来，存到一个数组中 
+            $data[]=$cols;//添加到数组中
             
         }
         //通过混编的方式将数据呈现在表格中
