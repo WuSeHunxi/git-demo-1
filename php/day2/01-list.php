@@ -8,6 +8,7 @@ $contents = file_get_contents('names.txt');
 // 2.1. 按照换行拆分
 $lines = explode("\n", $contents);
 // 2.2. 遍历每一行分别解析每一行中的数据
+// var_dump($lines); --->得到的是一个数组
 foreach ($lines as $item) {
   if (!$item) continue;
 
@@ -15,6 +16,7 @@ foreach ($lines as $item) {
   $cols = explode('|', $item);
   // $cols => []  遍历得到的也是数组
   $data[] = $cols;//将遍历得到的数据（数组）添加到数组中
+  // var_dump($data); --->得到的是一个数组中有很多小数组
   // $data => [ [], [] ]  
 }
 
@@ -45,10 +47,13 @@ foreach ($lines as $item) {
       <tr>
         <?php foreach ($line as $col): ?>
         <!-- $col => ' http://XEP.VC' -->
-        <?php $col = trim($col); ?>
+        <?php $col = trim($col); ?><!--去掉空格-->
         <!-- $col => 'http://XEP.VC' -->
         <!-- 判断这里的数据是不是一个网址（看看是否是 http://） -->
+        <!--获取该字符串的位置-->
         <?php if (strpos($col, 'http://') === 0): ?>
+          <!-- 将字符串中的内容全部转成小写 -->               <!-- 字符串的截取,从第7位开始截取 -->
+          <!-- href里面本来就是网址，网址都是小写的，通过字符串截取的内容就是a标签的内容 -->
           <td><a href="<?php echo strtolower($col); ?>"><?php echo substr($col, 7); ?></a></td>
         <?php else: ?>
           <td><?php echo $col; ?></td>
