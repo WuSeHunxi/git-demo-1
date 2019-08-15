@@ -10,7 +10,7 @@
     <!-- 
         method 默认值是get
         action 默认值是的当前页面 
-        表单元素（表单域）必须得有name(如果希望被提交)
+        表单元素（表单域:input）必须得有name(如果希望被提交)
         必须得有一个提交按钮（input--submit/image  button--submit/image）
     -->
     <form action="11-foo.php" method="get">
