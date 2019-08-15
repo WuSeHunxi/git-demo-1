@@ -1,5 +1,43 @@
 <?php
 
+    //接收用户提交的数据，将其保存到文件中
+    //1.接收并校验表单数据
+    //2.持久化(保存到文件中)
+    //3.响应(服务端的反馈)
+
+    //接收用户提交的数据，保存到文件中
+
+    //empty用来判断是否为空
+    if(empty($_POST['username'])){//这种情况是没有提交或者用户名为空
+        echo '请输入用户名';
+    }else{
+            if(empty($_POST['password'])){
+            echo '请输入密码';
+        }else{
+            if(empty($_POST['confirm'])){
+                echo '请输入确认密码';
+            }else{
+                if($_POST['password']!=$_POST['confirm']){
+                    echo '两次输入的密码不一致';
+                }else{
+                    //isset用来判断是否定义
+                    if(!(isset($_POST['agree'])&&$_POST['agree']==='on')){
+                        echo '必须同意注册协议';
+                    }else{
+                        //所有条件都OK
+                        $username=$_POST['username'];
+                        $password=$_POST['password'];
+
+                        //将用户名 密码保存到文本文件中
+                        file_put_contents('users.txt',$username.'|'.$password);
+                    }
+                }
+            }
+        }
+        
+    }
+    
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

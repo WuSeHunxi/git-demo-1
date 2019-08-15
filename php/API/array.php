@@ -18,13 +18,14 @@
     var_dump(array_key_exists('hello',$dict));
 
     // isset也可以判断数组中是否有指定的键
+    //isset：用于检测变量是否已设置并且非 NULL。
     if(isset($dict['hello'])){
         echo $dict['hello'];  //你好;
     }else{
         echo "没有";
     }
 
-    //empty()
+    //empty()：判断变量是否为空
     //empty($dict['foo'])===!isset($dict['foo'])||$dict['foo']==false
     if(empty($dict['foo'])){ //判断数组中的某个键是否为空，当为空的时候执行的是if
         echo '没有';
