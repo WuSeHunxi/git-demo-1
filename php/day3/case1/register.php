@@ -11,10 +11,11 @@ function postback () {
   if (empty($_POST['username'])) {
     // 没有提交用户名 或 用户名为空字符串
     $GLOBALS['message'] = '会不会玩';
-    return;
+    return; //使用return 减少if-else嵌套
   }
 
   if (empty($_POST['password'])) {
+    //全局变量数组$GLOBALS['变量名']
     $GLOBALS['message'] = '请输入密码';
     return;
   }
