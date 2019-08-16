@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(function(){
+        /*
+        1.什么是事件委托？
+        */
+            $("button").click(function(){
+                $("ul").append("<li>我是新增的li</li>");
+            });
+            /*
+            在jQuery中，如果通过核心函数找到的元素不止一个，那么再添加事件的时候，
+            jQuery会遍历所有找到的元素，给所有找到的元素添加事件
+            */
+            //此时无法对新增的li进行处理
+            // $("ul>li").click(function(){
+            //     console.log($(this).html());
+            // });
+            //把li的点击事件委托给ul(能够保证新增的li也能进行处理)
+            $("ul").delegate("li", "click", function(){
+                console.log($(this).html());//此处的this就是你点击的那个li(通过事件冒泡，使点击事件冒到了ul上)
+            });
+        });
+    </script>
+</head>
+<body>
+    <ul>
+        <li>我是第一个li</li>
+        <li>我是第二个li</li>
+        <li>我是第三个li</li>
+    </ul>
+    <button>新增一个li</button>
+</body>
+</html>

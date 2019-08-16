@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * @param obj
+        */
+        function cloneObj(obj){
+            var newObj = {};
+            for(var p in obj){
+                if(typeof(obj[p]) === 'object'){
+                    newObj[p] = arguments.callee(obj[p]);
+                }else{
+                    newObj[p] = obj[p];
+                }
+            }
+            return obj;
+        } 
+        var o2 = cloneObj(o1); 
+        /**
+         * @param targte 被合并的目标对象
+         * @param obj 要合并的对象
+         * @return 返回合并的新对象
+        */  
+       var o1 = {
+           name:'ppp',
+           age:12
+       }
+       var o2 = {
+           name:'ppkfijf',
+           sex:'男'
+       }
+       //对象的扩展
+       function extend(target,obj){
+            for(var p in obj){
+                if(typeof(obj[p]) === 'object'){
+                    target[p] = extend(obj[p]);
+                }else{
+                    target[p] = obj[p];
+                }
+            }
+            return target;
+       }
+       var o = extend(o1,o2);
+    </script>
+</body>
+</html>

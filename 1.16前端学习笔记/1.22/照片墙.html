@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style:none;
+            border:none;
+        }
+        html,body,ul{
+            width:100%;
+            height:100%;
+        }
+        #ps{
+            position:relative;
+        }
+        #ps li{
+            box-shadow:0 0 10px #000;
+            height:360px;
+            width:250px;
+            position:absolute;
+            transition:all 1s;
+        }
+        #ps li.current{
+            left:50% !important;
+            top:50%;
+            transform:rotate(0deg) translate(-50%,-50%) scale(1.5,1.5) !important;
+            z-index:99 !important;
+        }
+    </style>
+</head>
+<body>
+        
+    <ul id="ps"></ul>
+    <!-- <script src="Underscore-min.js"></script> -->
+    <script>
+        var ps=document.getElementById("ps");
+        //动态创建li(一共要创建10个)
+        for(var i=0;i<4;i++){
+            var li=document.createElement("li");
+            ps.appendChild(li);
+            //动态创建img(一共要创建10个)
+            var img=document.createElement("img");
+            img.src="images/a"+(i+1)+".png";
+            li.appendChild(img);
+        }
+        //获取所有的li
+        var allLis=ps.children;
+        //求出频幕所能展示的宽度和高度
+        var screenHeight=document.documentElement.clientHeight-250;
+        var screenWidth=document.documentElement.clientWidth-360;
+        //遍历，分布位置
+        for(var j=0;j<allLis.length;j++){
+            var li=allLis[j];
+            //随机分布
+            li.style.left=Math.random()*screenWidth;
+            li.style.top=Math.random()*screenHeight;
+            //随即角度
+            li.style.transform='rotate('+Math.random()*360+'deg)';
+            //监听点击事件
+            li.onclick=function(){
+                for(var i=0;i<allLis.length;i++){
+                    allLis[i].className='';//其它的都没有
+                }
+                this.className='current';//只有一个有
+            }
+        }
+    </script>
+</body>
+</html>

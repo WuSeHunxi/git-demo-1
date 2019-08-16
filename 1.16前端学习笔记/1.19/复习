@@ -1,0 +1,257 @@
+1.this的用法
+  在事件函数中指向事件源；
+  在全局中指向window；
+  var btns=document.getElementsByTagName("btn");
+  for(var i=0;i<btns.length;i++){
+      btns[i].id=i;//将索引i作为一个属性添加到每一个button中
+      btn[i].onclick=function(){
+          console.log("点击了第"+this.id+"个按钮");(涉及到了闭包)
+      }
+  }
+2.Tab选项卡(在选中之前的前提是其他的没有被选中)
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            list-style:none;
+        }
+        a{
+         
+         
+            text-decoration:none;
+            color:#000;
+        }
+    <div id="tab">
+        <div id="tab_header">
+            <ul>
+                <li class="selected">公告</li>//每次进来都会被选中,第一个出现
+                <li>规则</li>
+                <li>论坛</li>
+                <li>安全</li>
+                <li>公益</li>
+            </ul>
+        </div>
+        <div id="teb_content">
+            <div class="dom">
+                <ul>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li
+                </ul>
+            </div>
+            <div class="dom">
+                <ul>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                </ul>
+            </div>
+            <div class="dom">
+                <ul>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                </ul>
+            </div>
+            <div class="dom">
+                <ul>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                </ul>
+            </div>
+            <div class="dom">
+                <ul>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                    <li><a href=""></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        var tab_header=document.getElementById("tab_header");
+        var tab_content=document.getElementById("tab_content");
+        var allList=tab_header.getElementsByTagName("li");
+        var allDom=tab_content.getElementsByClassName("dom");
+        for(var i=0;i<allList.length;i++){
+            var li=allList[i];
+            li.index=i;//给每一个li添加一个索引，利用数组的方法来进行处理
+            li.onmouseover=function(){
+                for(var j=0;j<allList.length;j++){
+                    allList[i].className='';//其他的每一个都不被选中,全都为空
+                    allDom[j].style.display="none";//文字部分(在被显示之前其他的都是不显示的)
+                }
+            }
+            this.className="selected";//当前的被选中
+            (利用数组的下标进行遍历)allDom[this.index].style.display="block";//文字部分(只有当前的显示)
+        }
+3.JS特效的面试题
+    a.  f2();
+        console.log(aa);//9
+        console.log(bb);//9
+        console.log(cc);//报错(因为aa是局部变量，在外部的全局中不能访问它)
+        function f2(){
+            var aa=bb=cc=9;(aa是局部变量,bb和cc都是全局变量)
+            console.log(aa);//9
+            console.log(bb);//9
+            console.log(cc);//9
+        }
+    b.  var a=123;
+        f1();
+        function f1(){
+            var b=456;
+            console.log(a);//undefined
+            console.log(b);//456
+            var a='12306';(var a;提升)
+        }
+4.运算符的优先级
+   () > !/++/-- > *///% > +/- > </<=/>/>= > ==/!=/===/!== > && > || > ?: > =/+=/-=//=/%=
+   var a=0&&1;
+   console.log(a);//0(若第一个直接就是就是假的，则直接打印第一个)
+   var b=1&&0;
+   console.log(b);//0(一共有两个表达式，第一个为真，则无论第二个是真是假都直接打印)
+   var c=1&&8;
+   console.log(c);//8(一共有两个表达式，第一个为真，则无论第二个是真是假都直接打印)
+   var d=4||0&&8;//4(先&&再||)
+5.数组高级的API
+    Instanceof:判断A是否是B的类型（A Instanceof B）,返回的是布尔类型
+    Array.isArray(数组名):判断是不是数组
+    toString():应用于请求网络数据,主要就是把数据转成字符串
+    valueOf():返回数组对象的本身;数组本身=数组.valueOf()
+    indexOf(xx):通过xx进行寻找当前数据的索引
+6.将其他的数据类型转化成字符串的类型的方法  a.String(xx);
+                                        b.xx+' ';
+                                        c.xx.toString();
+  根据位置返回字符串  charAt:返回字符
+                    charCodeAt(返回的是得到的字符对应的字符编码)(在0-127之间是英文字符,大于的话是中文字符)
+                    unicode:用统一的编码处理数据
+                        获取字符串的真实长度
+                        var str="Hello China"
+                        var str1="你好中国"
+                        function getStringlength(str){
+                            var len=0,code=0;
+                            for(var i=0;i<str.length;i++){
+                                code=str.charCodeAt();
+                                if(code>=0&&code<=127){
+                                    len+=1;
+                                }else{
+                                    lem+=2;
+                                }
+                            }
+                            return len;
+                        }
+  截取字符串
+    concat()//连接字符串
+    slice()
+    substr(xx,xxx)//截取位置,截取长度
+    substring()
+  小数位数
+    xx.toFixed(x);//保留几位小数,后面的小数会进行四舍五入
+  大小写的转化
+    toUpperCase():转成大写
+    toLowerCase():转成小写
+  根据字符返回位置(索引)
+7.编码:encodeURLComponent()//为了给服务器看
+    var str="http://www.baidu.com";
+    var encodestr=encodeURLComponent(str);
+    console.log(encodestr);//服务器解析之后所得码
+  解码:decodeURLComponent()//给人看的
+    var str1="shgwfhdbvsafdi%%%%$45567%";
+    var ss=decodeURLComponent(str1);
+    console.log(ss);
+8.上传图片的格式验证
+    <label>上传图片的格式验证</label>
+    <input typr="file" id="file">
+    <script>
+        var file=doucment.getElementById("file");
+        //监听作用域的变化(在input中有域)
+        file.onchange=function(){
+            //获取上传图片的路径
+            var path=this.value;//获取图片的属性
+            //截取路径(后缀)
+            var suffix=path.substr(path.lastIndexOf('.'));
+            //转成小写
+            var lower_suffix=suffix.toLowerCase();
+            //判断格式
+            if(lower_suffix==='.jpg'||lower_suffix==='.png'||lower_suffix==='.gif'){
+                alert("上传正确")；
+            }else{
+                alert("上传不正确");
+            }
+        }
+    </script>
+9.小小微博的评论
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            list-style:none;
+        }
+        #box{
+            width:800px;
+            border:1px solid black;
+            margin:100px auto;
+            padding:20px;//盒子变大
+        }
+        #my_textarea{
+            width:80%;
+            height:120px;
+        }
+        .box-top{
+            margin-bottom:20px;
+        }
+        #ul{
+            margin:0 80px;
+        }
+        #ul li{
+            border-bottom:1px deshed #ccc;
+            line-height:44px;
+            color:red;
+        }
+        #ul li a{
+            float:right;
+        }
+    </style>
+    <div id="box">
+        <div class="box-top">
+            <label>发表评论：</label>
+            <textarea id="my_textarea" cols="60" rows="10"></textarea>
+            <button id="btn">发表</button>
+        </div>
+        <ul id="ul">
+        </ul>
+    </div>
+    <script>
+        var btn=document.getElementById("btn");
+        var my_textarea=docuemnt.getElementById("my_textarea");
+        var ul=document.getElementById("ul");
+        //获得按钮的点击事件
+        btn.onclick=function(){
+            var content=my_text.value;
+            //判断内容是否为空,判断完之后必须得返回，否则就会一直执行
+            if(content.length==0){
+                return ;
+            }
+            //动态创建li标签,动态添加a标签,每次添加都要添加到之前添加的前面
+            var li=document.creatElement("li");
+            li.innerHTML=content+'<a href="javascript"></a>';
+            ul.insertBefore(li,ul.children[0]);//把每一个新添加的li添加到ul的第一给节点之前
+            my_textarea.value=' ';
+            //删除评论(会有很多个评论，要遍历每一个a标签，每点击一次就要把父标签删掉)
+            var as=ul.getElementsByTagName("a");
+            for(var i=0;i<a.length;i++){
+                var a=as[i];
+                a.onclick=function(){
+                    //获取父标签(利用父节点)
+                    this.parentNode.remove();//可以直接用this
+                }
+            }
+        }
+    </script>
+        

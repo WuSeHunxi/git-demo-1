@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            height: 100px;
+            width: 100px;
+            margin-top: 10px;
+            background-color: red;
+        }
+        .two{
+            background-color: blue;
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+    <script>
+        /*
+        动画节奏分为两种：缓动动画(开始慢 中间快 结尾慢) 匀速动画
+        animate()可以接受三个动画 :接受三个参数:对象 时长 回调函数
+                也可以接受四个动画 :接受四个参数:对象 时长 动画节奏:linear(匀速) (默认的是缓动动画swing) 回调函数 
+        */
+       //自定义动画
+        $(function(){
+            $("button").eq(0).click(function(){
+                //默认的缓动的
+                $(".one").animate({//接受三个参数:对象 时长 回调函数
+                    width:500//从原来的100变成500
+                },5000,function(){
+                    console.log("自定义动画执行完毕");
+                });
+                //自己设的匀速的
+                /*
+                第一个参数：接受一个对象，可以再对象中修改属性
+                第二个参数：指定动画时长
+                第三个参数：指定动画节奏，默认十环东动画swing
+                第四个参数：动画执行完毕之后的回调函数
+                */
+                $(".two").animate({//接受四个参数:对象 时长 回调函数 动画效果
+                    width:500
+                },5000,"linear",function(){
+                    // console.log("自定义动画执行完毕");
+                });
+            });
+            $("button").eq(1).click(function(){
+                $(".one").animate({
+                    width:"+=100"//在原来的基础上增加
+                },1000,function(){
+
+                });
+            });
+            $("button").eq(2).click(function(){
+                $(".one").animate({
+                    width:"hide"//某些特殊的关键字,像隐藏hide 切换toggle等等
+                },1000,function(){
+
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <button>操作属性</button>
+    <button>累加属性</button>
+    <button>关键字</button>
+    <div class="one"></div>
+    <div class="two"></div>
+</body>
+</html>

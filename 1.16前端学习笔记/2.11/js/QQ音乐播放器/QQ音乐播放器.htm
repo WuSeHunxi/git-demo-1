@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--要导入滚动条的CSS样式(链接名称：manos.malihu.gr/jquery-custom-content-scroller/)-->
+    <link rel="stylesheet" href="jquery.mCustomScrollbar.css">
+    <!--在导入自己的CSS之前要先把别人写好的CSS先导进来-->
+    <link rel="stylesheet" href="index.css">
+    <script src="jquery.min.js"></script>
+    <!--先导入jQuery，然后才能导入外界写好的别人的js-->
+    <script src="jquery.mCustomScrollbar.concat.min.js"></script>
+    <!--最后导入自己的js-->
+    <script src="index.js"></script>
+    <script>
+        $(function(){
+
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1 class="logo"><a href="#"></a></h1>
+        <ul class="register">
+            <li>登录</li>
+            <li>设置</li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="content_in">
+            <div class="content_left">
+                <div class="content_toolbar">
+                    <span><i></i>收藏</span>
+                    <span><i></i>添加到</span>
+                    <span><i></i>下载</span>
+                    <span><i></i>删除</span>
+                    <span><i></i>清空列表</span>
+                </div>
+                <div class="content_list" data-mcs-theme="dark"><!--data-mcs-theme="dark"是给滚动条设置样式-->
+                    <ul>
+                        <li class="list_title">
+                            <div class="list_check"><i></i></div>
+                            <div class="list_number"></div>
+                            <div class="list_name">歌曲</div>
+                            <div class="list_singer">歌手</div>
+                            <div class="list_time">时长</div>
+                        </li>
+                        <li class="list_music">
+                            <div class="list_check"><i></i></div>
+                            <div class="list_number">1</div>
+                            <div class="list_name">从零玩转编程开发
+                                <div class="list_menu">
+                                    <a href="javascript:;" title="播放"></a>
+                                    <a href="javascript:;" title="添加"></a>
+                                    <a href="javascript:;" title="下载"></a>
+                                    <a href="javascript:;" title="分享"></a>
+                                </div>
+                            </div>
+                            <div class="list_singer">李南江</div>
+                            <div class="list_time">
+                                <span>04:18</span>
+                                <a href="javascript:;" title="删除"></a>
+                            </div>
+                        </li>
+                        <li class="list_music">
+                            <div class="list_check"><i></i></div>
+                            <div class="list_number">1</div>
+                            <div class="list_name">从零玩转编程开发
+                                <div class="list_menu">
+                                    <a href="javascript:;" title="播放"></a>
+                                    <a href="javascript:;" title="添加"></a>
+                                    <a href="javascript:;" title="下载"></a>
+                                    <a href="javascript:;" title="分享"></a>
+                                </div>
+                            </div>
+                            <div class="list_singer">李南江</div>
+                            <div class="list_time">
+                                <span>04:18</span>
+                                <a href="javascript:;" title="删除"></a>
+                            </div>
+                        </li>
+                        <li class="list_music">
+                            <div class="list_check"><i></i></div>
+                            <div class="list_number">1</div>
+                            <div class="list_name">从零玩转编程开发
+                                <div class="list_menu">
+                                    <a href="javascript:;" title="播放"></a>
+                                    <a href="javascript:;" title="添加"></a>
+                                    <a href="javascript:;" title="下载"></a>
+                                    <a href="javascript:;" title="分享"></a>
+                                </div>
+                            </div>
+                            <div class="list_singer">李南江</div>
+                            <div class="list_time">
+                                <span>04:18</span>
+                                <a href="javascript:;" title="删除"></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content_right">
+                <div class="song_info">
+                    <a href="javascript:;" class="song_info_pic">
+                        <img src="" alt="">
+                    </a>
+                    <div class="song_info_name">歌曲名称:
+                        <a href="javascript:;">从零玩转编程开发</a>
+                    </div>
+                    <div class="song_info_name">歌手名:
+                        <a href="javascript:;">李南江</a>
+                    </div>
+                    <div class="song_info_ablum">专辑名称:
+                        <a href="javascript:;">从零玩转系列</a>
+                    </div>
+                </div>
+                <ul class="song_lyric">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer_in"></div>
+    </div>
+</body>
+</html>

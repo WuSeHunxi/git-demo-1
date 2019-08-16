@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+
+        }
+        .box{
+            width: 300px;
+            height: 450px;
+            margin:  50px auto;
+            border:1px solid #000;
+        }
+        .box>h1{
+            font-size:20px;
+            line-height: 35px;
+            color:deeppink;
+            padding-left: 10px;
+            border-bottom:1px dashed #ccc;
+        }
+        ul>li{
+            list-style: none;
+            padding: 5px 10px;
+            border:1px dashed #ccc;
+        }
+        ul>li:nth-child(-n+3) span{
+            background-color: deeppink;
+        }
+        ul>li>span{
+            display: inline-block;
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            background-color: #ccc;
+            text-align: center;
+            line-height: 20px;
+        }
+        .content {
+            overflow: hidden;
+            display:none;
+            margin-top: 5px;
+        }
+        .content>img{
+            width: 80px;
+            height: 120px;
+            float: left;
+        }
+        .content>p{
+            width: 180px;
+            height: 120px;
+            float:right;
+            font-size:12px;
+            line-height: 20px;
+        }
+        .current .content{
+            display:block;
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(function(){
+            //监听移入
+            $("li").mouseenter(function(){
+                // console.log("lll");
+                $(this).addClass("current");
+            });
+            //监听移出
+            $("li").mouseleave(function(){
+                $(this).removeClass("current");
+            });
+            //简化版
+            // $("li").hover(function(){
+            //     $(this).addClass("current");
+            //     console.log("ppp");
+            // },function(){
+            //     $(this).removeClass("current");
+            // });
+        })
+    </script>
+</head>
+<body>
+    <div class="box">
+        <h1>电影排行榜</h1>
+        <ul>
+            <li><span>1</span>电影名称
+                <div class="content">
+                    <img src="images/a1.png" alt="">
+                    <p>简介：故事发生在非洲附近的大海上，主人公冷风（吴京饰）遭遇人生滑铁卢，被意外开除军籍，
+                        本来想要漂泊的他，正当他打算这么做的时候，一场突如其来的意外打破了他的计划，突然被卷入
+                        一场战争中去</p>
+                </div>
+            </li>
+            <li><span>2</span>电影名称
+                <div class="content">
+                    <img src="images/a1.png" alt="">
+                    <p>简介：故事发生在非洲附近的大海上，主人公冷风（吴京饰）遭遇人生滑铁卢，被意外开除军籍，
+                        本来想要漂泊的他，正当他打算这么做的时候，一场突如其来的意外打破了他的计划，突然被卷入
+                        一场战争中去</p>
+                </div>
+            </li>
+            <li><span>3</span>电影名称
+                <div class="content">
+                    <img src="images/a1.png" alt="">
+                    <p>简介：故事发生在非洲附近的大海上，主人公冷风（吴京饰）遭遇人生滑铁卢，被意外开除军籍，
+                        本来想要漂泊的他，正当他打算这么做的时候，一场突如其来的意外打破了他的计划，突然被卷入
+                        一场战争中去</p>
+                </div>
+            </li>
+            <li><span>4</span>电影名称
+                <div class="content">
+                    <img src="images/a1.png" alt="">
+                    <p>简介：故事发生在非洲附近的大海上，主人公冷风（吴京饰）遭遇人生滑铁卢，被意外开除军籍，
+                        本来想要漂泊的他，正当他打算这么做的时候，一场突如其来的意外打破了他的计划，突然被卷入
+                        一场战争中去</p>
+                </div>
+            </li>
+            <li><span>5</span>电影名称
+                <div class="content">
+                    <img src="images/a1.png" alt="">
+                    <p>简介：故事发生在非洲附近的大海上，主人公冷风（吴京饰）遭遇人生滑铁卢，被意外开除军籍，
+                        本来想要漂泊的他，正当他打算这么做的时候，一场突如其来的意外打破了他的计划，突然被卷入
+                        一场战争中去</p>
+                </div>
+            </li>
+            <li><span>6</span>电影名称
+                <div class="content">
+                    <img src="images/a1.png" alt="">
+                    <p>简介：故事发生在非洲附近的大海上，主人公冷风（吴京饰）遭遇人生滑铁卢，被意外开除军籍，
+                        本来想要漂泊的他，正当他打算这么做的时候，一场突如其来的意外打破了他的计划，突然被卷入
+                        一场战争中去</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

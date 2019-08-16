@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            border: 1px solid #000;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            /*渐变色 径向渐变radial-gradient()  linear-gradient线性渐变*/
+            background-image: radial-gradient(circle at center center,rgba(244,23,234,0.2),rgba(0,0,0,0,5));/*圆形*/
+            overflow: hidden;
+        }
+        .wrapper{
+            perspective: 1000px;/*井深给图片盒子的父级*/
+        }
+        .box{
+            width: 120px;
+            height: 180px;
+            border: 1px solid red;
+            margin: 200px auto;
+            position: relative;
+            transform-style: preserve-3d;/*3D效果*/
+        }
+        img{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            /*方向:向下的倒影 倒影与原图的距离*/
+            -webkit-box-reflect:below 10px -webkit-linear-gradient(top,rgba(0,0,0),rgba(0,0,0,0.5)); 
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="box">
+            <img src="images/a1.png" alt="">
+            <img src="images/a2.png" alt="">
+            <img src="images/a3.png" alt="">
+            <img src="images/a4.png" alt="">
+            <img src="images/a1.png" alt="">
+            <img src="images/a2.png" alt="">
+            <img src="images/a3.png" alt="">
+            <img src="images/a4.png" alt="">
+            <img src="images/a1.png" alt="">
+            <img src="images/a2.png" alt="">
+            <img src="images/a3.png" alt="">
+            <img src="images/a4.png" alt="">
+        </div>
+    </div>
+    <script>
+        var imgList=document.getElementsByTagName("img");
+        var box=document.getElementsByClassName("box")[0];
+        var len=imgList.length;
+        //图片进行初始化
+        function init(){
+            for(var i=0;i<len;i++){
+                //transform的rotate和translate的顺序不能反
+                //先旋转再平移
+                //延迟时间 最后一张图片len-1   延迟时间0s
+                //        倒数第二张  len-2   延迟时间0.8s
+                //        第一张图片  0       延迟时间(len-1)*0.8
+                imgList[i].style.transition="transform 0.8s"+(len-i-1)*0.5+'s';//发牌的延迟时间
+                imgList[i].style.transform="rotateY("+(deg*i)+'deg) translateZ(300px)';
+            }
+        }
+        function bindEvent(){
+            document.body.addEventListener("mousedown",mouseDown,false);//实现监听事件(false表示不捕获)
+        }
+        function mouseDown(e){
+            e.preventDefault();
+            //当前点击的位置
+            lastX=e.clientX;
+            lastY=e.clientY;
+            //鼠标移动的事件
+            document.body.addEventListener("mousemove",mouseMove,false);
+            document.body.addEventListener("mouseup",mouseUp,false);
+        }
+        function mouseUp(e){
+            document.body.addEventListener("mousemove",mouseMove);//抬起时拖动不旋转
+            var timer=setInterval(function(){
+                disX*=0.9;
+                disY*0.9;
+                ratate+=-disY*0.2;
+                box.style.transform="rotate("+rotateX+"deg) rotateY("+rotateY+'deg)';
+                if(Math.abs(disX)<1||Math.abs(disY)<1){
+                    clearInterval(timer);
+                }
+            },100);
+        }
+        function mouseMove(e){
+            //当前坐标
+            nowX=e.clientX;
+            nowY=e.clientY;
+            //差值
+            disX=nowX-lastX;
+            disY=nowY-lastY;
+            //角度累加(把距离抽象成角度)
+            //旋转角度 = 上一次旋转角度 + 本次的旋转角度
+            rotateY += -disY*0.2;//系数可以自己设置
+            rotateX += disX*0.2;
+            //竖直方向拖动 水平方向拖动
+            box.style.transform="rotateX("+rotate +"deg) rotateY("+rotateY+'deg)';
+            //保存上一次鼠标的位置
+            lastX=nowX;
+            lastY=nowY;
+        }
+        window.onload=function(){
+            init();
+        }
+    </script>
+</body>
+</html>

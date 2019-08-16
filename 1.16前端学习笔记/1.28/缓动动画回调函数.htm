@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">往右走</button>
+    <button id="btn1">往左走</button>
+    <div id="box"></div>
+<script src="js/my_func.js"></script>
+<script>
+    var box=$("box");
+    var begin=0,speed=0,target=0;
+    $("btn").onclick=function(){
+        buffer(box,{"left":800,"top":400},function(){
+            // console.log("PP");
+            buffer(box,{"left":500,"top":400})
+        });
+    };
+    function buffer(obj,json,fn){//obj:对象，attr:属性值，fn:回调函数(回调函数存在就会自动执行)
+        clearInterval(obj.time);
+        obj.time=setInterval(function(){
+            var flag=true;
+            for(var k in json){
+                begin=parseInt(getCssAttrValue(obj,k))||0;//每一个传入的属性
+                target=parseInt(json[k]);//每一个传入的属性值
+                speed=(target-begin)*0.2;//步长
+                //向上取整
+                speed=(target>begin)?Math.ceil(speed):Math.floor(speed);
+                //让盒子动起来
+                obj.style[k]=begin+speed+"px";
+                //判断是否继续运行，得保证传入的每一个值和最后运动的距离相同
+                if(begin!==target){
+                    flag=false;//当为false时，继续运动
+                }
+            }
+            if(flag){//当为true时，停止运动，清除定时器
+                clearInterval(obj.time);
+                //判断有没有回调函数
+                if(fn){
+                    fn();
+                }                
+            }
+        },20);
+    }
+</script>
+</body>
+</html>

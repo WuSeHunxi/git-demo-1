@@ -1,0 +1,63 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style:none;
+}
+body{
+    background-color: #333;
+}
+.wrapper{
+    width:80%;/* 左右可以有边界 */
+    height: 300px;
+    border:1px solid #fff;
+    margin:50px auto;
+}
+.wrapper ul{
+    width:100%;
+    height: 100%;
+}
+.wrapper ul li{
+    position: relative;
+    float:left;
+    height: 100%;
+    width: 14.2%;/*均分*/
+}
+.wrapper ul li .picBox{
+    width: 100%;
+    height: 100%;
+}
+.wrapper ul li .picBox1{
+    background: url('.images/1.jpg') no-repeat center 0;
+}
+.wrapper ul li .picBox2{
+    background: url('.images/2.jpg') no-repeat center 0;
+}
+.wrapper ul li .picBox3{
+    background: url('.images/3.jpg') no-repeat center 0;
+}
+.wrapper ul li .picBox4{
+    background: url('.images/4.jpg') no-repeat center 0;
+}
+.wrapper ul li .picBox5{
+    background: url('.images/5.jpg') no-repeat center 0;
+}
+.wrapper ul li .picBox6{
+    background: url('.images/6.jpg') no-repeat center 0;
+}
+.wrapper ul li .picBox7{
+    background: url('.images/7.jpg') no-repeat center 0;
+}
+.wrapper ul li .title{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,0.5);/*背景遮罩层*/
+}
+.wrapper ul li .title h1{
+    color:#fff;
+    font-size:20px;
+    font-weight:700;
+    margin: 10 auto;
+}

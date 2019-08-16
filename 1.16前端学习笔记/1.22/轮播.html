@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    a{
+        text-decoration:none;
+        color:#000;
+    }
+    .wrapper{
+        border:1px solid black;
+        width: 322px;
+        height: 250px;
+        margin:100px auto;
+        position:relative;
+    }
+    .left ,.right {
+        float:left;
+    }
+    .left li,.right li{
+        margin-bottom: 4px;
+        border-bottom:1px solid black;
+        height: 23px;
+        text-align:center;
+        line-height:23px;
+    }
+    .left li:last-child,.right li:last-child{
+        border-bottom:none;
+        height: 26px;
+        line-height:26px;
+    }
+    .wrapper .center{
+        overflow:hidden;
+        height: 250px;
+        cursor:pointer;
+        width: 232px;
+        float:left;
+        border:1px solid black;
+    }
+    .current{
+        background-color: red;
+    }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <ul class="left">
+            <li class="current"><a href="#">美食1</a></li>
+            <li><a href="#">美食2</a></li>
+            <li><a href="#">美食3</a></li>
+            <li><a href="#">美食4</a></li>
+            <li><a href="#">美食5</a></li>
+            <li><a href="#">美食6</a></li>
+            <li><a href="#">美食7</a></li>
+            <li><a href="#">美食8</a></li>
+            <li><a href="#">美食9</a></li>
+        </ul>
+        <div class="center">
+                <a href="#"><img src="images/a1.png" width="200" height="200"></a>
+                <a href="#"><img src="images/a2.png" width="200" height="200"></a>
+                <a href="#"><img src="images/a3.png" width="200" height="200"></a>
+                <a href="#"><img src="images/a4.png" width="200" height="200"></a>
+                <a href="#"><img src="images/a1.png" width="200" height="200"></a>
+                <a href="#"><img src="images/a2.png" width="200" height="200"></a>
+                <a href="#"><img src="images/a3.png" width="200" height="200"></a>
+                <a href="#"><img src="images/a4.png" width="200" height="200"></a>
+                <a href="#"><img src="images/a1.png" width="200" height="200"></a>
+                <a href="#"><img src="images/a2.png" width="200" height="200"></a>
+                <a href="#"><img src="images/a3.png" width="200" height="200"></a>
+                <a href="#"><img src="images/a4.png" width="200" height="200"></a>
+                <a href="#"><img src="images/a1.png" width="200" height="200"></a>
+                <a href="#"><img src="images/a2.png" width="200" height="200"></a>
+                <a href="#"><img src="images/a3.png" width="200" height="200"></a>
+                <a href="#"><img src="images/a4.png" width="200" height="200"></a>
+                <a href="#"><img src="images/a1.png" width="200" height="200"></a>
+                <a href="#"><img src="images/a2.png" width="200" height="200"></a>
+                <a href="#"><img src="images/a3.png" width="200" height="200"></a>
+        </div>
+        <ul class="right">
+            <li><a href="#">美食10</a></li>
+            <li><a href="#">美食11</a></li>
+            <li><a href="#">美食12</a></li>
+            <li><a href="#">美食13</a></li>
+            <li><a href="#">美食14</a></li>
+            <li><a href="#">美食15</a></li>
+            <li><a href="#">美食16</a></li>
+            <li><a href="#">美食17</a></li>
+            <li><a href="#">美食18</a></li>     
+        </ul>
+    </div>
+    <script>
+        var allLis=document.getElementsByTagName("li");
+        var allImages=document.getElementsByTagName("img");
+        var time=null;
+        //索引(用来进行跳转标记)
+        var loop=0;
+        //动态跳转(需要定时器)
+        time=setInterval(function(){
+            //索引++
+            loop += 1;
+            loop %= 18;//当达到第18个的时候可以重新再从1开始
+            //排他思想
+            for(var i=0;i<allLis.length;i++){
+                allLis[i].className='';
+                allImages[i].style.display='none';
+
+            }
+            allLis[loop].className='current';
+            allImages[loop].style.display='block';
+        },1000);
+    </script>
+</body>
+</html>

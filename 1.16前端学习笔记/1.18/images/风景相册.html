@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        p{
+            font-size:22px;
+            font-weight:bolder;
+        }
+        .big_pic{
+            width: 600px;
+            height: 400px;
+        }
+        #fj{
+            position:relative;
+        }
+        li{
+            list-style:none;
+            float:left;
+        }
+        #fj li img{
+            height: 120px;
+            width: 120px;
+            position: relative;
+            left:-40px;
+            top:-20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 大图描述 -->
+    <p id="des">haha</p>
+    <!-- 大图展示 -->
+    <img class="big_pic" src="a1.png" width="540px">
+    <!-- 小图展示 -->
+    <ul id="fj">
+        <li>
+            <!-- <a href="a1.png" title="哈哈"> -->
+            <img src="a1.png" alt="哈哈" title="哈哈">
+        </a></li>
+        <li>
+            <!-- <a href="a2.png" title="哦哦"> -->
+            <img src="a2.png" alt="哦哦" title="哦哦">
+        </a></li>
+        <li>
+            <!-- <a href="a3.png" title="么么"> -->
+            <img src="a3.png" alt="么么" title="么么">
+        </a></li>
+        <li>
+            <!-- <a href="a4.png" title="嘻嘻"> -->
+            <img src="a4.png" alt="嘻嘻" title="嘻嘻">
+        </a></li>
+        <li>
+            <!-- <a href="a1.png" title="吼吼"> -->
+            <img src="a1.png" alt="吼吼" title="吼吼">
+        </a></li>
+    </ul>
+    <script>
+        // 获取需要的标签
+        var big_pic=document.getElementsByClassName("big_pic")[0];
+        console.log(big_pic);
+        var ul=document.getElementById("fj");
+        var img=ul.getElementsByTagName("img");
+        var p=document.getElementsByTagName("p")[0];
+        for(var i=0;i<img.length;i++){
+            img[i].onclick=function(){
+                big_pic.src=this.src;
+                p.innerHTML=this.title;
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

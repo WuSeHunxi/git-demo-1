@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        body{
+            background: url("images/bg.png") center 0;
+            background-color: pink;
+        }
+        .nav{
+            width: 100%;
+            height: 48px;
+            /* border: 10px solid #000; */
+        }
+        .nav img{
+            width: 100%;
+            height: 48px;
+            background-color: pink;
+            /* border:1px solid #000; */
+        }
+        .content{
+            width: 1000px;
+            height: auto;
+            overflow: hidden;
+            background-color: #ebdbd4;
+            margin: 200px auto 0 auto;
+        }
+        .content .left{
+            float: left;
+            width: 150px;
+        }
+        .content .right{
+            float: right;
+            width: 240px;
+        }
+        .content .center{
+            float: left;
+            width: 600px;
+            height: 168px;
+            background: url("images/hezi.png") no-repeat 0 0;
+            background-size: 600px 168px;
+        }
+        .center .comment{
+            width: 570px;
+            height: 73px;
+            margin-top: 45px;
+            margin-left: 15px;
+            resize:none;
+            border: none;
+            outline:none;/*选中没有蓝色的框*/
+        }
+        .center .send{
+            width: 82px;
+            height: 30px;
+            margin-left: 506px;
+            margin-top: 4px;
+            background-color:#fd8040;
+            border:none;
+            color: #fff;
+            outline:none;
+        }
+        .content .messageList{
+            width: 600px;
+            height: auto;
+            float: left;/*可以满足下面的文字在发布的下面*/
+            background-color: #fff;
+        }
+        .messageList .info{
+            padding: 10px 20px;
+            border-bottom:2px solid #000;
+        }
+        .info .infoText{
+            line-height: 25px;
+            margin-bottom: 10px;
+        }
+        .info .infoOperation{
+            overflow: hidden;/*保证左浮 右浮一边高*/
+            width: 100%;
+        }
+        .infoOperation .infoTime{
+            float: left;
+            font-size: 13px;
+            color:#ccc;
+        }
+        .infoOperation .infoHandle{
+            float:right;
+            font-size: 13px;
+        }
+        .infoHandle a{
+            text-decoration: none;
+            color:#ccc;
+            background: url("images/jt_r.png") no-repeat 0 0;
+            padding-left: 25px;
+            margin-left: 10px;
+            background-color: #ccc;
+        }
+        .page{
+            width: 1000px;
+            height: 40px;
+            background-color: #9f5024;
+            margin:0 auto;
+            text-align: right;
+            padding: 20px;
+            box-sizing:border-box;
+        }
+        .page a{
+            text-decoration: none;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+            display:inline-block;
+            text-align: center;
+            line-height: 20px;
+            color:#2b2b2b;
+        }
+        /*
+        .infoHandle a:nth-child(2){//第二个图片
+            background-position:0 -17px;
+        }
+        .infoHandle a:nth-child(3){//第三个图片
+            background-position:0 -34px;
+        }
+        */
+    </style>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(function(){
+            //change事件：当用于textarea和textfield时,该事件会在失去焦点时发生
+            //监听内容的实时输入(需要用到事件委托:需要委托的元素 需要被委托的事件 回调函数)
+            //利用事件委托实时监听texarea或者input的输入
+            //委托给入口函数执行之前就已经加载好的元素body,把.comment的两个事件委托给body
+            $("body").delegate(".comment","propertychange input",function(){
+                //判断是否有内容输入
+                if($(".comment").val().length>0){
+                    //让按钮可用
+                    $("input").prop("disabled",false);
+                }else{
+                    //让按钮不可用
+                    $("input").prop("disabled",true);
+                }
+            });
+            //监听发布按钮的点击事件
+            $(".send").click(function(){
+                //拿到用户输入的内容
+                var text=$(".comment").val();
+                //根据内容创建节点
+                var $weibo=creaEle(text);
+                //插入微博
+                $(".messageList").prepend($weibo);
+                //监听顶点击(因为这些按钮都是后生成的因此要使用事件委托)
+                $("body").delegate(".infoTop","click",function(){
+                    $(this).text(parseInt($(this).text)+1);
+                });
+                //监听踩点击
+                $("body").delegate(".infoDown","click",function(){
+                    $(this).text(parseInt($(this).text)+1);//把里面的数字+1
+                });
+                //监听删除点击(需要找到删除按钮的祖先元素:parents方法)
+                $("body").delegate(".infoDel","click",function(){
+                    $(".infoDel").parents(".info").remove();
+                });
+            });
+            //创建节点的方法(微博)
+            function creaEle(text){
+                var weibo=$("<div class=\"info\">\n"+
+                            "<p class=\"infoText\">"+text+
+                            "</p>\n"+
+                            "<p class=\"infoOperation\">\n"+
+                                "<span class=\"infoTime\">"+formatDate()+"</span>\n"+
+                                "<span class=\"infoHandle\">\n"+
+                                    "<a href=\"javascript:;\" class=\"infoTop\">0</a>\n"+
+                                    "<a href=\"javascript:;\" class=\"infoDown\">1</a>\n"+
+                                    "<a href=\"javascript:;\" class=\"infoDel\">删除</a>\n"+
+                                "</span>\n"+
+                            "</p>\n"+
+                            "</div>");
+                return weibo;
+            }
+            //生成时间的方法
+            function formatDate(){
+                var date=new Date();
+                var time=[date.getFullYear()+"-",
+                          date.getMonth()+1+"-",
+                          date.getDate()+" ",
+                          date.getHours()+":",
+                          date.getMinutes()+":"+
+                          date.getSeconds()];
+                var $time=time.join("");//把数组转换成字符串
+                return $time;
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="nav">
+        <img src="images/cloud_one.png" alt=""><!--微博图片-->
+    </div>
+    <div class="content">
+        <img src="images/a1.png" alt="" class="left">
+        <div class="center">
+            <textarea class="comment" name="" id="" cols="30" rows="10"></textarea>
+            <input type="button" value="发布" class="send" disabled><!--点击没反应-->
+        </div>
+        <img src="images/a2.png" alt="" class="right">
+        <div class="messageList">
+            <div class="info">
+                <p class="infoText">哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+                    哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+                </p>
+                <p class="infoOperation">
+                    <span class="infoTime">2018-4-3 21:30:32</span>
+                    <span class="infoHandle">
+                        <a href="javascript:;" class="infoTop">0</a>
+                        <a href="javascript:;" class="infoDown">1</a>
+                        <a href="javascript:;" class="infoDel">删除</a>
+                    </span>
+                </p>
+            </div>
+            <div class="info">
+                <p class="infoText">哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+                    哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+                </p>
+                <p class="infoOperation">
+                    <span class="infoTime">2018-4-3 21:30:32</span>
+                    <span class="infoHandle">
+                        <a href="javascript:;">0</a>
+                        <a href="javascript:;">1</a>
+                        <a href="javascript:;">删除</a>
+                    </span>
+                </p>
+            </div>
+            <div class="info">
+                <p class="infoText">哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+                    哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+                </p>
+                <p class="infoOperation">
+                    <span class="infoTime">2018-4-3 21:30:32</span>
+                    <span class="infoHandle">
+                        <a href="javascript:;">0</a>
+                        <a href="javascript:;">1</a>
+                        <a href="javascript:;">删除</a>
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="page">
+        <a href="javascript:;">1</a>
+        <a href="javascript:;">2</a>
+        <a href="javascript:;">3</a>
+    </div>
+</body>
+</html>

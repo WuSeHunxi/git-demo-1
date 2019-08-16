@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <script>
+        //内容选择器
+        $(function(){
+            //:has(selector) ===::找到包含指定子元素的指定元素
+            var $div = $("div:has('span')");
+            console.log($div);//打印的是最后一个
+            //:contains(text) ===::找到包含指定的文本内容的指定元素
+            var $div = $("div:contains('我是div')");
+            console.log($div);//打印第二个和第三个
+            //:parent ===::找到有文本或者有子元素的指定元素
+            var $div = $("div:parent");
+            console.log($div);//打印后四个
+            //:empty ===::找到内容为空的指定元素(没有文本,没有子元素)
+            var $div = $("div:empty");
+            console.log($div);//打印第一个
+        });
+    </script>
+</head>
+<body>
+    <div></div>
+    <div>我是div</div>
+    <div>他们我是是div123</div>
+    <div><span></span></div>
+    <div><p></p></div>
+</body>
+</html>

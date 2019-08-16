@@ -1,0 +1,391 @@
+1.中部导航吸顶操作:当滚动的时候吸顶，不滚的时候原样展示(当往上卷的高度<头部的高度时不吸顶,反之吸顶)
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style:none;
+            border:none;
+        }
+        img{
+            vertical-align:top;/*去除图片的间距*/
+            width: 100%;
+        }
+        section{
+            width: 70%;
+            margin: 0 auto;    
+        }
+        .nav{/*前三行就是吸顶操作,将其动态添加*/
+            position: fixed;
+            left:0;
+            top:0;
+            width:100%;
+        }
+    </style>
+    <!-- 需要做一个页面，该页面是有图片组成即可 -->
+    <header id="head">
+        <img src="images/a1.png" alt="">
+    </header>
+    <nav id="nav">
+        <img src="images/a2.png" alt=""><!--中部导航的图片-->
+    </nav>
+    <section>
+        <img src="images/a3.png" alt="">
+        <img src="images/a4.png" alt="">
+    </section>
+    <script>
+        //求出offsetHeight
+        var nav_top_height=$("nav").offsetTop;
+        //监听窗口滚动
+        window.onscroll=function(){
+            var scroll_top_height=scroll().top;
+            //判断
+            if(scroll_top_height>=nav_top_height){
+                $("nav").className="nav";
+            }else{
+                $("nav").className='';
+            }
+        }
+        function $(id){
+            return typeof id==="string"?document.getElementById(id):null;
+        }
+        function scroll(){
+            if(window.pageYOffset!==null){
+                return{
+                    top:window.pageYOffset,
+                    left:window.pageXOffset
+                }
+            }else if(document.compatMode==="CSS1Compat"){
+                return{
+                    top:document.documentElement.scrollLeft,
+                    left:document.documentElement.scrollLeft
+                }
+            }
+            return{
+                top:document.body.scrollTop,
+                left:document.body.scrollLeft
+            }
+        }
+    </script>
+2.侧边广告(还需要求解滚动的高度并且相互比较)
+    该项目利用到了缓动动画(即：在每次滚动的时候，广告都想回到原来的位置时就会运动)
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style:none;
+            border:none;
+        }
+        #aside{
+            position: absolute;
+            width: 150px;
+            left:0;
+            top:150px;
+        }
+        #aside img{
+            width: 100%;
+            height: 100%;
+        }
+        p{
+            height: 50px;
+            text-align: center;
+            font-size:20px;
+        }
+    </style>
+    <div id="aside">
+        <img src="images/a1.png" alt="">
+    </div>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <p>上课要好好听课！不要打游戏！</p>
+    <script>
+        //获取广告(图片)头部的高度
+        var offset_top=$("aside").offsetTop;
+        //监听窗口的滚动,滚动事件onscroll()
+        var time=null,begin=0,end=0;
+        window.onscroll=function(){
+            //先清除定时器
+            clearInterval(time);
+            //获取滚动的高度
+            var scroll_top=scroll().top;
+            end=scroll_top+offset_top;
+            //开启缓动动画
+            time=setInterval(function(){
+                begin=begin+(end-begin)*0.2;
+                $("aside").style.top=+begin+"px";
+                //清除定时器
+                if(Math.round(begin)===end){
+                    clearInterval(time);
+                }
+            },20);
+        }
+        function $(id){
+            return typeof id==="string"?document.getElementById(id):null;
+        }
+        function scroll(){
+            if(window.pageYOffset!==null){
+                return{
+                    top:window.pageYOffset,
+                    left:window.pageXOffset
+                }
+            }else if(document.compatMode==="CSS1Compat"){
+                return{
+                    top:document.documentElement.scrollLeft,
+                    left:document.documentElement.scrollLeft
+                }
+            }
+            return{
+                top:document.body.scrollTop,
+                left:document.body.scrollLeft
+            }
+        }
+    </script>
+3.滚回顶部(带有动画效果，缓动动画)
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style:none;
+            border:none;
+        }
+        body{
+            background-color: #ccc;
+        }
+        p{
+            margin-bottom:20px ;
+            text-align: center;
+        }
+        #top{
+            width: 60px;
+            height: 60px;
+            background: url("../images/a1.png") no-repeat;
+            position: fixed;
+            right:10px;
+            bottom:30px;
+            display:none;
+        }
+    </style>
+    <span id="top"></span>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <p>今天的天气很好！</p>
+    <script src="../js/my_func.js"></script>
+    <script>
+        var time=null,begin=0,end=0;//end最后就是等于0的
+        //获得滚动产生的高度(将其设置在外面这样的话就会只产生一次，如果要在滚动函数里面的话就会每滚动一次就会产生一次)
+        var scroll_top=0;
+        window.onscroll=function(){
+            scroll_top=scroll().top;
+            if(scroll_top>0){
+                $("top").style.display="block";
+            }else{
+                $("top").style.display="";
+            }
+            begin=scroll_top;
+        };
+        $("top").onclick=function(){
+            clearInterval(time);
+            time=setInterval(function(){
+                begin=begin+(end-begin)/20;
+                window.scrollTo(0,begin);
+                if(parseInt(begin)===end){
+                    clearInterval(time);
+                }
+            },20);
+        }
+    </script>
+4.client家族
+    offsetWidth offsetHeight:border+padding+内容的宽度/高度
+    clientWidth clientHeight:       padding+内容的宽度/高度
+    scrollWidth scrollHeight:        能滚动的内容的宽度/高度
+    offsetLeft offsetTop:相对于有定位的父级的距离
+    clientLeft clientTop:左边边框的宽度/上边边框的宽度(应用少)
+    scrollLeft scrollTop:封装函数
+    获取屏幕的可视区域
+5.常用的窗口事件:onresize
+    一般用于自适应页面布局
+    获取屏幕的分辨率:window.screen.width window.screen.height
+6.事件传递机制
+    冒泡机制:时间从dom树的底层层层往上传递，直至传递到dom的根节点        
+        ie6:
+            产生事件的标签->body->html->document
+        其他浏览器:
+            产生事件的标签->body->html->document->window
+        【注意】不是所有的事件都可以冒泡
+    阻止冒泡:(兼容写法)
+        if(event&&event.stopPropagation){//w3c标准
+            event.stopPropagation();
+        }else{//IE
+            event.cancelBubble=true;
+        }
+7.蒙版效果(利用冒泡,登录时可使用)
+    该项目利用到了事件冒泡，一定要阻止的事件冒泡                                                                                              
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 300%;
+        }
+        #panel{
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            opacity: 0.4;
+            position: absolute;
+            left:0;
+            top:0;
+            display:none;
+        }
+        #login{
+            border-radius: 5px;
+            position: fixed;
+            left:50%;
+            top:50%;
+            margin-left: -150px;
+            margin-top: -150px;
+            width: 300px;
+            height: 300px;
+            background-color: skyblue;
+            display:none;
+        }
+    </style>
+    <button id="btn">点我登录</button>
+    <div id="panel"></div>
+    <div id="login"></div>
+    <script src="../js/my_func.js"></script>
+    <script>
+        //监听鼠标的点击事件
+        var panel=document.getElementById("panel");
+        var login=document.getElementById("login");
+        var btn=document.getElementById("btn");
+        btn.onclick=function(event){
+            //阻止冒泡
+            if(event&&event.stopPropagation){
+                event.stopPropagation();
+            }else{
+                window.event.cancelBubble=true;
+            }
+            //显示面板和蒙版
+            panel.style.display="block";
+            login.style.display="block";
+            //隐藏滚动条(document.body的属性)
+            document.body.style.overflow='hidden';
+        };
+        //点击文档
+        //(发生了事件冒泡)
+        document.onclick=function(event){//拦截了按钮的点击事件
+            var event=event||window.event;
+            //获取点击的事件源
+            var targetId=event.target?event.target.id:event.srcElement.id;
+            //判断事件源
+            if(targetId!=="login"){
+                //隐藏面板和蒙版
+                panel.style.display="none";
+                login.style.display="none";
+                //显示滚动条(document.body的属性)
+                document.body.style.overflow='auto';
+            }else{//点击蒙版网页跳转
+                window.location.href="http//:www.baidu.com";
+            }
+        }       
+    </script>

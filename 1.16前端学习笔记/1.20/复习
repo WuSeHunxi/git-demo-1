@@ -1,0 +1,331 @@
+1.九宫格算法(根据索引求得盒子的行号列号)
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        #top{
+            padding:20px;
+        }
+        #bottom{
+            position:relative;
+        }
+        .box{
+            background-color:#e8e8e8;
+            width:220px;
+            height:360px;
+            magin:0 15px 15px 0;
+        }
+        .box p:last-child{//最后一个p标签
+            color:#f40;
+            font-size:13px;
+        }
+    <div id="top">
+        <button>3行</button>
+        <button>4行</button>
+        <button>5行</button>
+    </div>
+    <div id="bottom">
+        <div class="box">//(多几个box)
+            <img src="images/a1.png" alt="">
+            <p>声入人心</p>
+            <p>阿云嘎 郑云龙带我们了解音乐剧</p>
+        </div>
+    <div>
+    var btn=document.getElementById("top").children;
+    var bottom=document.getElementById("bottom");
+    btn[0].onclick=function(){
+        var boxH=360,boxW=220,marginXY=15,cols=3;
+        for(var i=0;i<bottom.children.length;i++){//一共有多少个子节点           
+            var row=parseInt(i/3);
+            var col=parseInt(i%3);
+            var currentBox=bottom.children[i];
+            currentBox.style.position='absolute';
+            currentBox.style.left=col*(boxW+marginXY)+'px';
+            currentBox.style.top=row*(boxH+marginXY)+'px';
+        }
+    }
+2.内置对象Date
+  实例化一个日期对象
+    var date=new Date();//不传递参数则获得的就是当前的时间
+    var date=new Date('2019/09/09 09:09:08');//传递参数的(参数可以是未来的时间或者过去的时间)
+    console.log(date);
+  方法：
+    getDate():获得日（1-30/31）
+    getDay():获得星期（0-6）
+    getMonth():获得月份（0-11）//需要+1
+    getFullYear():获得完整的年份
+    getSeconds():获取秒（0-59）
+    getHours():获取小时
+    getMinutes():获取分钟
+    getMilliseconds():获取毫秒
+    getTime():时间戳//得到的是毫秒(多用于求时间差)
+  简单的日历特效:
+    <style>
+        #box{
+            width:250px;
+            height:300px;
+            background-color:#f40;
+            margin:100px auto;
+            padding:20px;//因为内部过于拥挤
+        }
+        #box_top{
+            font-size:23px;
+            color:#fff;
+            margin-bottom:40px;
+        }
+        #box_bottom{
+            width:90%;
+            background-color:orange;
+            height:70%;
+            margin:0 auto;
+            font-size:100px;
+            color:#fff;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+    </style>
+    <div id="box">
+        <div id="box_top"></div>//不能写死
+        <div id="box_bottom"></div>/不能写死
+    </div>
+    <script>
+        //创建日期对象(因为是关于日期的，所以要创建对象)
+        var date=new Date();
+        var y=date.getFullYear();
+        var m=date.getMonth()+1;
+        var d=date.getDate();
+        var week=date.getDay();
+        var weeks=['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+        var box_top=document.getElementById("box_top");
+        var box_bottom=document.getElementById("box_bottom");
+        bbox_top.innerText=y+'年'+m+'月'+d+'日'+weeks[week];
+        box_bottom.innerText=d;
+    </script>
+3.定时器
+  定时器的常见写法
+    setInterval(func,1000);
+    setInterval(function(){},1000);
+    setInterval("func()",1000);
+  设置和清除定时器
+    <button id="btn1">开启定时器</button>
+    <button id="btn2">清除定时器</button>
+    <script>
+        var btn1=document.getElementById("btn1");
+        var btn2=document.getElementById("btn2");
+        var time=null;
+        //开启定时器
+        btn1.onclick=function(){
+            time=setInterval(function(){
+                console.log("lll");
+            },1000);
+        }
+        //清除定时器
+        btn2.onclick=function(){
+            clearInterval(time);
+        }
+4.定时器鲜花表白
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            list-style:none;
+        }
+        body{
+            background-color:#000;
+            text-align:center;
+            padding:100px;
+        }
+        #pic{
+            display:none;
+        }
+        #timer{
+            font-size:100px;
+            color:red;
+        }
+    <div id="time">5</div>
+    <img id="pic" src="images/a1.png">
+    <script>
+        var pic=document.getElementById("pic");
+        var time=document.getElementById("time");
+        var content=time.innerText;
+        var timer=setInterval(function(){
+            content-=1;
+            //判断
+            if(content==0){
+                //清除定时器
+                clearInterval(time);
+                time.style.display="none";
+                pic.style.display="block";
+            }
+        },1000)
+    </script>
+5.倒计时(因为要两个时间进行相减所以要利用时间戳来求时间)
+    <style>
+        #time{
+            font-size:100px;
+            color:red;
+            text-align:center;
+        }
+    </style>
+    <div id="time"></div>
+    <script>
+        var time=document.getElementById("time");
+        var futureDate=new Date('2019/08/08 09:23:11');
+        setInterval(function(){
+            var currentDate=new Date();
+            var nextTime=futureDate.getTime();
+            var currentTime=currentDate.getTime();
+            var allTime=nextTime-currentTime;
+            //把毫秒转成秒
+            var allSeconds=size(parseInt(allTime/1000));
+            var day=size(parseInt(allSeconds/3600/24));//先转化成小时
+            var hours=size(parseInt(allSeconds/3600%24));
+            var minutes=size(parseInt(allSeconds/60%60));
+            var seconds=size(parseInt(allSeconds%60));
+            time.innerHTML="距离放假还有："day+"天"+hours+"小时"+minutes+"分钟"+seconds+"秒";
+        },1000);
+        function size(num){
+            return num>=0?num:'0'+num;
+        }
+    </script>
+6.钟表
+    <style>
+        #box{
+            position:relative;
+        }
+        #hour,#min,#second{
+            position:absolute;
+            left:50%;
+            top:0;
+            width:30px;
+            height:600px;
+            margin-left:-15px;
+        }
+        #hour{
+            background:url('image/hour.png') no-repeat center center;
+        }
+        #min{
+            background:url('image/min.png') no-repeat center center;
+        }
+        #second{
+            background:url('image/second.png') no-repeat center center;
+        }
+    </style>
+    <div id="box">
+        <div id="hour"></div>
+        <div id="min"></div>
+        <div id="second"></div>
+    </div>
+    <script>
+        var hour=document.getElementById("hour");
+        var min=document.getELementById("min");
+        var second=document.getElementById("second");
+        //开启定时器
+        setInterval(function(){
+            var date=new Date();
+            //正常的时间每一刻都要加上分和秒
+            var mills=date.getMilliseconds();
+            var s=date.getSeocnds()+mills/1000;
+            var m=date.getMinutes()+s/60;
+            var h=date.getHours()%12+m/60;(表盘的一圈只有12个小时和正常的求得不一样,要对12取余以便于表示上午和下午)
+            //旋转(秒和分转的度数=360/60;小时转的度数=360/12)
+            hour.style.transform=''('+(h*30)+'deg);
+            minute.style.transform='('+(m*6)+deg')';
+            second.style.transfrom='('+(s*6)+deg')';
+        },10);
+7.防止定时器累加(一个定时器会在运行的过程中叠加起来,每次进入都会新生成一个定时器和原来的定时器分担)
+    先清除后设置
+        <style>
+            #box{
+                backgorund-color:red;
+                height:200px;
+                width:200px;
+            }
+        </style>
+        <div id="box"></div>
+        <script>
+            var box=document.getElementById("box");
+            var time=null;
+            box.onmouseover=function(){
+                clearInterval(time);
+                time=setInterval(function(){
+                    console.log("pp");
+                },1000);
+            }
+8.长图滚动效果(鼠标放在上面图片向上移动，放在下面向下移动,移动需要改变top)
+    <style>
+        *{
+            padding:0;
+            magin:0;
+            list-style:none;
+        }
+        body{
+            backgorund-color:#000;
+        }
+        #box{
+            width:原图的宽度;
+            height:400px;
+            position:relative;
+            margin:100px auto;
+            overflow:hidden;
+        }
+        #pic{
+            poosition:absolute;
+            left:0;
+            top:0;
+        }
+        #to_top,#to_bottom{//把鼠标放在50%的区域是就会发生上下移动
+            width:100%;
+            heigth:50%;
+            cursor:pointer;
+            position:absolute;
+            letf:0;
+        }
+        #to_top{
+            top:0;
+        }
+        #to_bottom{
+            bottom:0;
+        }
+    </style>
+    <div id="box">
+        <img id="pic" src="大图"  alt="">
+        <span id="to_top"></span>
+        <span id="to_bottom"></span>
+    </div>
+    <script>
+        var box=document.getElementById("box");
+        var to_top=document,getElementById("to_top");
+        var to_bottom=document.getELementById("to_bottom");
+        var pic=document.getELementById("pic");
+        var time=null，num=0;
+        to_top.onmouseover=function(){
+            clearInterval(time);
+            time=setInterval(function(){
+                //步长(每次滚动的距离)，因为步长改变所以top的值也发生变化
+                num-=5;(往上走是负数)               
+                if(num>=-2400){//如果每次走的距离大于父盒子-图片本身的高度
+                    pic.style.top=num+'px';//让top的值发生改变
+                }else{
+                    clearInterval(time);
+                }
+            },20);
+        }
+        to_bottom.onmouseover=function(){
+           clearInterval(time);
+            time=setInterval(function(){
+                //步长(每次滚动的距离)，因为步长改变所以top的值也发生变化
+                num+=10;          
+                if(num<=0){//如果每次走的距离大于父盒子-图片本身的高度
+                    pic.style.top=num+'px';//让top的值发生改变
+                }else{
+                    clearInterval(time);
+                }
+            },20); 
+        };
+        box.onmouseout=function(){
+            //清除定时器
+            clearInterval(time);
+        }

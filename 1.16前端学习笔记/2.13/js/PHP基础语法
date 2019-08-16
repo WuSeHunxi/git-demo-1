@@ -1,0 +1,61 @@
+<?php
+1.注释方法？
+  //  /**/
+2.定义变量？
+  $num;
+  初始化
+  $num=10;
+3.打印内容？
+  echo $num;
+  注意点：echo不能打印集合
+4.定义一个数组？
+  $arr=array(1,2,3)
+  print_r($arr);
+  echo $arr[1];
+5.定义一个对象？
+  $dict=array("name"=>"nxy","age"=>"21);
+  print_r($dict);
+  echo $dict["name"];
+6.分支语句？
+  if/switch/for/while/三目
+  //if语句
+  $age=19;
+  if($age>=18){
+    echo "成年人";
+  }else{
+    echo "未成年人";
+  }
+
+  //三目
+  $age=19;
+  $res=($age>=18)?"成年人":"未成年人";
+  echo $res;
+
+  //switch
+  $age=17;
+  switch($age){
+    case 0:
+      echo "0";
+      break;
+    case 18:
+      eacho "成年人";
+      break;
+    default:
+      echo "未成年人";
+      break;
+  }
+
+  //for循环
+  $arr=array(1,3,5);
+  for($i=0;$i<count($arr);$i++){
+    echo $arr[$i];
+    echo "<br>";
+  }
+
+  //while循环
+  $index=0;
+  while($index<count($arr)){
+    echo $arr[$index];
+    $index++;
+  }
+?>

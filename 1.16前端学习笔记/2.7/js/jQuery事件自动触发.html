@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .father{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .son{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+    <script>
+        //自动触发事件的方法：trigger()  triggerHandler()
+        //trigger():如果用该方法自动触发事件，且要自动触发的事件会冒泡，那么也会触发事件冒泡
+        //triggerHandler():如果用该方法自动触发事件，且要自动触发的事件会冒泡，不会触发事件冒泡
+        //trigger():如果用该方法自动触发事件，且要自动触发的事件有默认行为，那么也会触发默认事件(a标签不行)
+        //triggerHandler():如果用该方法自动触发事件，且要自动触发的事件有默认行为，不会触发默认事件(a标签不行)
+        $(function(){
+            // $(".father").click(function(){
+            //     alert("hahah");
+            // });
+            // $(".father").trigger("click");
+            // $(".father").triggerHandler("click");
+            $("input[type='submit']").click(function(){
+                alert("submit");
+            });
+            $("input[type='submit']").trigger("click");
+            //a标签不满足上述说的问题
+            //处理a标签的问题，要想使a存在上述问题就必须将点击的内容存放在span标签中，然后点击span也是点击了a标签
+            $("span").click(function(){
+                alert("hello world");
+            });
+            $("span").trigger("click");
+        });
+    </script>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <a href="http://www.baidu.com"><span>我是百度</span></a>
+    <form action="http://www.taobao.com">
+        <input type="text">
+        <input type="submit">
+    </form>
+</body>
+</html>

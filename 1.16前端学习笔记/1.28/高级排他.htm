@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li{
+            border:1px solid #000;
+            cursor:pointer;
+        }
+        .current{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="current"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        var allLis=document.getElementsByTagName("li");
+        for(var i=0;i<allLis.length;i++){
+            var lastOne=0;//第一个选中
+            (function(index){                
+                allLis[index].onmouseover=function(){
+                    //清除(每次进来就先清除)
+                    allLis[lastOne].className="";
+                    //设置(清除完成后就设置)
+                    this.className="current";
+                    //赋值(把之前的赋值给lastOne，然后就可以清除之前选中的)
+                    lastOne=index;
+                }
+            })(i);
+        }
+    </script>
+</body>
+</html>

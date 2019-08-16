@@ -1,0 +1,199 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.header{
+    width: 100%;
+    height: 45px;
+}
+.header .logo{
+    float: left;
+    margin-left: 20px;
+    opacity: 0.5;
+}
+.header .logo:hover{
+    opacity: 1;
+}
+.header .logo a{
+    width: 78px;
+    height: 21px;
+    display:inline-block;
+    background-color: url("images/player_logo.png") no-repeat 0 0;
+}
+.header .register{
+    float: right;
+    line-height: 45;
+}
+.header .register li{
+    float: left;
+    margin-right: 20px;
+    color:#fff;
+    opacity: 0.5;
+}
+.header .register li:hover{
+    opacity: 1;
+}
+.content{
+    width: 100%;
+    height: 460px;
+}
+.content .content_in{
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}
+.content_in .content_left{
+    float: left;
+    width: 800px;
+    height: 100%; 
+}
+.content_left .content_toolbar{
+    width: 100%;
+    height: 40px;
+}
+.content_toolbar span{
+    border: 1px solid #fff;
+    width: 122px;
+    height: 100%;
+    line-height: 40px;
+    text-align: center;
+    display:inline-block;
+    box-sizing: border-box;
+    border-radius:5px;
+    color:#fff;
+    opacity: 0.5;
+}
+.content_toolbar span:hover{
+    opacity: 1;
+}
+.content_left span i{
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background:url("images/icon.png") no-repeat 0 0;/*需要单独设置每个图片的位置*/
+    margin-right: 10px;
+    vertical-align: -5px;
+}
+.content_toolbar span:nth-child(1) i{
+    background-position: -60px -20px;/*需要单独设置每个图片的位置*/
+}
+.content_toolbar span:nth-child(2) i{
+    background-position: -20px -20px;
+}
+.content_toolbar span:nth-child(3) i{
+    background-position: -40px -240px;
+}
+.content_toolbar span:nth-child(4) i{
+    background-position: -100px -20px;
+}
+.content_toolbar span:nth-child(5) i{
+    background-position: -40px -300px;
+}
+.content_left .content_list{
+    width: 100%;
+    height: 420px;
+    overflow: auto;
+}
+.content_list li{
+    width: 100%;
+    height: 50px;
+    opacity: 0.5;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    box-sizing: border-box;
+    user-select: none;/*不可复制*/
+}
+.content_list li div{
+    float: left;
+    color:#fff;
+    line-height: 50px;
+}
+.content_list .list_check{
+    width: 50px;
+    height: 100%;
+    text-align: center;
+    background-color: #000;
+}
+.content_list .list_check i{
+    width: 14px;
+    height: 14px;
+    border: 1px solid #fff;
+    display: inline-block;
+}
+.content_list .list_checked i{
+    background: url("images/icon_sprite.png") no-repeat -60px -80px;
+}
+.content_list .list_number{
+    width: 20px;
+    height: 100%;
+}
+.content_list .list_name{
+    width: 50%;
+    height: 100%;
+}
+.list_name .list_menu{
+    margin-top: 5px;
+    float: right;
+    margin-right: 20px;
+    display: none;
+}
+.list_menu a{
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background: url("images/icon_list_menu.png") no-repeat 0 0;
+}
+.list_menu a:nth-child(1){
+    background-position: -120px 0;
+}
+.list_menu a:nth-child(2){
+    background-position: -120px -80px;
+}
+.list_menu a:nth-child(3){
+    background-position: -120px -120px;
+}
+.list_menu a:nth-child(4){
+    background-position: -120px -160px;
+}
+.content_list .list_singer{
+    width: 20%;
+    height: 100%;
+}
+.content_list .list_time a{
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background: url("images/icon_list_menu.png") no-repeat -120px -160px;
+    margin-top: 5px;
+    float: left;
+    display: none;
+}
+.content_in .content_right{
+    float: right;
+    width: 400px;
+    height: 100%;
+}
+.content_right .song_info{
+    text-align: center;
+}
+.song_info .song_info_pic{
+    background: url("images/ablum_cover_player.png") no-repeat 0 0;
+    width: 201px;
+    height: 180px;
+    display: inline-block;                                
+}
+.footer{
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.footer .footer_in{
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}
+._mCS_1 .mCSB_scrollTools .mCSB_dragger_bar{/*滚动条的样式*/
+    width:8px;/*可以自己设置宽度*/
+}

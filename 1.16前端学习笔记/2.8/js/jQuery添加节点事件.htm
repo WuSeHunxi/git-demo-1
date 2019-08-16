@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(function(){
+            /*
+            内部插入
+            append():会将元素添加到指定元素内部的最后
+            appendTo():会将元素添加到指定元素内部的最后
+            prepend():会将元素添加到指定元素内部的最前面
+            prependTo():会将元素添加到指定元素内部的最前面
+            外部插入
+            after():会将元素添加到指定元素外部的最后
+            before():会将元素添加到指定元素外部的前面
+            insertAfter():会将元素添加到指定元素外部的最后(参数的位置和前两个不一样)
+            insertBefore():会将元素添加到指定元素外部的前面(参数的位置和前两个不一样)
+            */
+           $("button").click(function(){
+                //创建一个新的节点
+                var $li=$("<li>新增的li</li>");
+                //添加节点
+                // $("ul").append($li);
+                $li.appendTo("ul");//将要添加的元素添加到ul中,添加到最后
+                $li.prependTo("ul");//将要添加的元素添加到ul中,添加到最前面
+                $("ul").after($li);
+                $("ul").before($li);
+                $li.insertAfter("ul");//添加到外部的最后(参数的位置发生改变)
+           });
+        });
+    </script>
+</head>
+<body>
+    <button>添加节点</button>
+    <ul>
+        <li>我是第1个li</li>
+        <li>我是第2个li</li>
+        <li>我是第3个li</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,56 @@
+1.对象字面量:
+    a.var obj={
+        name:'ooo',
+        age:3,
+        eat:function(){
+            console.log('lkjd');
+        }
+        friends=['kkk','kjdj','ddd']
+    }
+    b.对对象进行遍历要使用for in
+    for(var key in obj){
+        console.log(key)
+    }
+    c.对象的原型prototype(给对象添加属性和方法，共享方法和属性)
+        Array.prototype.test="测试";
+        Array.prototype.eat=function(){
+            console.log('llll');
+        }
+        var arr=new Array();
+        arr.eat();
+        var arr1=new Array();
+        arr.test;
+    d.constructor找到对象的原函数
+    f.创建对象的方法：
+        先写一个构造函数，在构造函数中传参(this.xxx=option.xxx(option就是你传递的参数))
+        然后再写一个xxx.prototype，给对象添加公有的属性和方法
+        最后在实例化一个对象。
+调用的时候直接对象名.xxx即可
+2.JSON数据交换格式（主要用于数据传递）
+    a.是js对象表现形式(必须要双引号将属性值和属性名都引上)
+    b.将数据以JSON的形式保存在xx.json的文件中
+    c.开头和结尾要用大括号显示
+3.利用构造函数产生对象
+    a.new Object()，在new 后面调用函数
+        function Xxx(){
+            var obj=new Object();
+            return obj;
+        }
+        var p=Xxx();
+        p.xxx;
+    b.在构造函数中增加属性和方法
+        function Person(){
+
+        }
+    c.创建构造函数的时候传参尽量传一个整体，在函数里面可以在进行处理，
+      这样方便。
+
+4.this
+    a.所在的函数在那个对象中，this就代表这个对象
+    b.谁调用this就是谁
+    c.构造函数中的this，始终是new的当前对象
+5.事件
+    a.获取事件源，DOM元素，有四种常用方法，还有一个选择器的方法，哪种都可以用
+        document.querySelector('#id');
+        document.querySelector('.class');
+      这个只要找到了第一个就不会再找了

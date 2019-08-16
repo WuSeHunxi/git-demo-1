@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+        body{
+            background-color:pink;
+        }
+        span{
+            width:30px;
+            height:30px;
+            position:absolute;
+            background:url('images/snow2.png') no-repeat;
+            background-size:100% 100%;
+            animation:flash 1s alternate infinite;
+            background-color: #fff;
+        }
+
+
+        @keyframes flash{
+            0%{opacity:0;}
+            100%{opacity:1;}
+        }
+        span:hover{
+            transform:scale(3,3) rotate(180deg) !important;
+            transition:all 1s;
+        }
+    </style>
+</head>
+<body>
+        
+    <script>
+        //求出屏幕的尺寸
+        var screenWidth=document.documentElement.clientWidth;
+        var screenHeight=document.documentElement.clientHeight;
+        //动态创建星星
+        for(var i=0;i<150;i++){
+            var span=document.createElement("span");
+            document.body.appendChild(span);
+            //给星星设置坐标（随机的）
+            var x=Math.random()*screenWidth;
+            var y=Math.random()*screenHeight;
+            span.style.left=x+'px';
+            span.style.top=y+'px';
+            //星星的大小是随机的
+            var scale=Math.random()*1.5;
+            span.style.transform='scale('+scale+','+scale+')';
+            //星星闪烁的频率(时间)是随机的
+            var rate=Math.random()*1.5;
+            span.style.animationDelay=rate+'s';
+            // console.log("ppp");
+        }      
+    </script>
+</body>
+</html>

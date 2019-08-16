@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(function(){
+            /*
+            1.attr():设置或者获取元素的属性节点值
+            2.prop():设置或者获取元素的属性值
+            3.css():设置获取样式(会利用到prop方法)
+            4.val():获取或者设置value的值
+            5.hasClass():判断有没有指定类
+            6.addClass():给所有元素添加指定类或所有类
+            7.removeClass():清空所有元素的指定类或所有类
+            8.toggleClass():有则删除，没有则添加
+            */
+
+
+            //attr方法 传递一个参数，返回第一个元素属性节点的值
+            console.log($("span").attr("class"));
+            //         传递两个参数，代表设置所有属性节点的值，并且其返回值就是调用者
+            console.log($("span").attr("class","abc"));
+            //         传递一个对象，代表批量设置所有元素属性节点的值
+            $("span").attr({
+                "class":"123",
+                "name":"8888"
+            });
+
+            //prop方法 传递两个参数，代表设置所有元素属性节点的值
+            console.log($("span").prop("abc","lll"));
+            //         传递一个参数，返回第一个元素属性节点的值
+            console.log($("span").prop("abc"));
+            //         传递一个对象，代表批量设置所有元素属性节点的值
+            $("span").prop({
+                "aaa":"111",
+                "bbb":"222"
+            });
+
+
+            //val:不传参，返回第一个元素所有元素的样式
+            //    传两个参，代表设置所有元素样式 并且返回值就是方法调用者
+
+
+            //hasClass:传递参数，只要调用者其中一个包含指定类就返回true,否则返回false
+            console.log($("div").hasClass("abc"));
+            //         没有传递参数，直接就返回false
+            console.log($("div").hasClass());
+            //hasClass方法的实现：获取元素中class保存的值
+            var className=" "+div.className+" ";
+            //                   通过indexOf判断是否包含指定的字符串（在获取的时候需要加上空格以方便判断）
+            className.indexOf(" "+"cc"+" ");//!=-1表示包含
+
+            
+            //addClass:传递参数，如果元素中没有要添加的类就添加，有就不添加 返回的是this，方便链式编程
+            console.log($("div").addClass("abc def"));
+            //         没有传递参数，返回this
+            console.log($("div").addClass());
+            /*
+            <div class="aabb abc"></div>
+            <div class="aabb"></div>
+            */
+
+
+            
+        });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border:0;
+        }
+        a{
+            color:#000;
+            text-decoration: none;
+        }
+        #nav{
+            width: 900px;
+            height: 40px;
+            border:1px solid #ccc;
+            margin:100px auto;
+            overflow:hidden;
+        }
+        #nav ul{
+            width: 910px;            
+        }
+        #nav ul li{
+            float:left;
+            width: 100px;
+            line-height: 40px;
+            text-align: center; 
+            /* background-image:url("image/.png") no-repeat 0 0; */
+            border-right:1px dashed #ccc;
+            position:relative;
+        }
+        /* a标签要占满 */
+        #nav ul li a{
+            width: 100%;
+            height: 100%;
+            display:inline-block;
+        }
+        span{
+            width: 100px;
+            height: 40px;
+            background-color: skyblue;
+            position: absolute;
+            left:0;
+            top:40px;
+        }
+    </style>
+</head>
+<body>
+    <nav id="nav">
+        <ul id="ul">
+            <li><a href="">首页</a><span></span><audio src="source/a.mp3"></audio></li>
+            <li><a href="">新头条</a><span></span><audio src="source/a.mp3"></audio></li>
+            <li><a href="">电视剧</a><span></span><audio src="source/a.mp3"></audio></li>
+            <li><a href="">新电影</a><span></span><audio src="source/a.mp3"></audio></li>
+            <li><a href="">小游戏</a><span></span><audio src="source/a.mp3"></audio></li>
+            <li><a href="">小说汇</a><span></span><audio src="source/a.mp3"></audio></li>
+            <li><a href="">旅游假</a><span></span><audio src="source/a.mp3"></audio></li>
+            <li><a href="">正品购</a><span></span><audio src="source/a.mp3"></audio></li>
+            <li><a href="">今日团</a><span></span><audio src="source/a.mp3"></audio></li>
+        </ul>
+    </nav>
+<script>
+    var ul=$("ul");
+    var allLis=ul.children;
+    //改变背景的位置
+    for(var i=0;i<allLis.length;i++){
+        allLis[i].style.backgroundPosition='0'+i*-40+"px";
+        //鼠标进入
+        allLis[i].onmouseover=function(){
+            //缓动动画
+            buffer(this.children[1],{top:0});
+            //播放音乐(音频属性)
+            this.children[2].play();//li的第三个孩子audio
+            this.children[2].currentTime=0;
+        }
+        //监听鼠标的离开
+        allLis[i].onmouseout=function(){
+            buffer(this.children[1],{top:40});
+        }
+    }    
+    //监听键盘的点击
+    document.onkeydown=function(event){
+        var e=event||window.event;
+        //处理键盘得到的asc码
+        var keyCode=e.keyCode-49;
+        //回调函数
+        buffer(allLis[keyCode].children[1],{top:0},function(){
+            buffer(allLis[keyCode].children[1],{top:40});
+        });
+        //键盘播放音乐
+        allLis[keyCode].children[2].play();
+        allLis[keyCode].children[2].currentTime=0;
+    }
+</script>
+</body>
+</html>

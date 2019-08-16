@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body,html{
+            background-color: #000;
+        }
+        #time{
+            font-size:50px;
+            color:red;
+            text-align:center;
+            color:yellow;
+        }
+    </style>
+</head>
+<body>
+       
+    <div id="time"></div>
+    <script>
+        var time=document.getElementById("time");
+        var futureDate=new Date('2019/08/08 09:23:11');
+        setInterval(function(){
+            var currentDate=new Date();
+            var nextTime=futureDate.getTime();
+            var currentTime=currentDate.getTime();
+            var allTime=nextTime-currentTime;
+            //把毫秒转成秒
+            var allSeconds=size(parseInt(allTime/1000));
+            var day=size(parseInt(allSeconds/3600/24));//先转化成小时
+            var hours=size(parseInt(allSeconds/3600%24));
+            var minutes=size(parseInt(allSeconds/60%60));//余下的是分钟 进位的化成小时
+            var seconds=size(parseInt(allSeconds%60));//余下的是秒 进位的化成分钟
+            time.innerHTML="距离放假还有："+day+"天"+hours+"小时"+minutes+"分钟"+seconds+"秒";
+        },1000);
+        function size(num){
+            return num>=10?num:'0'+num;
+        }
+    </script>
+</body>
+</html>
