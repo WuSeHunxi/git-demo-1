@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style:none;
+}
+.wrapper{
+    position:relative;
+    width: 1080px ;
+    height: 350px;
+    border:1px solid black;
+}
+.wrapper .box{
+    position:absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2500px;
+    border:1px solid black;
+}
+.wrapper .box  li{
+    float:left;
+    overflow:hidden;
+    cursor:pointer;
+    position:relative;
+    margin-right: 10px;
+    height: 250px;
+    width: 250px;
+}
+.wrapper .box ul li img{
+    height: 100%;
+    width: 100%;
+}
+.wrapper .btn{
+    position:absolute;
+}
+.wrapper .btn div{
+    float:left;
+}
+.wrapper .btn .left{
+    bottom:0px;
+    height: 35px;
+    width: 35px;
+    background:url('./images/jt_l.png');
+}
+.wrapper .btn .right{
+    bottom:0px;
+    width: 35px;
+    background:url('./images/jt_r.png')
+}

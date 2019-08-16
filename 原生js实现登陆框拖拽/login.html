@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        .btn {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            margin-left: -50px;
+            height: 30px;
+            width: 100px;
+            background-color: pink;
+            border: none;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .mask {
+            background-color: #000;
+            opacity: 0.6;
+            width: 100%;
+            height: 100%;
+        }
+
+
+        .login {
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            width: 400px;
+            height: auto;
+            border: 1px solid #d5d5d5;
+            z-index: 1001;
+        }
+
+        .title {
+            position: relative;
+            background: #f7f7f7;
+            cursor: move;
+            height: 50px;
+            line-height: 50px;
+            font-size: 16px;
+            color: #333;
+            padding-left: 30px;
+        }
+
+        .close {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            color: #ccc;
+        }
+
+        .content {
+            background: #fff;
+            padding: 15px 20px;
+        }
+
+        .user {
+            margin-bottom: 15px;
+        }
+
+        .password {
+            margin-bottom: 15px;
+        }
+
+        .pt {
+            display: block;
+            height: 38px;
+            padding-left: 15px;
+            border: 1px solid #ddd;
+            transition: 0.3s;
+            font-size: 14px;
+            color: #666;
+            width: 343px;
+        }
+
+        .sm {
+            display: block;
+            height: 48px;
+            border: 1px solid #ddd;
+            transition: .3s;
+            font-size: 16px;
+            color: #666;
+            width: 360px;
+            background: #3b7ae3;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn">登录</button>
+    <script>
+        var btn = document.getElementsByClassName("btn")[0];
+        btn.onclick = function () {
+            var login = document.createElement("div");
+            login.classList.add("login");
+            var mask = document.createElement("div");
+            mask.classList.add("mask");
+            var mHeight = document.body.clientHeight || document.documentElement.clientHeight;
+            var mWidth = document.body.clientWidth || document.documentElement.clientWidth;
+            mask.style.display = "block";
+            login.style.display = "block";
+            mask.style.height = mHeight + "px";
+            mask.style.width = mWidth + "px";
+            document.body.appendChild(mask);
+            login.innerHTML = '<div class="title" id="title">登录百度账号'
+                + '<a href="#" class="close">X</a>'
+                + '</div>' + '<div class="content">'
+                + '<div class="user">'
+                + '<input type="text" class="pt" placeholder="手机/邮箱/用户名" value="" name="">'
+                + '</div>' + '<div class="password">'
+                + '<input type="password" class="pt" placeholder="请输入密码" value="" name="">'
+                + '</div>' + '<div class="submit">' + '<input type="button" class="sm" value="登陆">'
+                + '</div>' + '</div>';
+            document.body.appendChild(login);
+            var loginW = login.offsetWidth;
+            var loginH = login.offsetHeight;
+            var loginL = (mHeight - loginH) / 2;
+            var loginT = (mWidth - loginW) / 2;
+            login.style.left = loginL + "px";
+            login.style.top = loginT + "px";
+            window.onresize = function () {
+                if (document.compatMode == "CSS1Compat") {
+                    mHeigth = document.documentElement.clientHeight;
+                    mWidth = document.documentElement.clientWidth;
+                } else {
+                    mHeight = document.body.clientHeight;
+                    mWidth = document.body.clientWidth;
+                }
+                loginL = (mHeight - loginH) / 2;
+                loginT = (mWidth - loginW) / 2;
+                login.style.left = loginL + "px";
+                login.style.top = loginT + "px";
+                mask.style.height = mHeight + "px";
+            }
+            var title = document.getElementById("title");
+            var flag = false;
+            var mouseX;
+            var mouseY;
+            // console.log(title);
+            title.onmousedown = function (e) {
+                var e=e||window.event;
+                mouseX = e.pageX - login.offsetLeft;
+                mouseY = e.pageY - login.offsetTop;
+                flag = true;
+
+            }
+            login.onmousemove=function(e){
+                var e=e||window.event;
+                var newX=e.pageX;
+                var newY=e.pageY;
+                if(flag===true){
+                    //登录框移动之后的位置
+                    var loginL=newX-mouseX;
+                    var loginT=newY-mouseY;
+                    if(loginH<0){
+                        loginH=0;
+                    }else if(loginH>(mWidth-loginW)){
+                        loginH=mWidth-loginW;
+                    }
+                    if(loginT<0){
+                        loginT=0;
+                    }else if(loginT>(mHeight-loginH)){
+                        loginT=mHeight-loginH;
+                    }
+                    login.style.left=loginL+"px";
+                    login.style.top=loginT+"px";
+                    // console.log(loginL,loginT);
+                    console.log(mouseX);
+                }
+            }
+            document.onmouseup=function(){
+                flag=false;
+            }
+            var close=document.getElementsByClassName("close")[0];
+            close.onclick=function(){
+                mask.style.display="none";
+                login.style.display="none";
+            }
+        }
+
+    </script>
+</body>
+
+</html>

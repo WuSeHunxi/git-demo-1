@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>携程网</title>
+    <style>
+        /*初始化样式*/
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+        }
+        img {
+            width: 100%;
+            display: block;
+        }
+        /*主体部分*/
+        .main {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        /*主体导航模块*/
+        .main .nav {
+            width: 100%;
+        }
+        /*次级导航模块*/
+        .main .nav .item {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 100px;
+            background-color: #FF697A;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        /*次级导航模块相同部分*/
+        .main .pub {
+            flex: 1;
+            border-bottom: 1px solid white;
+        }
+        /*次级导航子导航*/
+        .main .sub {
+            flex: 2;
+            display: flex;
+            /*nowrap： flex容器为单行。该情况下flex子项可能会溢出容器*/
+            /*wrap： flex容器为多行。该情况下flex子项溢出的部分会被放置到新行，子项内部会发生断行*/
+            /*wrap-reverse： 反转 wrap 排列。*/
+            flex-wrap: wrap;
+        }
+        .sub a {
+            width: 50%;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-weight: bold;
+            border-left: 1px solid white;
+            border-bottom: 1px solid white;
+            color: #fffdef;
+            text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+        }
+        /*次级导航背景颜色设置*/
+        .main .item:nth-child(2) {
+            background-color: #3d98ff;
+        }
+        .main .item:nth-child(3) {
+            background-color: greenyellow;
+        }
+        .main .item:nth-child(4) {
+            background-color: orange;
+        }
+        .main .item:nth-child(4) .sub a {
+            width: 33.333%;
+        }
+        /*活动部分*/
+        .active {
+            display: flex;
+            /*!*flex-direction:row;*!   默认值为row*/
+        }
+        .active a {
+            flex: 1;
+        }
+        /*底部导航*/
+        footer nav {
+            width: 100%;
+            height: 50px;
+            border-top: 1px solid #CCC;
+            border-bottom: 1px solid #CCC;
+            display: flex;
+            /*flex-direction: row;*/
+        }
+        footer nav a {
+            flex: 1;
+            width: 33.33333333%;
+            text-align: center;
+            line-height: 50px;
+            color: #999;
+        }
+        footer p {
+            text-align: center;
+            color: #999;
+            line-height: 40px;
+        }
+        .link a {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <!-- 头部广告 -->
+    <header>
+        <section class="banner">
+            <a href="javascript:;">
+                <img src="images/banner.jpg">
+            </a>
+        </section>
+    </header>
+    <!-- 主体导航区 -->
+    <div class="main">
+        <section class="nav">
+            <!-- 次级导航 -->
+            <div class="item">
+                <!-- 相同部分 -->
+                <div class="pub"></div>
+                <!-- 次级子导航 -->
+                <div class="sub">
+                    <a href="javascript:;">海外酒店</a>
+                    <a href="javascript:;">团购</a>
+                    <a href="javascript:;">特惠酒店</a>
+                    <a href="javascript:;">客栈公寓</a>
+                </div>
+            </div>
+            <!-- 次级导航 -->
+            <div class="item">
+                <!-- 相同部分 -->
+                <div class="pub"></div>
+                <!-- 次级子导航 -->
+                <div class="sub">
+                    <a href="javascript:;">火车票</a>
+                    <a href="javascript:;">汽车票船票</a>
+                    <a href="javascript:;">国际机票</a>
+                    <a href="javascript:;">自驾专车</a>
+                </div>
+            </div>
+            <!-- 次级导航 -->
+            <div class="item">
+                <!-- 相同部分 -->
+                <div class="pub"></div>
+                <!-- 次级子导航 -->
+                <div class="sub">
+                    <a href="javascript:;">攻略身边</a>
+                    <a href="javascript:;">邮轮</a>
+                    <a href="javascript:;">周末游</a>
+                    <a href="javascript:;">保险签证</a>
+                </div>
+            </div>
+            <!-- 次级导航 -->
+            <div class="item">
+                <!-- 次级子导航 -->
+                <div class="sub">
+                    <a href="javascript:;">门票玩乐</a>
+                    <a href="javascript:;">美食</a>
+                    <a href="javascript:;">全球购</a>
+                    <a href="javascript:;">礼品卡</a>
+                    <a href="javascript:;">出境WIFI</a>
+                    <a href="javascript:;">更多</a>
+                </div>
+            </div>
+        </section>
+        <!-- 活动图片 -->
+        <section class="active">
+            <a href="javascript:;">
+                <img src="images/extra_1.png">
+            </a>
+            <a href="javascript:;">
+                <img src="images/extra_2.png">
+            </a>
+        </section>
+    </div>
+    <footer>
+        <!-- 底部导航 -->
+        <nav>
+            <a href="javascript:;">电话预订</a>
+            <a href="javascript:;">下载客户端</a>
+            <a href="javascript:;">我的</a>
+        </nav>
+        <div class="copyright">
+            <p class="link">
+                <a href="javascript:;">网站地图</a> |
+                <a href="javascript:;">ENGLISH</a> |
+                <a href="javascript:;">电脑版</a>
+            </p>
+            <p>&copy;2015 携程旅行</p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

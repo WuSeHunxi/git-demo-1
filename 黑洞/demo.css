@@ -1,0 +1,96 @@
+body,h1,h2,h3,h4,dl,dd,dt{
+	margin: 0;
+}
+ul{
+	margin: 0;
+	padding: 0;
+	list-style:none;
+}
+a{
+	text-decoration: none;
+}
+img{
+	border:none;
+}
+html{
+	width: 100%;
+	overflow: hidden;
+}
+body{
+	background-color: #000;
+	font-family: "微软雅黑";
+	color:#fff;
+	overflow: hidden;
+}
+.clear:after,.center:after{
+	clear: both;
+	content:'';
+	display: block;
+}
+.center{
+	width: 960px;
+	margin: 0 auto;
+}
+.header{
+	text-align: center;
+}
+.header h2{
+	font-size:36px;
+	font-weight:normal;
+}
+div.line{
+	width: 103px;
+	height: 4px;
+	background-color: #fff;
+	overflow: hidden;
+	margin: 14px auto;
+	transition: 0.5s;
+	transform: scaleX(0);
+}
+.header h3{
+	font-size:22px;
+	font-weight: normal;
+	color:#d1d1d1;
+}
+#fifth{
+	margin-bottom:50px;
+}
+#fifth .header{
+	margin: 20px auto 40px auto ;
+}
+.fCenter{
+	width: 620px;
+	height: 61px;
+	margin:0 auto;
+	overflow: hidden;
+	transform: scale(1.2);
+	background:url('./img/blackhole.png') center no-repeat;
+	background-size: cover;
+}
+
+/*背景图片*/
+@keyframes black{
+	30%{
+		transform:scale(1.4) rotate(30deg);
+	}
+	50%{
+		transform: scale(1.6) rotate(50deg);
+	}
+	70%{
+		transform:scale(1.8) rotate(70deg);
+	}
+	90%{
+		translate:scale(2.0) rotate(90deg);
+	}
+	100%{
+		transform: scale(0) rotate(110deg);
+	}
+}
+@keyframes balckRoate{
+	0%{
+		transform: rotate(0);
+	}
+	100%{
+		rotate:rotate(360deg);
+	}
+}
