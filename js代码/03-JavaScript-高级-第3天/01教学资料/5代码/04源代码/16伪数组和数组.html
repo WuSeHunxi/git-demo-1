@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>$永远的24k纯帅$</title>
+  <script>
+
+    //伪数组:假的数组,有length属性.但是不能使用数组中的方法
+    //伪数组不能调用数组中的方法
+//
+//    function f1() {
+//      //arguments--->
+//      //console.log(arguments.length);
+//      arguments.forEach(function () {
+//
+//      });
+//    }
+//    f1(10,20,30,40);
+
+    //数组是不是对象? 对象是不是数组?
+    //数组中的__proto__指向的是Array.prototype,同时Array.prototype__proto__指向的是Object.prototype,但是对象中是没有Array.prototype
+
+    //数组一定是对象,因为对象中肯定有__proto__,而且数组中有Array,Array的__proto__指向的是Object.prototype
+//    var obj={};
+//    console.dir(obj);
+
+//    var arr=[];
+//    console.dir(arr);
+
+
+   console.dir(Function);
+console.log(Function.prototype.__proto__==Object.prototype);
+    console.log(Function.__proto__==Function.prototype);
+
+
+    function Person() {
+
+    }
+
+//    var arr=[];
+//    arr[2]=10;
+//    var obj={};
+//    obj[2]=100;
+//    console.log(arr.length);
+//    console.log(obj.length);
+
+
+    //假冒的
+//    var obj={
+//      "0":10,
+//      "1":100,
+//      "2":1000,
+//      "length":3
+//    };
+//    obj[3]=5;
+//
+//    console.log(obj.length);
+//
+//    //var arr=[];
+//    obj.forEach(function () {
+//
+//    });
+
+
+
+
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #box {
+      width: 250px;
+      height: 180px;
+      border: 2px solid green;
+    }
+  </style>
+</head>
+<body>
+<div id="box">
+  <div id="dv">
+    帐号:<input type="text" value="" id="userName"/><br/>
+    <br/>
+    密码:<input type="text" value="" id="userPwd"/><br/>
+    <p id="des">显示登录结果</p>
+    <input type="button" value="登录" id="login"/>
+  </div>
+</div>
+<script src="common.js"></script>
+<script>
+  //获取按钮,注册点击事件,添加事件处理函数
+  //验证帐号和密码
+  my$("login").onclick = function () {
+    //获取的是对象
+    var userName = my$("userName");
+    var userPwd = my$("userPwd");
+    if (userName.value == "admin" && userPwd.value == "zjws") {
+      //输入正确,把整个的所有的内容,隐藏
+      //my$("box").innerHTML="登录成功";
+      my$("dv").style.display="none";
+      //创建一个元素,追加到box中
+      var pObj=document.createElement("p");
+      pObj.innerText="登录成功";
+      my$("box").appendChild(pObj);
+    } else {
+      //不成功---清空帐号和密码
+      userName.value = "";
+      userPwd.value = "";
+      //显示结果
+      setInnerText(my$("des"), "帐号或者密码错误");
+    }
+  };
+</script>
+
+</body>
+</html>

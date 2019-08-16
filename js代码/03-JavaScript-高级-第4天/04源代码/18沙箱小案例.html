@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>title</title>
+  <script>
+
+
+    (function () {
+      var str="小白喜欢小黑";
+      str=str.substr(2);
+      console.log(str);
+    }());
+
+
+    //沙箱
+    (function () {
+      var str="小明喜欢小红";
+      str=str.substr(2);
+      console.log(str);
+    }());
+
+
+
+  </script>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"/>
+<script>
+  //点击按钮,弹出对话框
+  (function () {
+    document.getElementById("btn").onclick=function () {
+      console.log("按钮被点击了");
+    };
+  }());
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>$永远的24k纯帅$</title>
+  <script>
+    //浅拷贝:就是把一个对象的地址拷贝到另一个对象中,指向相同,对象中的属性或者方法都是一起拷贝过去的
+
+    //浅拷贝,把一对象A中的内容直接拷贝到对象中B中
+    var obj1={
+      name:"风斯托罗斯基",
+      age:20,
+      car:["奔驰","宝马","奥拓"]
+    };
+
+    var obj2={};
+    function extend(a,b) {
+      //把a对象中的东西,拷贝到b对象中
+      for(var key in a){
+        b[key]=a[key];
+      }
+    }
+    extend(obj1,obj2);
+
+
+    console.dir(obj1);
+    console.dir(obj2);
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>$永远的24k纯帅$</title>
+  <script>
+    //闭包:函数A中有一个函数B,函数B中可以访问函数A中的变量或者数据,此时形成闭包
+    //闭包的模式:函数模式(里面的返回作为返回值),对象模式(里面的对象作为返回值)
+    //闭包的作用:缓存数据---是优点也是缺点
+    //函数模式的闭包
+    function f1() {
+      var num = 10;
+      return function () {
+        console.log(num);
+      }
+    }
+    var ff=f1();
+    ff();
+    //对象模式的闭包
+    function f3() {
+      return {
+        age:100,
+        getAge:function () {
+          console.log(this.age);
+        }
+      }
+    }
+
+   var obj= f1();
+    obj.getAge();
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>

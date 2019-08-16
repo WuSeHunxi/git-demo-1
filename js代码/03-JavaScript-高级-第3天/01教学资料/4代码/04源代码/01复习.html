@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script>
+    /*
+    *
+    * 手机是一个大的类别,手机有价格,型号两个特征,手机可以打电话和发短信两个行为
+    *
+    * 苹果手机有颜色的特征,苹果手机可以打游戏
+    * 华为手机有指纹的特征,华为手机有可以语音的行为
+    *
+    * 苹果手机和华为手机都属于手机
+    * 通过继承实现上述功能，并创建苹果手机对象和华为手机对象
+    *
+    * */
+
+    function Phone(price,size) {
+      this.price=price;
+      this.size=size;
+    }
+    Phone.prototype.callPhone=function () {
+      console.log("哈喽啊,饭以ok了,下来密西吧");
+    };
+    Phone.prototype.sendMessage=function () {
+        console.log("短信:你干啥捏?睡觉！那怎么还玩手机？因为睡不着,那快睡吧,嗯,过了10分钟.你干啥捏?我睡觉,怎么还不睡?被你吵醒了,快睡吧,嗯.。。。第二天,你怎么有黑眼圈,一夜没睡...");
+    };
+    //苹果手机
+    function IPhone(price,size,color) {
+      Phone.call(this,price,size);//借用构造函数继承
+      this.color=color;//红色
+    }
+    IPhone.prototype=new Phone();//要继承方法
+    IPhone.prototype.playGame=function () {
+        console.log("打游戏");
+    };
+
+
+    //华为手机
+    function HuaWeiPhone(price,size,zhiWen) {
+      Phone.call(this,price,size);//借用构造函数
+        this.zhiWen=zhiWen;
+    }
+    HuaWeiPhone.prototype=new Phone();//改变原型指向,继承方法
+    HuaWeiPhone.prototype.voice=function () {
+        console.log("咱俩语言啊?谁怕谁?来吧....又是一夜没睡");
+    };
+
+
+    //为手机类别的构造函数的原型中扩展一个方法
+    Phone.prototype.video=function () {
+      console.log("哎呦,我看见了,网速太卡,竟然没有衣服");
+    };
+
+    //实例化苹果手机对象
+    var iphone=new IPhone("10块钱","4s","black");
+    //调用方法
+    iphone.callPhone();//打电话
+    iphone.sendMessage();
+    iphone.playGame();
+
+    var p10=new HuaWeiPhone("10块钱","4s","black");
+    //调用方法
+    p10.callPhone();//打电话
+    p10.sendMessage();
+    p10.voice();
+    p10.video();
+
+
+
+
+
+
+
+
+
+  </script>
+  <script>
+
+
+    /*
+    *
+    * 原型:
+    * 在构造函数中有一个属性:prototype,是原型,也是一个对象,程序员使用的
+    * 在实例对象中有一个属性:__proto__,是原型,也是一个对象,浏览器使用的,不是标准属性
+    * 实例对象和原型对象之间的联系:原型链,通过__proto__和prototype
+    *
+    * 实例对象的__proto__指向自己的构造函数的prototype,中也有__proto__,指向的是Object的prototype,中也有一个__proto__,指向的是null
+    * 原型链:
+    * 属性的使用:搜索的过程,首先在当前的实例对象中找这个属性,如果有则使用,如果没有则去该实例对象的__proto__指向的原型对象中搜素,如果有则使用,如果没有则undefined
+    *
+    * function Person(name){
+    *   this.name=name;
+    * }
+    * Person.prototype.sex="男";
+    * var per=new Person("小白");
+    * //per.sex="女";
+    * console.log(per.sex);//女--->sex属性是实例对象的,实例对象中如果没有就去原型对象中查找,补充:如果实例对象和原型对象中的属性名字一样,原型对象中的属性的值是不会被修改的,修改是实例对象中的属性
+    *
+    *  原型的作用:数据共享(节省内存空间),实现继承
+    *  继承:类与类之间的关系,js中没有类的概念,js中可以模拟面向对象,可以使用构造函数来模拟类的概念,继承是通过原型来实现的
+    *
+    * 原型对象的指向是可以改变的
+    * 实例对象的__proto__指向的是自己的构造函数的prototype,但是指向可以改变,为了继承
+    *
+    * js中的继承是通过改变原型对象的指向来实现的
+    * 继承的方式:
+    * 1.原型的继承:传递参数的时候,所有的实例对象的属性的值都一样了(缺陷)
+    * 2.借用构造函数继承:不能使用父级的方法
+    * 3.组合继承:通过借用构造函数实现属性的继承,通过原型的方式继承实现方法的继承
+    * 4.拷贝继承:把一个对象A中的所有的属性和方法直接复制一份到对象B中,B对象中就有了对象A中所有的内容,从而实现继承
+    *
+    * 函数定义的方式:函数的声明,函数表达式,提示:尽可能的使用函数表达式的方式,或者说不要把函数的声明放在if的语句中
+    *
+    * 函数调用方式:
+    * 1.普通模式:正常的定义函数和使用
+    * 2.严格模式:"use strict";后面或者下面的代码都是严格的语法的方式
+    * 严格模式中的函数中的this是undefined
+    * 普通模式中的函数中的this是window
+    * 函数此时如果是一个方法,(方法是通过对象来调用的),那么此时方法中的this是实例对象,调用该方法的对象
+    * 如果此时的函数当成一个构造函数来使用(new 函数名),那么此时里面的this还是实例对象
+    * 为元素绑定事件的时候,该事件中的this也是触发该事件的对象:按钮的点击事件,点击事件中的this就是当前的按钮
+    * 定时器中传入的函数,函数中的this,实际上是window,因为定时器是window下的一个方法
+    *
+    * 目前的代码还是按照的普通的模式来写,
+    * "use strict";这种严格模式,以后会慢慢的使用了
+    *
+    * 函数也是对象,但是对象不一定是函数:
+    * 对象中有__proto__
+    * 函数中有prototype
+    * 如果一个东西里面只有__proto__,那就说明是对象
+    * 如果一个东西里面只有prototype,那就说明是函数,但是肯定也是对象,里面肯定也会有__proto__
+    * Math是对象,但不是函数
+    *
+    * 所有的函数都是Function的实例对象
+    *
+    * apply和call
+    *
+    * 都是方法,
+    * 如何使用:
+    * 函数想要使用apply或者call
+    * 函数名.apply();
+    * 函数名.call();
+    * applye和call的作用:就是直接调用函数或者方法,改变里面的this的指向
+    *
+    * 还可以是方法名使用applye或者call
+    * 对象.方法名.apply();
+    * 对象.方法名.call();
+    * 如果此时apply和call中一个参数也没有,或者是传入了一个参数null,那么对象的方法中的this还是这个实例对象
+    * per.sayHi();//这里的this就是per对象
+    * per.sayHi.apply(null);或者是per.sayHi.call(null);sayHi中的this还是per对象
+    * per.sayHi.apply(dog);或者per.sayHi.call(dog);那么此时的sayHi中的this就是dog这个对象
+    *
+    *
+    * 这两个方法中如果什么参数也没有,那么函数中的this就是window,如果传入的第一个参数是null,那么该函数中的this也是window
+    * function f1(){
+    *   console.log(this);
+    * }
+    * f1.apply();或者f1.call();或者f1.apply(null);或者f1.call(null)
+    * 此时f1中的this就是window
+    *
+    * apply和call的第一个参数要么是null,要么是一个对象,
+    * apply中的第二个参数是数组,数组中的每个元素就是每个参数
+    * call中的第二个参数后面所有的参数都是一个一个传入的
+    *
+    * function f1(x,y,z){
+    *
+    * }
+    * f1.apply(对象,[参数1,参数2,参数3]);
+    * f1.call(对象,参数1,参数2,参数3);
+    *
+    * 总结:apply和call都可以改变this的指向,
+    * 直接:别人的方法想要变成自己的,就使用apply或者call,传入自己的这个对象
+    *
+    *
+    *
+    *
+    *
+    *
+    *
+    *
+    *
+    *
+    *
+    *
+    *
+    *
+    *
+    * */
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>

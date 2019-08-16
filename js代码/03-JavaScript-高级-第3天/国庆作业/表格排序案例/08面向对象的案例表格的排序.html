@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对自己狠点</title>
+    <style>
+        table{
+            width: 800px;
+        }
+        th{
+            height: 50px;
+            cursor: pointer;
+        }
+        td{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<table id="tab" border="1" cellspacing="0" cellpadding="0">
+</table>
+<script>
+
+    //是数组---对象
+    var movieArray=[
+        {
+            img:"bianxingjingang.jpg",
+            movieName:"变形金刚",
+            star:"希亚·拉伯夫",
+            direct:"迈克尔·贝",
+            type:"d动作",
+            time:"2007年07月03日"
+        },
+        {
+            img:"qiannvyouhun.jpg",
+            movieName:"倩女幽魂",
+            star:"张国荣",
+            direct:"程小东",
+            type:"j惊悚",
+            time:"1987年7月18日"
+        },
+        {
+            img:"gongfu.jpg",
+            movieName:"功夫",
+            star:"周星驰",
+            direct:"周星驰",
+            type:"x喜剧",
+            time:"2014年12月24日"
+        },
+        {
+            img:"suduyujiqing.jpg",
+            movieName:"速度与激情",
+            star:"保罗·沃克",
+            direct:"罗伯·科恩",
+            type:"d动作",
+            time:"2015年4月3日"
+        },
+        {
+            img:"dahuaxiyou.jpg",
+            movieName:"大话西游",
+            star:"周星驰",
+            direct:"刘镇伟",
+            type:"a爱情",
+            time:"2014年10月24日"
+        }
+    ];
+
+    //第一步封装一个函数,用来根据id获取标签对象
+    function my$(id) {
+        return document.getElementById(id);
+    }
+    //第二步.创建一个构造函数----为了创建对象---为了调用方法----为了实现功能
+    function MovieList(tableId) {
+        this.table=my$(tableId);//根据id获取table标签,为了添加数据
+    }
+    //初始化的方法
+    MovieList.prototype.init=function (date) {
+        this.initThead();//初始化thead
+        this.initTbody(date);//初始化tbody
+        //调用注册的事件方法
+        this.addEvent(date);
+    };
+
+    //第三步,添加方法---initThead中的数据
+    MovieList.prototype.initThead=function () {
+        //先创建一个thead标签,创建tr-th,立刻加入到table中
+        var thead=document.createElement("thead");
+        thead.innerHTML='<tr><th flag="img">影片</th><th flag="star">主演</th><th flag="direct">导演</th><th flag="type">类别</th><th flag="time">上映时间</th></tr>';
+        //把thead标签添加到table中
+        this.table.appendChild(thead);
+    };
+    //第四步,添加方法---initTbody中的数据,date就是数组中所有的数据
+    MovieList.prototype.initTbody=function (date) {
+        //坑============================================
+        if(my$("tbd")){
+            this.table.removeChild(my$("tbd"));
+        }
+        //先创建tbody标签,加入到table中
+        var tbody=document.createElement("tbody");
+        tbody.id="tbd";
+        //创建tr标签,里面创建td的标签-----个数是根据date中的数据来进行创建
+        //循环遍历date数组,每一项都是一个对象
+        var arr=[];
+        for(var i=0;i<date.length;i++){
+            var movie=date[i];//movie就是一个对象
+            arr.push("<tr><td><img src=movieImages/"+movie.img+"><br />"+movie.movieName+"</td><td>"+movie.star+"</td><td>"+movie.direct+"</td><td>"+movie.type+"</td><td>"+movie.time+"</td></tr>");
+        }
+        tbody.innerHTML=arr.join("");
+        this.table.appendChild(tbody);
+    };
+    //第五步,添加方法---进行排序
+    MovieList.prototype.sortMovieByAttribute=function (date,attr) {
+        //date 传过来的数组movieArray
+        //需要排序的函数
+        function sortMovie(attr) {
+            return function (obj1,obj2) {
+                if(obj1[attr]>obj2[attr]){
+                    return 1;
+                }else if(obj1[attr]===obj2[attr]){
+                    return 0;
+                }else{
+                    return -1;
+                }
+            }
+        }
+        var ff=sortMovie(attr);//attr是传入的属性
+        date.sort(ff);//进行排序
+
+    };
+    //第六步,添加方法---添加事件---刷新的操作
+    MovieList.prototype.addEvent=function (date) {
+        //找到table中的thead标签,中的th标签,为每个th标签注册点击的事件
+        var ths=this.table.getElementsByTagName("thead")[0].getElementsByTagName("th");
+        //遍历ths标签
+        var that=this;//把实例对象进行缓存
+        for(var i=0;i<ths.length;i++){
+            ths[i].onclick=function () {
+                //此处应该获取的不是文字内容,而应该是属性的名字
+                var flag=this.getAttribute("flag");
+                //调用排序的方法
+                that.sortMovieByAttribute(date,flag);
+                //此处还有坑
+                that.initTbody(date);//=======大坑
+            };
+        }
+    };
+    //第七步,创建对象-调用方法--结束
+    var mo=new MovieList("tab");
+    mo.init(movieArray);
+
+    //首先在initThead中为每个th标签中添加了一个自定义的属性叫flag,赋值都是属性的名字
+
+    //在addEvent方法中使用this,getAttribute("flag");获取该自定义属性中的值(值就是存储的对象的属性的名字),之后要重新的调用initTbody的方法,并且在该方法中加入一个判断(判断页面中是否已经存在了tbody,如果存在则删除,否则继续创建)
+
+
+</script>
+</body>
+</html>

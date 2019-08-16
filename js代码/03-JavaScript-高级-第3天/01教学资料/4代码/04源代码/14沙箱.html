@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>$永远的24k纯帅$</title>
+  <script>
+    //沙箱:环境,黑盒,---在虚拟的世界中,模拟真实世界的场景,做实验,实验的结果和真实世界的结果一样,但是不会影响真实的世界
+
+//    var num=100;
+//    //沙箱的代码
+//    (function () {
+//      var num=10;
+//      num++;
+//      console.log(num);//11
+//    })();
+//
+//    console.log(num);//100
+
+    //沙箱
+//    (function (x) {
+//      //局部变量
+//      var num=1000;
+//      console.log(num);//1000
+//    }(100));
+//
+//    //全局变量
+//    var num=10000;
+//    console.log(num);//10000
+//
+//
+//    var num=10;
+
+
+
+    //以后的代码--->尽可能的放在沙箱中
+
+  </script>
+  <script>
+
+    //沙箱可以解决命名冲突的问题
+    (function () {
+      var x=10;
+      function f1() {
+
+      }
+    }());
+
+    (function () {
+      var x=10;
+      function f1() {
+
+      }
+    }());
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>

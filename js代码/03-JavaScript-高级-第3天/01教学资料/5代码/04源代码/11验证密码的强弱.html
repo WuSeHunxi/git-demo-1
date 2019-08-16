@@ -1,0 +1,158 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style type="text/css">
+  #dv{
+    width: 300px;
+    height:200px;
+    position: absolute;
+    left:300px;
+    top:100px;
+  }
+  .strengthLv0 {
+    height: 6px;
+    width: 120px;
+    border: 1px solid #ccc;
+    padding: 2px;
+  }
+
+  .strengthLv1 {
+    background: red;
+    height: 6px;
+    width: 40px;
+    border: 1px solid #ccc;
+    padding: 2px;
+  }
+
+  .strengthLv2 {
+    background: orange;
+    height: 6px;
+    width: 80px;
+    border: 1px solid #ccc;
+    padding: 2px;
+  }
+
+  .strengthLv3 {
+    background: green;
+    height: 6px;
+    width: 120px;
+    border: 1px solid #ccc;
+    padding: 2px;
+  }
+</style>
+<body>
+<div id="dv">
+  <label for="pwd">密码</label>
+  <input type="text" id="pwd" maxlength="16"><!--课外话题-->
+  <div>
+    <em>密码强度：</em>
+    <em id="strength"></em>
+    <div id="strengthLevel" class="strengthLv0"></div>
+  </div>
+</div>
+<script src="common.js"></script>
+<script>
+  /*
+  * 密码:字母,数字,特殊符号组合
+  * 如果密码只有一种------:弱------:1
+  * 如果密码是任意的两个组合-----:中------:2
+  * 如果密码是三者组合------:强-------:3
+  * 如果密码的长度是小于6位,不做判断
+  *
+  *
+  *
+  *
+  * */
+  //键盘抬起事件
+  my$("pwd").onkeyup=function () {
+//    if(this.value.length>=6){
+//      //this.value用户输入的密码
+//      //密码中是否存在什么东西?---正则表达式匹配
+//      var lvl= getLvl(this.value);
+//      console.log(lvl);
+//      if(lvl==1){
+//        //弱
+//        my$("strengthLevel").className="strengthLv"+lvl;
+//      }else if(lvl==2){
+//        //中
+//        my$("strengthLevel").className="strengthLv"+lvl;
+//      }else if(lvl==3){
+//        //强
+//        my$("strengthLevel").className="strengthLv"+lvl;
+//      }
+//    }else{
+//      my$("strengthLevel").className="strengthLv"+0;
+//    }
+
+    //先判断密码的长度是否大于等于6,判断当前的密码的级别是不是1,2,3,如果都不是,默认的级别就是0
+    var lvl=this.value.length>=6?getLvl(this.value):0;
+    my$("strengthLevel").className="strengthLv"+lvl;
+  };
+//根据字符串返回对应的级别
+  function getLvl(str) {
+    var lvl=0;
+    //判断str这个密码中是否存在数字
+    if(/[0-9]/.test(str)){
+      lvl++;
+    }
+    //判断str这个密码中是否有字母
+    if(/[a-zA-Z]/.test(str)){
+      lvl++;
+    }
+    //判断str这个密码中是否有特殊符号
+    if(/[^0-9a-zA-Z_]/.test(str)){
+      lvl++;
+    }
+    return lvl;
+  }
+</script>
+
+
+
+<script>
+  //获取文本框注册键盘抬起的事件,改变id为strengthLevel的div的背景颜色
+
+  /*
+   *
+   * 密码:数字,字母,特殊符号
+   *
+   * 如果只有数字,或者只有字母，或者只有特殊符号,三者的任意一种,级别:1
+   * 如果三者中有任意两种,级别；2
+   * 如果三者都有,级别:3
+   *
+   *
+   * */
+
+  //键盘抬起事件
+//  my$("pwd").onkeyup=function () {
+//    var flag=this.value.length>=6?checkPwd(this.value):0;
+//    my$("strengthLevel").className="strengthLv"+flag
+//
+//  };
+//  function checkPwd(pwd) {
+//    var lvl=0;
+//    //判断密码中是否有数字
+//    if(/[0-9]/.test(pwd)){
+//      lvl++;
+//    }
+//    //判断密码中是否有字母
+//    if(/[a-zA-Z_]/.test(pwd)){
+//      lvl++;
+//    }
+//    //判断密码中是否有特殊符号
+//    if(/[^0-9a-zA-Z_]/.test(pwd)){
+//      lvl++;
+//    }
+//    return lvl;
+//  }
+
+
+</script>
+
+</body>
+</html>

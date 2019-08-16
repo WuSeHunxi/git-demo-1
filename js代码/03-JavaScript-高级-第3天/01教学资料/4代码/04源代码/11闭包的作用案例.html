@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>$永远的24k纯帅$</title>
+  <script>
+    //    function f1() {
+    //      var num = 10;
+    //      num++;
+    //      console.log(num);
+    //    }
+    //    //局部变量是函数中,函数使用完毕,变量也就释放了
+    //    f1();
+    //    f1();
+    //    f1();
+
+    //闭包的作用缓存数据:只要是想把数据保存起来,就把这个数据放在闭包中(就是在外层函数和里层函数的中间)
+    //正因为闭包的出现缓存了数据,那么函数中的变量就没有得到及时的释放
+    function f1() {
+      var num = 10;//局部变量----函数使用后应该释放,但是闭包的情况,该变量的值没有释放,延长作用域了.
+      return function () {
+        return num++;
+      }
+    }
+    var ff=f1();
+    console.log(ff());//10
+    console.log(ff());//11
+    console.log(ff());//12
+    console.log(ff());//13
+
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>

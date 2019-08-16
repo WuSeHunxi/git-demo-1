@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>title</title>
+  <script>
+
+    /*
+    *
+    * 复习:
+    *
+    * 原型:
+    * 每个实例对象中都有一个属性__proto__,是原型,浏览器使用的,不标准的属性
+    * 每个构造函数中都有一个属性prototype,是原型,程序员使用的,
+    * 面向对象和面向过程都是编程思想
+    * 面向对象注重的是结果,面向过程注重的是过程
+    * 面向对象的特性:封装,继承,多态
+    * 继承:
+    * 1.通过原型实现继承,改变原型的指向,属性在初始化的时候就已经固定了,如果是多个对象实例化,那么每个实例对象的属性的值在初始化的时候都是一样的
+    * 2.借用构造函数继承,不能继承方法
+    * 3.组合继承,可以解决属性和方法的继承的问题
+    * 4.拷贝继承,就是把一个对象中的原型中的所有的属性和方法复制一份给另一个对象
+    *
+    *
+    * 创建对象的三种方式
+    * 1. 字面量的方式
+    * 2. 调用系统的构造函数
+    * 3. 自定义构造函数
+    *
+    *
+    *
+    * 原型链:实例对象和原型对象之间的关系,主要是通过__proto__和prototype来联系
+    *
+    * 原型的指向是可以改变,所以,js中是通过改变原型来实现继承
+    *
+    *
+    * 原型的作用:
+    * 实现数据共享,继承, 都是为了节省内存空间
+    * 如果属性和方法都需要共享,那么就把属性和方法添加到原型中
+    *
+    *
+    * 函数中的this的指向
+    *
+    * 普通的函数中this是window
+    * 构造函数中的this,构造函数一般都是创建实例对象使用的,是通过new关键字,构造函数也是函数
+    * 构造函数中的this是实例对象
+    * 方法中的this是实例对象
+    * 原型中的方法中的this是实例对象
+    * 定时器中的this是window
+    *
+    * 函数是对象,构造函数也是函数,也是对象
+    * 对象是不是函数呢?不一定
+    *
+    * 对象中有__proto__
+    * 函数中有prototype
+    *
+    * Math是对象,但不是函数
+    *
+    *
+    *
+    *
+    * */
+    console.dir(Math);
+
+    setInterval(function () {
+      console.log(this);
+    },1000);
+
+    function f1() {
+      console.log(this);
+    }
+    f1();
+    console.dir(f1);
+
+    function Teacher() {
+      console.log(this);
+      this.sayHi=function () {
+        console.log(this);
+      };
+    }
+    Teacher.prototype.sayHello=function () {
+      console.log(this);
+    };
+    var t=new Teacher();
+    t.sayHi();
+    t.sayHello();
+
+    //字面量的方式创建对象
+    var obj={
+      age:10,
+      sex:"男",
+      sayHi:function () {
+        console.log("您好,十一过的快乐吗");
+      }
+    };
+
+    //调用系统的构造函数创建对象
+    var obj2=new Object();
+    obj2.age=20;
+    obj2.sex="男";
+    obj2.sayHi=function () {
+      console.log("中秋节过的快乐吗");
+    };
+
+    //自定义构造函数创建对象
+
+    function Person(age,sex) {
+      this.age=age;
+      this.sex=sex;
+      this.sayHi=function () {
+        console.log("今天就上课了,快乐吗");
+      };
+    }
+
+
+
+    //继承的代码
+
+    function Animal(age,sex) {
+      this.age=age;//年龄
+      this.sex=sex;//性别
+    }
+    //通过原型添加属性
+    Animal.prototype.color="黄色";
+    //通过原型添加方法
+    Animal.prototype.eat=function () {
+      console.log("中秋的时候没吃到月饼,但是,吃到了馒头,也是一样的");
+    };
+
+    //小狗的构造函数
+    function Dog(age,sex,name) {
+      //借用构造函数
+      Animal.call(this,age,sex);
+      this.name=name;
+    }
+    //改变原型指向,为了继承方法的
+    Dog.prototype=new Animal();
+
+    var dog=new Dog(10,"女","小苏");
+    console.log(dog.name);
+    console.log(dog.age);
+    console.log(dog.sex);
+    console.log(dog.color);
+    //调用方法
+    dog.eat();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>

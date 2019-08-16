@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>$永远的24k纯帅$</title>
+  <script>
+
+//    function showRandom() {
+//      var random=parseInt(Math.random()*10+1);
+//      console.log(random);
+//    }
+//    //每次产生的随机数是不一样,函数调用多次
+//    showRandom();
+//    showRandom();
+//    showRandom();
+//    showRandom();
+
+    //目的:产生相同的随机数,函数调用多次
+
+//    function showRandom2() {
+//      var random= parseInt(Math.random()*10+1);//产生一次随机数
+//      return function () {
+//        console.log(random);//每次输出的都是最开始产生的随机数字的值
+//      }
+//    }
+//    var ff=showRandom2();//调用一次
+//    ff();
+//    ff();
+//    ff();
+
+
+
+
+//记下去----
+    for(var i = 0; i < 3; i++) {
+      //定时器的执行过程:页面加载完毕后,过了0秒开始执行里面的代码
+      setTimeout(function () {
+        console.log(i);
+      }, 0);
+    }
+
+
+
+
+
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>

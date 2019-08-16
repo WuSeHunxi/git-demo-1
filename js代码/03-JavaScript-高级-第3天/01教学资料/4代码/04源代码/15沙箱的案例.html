@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>$永远的24k纯帅$</title>
+
+</head>
+<body>
+<div>div1</div>
+<div>div2</div>
+<div>div3</div>
+<p>p1</p>
+<p>p2</p>
+<p>p3</p>
+<script>
+  //页面加载完毕后设置,div和p标签都有自己的边框
+
+  //全局变量
+  var getTag=10;
+  var dvObjs=20;
+  var pObjs=30;
+
+  //功能的代码
+  (function () {
+    function getTag(tagName) {
+      return document.getElementsByTagName(tagName);//根据标签名字获取元素
+    }
+    var dvObjs =getTag("div");//所有的div
+    for(var i=0;i<dvObjs.length;i++){
+      dvObjs[i].style.border="2px solid pink";
+    }
+
+    var pObjs=getTag("p");//所有的p
+    for(var i=0;i<pObjs.length;i++){
+      pObjs[i].style.border="2px solid pink";
+    }
+
+  }());
+
+//  var fn=(function Box() {
+//    var num=10;
+//  });
+//  fn();
+
+
+  console.log(getTag);
+  console.log(dvObjs);
+  console.log(pObjs);
+
+
+</script>
+
+
+</body>
+</html>

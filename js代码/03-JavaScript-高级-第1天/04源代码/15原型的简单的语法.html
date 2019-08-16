@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>title</title>
+  <script>
+    function Student(name, age, sex) {
+      this.name = name;
+      this.age = age;
+      this.sex = sex;
+    }
+    //简单的原型写法
+    Student.prototype = {
+      //手动修改构造器的指向
+      constructor:Student,
+      height: "188",
+      weight: "55kg",
+      study: function () {
+        console.log("学习好开心啊");
+      },
+      eat: function () {
+        console.log("我要吃好吃的");
+      }
+    };
+
+    var stu=new Student("段飞",20,"男");
+    stu.eat();
+    stu.study();
+    console.dir(Student);
+    console.dir(stu);
+
+
+
+
+    //    Student.prototype.height="188";
+    //    Student.prototype.weight="55kg";
+    //    Student.prototype.study=function () {
+    //      console.log("学习,写500行代码,小菜一碟");
+    //    };
+    //    Student.prototype.eat=function () {
+    //      console.log("吃一个10斤的西瓜");
+    //    };
+    //    //实例化对象,并初始化
+    //    var stu=new Student("晨光",57,"女");
+    //    console.dir(Student);
+    //    console.dir(stu);
+
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>

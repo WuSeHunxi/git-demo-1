@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>$永远的24k纯帅$</title>
+  <script>
+    //深拷贝:把一个对象中的属性,依次的,一个一个的复制到另一个对象中
+    var obj1={
+      name:"风斯托罗斯基",
+      age:20,
+      car:["奔驰","宝马","奥拓"],
+      dog:{
+        name:"哮天犬",
+        age:2,
+        color:"黑色"
+      }
+    };
+
+    var obj2={};
+    //把a中的拷贝到b中
+    function extend(a,b) {
+      //遍历a这个对象中所有的属性
+      for(var key in a){
+        var item=a[key];//获取了a对象中的属性
+        if(item instanceof Array){
+          b[key]=[];//在b对象中添加一个属性,但是这个属性的类型是数组,
+          extend(item,b[key]);
+        }else if(item instanceof Object){
+          b[key]={};
+          extend(item,b[key]);
+        }else{
+          b[key]=item;
+        }
+      }
+    }
+
+    extend(obj1,obj2);
+    console.dir(obj2);
+    console.dir(obj1);
+
+
+
+
+  </script>
+
+  <script>
+
+
+
+
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>
