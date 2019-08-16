@@ -4,9 +4,9 @@ $nameErr = $emailErr = $genderErr = $websiteErr = "";
 $name = $email = $gender = $comment = $website = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  if (empty($_POST["name"])) {
+  if (empty($_POST["name"])) { //用户名为空
     $nameErr = "Name is required";
-  } else {
+  } else { //用户名满足条件
     $name = test_input($_POST["name"]);
   }
 
@@ -57,7 +57,7 @@ function test_input($data){
         <br><br>
         E-mail:
         <input type="text" name="email">
-        <span class="error">* <?php echo $emailErr;?></span>
+        <span class="error">* <?php echo $emailErr; //当emailErr有值的时候就会输出执行?></span>
         <br><br>
         Website:
         <input type="text" name="website">
