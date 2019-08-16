@@ -8,28 +8,30 @@
     //接收用户提交的数据，保存到文件中
 
     //empty用来判断是否为空
-    if(empty($_POST['username'])){//这种情况是没有提交或者用户名为空
-        echo '请输入用户名';
+    if(empty($_POST['username'])){
+        //这种情况是 没有提交 或者 用户名为空--->一个empty就可以都完成判断
+        $GLOBALS '请输入用户名';
     }else{
             if(empty($_POST['password'])){
-            echo '请输入密码';
+            $GLOBALS '请输入密码';
         }else{
             if(empty($_POST['confirm'])){
-                echo '请输入确认密码';
+                $GLOBALS '请输入确认密码';
             }else{
                 if($_POST['password']!=$_POST['confirm']){
-                    echo '两次输入的密码不一致';
+                    $GLOBALS '两次输入的密码不一致';
                 }else{
                     //isset用来判断是否定义
                     if(!(isset($_POST['agree'])&&$_POST['agree']==='on')){
-                        echo '必须同意注册协议';
+                        $GLOBALS '必须同意注册协议';
                     }else{
                         //所有条件都OK
                         $username=$_POST['username'];
                         $password=$_POST['password'];
 
                         //将用户名 密码保存到文本文件中
-                        file_put_contents('users.txt',$username.'|'.$password);
+                        file_put_contents('users.txt',$username.'|'.$password. "\n", FILE_APPEND);
+                        $GLOBALS='注册成功';
                     }
                 }
             }
@@ -67,7 +69,7 @@
             <td></td>
             <td><label><input type="checkbox" name="agree" value="on"> 同意注册协议</label></td>
         </tr>
-        <?php if (isset($message)): ?>
+        <?php if (isset($message)):?>
         <tr>
             <td></td>
             <td><?php echo $message; ?></td>
