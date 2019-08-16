@@ -22,7 +22,7 @@
         // 4. 默认Apache加载的php.ini 是去 Windows目录找的
         // 5. 可以通过 Apache 的配置文件修改默认加载路径 PHPIniDir
 
-    phpinfo();
+    // phpinfo();
 
     //字符串的替换
     $str='hello';
@@ -32,4 +32,14 @@
     
     //某个字符重复出现多次
     echo str_repeat('aaa',4);
+
+    echo '<br>';
+
+    //str_word_count() 函数对字符串中的单词进行计数：
+    echo str_word_count('hello world');
+
+    echo '<br>';
+    
+    //strpos() 用于检索字符串中指定的字符或文本
+    echo strpos('hello world','hello');
 ?>
