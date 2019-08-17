@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="中缀转后缀.css">
+    <title>计算器</title>
+</head>
+<body>
+    <div id="all">
+        <div id="body">
+            <input type="text" id="show1"readonly="readonly">
+            <input type="text" id="show"readonly="readonly">
+            <input type="button" value="中缀计算" onclick="Middle(this);" class="fuct">
+            <input type="button" value="转后缀" onclick="Turn(this)" class="fuct">
+            <input type="button" value="后缀计算" onclick="Stacka(this);" class="fuct">
+            <input type="button" value="(" onclick="Button(this);" class="number">
+            <input type="button" value=")" onclick="Button(this);" class="number">
+            <input type="button" value="AC" onclick="Clear(this);" class="number">
+            <input type="button" value="DEL" onclick="Delete(this)" class="number">
+            <input type="button" value="!" onclick="Do(this);" class="number">
+            <input type="button" value="√" onclick="Sq(this);" class="number">
+            <input type="button" value="." onclick="Button(this);" class="number">
+            <input type="button" value="+" onclick="Button(this);" class="number">
+            <input type="button" value="7" onclick="Button(this);" class="number">
+            <input type="button" value="8" onclick="Button(this);" class="number">
+            <input type="button" value="9" onclick="Button(this);" class="number">
+            <input type="button" value="-" onclick="Button(this);" class="number">
+            <input type="button" value="4" onclick="Button(this);" class="number">
+            <input type="button" value="5" onclick="Button(this);" class="number">
+            <input type="button" value="6" onclick="Button(this);" class="number">
+            <input type="button" value="*" onclick="Button(this);" class="number">
+            <input type="button" value="1" onclick="Button(this);" class="number">
+            <input type="button" value="2" onclick="Button(this);" class="number">
+            <input type="button" value="3" onclick="Button(this);" class="number">
+            <input type="button" value="/" onclick="Button(this);" class="number">
+            <input type="button" value="0" onclick="Button(this);" class="number1">
+            <input type="button" value="=" onclick="Finally(this);" class="number1">
+        </div>
+    </div>
+</body>
+<script>
+    //1.构造栈
+    function Stack(){
+        this.data=[];
+        this.top=0;//栈顶并赋值为0
+        this.push=push;//入栈
+        this.pop=pop;//出栈
+        this.peek=peek;//获取栈顶的第一个元素(top是栈顶元素的上一个无内容)
+        this.length=length;//记录栈内元素个数
+        this.clear=clear;//清空栈
+    }
+    function peek(){
+        return this.data[this.top-1];
+    }
+    function push(element){
+        this.data[this.top++]=element;
+    }
+    function pop(){
+        return this.data[--this.top];
+    }
+    function length(){
+        return this.top;
+    }
+    function clear(){
+        this.top=0;
+    }
+    //比较优先级
+    function Sign(a,b){
+        var sign = new Array();
+                        // +   -   *    /    (    )   #
+        sign[0] = new Array('1','1','-1','-1','-1','1','1');   //+
+        sign[1] = new Array('1','1','-1','-1','-1','1','1');   //-
+        sign[2] = new Array('1','1','1','1','-1','1','1');     //*
+        sign[3] = new Array('1','1','1','1','-1','1','1');     ///
+        sign[4] = new Array('-1','-1','-1','-1','-1','0','');  //(
+        sign[5] = new Array('1','1','1','1','','1','1');       //)
+        sign[6] = new Array('-1','-1','-1','-1','-1','','0');  //#
+        var str = ['+','-','*','/','(',')','#'];
+        var str1;
+        var str2;
+        for(var i=0;i<7;i++){
+            if(a == str[i]){
+                str1 = i;
+            }
+            if(b == str[i]){
+                str2 = i;
+            }
+        }
+        var count = sign[str1][str2];
+        return count;
+    }
+    //3.中缀转后缀函数
+    function Change(item){
+        var str=item;
+        var stack=new Stack();//构造一个新的栈
+        stack.push("#");//将#压入栈
+        var queue=new Array();//构造一个队列
+        var float="";//一个空的字符串存小数
+        var flag=1;//在碰到符号前最后一次计算
+        var negative="";//负数
+        var rene=0;
+        for(var i=0;i<item.length;i++)
+        {
+            if((str[i]=='-'&&i==0)||(str[i]=='-'&&str[i-1]=='(')){
+                i++;
+                while(!isNaN(str[i])||str[i]=='.'){
+                    negative+=str[i];
+                    i++;
+                }
+                rene=rene-parseFloat(negative);
+                queue.push(rene); 
+            }
+            if(!isNaN(str[i])||str[i]=='.')//如果是数字或者小数点进入
+            {
+                if(!isNaN(str[i+1])||str[i+1]=='.'||flag==1)
+                {
+                    float+=str[i];
+                    flag=1;
+                    if(isNaN(str[i+1])&&str[i+1]!='.'){
+                        float=parseFloat(float);
+                        queue.push(float);
+                        float="";
+                        flag=0;
+                    }
+                }
+                else{
+                    queue.push(str[i]);
+                }
+            }
+           else{
+                if(str[i]=='(')//左括号直接入栈
+                {
+                    stack.push(str[i]);
+                }
+                else if(str[i]==')')
+                {
+                    while(stack.peek() != "(" )
+                    {
+                        queue.push(stack.pop());
+                    }
+                    stack.pop();//删除左括号
+                }
+                else{
+                    var compare=Sign(stack.peek(),str[i]);
+                    if(compare==-1)
+                        stack.push(str[i]);
+                    else{
+                        do{
+                            queue.push(stack.pop());
+                        }while(Sign(stack.peek(),str[i])>0);
+                        stack.push(str[i]);
+                    }
+                }
+                console.log(queue);
+            }
+        }
+        console.log(queue);
+        return(queue);
+    }
+    //后缀表达式计算
+    function cout(item){
+            var str=item;
+            var outStack=new Stack();
+            for(var i=0;i<item.length;i++)
+            {
+                if(!isNaN(str[i]))//数字入栈
+                {
+                    
+                    outStack.push(str[i]);
+                }
+                else{
+                    var str1=parseFloat(outStack.pop());
+                    //遇到符号将栈顶的数字弹出
+                    var str2=parseFloat(outStack.pop());
+                    //后弹出的在前先弹出的在后
+                    switch(str[i]){
+                        case '+': outStack.push(str2+str1);
+                        break;
+                        case '-': outStack.push(str2-str1);
+                        break;
+                        case '*': outStack.push(str2*str1);
+                        break;
+                        case '/': outStack.push(str2/str1);
+                        break;
+                    }
+                }
+            }
+            return(outStack.pop());
+        }
+    //括号匹配
+      function zf(s){
+        var a=[];
+        a.push("#");
+        for(var i=0;i<s.length;i++)
+        {
+            if(s[i]=='('||s[i]=='['||s[i]=='{')
+                a.push(s[i]);
+            if(s[i]==')'){
+                var b=a.pop();
+                if(b!='(')
+                    return 1;
+            }
+            if(s[i]==']'){
+                var b=a.pop();
+                if(b!='['){
+                    return 1;
+                }
+            }
+            if(s[i]=='}'){
+                var b=a.pop();
+                if(b!='{')
+                    return 1;
+            }
+        }
+        if(a.pop()!="#")
+            return 1;
+        else
+            return 0;
+    }
+    var flag=1;
+    //AC清空
+    function Clear(){
+        var display=document.getElementById("show");
+        var showd=document.getElementById("show1");
+        showd.value="";
+        display.value="";
+        return 0;
+    }
+    //DEL删除
+    function Delete(){
+        var display=document.getElementById("show");
+        var results="";
+        for(var i=0;i<display.value.length-1;i++){
+            results+=display.value[i];
+        }
+        display.value=results;
+    }
+    //点击按钮触发事件
+    function Button(thing){
+        var display=document.getElementById("show");
+        var number=thing.value;
+        var i=0,j=0,c=1,remember=0;
+        if(flag==0){
+            display.value="";
+            flag=1;
+        }
+        if(number=="."){
+            while(i<display.value.length)
+            {
+                i++;
+            }
+            if(display.value[i-1]=="."||isNaN(display.value[i-1])){
+                    alert("已经点过了，请重新检查！");
+                    return 0;
+                }
+            
+            for(var i=0;i<display.value.length;i++)
+            {
+                if(display.value[i-1]==".") remember=1;
+            }
+            if(remember==1)
+            {
+                alert("输入小数点过多！");
+                return 0;
+            }
+        }
+        if((number==".")&&display.value==""){
+            alert("请检查是否已经输入了数字!");
+            flag=0;
+        }
+        if(number=="+"||number=="/"||number=="*"||number=="-"){
+            while(i<display.value.length)
+            {
+                i++;
+            }
+            if(display.value[i-1]=='.'){
+                alert("不符合规范请重新检查！");
+                return 0;
+            }
+            if(display.value[i-1]=="+"||display.value[i-1]=="-"||display.value[i-1]=="/"||display.value[i-1]=="*"){
+                Delete();
+            }
+        }
+        if((number=="/"||number=="*")&&display.value==""){
+            alert("请检查是否已经输入数字！");
+            flag=0;
+        }
+        if(flag==1){
+            display.value+=number;
+        }
+    }
+    //中缀按钮
+    function Middle(){
+        var display=document.getElementById("show");
+        var ss=document.getElementById("show1");
+        var b=zf(display.value);
+        if(b==1){
+            alert("括号匹配错误!");
+        }
+        for(var i=0;i<display.value.length;i++){
+            if(display.value[i]=='/'){
+                var sth=display.value;
+                if(display.value[i+1]==0){
+                    alert("除数不能为0!");
+                    return;
+                }
+            }
+        }
+        var a=[];
+        a=display.value+'#';
+        var num=Infix(a);
+        ss.value=display.value;
+        display.value=num.toFixed(4);
+    }
+    //中缀转后缀按钮
+    function Turn(){
+        var display=document.getElementById("show");
+        var a=[];
+        a=display.value+'#';
+        var thing=Change(a);
+        display.value=thing;
+        flag=0;
+    }
+    //后缀计算按钮
+    function Stacka(){
+        var display=document.getElementById("show");
+        var str=display.value;
+        var outStack=new Stack();
+        var float="";
+        for(var i=0;i<display.value.length;i++)
+        {
+            if(!isNaN(str[i])||str[i]=='.')//如果是数字或者小数点进入
+            {
+                if(!isNaN(str[i+1])||str[i+1]=='.'||flag==1)
+                    {
+                        float+=str[i];
+                        flag=1;
+                        if(isNaN(str[i+1])&&str[i+1]!='.'){
+                            float=parseFloat(float);
+                            outStack.push(float);
+                            float="";
+                            flag=0;
+                        }
+                    }
+                    else{
+                        outStack.push(str[i]);
+                    }
+            }
+            if((str[i]=='+'||str[i]=='/'||str[i]=='*'||str[i]=='-')&&str[i]!=','){
+                var str1=parseFloat(outStack.pop());//遇到符号将栈顶的数字弹出
+                var str2=parseFloat(outStack.pop());//后弹出的在前先弹出的在后
+                switch(str[i]){
+                    case '+': outStack.push(str2+str1);
+                    break;
+                    case '-': outStack.push(str2-str1);
+                    break;
+                    case '*': outStack.push(str2*str1);
+                    break;
+                    case '/': outStack.push(str2/str1);
+                    break;
+                }
+                console.log(str[i]);
+            }
+        }
+        display.value=outStack.pop().toFixed(4);
+        flag=0;
+    }
+    //‘ = ’计算
+    function Finally(){
+        var display=document.getElementById("show");
+        var ss=document.getElementById("show1");
+        var b=zf(display.value);
+        if(b==1){
+            alert("括号匹配错误!");
+        }
+        for(var i=0;i<display.value.length;i++){
+            if(display.value[i]=='/'){
+                var sth=display.value;
+                if(display.value[i+1]==0){
+                    alert("除数不能为0!");
+                    return;
+                }
+            }
+        }
+        var a=[];
+        console.log(display.value);
+        a=display.value+'#';
+        var thing=Change(a);
+        console.log(a);
+        console.log(thing);
+        var num=cout(thing);
+        console.log(num);
+        display.value=num.toFixed(4);
+        ss.value=thing;
+    }
+</script>
+</html>
+<!-- 
+//中缀计算
+function Infix(item){
+    var str = item;
+    var stack = new Stack();
+    stack.push("#");                       //将#字压入栈
+    var outStack = new Array();
+    var small = "";
+    var negative="";
+    var rene=0;
+    var flag = 1;
+    for(var i=0;i<item.length;i++){
+        if((str[i]=='-'&&i==0)||(str[i]=='-'&&str[i-1]=='(')){
+            i++;
+            while(!isNaN(str[i])||str[i]=='.'){
+                negative+=str[i];
+                i++;
+            }
+            rene=rene-parseFloat(negative);
+            outStack.push(rene); 
+        }
+        if(!isNaN(str[i])||str[i]=='.')//如果是数字或者小数点进入
+        {
+             console.log(str[i]);
+            if(!isNaN(str[i+1])||str[i+1]=='.'||flag==1)
+            {
+                small+=str[i];
+                flag=1;
+                if(isNaN(str[i+1])&&str[i+1]!='.'){
+                    small=parseFloat(small);
+                    outStack.push(small);
+                    small="";
+                    flag=0;
+                }
+            }
+            else{
+                outStack.push(str[i]);
+            }
+        }
+        else{
+            var txt = stack.peek();
+            if( str[i] == '('){
+                stack.push(str[i]);
+            }
+            else if( str[i] == ')'){
+                for(var j = i + 1 ; stack.peek() != "(" ; j--){  //符号判断完不进行入栈操作，而是进行弹出运算
+                    var a1 = parseFloat(outStack.pop());
+                    var a2 = parseFloat(outStack.pop());
+                    var a3 = stack.pop();
+                    switch(a3){
+                        case'+':outStack.push(a2 + a1);
+                        break;
+                        case'-':outStack.push(a2 - a1);
+                        break;
+                        case'*':outStack.push(a2 * a1);
+                        break;
+                        case'/':outStack.push(a2 / a1);
+                        break;
+                        }
+                    }
+                    stack.pop();                     
+            }
+            else{
+                var relationship = Sign(txt,str[i]);
+                if( relationship == -1){
+                    stack.push(str[i]);
+                }
+                else if(relationship >= 0){
+                    do{
+                        var b1 = parseFloat(outStack.pop());
+                        var b2 = parseFloat(outStack.pop());
+                        var a3 = stack.pop();
+                        switch(a3){
+                            case'+':outStack.push(b2 + b1);
+                            break;
+                            case'-':outStack.push(b2 - b1);
+                            break;
+                            case'*':outStack.push(b2 * b1);
+                            break;
+                            case'/':outStack.push(b2 / b1);
+                            break;
+                        }
+                    }while(Sign(stack.peek(),str[i])>0);
+                    stack.push(str[i]);
+                }
+            }
+        }
+    }
+    return(outStack.pop());
+}  -->
+
+<!-- //阶乘计算
+function Do(){
+    var display=document.getElementById("show");
+    display=Number(display.value);
+    var res=1;
+    if(display%1 !== 0){
+        res="";
+        alert("不是整数，请仔细检查！");
+    }
+    else{
+        for(i=1;i<=parseInt(display);i++){
+            res=res*i;
+        }
+    }
+    document.getElementById("show").value=res;
+}
+//开方计算
+function Sq(){
+    var display=document.getElementById("show");
+    if(display.value<0){
+        display.value="";
+        alert("开方数必须大于零！");
+    }
+    else{
+        display.value=(Math.sqrt(display.value)).toFixed(4);
+    }
+} -->
