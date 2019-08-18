@@ -1,0 +1,25 @@
+﻿js中创建函数的三种方式:
+第一种（函数声明）： 
+
+function sum1(num1,num2){
+   return num1+num2;
+}
+sum1(10,20);
+
+第二种（函数表达式）：
+
+var sum2 = function(num1,num2){
+   return num1+num2;
+}
+sum(10,20);
+
+第三种（函数对象方式）：
+
+var sum3 = new Function("num1","num2","return num1+num2");
+
+//var 函数名 = new Function(“参数...”,”函数体”);
+    var sum = new Function("num1,num2","return num1+num2");
+    var result1 = sum(120,130);
+    alert(result1);
+
+
