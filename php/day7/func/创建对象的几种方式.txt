@@ -1,0 +1,58 @@
+//对象字面量
+var 对象名 = {
+    属性名: 值， // 给对象添加属性
+    属性名（函数名）: function(){
+
+    }  // 给对象添加方法
+ }
+对象的访问：
+对象.属性名
+
+var o = {
+  name: 'zs',
+  age: 18,
+  sex: true,
+  sayHi: function () {
+    console.log(this.name);
+  }
+};
+o.name;
+o.sayHi();
+
+//工厂函数创建对象
+function createPerson(name, age, job) {
+  var person = new Object();
+  person.name = name;
+  person.age = age;
+  person.job = job;
+  person.sayHi = function(){
+    console.log('Hello,everyBody');
+  }
+  return person;
+}
+var p2 = createPerson('张三', 22, 'actor');
+console.log(p2);
+
+
+//自定义构造函数
+  function 对象名(){
+    this.属性名 = 值; // 给对象添加属性
+    this.函数名 = function(){}  //给对象添加方法
+    }
+
+    使用
+    var 变量名 = new 对象名() // 创建一个对象的实例
+    变量名.属性名
+
+
+
+function Person(name,age,job){
+  this.name = name;
+  this.age = age;
+  this.job = job;
+  this.sayHi = function(){
+  	console.log('Hello,everyBody');
+  }
+}
+var p3 = new Person('张三', 22, 'actor');
+console.log(p3)
