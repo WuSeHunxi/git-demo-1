@@ -43,24 +43,24 @@ foreach ($lines as $item) {
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($data as $line): ?>
+      <?php foreach ($data as $line){ ?>
       <tr>
-        <?php foreach ($line as $col): ?>
-        <!-- $col => ' http://XEP.VC' -->
-        <?php $col = trim($col); ?><!--去掉空格-->
-        <!-- $col => 'http://XEP.VC' -->
-        <!-- 判断这里的数据是不是一个网址（看看是否是 http://） -->
-        <!--获取该字符串的位置-->
-        <?php if (strpos($col, 'http://') === 0): ?>
+        <?php foreach ($line as $col){ 
+        //<!-- $col => ' http://XEP.VC' -->
+        $col = trim($col); //<!--去掉空格-->
+        //<!-- $col => 'http://XEP.VC' -->
+        //<!-- 判断这里的数据是不是一个网址（看看是否是 http://） -->
+        //<!--获取该字符串的位置-->
+        if (strpos($col, 'http://') === 0){ ?>
           <!-- 将字符串中的内容全部转成小写 -->               <!-- 字符串的截取,从第7位开始截取 -->
           <!-- href里面本来就是网址，网址都是小写的，通过字符串截取的内容就是a标签的内容 -->
           <td><a href="<?php echo strtolower($col); ?>"><?php echo substr($col, 7); ?></a></td>
-        <?php else: ?>
+        <?php }else{ ?>
           <td><?php echo $col; ?></td>
-        <?php endif ?>
-        <?php endforeach ?>
+        <?php }?>
+        <?php }?>
       </tr>
-      <?php endforeach ?>
+        <?php }?>
     </tbody>
   </table>
 </body>
