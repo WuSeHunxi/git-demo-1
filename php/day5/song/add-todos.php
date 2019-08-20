@@ -9,7 +9,7 @@ function add () {
 
   // TODO: 接收音乐文件
 
-  // TODO:
+  // TODO: 组成新的数据保存到文件中
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

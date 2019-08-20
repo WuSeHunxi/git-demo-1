@@ -1,6 +1,8 @@
 <?php
 
 function add () {
+
+  //要把添加的数据一json的格式保存到data.json文件中
   // 目标：接收客户端提交的数据和文件，最终保存到数据文件中
   $data = array(); // 准备一个空的容器，用来装最终要保存的 数据
   $data['id'] = uniqid();
@@ -34,7 +36,7 @@ function add () {
 
   // 遍历这个文件域中的每一个文件（判断是否成功、判断类型、判断大小、移动到网站目录中）
   for ($i = 0; $i < count($images['name']); $i++) {
-    // $images['error'] => [0, 0, 0]
+    // $images['error']是索引数组 => [0, 0, 0]
     if ($images['error'][$i] !== UPLOAD_ERR_OK) {
       $GLOBALS['error_message'] = '上传海报文件失败1';
       return;
@@ -47,20 +49,24 @@ function add () {
       return;
     }
 
-    // TODO: 文件大小的判断
+    // TODO:    
     if ($images['size'][$i] > 1 * 1024 * 1024) {
       $GLOBALS['error_message'] = '上传海报文件过大';
       return;
     }
 
     // 移动文件到网站范围之内
-    $dest = '../uploads/' . uniqid() . $images['name'][$i];
+    //uniqid()实现重命名，当上传的文件是同一个的话会造成覆盖，但是实际上是想让他实现重命名的结果
+    $dest = '../uploads/' . uniqid() . $images['name'][$i]; 
     if (!move_uploaded_file($images['tmp_name'][$i], $dest)) {
       $GLOBALS['error_message'] = '上传海报文件失败2';
       return;
     }
 
+    //海报路径
     $data['images'][] = substr($dest, 2);
+
+    var_dump($data['images']);
   }
 
   // 3. 接收音乐文件
@@ -78,13 +84,16 @@ function add () {
     $GLOBALS['error_message'] = '上传音乐文件失败1';
     return;
   }
+
+//校验文件上传的种类和大小
+
   // 判断类型是否允许
   $source_allowed_types = array('audio/mp3', 'audio/wma');
   if (!in_array($source['type'], $source_allowed_types)) {
     $GLOBALS['error_message'] = '上传音乐文件类型错误';
     return;
   }
-  // 判断大小
+  // 判断大小 
   if ($source['size'] < 1 * 1024 * 1024) {
     $GLOBALS['error_message'] = '上传音乐文件过小';
     return;
@@ -99,6 +108,8 @@ function add () {
     $GLOBALS['error_message'] = '上传音乐文件失败2';
     return;
   }
+
+  // 上传成功
   // 将数据装起来
   // 保存数据的路径一定使用绝对路径存
   $data['source'] = substr($target, 2);
@@ -106,11 +117,15 @@ function add () {
   // 4. 将数据加入到原有数据中
   $json = file_get_contents('data.json');
   $old = json_decode($json, true);
+  //添加到数组中
   array_push($old, $data);
+  //重新编码
   $new_json = json_encode($old);
+
+  //用新的数据重新覆盖数据
   file_put_contents('data.json', $new_json);
 
-  // 5. 跳转
+  // 5. 跳转 （新增成功跳转回列表页）
   header('Location: list.php');
 }
 
@@ -148,12 +163,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
       <div class="form-group">
         <label for="images">海报</label>
-        <!-- multiple 可以让一个文件域多选 -->
+        <!-- multiple 可以让一个文件域多选 -->               <!-- 多文件上传的特点 -->
         <input type="file" class="form-control" id="images" name="images[]" accept="image/*" multiple>
       </div>
       <div class="form-group">
         <label for="source">音乐</label>
-        <!-- accept 可以设置两种值分别为  MIME Type / 文件扩展名 -->
+        <!-- accept 可以限制文件域能够选择的文件种类，也可以设置两种值分别为  MIME Type / 文件扩展名 -->
+                                                          <!-- accept此时表示的时只允许上传音乐类型的文件 -->
         <input type="file" class="form-control" id="source" name="source" accept="audio/*">
       </div>
       <button class="btn btn-primary btn-block">保存</button>

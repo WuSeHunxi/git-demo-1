@@ -4,7 +4,9 @@
 // 通过执行某些PHP代码获取到指定的数据，填充到HTML的指定位置
 
 $json = file_get_contents('data.json');
+//拿到json格式的数据
 
+//加上true参数，解析成关联数组
 $data = json_decode($json, true);
 
 if (!$data) {
