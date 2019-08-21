@@ -5,7 +5,7 @@ function add () {
   //要把添加的数据一json的格式保存到data.json文件中
   // 目标：接收客户端提交的数据和文件，最终保存到数据文件中
   $data = array(); // 准备一个空的容器，用来装最终要保存的 数据
-  $data['id'] = uniqid();
+  $data['id'] = uniqid(); //给新添加的数据也加上id，方便后面使用
 
   // 1. 接收提交的文本内容
   // ===================================================
@@ -18,7 +18,7 @@ function add () {
     return;
   }
 
-  // 记下 title 和 artist
+  // 记下 title 和 artist  向空容器中装入title和artist
   $data['title'] = $_POST['title'];
   $data['artist'] = $_POST['artist'];
 
@@ -63,7 +63,7 @@ function add () {
       return;
     }
 
-    //海报路径
+    //添加海报移动之后的路径
     $data['images'][] = substr($dest, 2);
 
     var_dump($data['images']);
@@ -78,6 +78,12 @@ function add () {
 
   $source = $_FILES['source'];
   // => { name: , tmp_name .... }
+  
+  //判断是否上传成功
+  //判断类型是否允许
+  //判断大小
+  //移动
+  //将数据装起来
 
   // 判断是否上传成功
   if ($source['error'] !== UPLOAD_ERR_OK) {
@@ -89,6 +95,7 @@ function add () {
 
   // 判断类型是否允许
   $source_allowed_types = array('audio/mp3', 'audio/wma');
+  //在数组中寻找是否有该类型
   if (!in_array($source['type'], $source_allowed_types)) {
     $GLOBALS['error_message'] = '上传音乐文件类型错误';
     return;
@@ -112,7 +119,7 @@ function add () {
   // 上传成功
   // 将数据装起来
   // 保存数据的路径一定使用绝对路径存
-  $data['source'] = substr($target, 2);
+  $data['source'] = substr($target, 2); //为了得到绝对路径
 
   // 4. 将数据加入到原有数据中
   $json = file_get_contents('data.json');
