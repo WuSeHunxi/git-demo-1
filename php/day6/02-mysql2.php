@@ -3,12 +3,12 @@
 // 查询数据的查询语句
 
 // 1. 建立与数据库服务器之间的连接
-$connection = mysqli_connect('127.0.0.1', 'root', '123456', 'demo2');
+$connection = mysqli_connect('127.0.0.1', 'root', '', 'demo2');
 
 // 1. 必须在查询数据之前
 // 2. 必须传入连接对象和编码
-mysqli_set_charset($connection, 'utf8');
-// mysqli_query($connection, 'set names utf8;');
+mysqli_set_charset($connection, 'utf8'); //当php查询中文时出现的编码问题的解决方法
+// mysqli_query($connection, 'set names utf8;'); //这是上述问题的另一种方案，但不常用
 
 if (!$connection) {
   // 连接数据库失败
