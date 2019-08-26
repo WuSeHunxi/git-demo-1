@@ -10,7 +10,7 @@
 // 如果需要在调用函数时忽略错误或者警告可以在函数名之前加上 @
 
 // 1. 建立与数据库服务器之间的连接
-$connection = mysqli_connect('127.0.0.1', 'root', '123456', 'demo2');
+$connection = @mysqli_connect('127.0.0.1', 'root', '123456', 'demo2');
 
 if (!$connection) {
   // 连接数据库失败
@@ -24,7 +24,7 @@ $query = mysqli_query($connection, 'select * from users;');
 
 // 等着三蹦子去取数据  取一行
 $row = mysqli_fetch_assoc($query);
-while ($row) {
+while ($row) { //每循环一次$row都会发生改变
   var_dump($row);
   $row = mysqli_fetch_assoc($query);
 }
