@@ -25,6 +25,6 @@ $row=mysqli_fetch_assoc($query);
 var_dump($row);
 
 //当在数据库中取数据时，通常利用while循环
-while($row=mysqli_fetch_assoc($query);){
+while($row=mysqli_fetch_assoc($query)){
     var_dump($row);
 }
