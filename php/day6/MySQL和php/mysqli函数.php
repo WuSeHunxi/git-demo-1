@@ -33,8 +33,8 @@ while($row=mysqli_fetch_assoc($query)){
     var_dump($row);
 } 
 
-//释放
-mysqli_free($query);
+//释放查询的结果集
+mysqli_free_result($query);
 
 //炸桥（连接完毕后就需要断开连接）
 mysqli_close($connect);
