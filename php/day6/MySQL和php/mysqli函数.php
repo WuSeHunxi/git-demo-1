@@ -8,11 +8,11 @@
 
 //建立与数据库服务器之间的连接
 
-$connect=@mysqli_connect('127.0.0.1','demo2'); // 本机  用户名  密码  要连接的数据库  
+$connect=@mysqli_connect('127.0.0.1','root','demo2'); // 本机  用户名  密码  要连接的数据库  
 
 if(!$connect){
     //数据库连接失败
-    exit('<h1>连接数据库失败</h1>');
+    // exit('<h1>连接数据库失败</h1>');
 }
 
 // 查询语句 
@@ -23,3 +23,8 @@ var_dump($query);
 //去取数据
 $row=mysqli_fetch_assoc($query);
 var_dump($row);
+
+//当在数据库中取数据时，通常利用while循环
+while($row=mysqli_fetch_assoc($query);){
+    var_dump($row);
+}
