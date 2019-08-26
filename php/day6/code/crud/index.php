@@ -1,13 +1,13 @@
 <?php
 
-// 1. 建立连接
-$conn = mysqli_connect('localhost', 'root', '123456', 'test');
+// 1. 建立连接                                       数据库的名字
+$conn = mysqli_connect('localhost', 'root', '', 'test');
 
 if (!$conn) {
   exit('<h1>连接数据库失败</h1>');
 }
 
-// 2. 开始查询
+// 2. 开始查询                             
 $query = mysqli_query($conn, 'select * from users;');
 
 if (!$query) {
