@@ -8,7 +8,7 @@
 
 //建立与数据库服务器之间的连接
 
-$connect=@mysqli_connect('127.0.0.1','root','demo2'); // 本机  用户名  密码  要连接的数据库  
+$connect=@mysqli_connect('127.0.0.1','demo2'); // 本机  用户名  密码  要连接的数据库  
 
 if(!$connect){
     //数据库连接失败
