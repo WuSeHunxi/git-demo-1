@@ -23,12 +23,12 @@ $query = mysqli_query($connection, 'select * from users;');
 // var_dump($query);
 
 // 等着三蹦子去取数据  取一行
-// $row = mysqli_fetch_assoc($query);
-// while ($row) {
-//   var_dump($row);
-//   $row = mysqli_fetch_assoc($query);
-// }
-// var_dump($row);
+$row = mysqli_fetch_assoc($query);
+while ($row) {
+  var_dump($row);
+  $row = mysqli_fetch_assoc($query);
+}
+var_dump($row);
 
 // while
 //
