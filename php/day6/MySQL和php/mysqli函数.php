@@ -10,10 +10,10 @@
 
 $connect=@mysqli_connect('127.0.0.1','root','demo2'); // 本机  用户名  密码  要连接的数据库  
 
-// if(!$connect){
-//     //数据库连接失败
-//     exit('<h1>连接数据库失败</h1>');
-// }
+if(!$connect){
+    //数据库连接失败
+    exit('<h1>连接数据库失败</h1>');
+}
 
 // 查询语句 
 // 基于刚才创建的连接对象得到一个查询对象，这个查询对象可以用来再到数据一行一行拿数据
@@ -21,4 +21,5 @@ $query=mysqli_query($connect,'select * from users;'); // 建立的连接 SQL语�
 var_dump($query);
 
 //去取数据
-mysqli_fetch_assoc($query);
+$row=mysqli_fetch_assoc($query);
+var_dump($row);
