@@ -7,12 +7,13 @@
 
 
 //建立与数据库服务器之间的连接
-
+//返回值是一个连接
 $connect=@mysqli_connect('127.0.0.1','root','123456','demo2'); // 本机  用户名  密码  要连接的数据库  
+var_dump($connect);
 
-if(!$connect){
+if(!$connect){ //false 
     //数据库连接失败
-    // exit('<h1>连接数据库失败</h1>');
+    // exit('<h1>连接数据库失败</h1>');  // 数据库提示
 }
 
 // 查询语句 
@@ -33,8 +34,10 @@ while($row=mysqli_fetch_assoc($query)){
     var_dump($row);
 } 
 
+
 //释放查询的结果集
 mysqli_free_result($query);
+
 
 //炸桥（连接完毕后就需要断开连接）
 mysqli_close($connect);
