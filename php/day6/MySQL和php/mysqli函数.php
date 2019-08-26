@@ -24,7 +24,17 @@ var_dump($query);
 $row=mysqli_fetch_assoc($query);
 var_dump($row);
 
+if(!$query){
+    exit('<h1>查询失败</h1>');
+}
+
 //当在数据库中取数据时，通常利用while循环
 while($row=mysqli_fetch_assoc($query)){
     var_dump($row);
-}
+} 
+
+//释放
+mysqli_free($query);
+
+//炸桥（连接完毕后就需要断开连接）
+mysqli_close($connect);
