@@ -57,6 +57,7 @@ function edit () {
   if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
     // 用户上传了新头像 -> 用户希望修改头像
     $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+    //                            以字符串的形式返回唯一标识符
     $target = '../uploads/avatar-' . uniqid() . '.' . $ext;
     if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $target)) {
       $GLOBALS['error_message'] = '上传头像失败';
