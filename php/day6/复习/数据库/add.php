@@ -46,6 +46,24 @@ function add_etst(){
 
     // 得到绝对路径
     $avatar=substr($target,2);
+
+    // 连接数据库
+    $connect=mysqli_connect('127.0.0.1','root','','test');
+    if(!$connect){
+        $GLOBALS['error_message']='连接数据库失败';
+        return;
+    }
+
+    // 开始查询
+    $query=mysqli_fetch_assoc($connect,'select * from users;');
+
+    if(!$query){
+        $GLOBALS['error_message']='查询过程失败';
+        return;
+    }
+
+    // 跳转
+    header('Location:index.php');
 }
 
 if($_POST['REQUEST_METHOD']==='POST'){
