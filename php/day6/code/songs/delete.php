@@ -12,6 +12,7 @@ if (empty($_GET['id'])) {
 $id = $_GET['id'];
 
 // 找到要删除的数据
+// 首先打开文件，然后通过接收到的id值寻找要删除的数据
 $data = json_decode(file_get_contents('data.json'), true);
 foreach ($data as $item) {
   // 不是我们要的之间找下一条
@@ -19,8 +20,9 @@ foreach ($data as $item) {
   // $item => 我们要删除的那一条数据
 
   // 从原有数据中移除
-  $index = array_search($item, $data);
-  array_splice($data, $index, 1);
+  $index = array_search($item, $data); // 得到找到的数据的索引
+  // 要删除得数据  索引  删除几个
+  array_splice($data, $index, 1);  // 通过索引删除数据
 
   // 保存删除指定数据过后的内容
   // echo '<pre>';
