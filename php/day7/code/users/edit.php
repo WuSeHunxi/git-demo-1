@@ -60,6 +60,7 @@ function edit () {
     // PATHINFO_EXTENSION：表示后缀名
     $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
     //                            以字符串的形式返回唯一标识符
+    // 移动目标的地址自行创建 
     $target = '../uploads/avatar-' . uniqid() . '.' . $ext;
     if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $target)) {
       $GLOBALS['error_message'] = '上传头像失败';

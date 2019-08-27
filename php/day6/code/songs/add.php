@@ -96,6 +96,7 @@ function add () {
     return;
   }
   // 移动                                    iconv()函数转换编码
+  // 移动到目标目录之后是得到的唯一标识id和原来的名字进行字符串拼接
   $target = '../uploads/' . uniqid() . '-' . iconv('UTF-8', 'GBK', $source['name']);
   if (!move_uploaded_file($source['tmp_name'], $target)) {
     $GLOBALS['error_message'] = '上传音乐文件失败2';
