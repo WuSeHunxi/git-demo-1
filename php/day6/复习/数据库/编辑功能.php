@@ -1,80 +1,70 @@
 <?php
 
-// 接收要修改的数据 ID
-if (empty($_GET['id'])) {
-  exit('<h1>必须传入指定参数</h1>');
+if(empty($_GET['id'])){
+    exit('<h1>必须要传入指定的参数</h1>');
 }
 
-$id = $_GET['id'];
+$id=$_GET['id'];
 
-// 1. 建立连接
-$conn = mysqli_connect('localhost', 'root', '123456', 'test');
-
-if (!$conn) {
-  exit('<h1>连接数据库失败</h1>');
-}
-
-// 2. 开始查询
-// 因为 ID 是唯一的 那么找到第一个满足条件的就不用再继续了 limit 1
-$query = mysqli_query($conn, "select * from users where id = {$id} limit 1;");
-
-if (!$query) {
-  exit('<h1>查询数据失败</h1>');
-}
-
-// 已经查询到的当前数据
-$user = mysqli_fetch_assoc($query);
-
-if (!$user) {
-  exit('<h1>找不到你要编辑的数据</h1>');
-}
-
-function edit () {
-  global $user; //php的语法：全局变量在函数中的使用
-
-  // 验证非空
-  if (empty($_POST['name'])) {
-    $GLOBALS['error_message'] = '请输入姓名';
+$connect=mysqli_connect('127.0.0.1','root','','test');
+if(!$connect){
+    $GLOBALS['error_message']='连接数据库失败';
     return;
-  }
+}
 
-  if (!(isset($_POST['gender']) && $_POST['gender'] !== '-1')) {
-    $GLOBALS['error_message'] = '请选择性别';
-    return;
-  }
+// 开始查询
+$query=mysqli_query($connect,"select * from users where id={$id};");
 
-  if (empty($_POST['birthday'])) {
-    $GLOBALS['error_message'] = '请输入日期';
-    return;
-  }
+if(!$query){
+    $GLOBALS['error_message']='数据库查询失败';
+    return ;
+}
 
-  // 取值
-  $user['name'] = $_POST['name'];
-  $user['gender'] = $_POST['gender'];
-  $user['birthday'] = $_POST['birthday'];
-
-  // 有上传就修改
-  if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
-    // 用户上传了新头像 -> 用户希望修改头像
-    // pathinfo() 以数组的形式返回文件路径的信息。 
-    // PATHINFO_EXTENSION：表示后缀名
-    $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-    //                            以字符串的形式返回唯一标识符
-    // 移动目标的地址自行创建 
-    $target = '../uploads/avatar-' . uniqid() . '.' . $ext;
-    if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $target)) {
-      $GLOBALS['error_message'] = '上传头像失败';
-      return;
+function edit(){
+    global $query;
+    if(empty($_POST['name'])){
+        $GLOBALS['error_message']='请输入姓名';
+        return;
     }
-    $user['avatar'] = substr($target, 2);
-  }
 
-  // $user => 修改过后的信息
-  // TODO: 将数据更新回数据库
+    // 性别判断
+    if(!(asset($_POST['gender'])&&$_POST['gender']!=='-1')){
+        $GLOBALS['error_message']='请输入性别';
+        return;
+    }
+
+    if(empty($_POST['birthday'])){
+        $GLOBALS['error_message']='请选择你的生日';
+        return ;
+    }
+
+    // 取值
+    $query['name']=$_POST['name'];
+    $query['gender']=$_POST['gender'];
+    $query['birthday']=$_POST['birthday'];
+
+    // 文件上传
+    if($_FILES['avatar']['error']===UPLOAD_ERR_OK){
+      $ext=pathinfo($_FILES['avatar']['name'],PATHINFO_EXTENSION);
+      $target='./uploads/avatar-'.uniqid().'.'.$ext;
+      if(!move_uploaded_file($_FILES['tmp_name'],$target)){
+        $GLOBALS['error_message']='上传头像失败';
+        return;
+      }
+      $query['avatar']=substr($target,2);
+    }
+
+    $data=[];
+    $old=file_get_contents('data.json');
+    $json=json_decode($data,true);
+    array_push($json,$data);
+    $new_json=json_encode($json);
+    file_put_contents('data.json',$new_json);
+
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  edit();
+if($_POST['REQUEST_METHOD']==='POST'){
+    edit();
 }
 
 ?>

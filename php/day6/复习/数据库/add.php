@@ -55,7 +55,7 @@ function add_etst(){
     }
 
     // 开始查询
-    $query=mysqli_fetch_assoc($connect,'select * from users;');
+    $query=mysqli_query($connect,'select * from users;');
 
     if(!$query){
         $GLOBALS['error_message']='查询过程失败';
