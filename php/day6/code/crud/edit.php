@@ -56,6 +56,7 @@ if (!$user) {
     <form>
       <div class="form-group">
         <label for="avatar">头像</label>
+        <!-- 头像是文件，文件域是没有默认值的，因为文件来自于客户端，没有办法确定客户端传过来的是什么文件 -->
         <input type="file" class="form-control" id="avatar">
       </div>
       <div class="form-group">
@@ -66,6 +67,7 @@ if (!$user) {
       <!-- 性别的默认选项和select有关 -->
         <label for="gender">性别</label>
         <select class="form-control" id="gender">
+          <!-- option非普通input设置value -->
           <option value="-1">请选择性别</option>
           <!-- 注意下面的三元表达式中selected有空格 -->
           <option value="1"<?php echo $user['gender'] === '1' ? ' selected': ''; ?>>男</option>

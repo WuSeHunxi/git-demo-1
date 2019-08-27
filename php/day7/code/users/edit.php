@@ -30,7 +30,7 @@ if (!$user) {
 }
 
 function edit () {
-  global $user;
+  global $user; //php的语法：全局变量在函数中的使用
 
   // 验证非空
   if (empty($_POST['name'])) {

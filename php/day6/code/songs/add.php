@@ -53,7 +53,7 @@ function add () {
       return;
     }
 
-    // 移动文件到网站范围之内
+    // 移动文件到网站范围之内            iconv()函数转换编码
     $dest = '../uploads/' . uniqid() . iconv('UTF-8', 'GBK', $images['name'][$i]);
     // move_uploaded_file 在 Windows 中文系统上要求传入的参数如果有中文必须是 GBK 编码
     // 切记在接收文件时注意文件名中文的问题，通过iconv函数转换中文编码为 GBK 编码
@@ -95,7 +95,7 @@ function add () {
     $GLOBALS['error_message'] = '上传音乐文件过大';
     return;
   }
-  // 移动
+  // 移动                                    iconv()函数转换编码
   $target = '../uploads/' . uniqid() . '-' . iconv('UTF-8', 'GBK', $source['name']);
   if (!move_uploaded_file($source['tmp_name'], $target)) {
     $GLOBALS['error_message'] = '上传音乐文件失败2';
