@@ -7,6 +7,8 @@ function add_user() {
     return;
   }
 
+  //gender不能使用empty来判断，因为性别是有值的，当没有选择性别的时候得到的参数值为-1
+  //判断性别有四种情况：0  1  -1  没有这一项
   if (!(isset($_POST['gender']) && $_POST['gender'] !== '-1')) {
     $GLOBALS['error_message'] = '请选择性别';
     return;
@@ -28,8 +30,10 @@ function add_user() {
     return;
   }
 
+  //通过pathinfo函数得到文件的扩展名
   $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
   // => jpg
+  //目标地址字符串
   $target = '../uploads/avatar-' . uniqid() . '.' . $ext;
 
   if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $target)) {
@@ -54,7 +58,8 @@ function add_user() {
   }
 
   // var_dump("insert into users values (null, '{$name}', {$gender}, '{$birthday}', '{$avatar}');");
-  // 2. 开始查询
+  // 2. 开始查询                引号的嵌套，可以使用转义，也可以使用双引号嵌套单引号
+  // '{$name}'是为了清晰地给变量名和其他字符串分界线
   $query = mysqli_query($conn, "insert into users values (null, '{$name}', {$gender}, '{$birthday}', '{$avatar}');");
 
   if (!$query) {
@@ -120,6 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <select class="form-control" id="gender" name="gender">
         <!-- 加上value值，男和女的value适合数据库的信息一致，当提交的时候不需要value的话等于-1即可 -->
           <option value="-1">请选择性别</option>
+          <!-- 没有选择性别的时候value=-1 -->
           <option value="1">男</option>
           <option value="0">女</option>
         </select>
