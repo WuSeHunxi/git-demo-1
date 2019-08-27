@@ -58,7 +58,7 @@ function add_user() {
   }
 
   // var_dump("insert into users values (null, '{$name}', {$gender}, '{$birthday}', '{$avatar}');");
-  
+
   // 2. 开始查询
   $query = mysqli_query($conn, "insert into users values (null, '{$name}', {$gender}, '{$birthday}', '{$avatar}');");
 
@@ -67,6 +67,7 @@ function add_user() {
     return;
   }
 
+  // mysqli_affected_rows函数返回前一次 MySQL 操作所影响的记录行数。
   $affected_rows = mysqli_affected_rows($conn);
 
   if ($affected_rows !== 1) {
