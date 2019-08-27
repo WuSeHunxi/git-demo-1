@@ -41,6 +41,7 @@ function add_user() {
     return;
   }
 
+  // 得到绝对路径
   $avatar = substr($target, 2);
 
   // var_dump($name);
