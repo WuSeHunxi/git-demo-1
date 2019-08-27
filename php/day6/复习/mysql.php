@@ -28,3 +28,11 @@ $row = mysqli_fetch_assoc($query);
 while ($row = mysqli_fetch_assoc($query)) {
   var_dump($row);
 }
+
+
+// 释放结果集
+mysqli_free_result($connection);
+
+
+// 关闭连接
+mysqli_close($connection);
