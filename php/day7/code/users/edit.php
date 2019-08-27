@@ -56,6 +56,8 @@ function edit () {
   // 有上传就修改
   if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
     // 用户上传了新头像 -> 用户希望修改头像
+    // pathinfo() 以数组的形式返回文件路径的信息。 
+    // PATHINFO_EXTENSION：表示后缀名
     $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
     //                            以字符串的形式返回唯一标识符
     $target = '../uploads/avatar-' . uniqid() . '.' . $ext;
