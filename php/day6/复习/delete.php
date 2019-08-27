@@ -8,3 +8,19 @@ if(empty($_GET['id'])){
 $id=$GET['id'];
 
 $data=json_decode(file_get_contents('data.json'),true);
+foreach($data as $item){
+    // 没有找到
+    if($item['id']!=$_GET['id']){
+        continue;
+    }
+    
+    // 找到了
+    $index=array_search($item,$data);
+    array_splice($data,$index,1);
+
+    // 重新保存数据
+    $json=json_encode($data);
+    file_put_contents('data.json',$json);
+
+    header('Location:list.php');
+}
