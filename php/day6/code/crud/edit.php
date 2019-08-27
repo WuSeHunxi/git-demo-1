@@ -1,5 +1,6 @@
 <?php
 
+//通过id得到想要修改的数据
 // 接收要修改的数据 ID
 if (empty($_GET['id'])) {
   exit('<h1>必须传入指定参数</h1>');
@@ -8,14 +9,14 @@ if (empty($_GET['id'])) {
 $id = $_GET['id'];
 
 // 1. 建立连接
-$conn = mysqli_connect('localhost', 'root', '123456', 'test');
+$conn = mysqli_connect('localhost', 'root', '', 'test');
 
 if (!$conn) {
   exit('<h1>连接数据库失败</h1>');
 }
 
 // 2. 开始查询
-// 因为 ID 是唯一的 那么找到第一个满足条件的就不用再继续了 limit 1
+// 因为 ID 是唯一的 那么找到第一个满足条件的就不用再继续了 limit 1 （使用了where条件就需要limit，找到了就不再找了）
 $query = mysqli_query($conn, "select * from users where id = {$id} limit 1;");
 
 if (!$query) {
