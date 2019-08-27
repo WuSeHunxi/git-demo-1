@@ -69,10 +69,11 @@ function add_user() {
     return;
   }
 
-  // 响应
+  // 响应跳转
   header('Location: index.php');
 }
 
+//判断是否能够提交
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   add_user();
 }
@@ -117,6 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="form-group">
         <label for="gender">性别</label>
         <select class="form-control" id="gender" name="gender">
+        <!-- 加上value值，男和女的value适合数据库的信息一致，当提交的时候不需要value的话等于-1即可 -->
           <option value="-1">请选择性别</option>
           <option value="1">男</option>
           <option value="0">女</option>
