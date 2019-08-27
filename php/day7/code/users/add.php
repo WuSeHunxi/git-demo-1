@@ -7,6 +7,8 @@ function add_user() {
     return;
   }
 
+  // 性别不可能没有值，因为在有这栏的时候性别的值就被赋了  
+  // 想要性别正常的话就只能是0或者1
   if (!(isset($_POST['gender']) && $_POST['gender'] !== '-1')) {
     $GLOBALS['error_message'] = '请选择性别';
     return;
@@ -17,7 +19,7 @@ function add_user() {
     return;
   }
 
-  // 取值
+  // 取值  当上述判断都成功的话就可以取到值
   $name = $_POST['name'];
   $gender = $_POST['gender'];
   $birthday = $_POST['birthday'];
@@ -28,10 +30,12 @@ function add_user() {
     return;
   }
 
+  // pathinfo函数可以得到文件路径，当使用下面这种方法的时候就可以获取到后缀名
   $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
   // => jpg
+  // 目标地址的拼接
   $target = '../uploads/avatar-' . uniqid() . '.' . $ext;
-
+                                      // 原文件地址      目标地址
   if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $target)) {
     $GLOBALS['error_message'] = '上传头像失败';
     return;
@@ -46,7 +50,7 @@ function add_user() {
   // 保存
 
   // 1. 建立连接
-  $conn = mysqli_connect('localhost', 'root', '123456', 'test');
+  $conn = mysqli_connect('localhost', 'root', '', 'test');
 
   if (!$conn) {
     $GLOBALS['error_message'] = '连接数据库失败';
@@ -54,6 +58,7 @@ function add_user() {
   }
 
   // var_dump("insert into users values (null, '{$name}', {$gender}, '{$birthday}', '{$avatar}');");
+  
   // 2. 开始查询
   $query = mysqli_query($conn, "insert into users values (null, '{$name}', {$gender}, '{$birthday}', '{$avatar}');");
 
