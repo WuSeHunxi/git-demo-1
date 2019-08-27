@@ -53,13 +53,14 @@ function add_user() {
   $conn = mysqli_connect('localhost', 'root', '123456', 'test');
 
   if (!$conn) {
+    //错误消息提醒
     $GLOBALS['error_message'] = '连接数据库失败';
     return;
   }
 
   // var_dump("insert into users values (null, '{$name}', {$gender}, '{$birthday}', '{$avatar}');");
   // 2. 开始查询                引号的嵌套，可以使用转义，也可以使用双引号嵌套单引号
-  // '{$name}'是为了清晰地给变量名和其他字符串分界线
+  // '{$name}'是为了清晰地给变量名和其他字符串分界线   变量名需要使用''包裹
   $query = mysqli_query($conn, "insert into users values (null, '{$name}', {$gender}, '{$birthday}', '{$avatar}');");
 
   if (!$query) {
@@ -67,6 +68,7 @@ function add_user() {
     return;
   }
 
+  //受影响的行数
   $affected_rows = mysqli_affected_rows($conn);
 
   if ($affected_rows !== 1) {

@@ -21,7 +21,7 @@ if (!$query) {
   exit('<h1>查询数据失败</h1>');
 }
 
-//将连接对象最后一次受影响的查询函数拿到
+//将连接对象最后一次受影响的查询行数拿到
 $affected_rows = mysqli_affected_rows($conn);
 
 if ($affected_rows <= 0) { //有多条受到影响的数据
