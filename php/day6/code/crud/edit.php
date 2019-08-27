@@ -23,6 +23,7 @@ if (!$query) {
   exit('<h1>查询数据失败</h1>');
 }
 
+//接受查询到的数据
 $user = mysqli_fetch_assoc($query);
 
 if (!$user) {
@@ -62,9 +63,11 @@ if (!$user) {
         <input type="text" class="form-control" id="name" value="<?php echo $user['name']; ?>">
       </div>
       <div class="form-group">
+      <!-- 性别的默认选项和select有关 -->
         <label for="gender">性别</label>
         <select class="form-control" id="gender">
           <option value="-1">请选择性别</option>
+          <!-- 注意下面的三元表达式中selected有空格 -->
           <option value="1"<?php echo $user['gender'] === '1' ? ' selected': ''; ?>>男</option>
           <option value="0"<?php echo $user['gender'] === '0' ? ' selected': ''; ?>>女</option>
         </select>
