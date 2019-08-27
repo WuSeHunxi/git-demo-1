@@ -10,7 +10,7 @@
 // 如果需要在调用函数时忽略错误或者警告可以在函数名之前加上 @
 
 // 1. 建立与数据库服务器之间的连接
-$connection = mysqli_connect('127.0.0.1', 'root', '123456', 'demo2');
+$connection = mysqli_connect('127.0.0.1', 'root', '', 'demo2'); //本机的密码为空
 
 if (!$connection) {
   // 连接数据库失败
