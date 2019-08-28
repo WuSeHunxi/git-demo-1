@@ -1,14 +1,14 @@
 <?php
 
 // 连接数据库
-$connect=mysqli_connect('127.0.0.1','root','','test');
+$connect=mysqli_connect('localhost','root','','test');
 
 // 检查连接横岗与否
 if(!$connect){
     $GLOBALS['error']='数据库连接失败';
 }
 
-$query=mysqli_query($connect,'select * from test;');
+$query=mysqli_query($connect,'select * from users;');
 
 if(!$query){
     $GLOBALS['error']='查询失败';
@@ -22,6 +22,8 @@ if(!$query){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
 <body>
@@ -52,15 +54,17 @@ if(!$query){
       <tbody>
       <?php while($item=mysqli_fetch_assoc($query)){ ?>
       </tr>
+      <th scope="row"><?php echo $item['id'];?></th>
       <td><?php echo $item['name'];?></td>
       <td><img src="<?php echo $item['avatar'];?>"></td>
-      <td><?php echo $item['gender']==== 0 ? '♀' : '♂';?></td>
+      <td><?php echo $item['gender']== 0 ? '♀' : '♂';?></td>
       <td><?php echo $item['birtday'];?></td>
       <td>
         <a class="btn btn-info btn-sm" href="edit.php?id=<?php echo $item['id']; ?>">编辑</a>
         <a class="btn btn-danger btn-sm" href="delete.php?id=<?php echo $item['id'];?>">删除</a>
       </td>
       </tr>
+      <?php }?>
       </tbody>
     </table>
     <ul class="pagination justify-content-center">

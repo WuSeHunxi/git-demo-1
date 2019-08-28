@@ -61,7 +61,7 @@ if (!$query) {
       <tbody>
         <?php while ($item = mysqli_fetch_assoc($query)): ?>
         <tr>
-          <th scope="row"><?php echo $item['id'] ?></th>
+          <th scope="row"><?php echo $item['id']; ?></th>
           <td><img src="<?php echo $item['avatar']; ?>" class="rounded" alt="<?php echo $item['name']; ?>"></td>
           <td><?php echo $item['name']; ?></td>
           <td><?php echo $item['gender'] == 0 ? '♀' : '♂'; ?></td>
