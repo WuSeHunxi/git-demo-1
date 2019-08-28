@@ -45,9 +45,11 @@ setcookie('key3', 'value3', time() + 1 * 24 * 60 * 60, '/users');
 setcookie('key4', 'value4', time() + 1 * 24 * 60 * 60, '', '', false, true);
 // setcookie的七个参数，可以多传，也可以少传
 
-// path：设置cookie的作用路径范围
+// $path：设置cookie的作用路径范围
 
-// domain：设置cookie的作用域名范围
+// $domain：设置cookie的作用域名范围
 
-// httponly：一旦cookie的httponly为真，那么只能在服务端获取，在js中无法获取
+// 传输： $secure（HTTPS传输）
+
+// 访问（http访问）： $httponly：一旦cookie的httponly为真，那么只能在服务端获取，在js中无法获取
 // js是客户端本地的服务，而httponly是php协议的
