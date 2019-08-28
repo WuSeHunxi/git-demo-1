@@ -50,7 +50,17 @@ if(!$query){
         </tr>
       </thead>
       <tbody>
-      
+      <?php while($item=mysqli_fetch_assoc($query)){ ?>
+      </tr>
+      <td><?php echo $item['name'];?></td>
+      <td><img src="<?php echo $item['avatar'];?>"></td>
+      <td><?php echo $item['gender']==== 0 ? '♀' : '♂';?></td>
+      <td><?php echo $item['birtday'];?></td>
+      <td>
+        <a class="btn btn-info btn-sm" href="edit.php?id=<?php echo $item['id']; ?>">编辑</a>
+        <a class="btn btn-danger btn-sm" href="delete.php?id=<?php echo $item['id'];?>">删除</a>
+      </td>
+      </tr>
       </tbody>
     </table>
     <ul class="pagination justify-content-center">
