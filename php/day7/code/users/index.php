@@ -14,6 +14,11 @@ if (!$query) {
   exit('<h1>查询数据失败</h1>');
 }
 
+// $data=mysqli_fetch_assoc($query);
+// while($data=mysqli_fetch_assoc($query)){
+//   var_dump($data);
+// }
+
 // 3. 遍历结果集
 // while ($item = mysqli_fetch_assoc($query)) {
 //   $data[] = $item;
