@@ -62,6 +62,7 @@ if (!$query) {
         <?php while ($item = mysqli_fetch_assoc($query)): ?>
         <tr>
           <th scope="row"><?php echo $item['id']; ?></th>
+          <!-- 显示的头像是从数据库中得到的，因此必须是存在的文件 -->
           <td><img src="<?php echo $item['avatar']; ?>" class="rounded" alt="<?php echo $item['name']; ?>"></td>
           <td><?php echo $item['name']; ?></td>
           <td><?php echo $item['gender'] == 0 ? '♀' : '♂'; ?></td>
