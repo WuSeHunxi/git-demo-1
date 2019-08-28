@@ -1,7 +1,7 @@
 <?php
 
 // 1. 建立连接
-$conn = mysqli_connect('localhost', 'root', '123456', 'test');
+$conn = mysqli_connect('localhost', 'root', '', 'test');
 
 if (!$conn) {
   exit('<h1>连接数据库失败</h1>');
