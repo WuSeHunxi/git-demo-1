@@ -41,9 +41,9 @@ setcookie('key2', 'value2', time() + 1 * 24 * 60 * 60);
 
 setcookie('key3', 'value3', time() + 1 * 24 * 60 * 60, '/users');
 
-// 第四个参数是路径，用来设置cookie的范围
+// 第四个参数是路径，用来设置cookie的范围                    设置HTTPS   判断是否只能使用http访问cookie
 setcookie('key4', 'value4', time() + 1 * 24 * 60 * 60, '', '', false, true);
-
+// setcookie的七个参数，可以多传，也可以少传
 
 // path：设置cookie的作用路径范围
 
