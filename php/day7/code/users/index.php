@@ -59,6 +59,7 @@ if (!$query) {
         </tr>
       </thead>
       <tbody>
+        <!-- 当有查询到数据的时候才有简历表格的必要 -->
         <?php while ($item = mysqli_fetch_assoc($query)): ?>
         <tr>
           <th scope="row"><?php echo $item['id']; ?></th>

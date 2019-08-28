@@ -112,7 +112,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="alert alert-warning">
       <?php echo $error_message; ?>
     </div>
-    <?php endif ?>
+    <?php endif ?>    
+    <!-- input 的属性autocomplete，其默认值为on，代表是否让浏览器自动记录之前输入的值，因为需要对客户的资料进行保密，因此需要将值设为off来关闭记录 -->                                  
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" autocomplete="off">
       <div class="form-group">
         <label for="avatar">头像</label>
