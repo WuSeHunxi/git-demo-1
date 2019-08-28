@@ -1,6 +1,7 @@
 <?php
 
 // 编辑的话需要从数据库中得到，然后再进行修改，即：先进行的是get请求，在进行的是post请求
+// 编辑要实现的就是讲文本域的value值都能够动态修改
 
 // 接收要修改的数据 ID
 if (empty($_GET['id'])) {
@@ -10,7 +11,7 @@ if (empty($_GET['id'])) {
 $id = $_GET['id'];
 
 // 1. 建立连接
-$conn = mysqli_connect('localhost', 'root', '123456', 'test');
+$conn = mysqli_connect('localhost', 'root', '', 'test');
 
 if (!$conn) {
   exit('<h1>连接数据库失败</h1>');
@@ -106,7 +107,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- 表单 -->                     <!-- 表单进行了get请求 -->
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>?id=<?php echo $user['id']; ?>" method="post" enctype="multipart/form-data">
       <!-- <input type="hidden" id="id" value="<?php echo $user['id']; ?>"> -->
+      <!-- 默认头像 -->
       <img src="<?php echo $user['avatar']; ?>" alt="">
+      <!-- 重新设置头像 -->
       <div class="form-group">
         <label for="avatar">头像</label>
         <!-- 文件域不能设置默认值 -->
@@ -121,6 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <select class="form-control" id="gender" name="gender">
           <option value="-1">请选择性别</option>
           <!-- 特殊的输入框的默认值一般用select来表示 -->        <!-- 为了保持正常的距离，需要加上空格 -->
+          <!-- 性别的默认情况，即option中有select的时候为 男 -->
           <option value="1"<?php echo $user['gender'] === '1' ? ' selected': ''; ?>>男</option>
           <option value="0"<?php echo $user['gender'] === '0' ? ' selected': ''; ?>>女</option>
         </select>
