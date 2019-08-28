@@ -5,5 +5,6 @@
 // 一个参数是删除cookie
 
 // 两个参数是设置cookie
+setcookie('key','value');
 
 // 三个参数是设置时间
