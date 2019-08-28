@@ -1,5 +1,19 @@
 <?php
 
+// cookie的使用场景：永久登陆  购物车
+
+// 设置cookie使用setcooki()函数
+// bool setcookie ( string $name [, string $value = "" [, int $expire = 0 [, string $path = "" [, string $domain = "" [,         bool$secure = false [, bool $httponly = false ]]]]]] )
+// $name：指定Cookie的名字
+// $value： Cookie的值（可以选择性添加）
+// $expire：设置Cookie的过期时间，默认值为0，单位为秒数，没有设置就默认为内存Cookie
+// $path： 设置Cookie的有效路径，默认是当前目录或者其子目录有效，也可以指定成整个根目录/，在整个根目录下有效
+// $domain：设置Cookie的作用域，默认在本域下
+// $secure：设置是否Cookie只能通过Https传输，默认值是false
+// $httponly：是否只是用http访问Cookie，默认值是false，如果设置成true，那么客户端的js就无法操作这个Cookie了，使用这个可以减少XSS攻击
+
+
+
 // Cookie是通过响应报文的响应头发过来的
 // 设置响应头（header）中的 Set-Cookie 可以下发小票（给客户端发）
 // Cookie 在客户端存储的是键值结构
@@ -29,3 +43,11 @@ setcookie('key3', 'value3', time() + 1 * 24 * 60 * 60, '/users');
 
 // 第四个参数是路径，用来设置cookie的范围
 setcookie('key4', 'value4', time() + 1 * 24 * 60 * 60, '', '', false, true);
+
+
+// path：设置cookie的作用路径范围
+
+// domain：设置cookie的作用域名范围
+
+// httponly：一旦cookie的httponly为真，那么只能在服务端获取，在js中无法获取
+// js是客户端本地的服务，而httponly是php协议的
