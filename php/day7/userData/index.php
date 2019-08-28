@@ -58,7 +58,7 @@ if(!$query){
       <td><?php echo $item['name'];?></td>
       <td><img src="<?php echo $item['avatar'];?>"></td>
       <td><?php echo $item['gender']== 0 ? '♀' : '♂';?></td>
-      <td><?php echo $item['birtday'];?></td>
+      <td><?php echo $item['birthday'];?></td>
       <td>
         <a class="btn btn-info btn-sm" href="edit.php?id=<?php echo $item['id']; ?>">编辑</a>
         <a class="btn btn-danger btn-sm" href="delete.php?id=<?php echo $item['id'];?>">删除</a>
