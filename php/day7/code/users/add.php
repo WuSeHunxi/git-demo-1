@@ -69,6 +69,7 @@ function add_user() {
   }
 
   // mysqli_affected_rows函数返回前一次 MySQL 操作所影响的记录行数。
+  // 返回值：	一个 > 0 的整数表示所影响的记录行数。0 表示没有受影响的记录。-1 表示查询返回错误。
   $affected_rows = mysqli_affected_rows($conn);
 
   if ($affected_rows !== 1) {
