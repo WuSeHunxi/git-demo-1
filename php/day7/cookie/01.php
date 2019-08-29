@@ -5,16 +5,23 @@
 
 // 如果设置了响应头，那么服务端就会发出一个cookie，但是是否保存要看客户端的
 
+// header()函数在设置同一个键时会覆盖，没有办法设置多个cookie
+header('Set-Cookie:foo=bar');
+// header('Set-Cookie:foo1=bar2');
 
 // http的一个特点：无状态
 
-// 一个参数是删除cookie
+// setcookie是专门设置cookie的函数
+
 
 // 两个参数是设置cookie
 setcookie('key','value');
 
-// 三个参数是设置时间
+setcookie('key'); // 一个参数是删除cookie
+
+// 三个参数是设置cookie的过期时间
 setcookie('key2','value2',time()+1 * 24 * 60 * 60);
+setcookie('key2'); // 删除key2
 
 // 七个参数的cookie
 setcookie('ket3','values',time()+1*24*60*60,'','',false,true); // 表示只能通过http访问
