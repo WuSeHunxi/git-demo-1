@@ -5,6 +5,8 @@
 if (isset($_GET['action']) && $_GET['action'] === 'close-ad') {
   // 不想看到广告
   setcookie('hide_ad', '1'); // 此时只是设置了cookie，但是没有取出cookie的值，在HTML中需要用到，因此需要下面那行代码
+
+  // ==='1' 表示取出cookie标志
   $_COOKIE['hide_ad'] === '1'; // 这行必须得有，当设置完cookie之后
 }
 
