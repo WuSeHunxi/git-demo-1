@@ -30,6 +30,8 @@ setcookie('ket3','values',time()+1*24*60*60,'','',false,false); // 即可以通�
 
 var_dump($_COOKIE);
 
+session_start();
+$_SESSION['key']='value';
 
 // path：只要在文件所在的根目录下的cookie就能够被访问
 // domain：设置访问域名，可以自设置参数字符串
