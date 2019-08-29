@@ -16,6 +16,8 @@ if (empty($_COOKIE['num']) || empty($_GET['num'])) {
     // 对比用户提交的数字和用户 Cookie 中存放的被猜的数字
     // $_GET['num'] => 用户试一试的数字
     // $_COOKIE['num'] => 被猜的数字
+
+    // 通过URL获取得到
     $result = (int)$_GET['num'] - (int)$_COOKIE['num'];
     if ($result == 0) {
       $message = '猜对了';
@@ -32,6 +34,8 @@ if (empty($_COOKIE['num']) || empty($_GET['num'])) {
   } else {
     // 游戏结束
     $message = 'looooooooooooow!';
+
+    // 删除cookie
     setcookie('num');
     setcookie('count');
   }
@@ -50,7 +54,7 @@ if (empty($_COOKIE['num']) || empty($_GET['num'])) {
 //   // 对比用户提交的数字和用户 Cookie 中存放的被猜的数字
 //   // $_POST['num'] => 用户试一试的数字
 //   // $_COOKIE['num'] => 被猜的数字
-//   $result = (int)$_POST['num'] - (int)$_COOKIE['num'];
+//   $result = (int)$_POST['num'] - (int)$_COOKIE['num']; // 转成数字的形式
 //   if ($result == 0) {
 //     echo '猜对了';
 //   } elseif ($result > 0) {
