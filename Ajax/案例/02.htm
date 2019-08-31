@@ -16,7 +16,10 @@
 
         // }
         xhr.addEventListener('readystatechange',function(){
-            
+            if(this.readyState!=4){
+                return;
+            }
+            console.log(this.responseText);
         });
     </script>
 </body>
