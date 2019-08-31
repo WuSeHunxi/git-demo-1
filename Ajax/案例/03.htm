@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+        // 创建ajax对象
+        var xhr=new XMLHttpRequest();
+
+        // 打开网页，输入网址
+        xhr.open("GET","01.php");
+
+        // 开始请求
+        xhr.send();
+
+        // 页面加载完成
+        xhr.onload=function(){
+            console.log(xhr.readyState+"hhh");
+        }
+
+    </script>
+</body>
+</html>

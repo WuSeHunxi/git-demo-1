@@ -13,6 +13,8 @@
 
     xhr.send(null)
 
+    // onload 是加载完成的事件，等价于readyState==4的情况
+
     // onload 是 HTML5 中提供的 XMLHttpRequest v2.0 定义的
     xhr.onload = function () {
       console.log(this.readyState)

@@ -16,12 +16,14 @@
     // 1. 安装浏览器（用户代理）
     //  xhr 就类似于浏览器的作用（发送请求接收响应）
     var xhr = new XMLHttpRequest()
-    
+    console.log(xhr.status==200);
+
     // 2. 打开浏览器 输入网址
     xhr.open('GET', 'http://day-11.io/time.php')
     
     // 3. 敲回车键 开始请求
     xhr.send(); // 发送请求
+    console.log(xhr.status);
 
     // 4. 等待响应
 
