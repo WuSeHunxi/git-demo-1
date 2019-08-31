@@ -9,7 +9,7 @@
 
     var xhr = new XMLHttpRequest()
 
-    // 如果需要补货第一个状态的变化，需要注意代码执行顺序的问题（不要出现来不及的情况）
+    // 如果需要捕获第一个状态（为1）的变化，需要注意代码执行顺序的问题（不要出现来不及的情况）
     // xhr.onreadystatechange = function () {
     //   // 这个事件并不是只在响应时触发，状态改变就触发
     //   // console.log(1)
@@ -28,6 +28,7 @@
       // 这个事件并不是只在响应时触发，XHR 状态改变就触发
       // console.log(1)
       if (this.readyState !== 4) return
+      
       // 获取响应的内容（响应体）
       console.log(this.responseText)
     }
