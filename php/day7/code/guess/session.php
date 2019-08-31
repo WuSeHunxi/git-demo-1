@@ -17,6 +17,7 @@ if (empty($_SESSION['num']) || empty($_GET['num'])) {
     $result = (int)$_GET['num'] - $_SESSION['num'];
     if ($result == 0) {
       $message = '猜对了';
+      // 相等于删除
       unset($_SESSION['num']);
       unset($_SESSION['count']);
     } elseif ($result > 0) {
