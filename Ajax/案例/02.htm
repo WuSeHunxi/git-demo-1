@@ -22,14 +22,14 @@
             // }
             // console.log(this.responseText);
             switch (this.readyState){
-                case 2: // 取到响应头
+                case 2: // 响应头正在下载
                     console.log(this.readyState);
                     // 切割
                     console.log(this.getAllResponseHeaders().split("\n"));
                     // 取到特定的响应头
                     console.log(this.getResponseHeader('server'));
                     break;
-                case 3: // 取到响应体
+                case 3: // 响应体正在下载
                     console.log(this.readyState);
                     break;
                 case 4: // 全部都下载完成
