@@ -8,7 +8,11 @@
 </head>
 <body>
     <script>    
-    
+
+        // XMLHttpRequest的对象用于客户端和服务器之间的异步通信。
+        // XMLHttpRequest 用于在后台与服务器交换数据。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。
+        // 网页的加载表示的是重新打开页面，刷新则表示的是按回车（类似的操作）即可。
+
         var xhr=new XMLHttpRequest();
         xhr.open('GET','01.php');
         console.log(xhr.readyState);
