@@ -22,7 +22,7 @@
         var xhr=new XMLHttpRequest();
 
         // 打开浏览器，输入网址
-        xhr.open('GET','01.php'); // send的点个参数表示同步或者异步
+        xhr.open('GET','01.php'); // open的第三个参数表示同步或者异步，通常情况下为true
 
 
         // AJAX 指的是异步 JavaScript 和 XML（Asynchronous JavaScript and XML）。
@@ -30,7 +30,7 @@
 
 
         // 回车，开始请求
-        xhr.send();
+        xhr.send(); 
 
         // 等待响应
 
