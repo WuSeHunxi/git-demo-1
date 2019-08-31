@@ -14,6 +14,9 @@
     <!-- 但是上述方法无法对服务端发出请求并接收服务端返回的响应 -->
 
     <script>
+
+        // AJAX = 异步 JavaScript 和 XML。
+        // AJAX 是一种用于创建快速动态网页的技术.
         // 涉及到 Ajax操作，不能使用文件协议访问 
         
         // XMLHttpRequest 
@@ -58,11 +61,11 @@
 
         // 如果需要像 HTML 表单那样 POST 数据，请使用setRequestHeader()来添加 HTTP 头。然后在send()方法中规定您希望发送的数据：
 
-        xmlhttp.open("POST","ajax_test.html",true); 
+        xmlhttp.open("POST","ajax_test.html",true); // 打开
         // 添加响应头
         xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded"); 
         // 在send中设置想要发送的数据
-        xmlhttp.send("fname=Henry&lname=Ford");
+        xmlhttp.send("fname=Henry&lname=Ford");  // 发送
     </script>
 </body>
 </html>
