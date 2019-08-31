@@ -30,7 +30,7 @@ if (empty($_COOKIE['num']) || empty($_GET['num'])) {
       $message = '太小了';
     }
 
-    setcookie('count', $count + 1);
+    setcookie('count', $count + 1); // 每请求一次都需要把count的+1
   } else {
     // 游戏结束
     $message = 'looooooooooooow!';

@@ -12,7 +12,7 @@ if (empty($_SESSION['num']) || empty($_GET['num'])) {
   $_SESSION['num'] = $num;
 } else {
   $count = empty($_SESSION['count']) ? 0 : $_SESSION['count'];
-
+  // var_dump($_SESSION['count']);
   if ($count < 10) {
     $result = (int)$_GET['num'] - $_SESSION['num'];
     if ($result == 0) {
