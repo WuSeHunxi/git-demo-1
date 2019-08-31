@@ -14,6 +14,7 @@
     <!-- 但是上述方法无法对服务端发出请求并接收服务端返回的响应 -->
 
     <script>
+        // 涉及到 Ajax操作，不能使用文件协议访问 
         
         // XMLHttpRequest 
 
@@ -21,13 +22,13 @@
         var xhr=new XMLHttpRequest();
 
         // 打开浏览器，输入网址
-        xhr.open('GET','http://www.baidu.com');
+        xhr.open('GET','01.php');
 
         // 回车，开始请求
         xhr.send();
 
         // 等待响应
-        
+
 
     </script>
 </body>
