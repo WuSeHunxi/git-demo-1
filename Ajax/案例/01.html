@@ -22,7 +22,7 @@
         var xhr=new XMLHttpRequest();
 
         // 打开浏览器，输入网址
-        xhr.open('GET','01.php');
+        xhr.open('GET','01.php'); // send的点个参数表示同步或者异步
 
         // 回车，开始请求
         xhr.send();
@@ -30,6 +30,34 @@
         // 等待响应
 
 
+        /* 
+            GET 还是 POST？
+            与POST相比，GET 更简单也更快，并且在大部分情况下都能用。然而，在以下情况中，请使用POST请求：
+
+            1.无法使用缓存文件（更新服务器上的文件或数据库）
+
+            2.向服务器发送大量数据（POST没有数据量限制）
+
+            3.发送包含未知字符的用户输入时(提交表单)，POST比GET更稳定也更可靠
+        */
+
+        /*
+            提示：GET请求具有以下的几个特点：
+                1.GET请求可被缓存
+                2.GET请求保留在浏览器历史记录中
+                3.GET请求可被收藏为书签
+                4.GET请求不应在处理敏感数据时使用
+                5.GET请求有长度限制
+                6.GET请求只应当用于取回数据
+        */
+
+        // 如果需要像 HTML 表单那样 POST 数据，请使用setRequestHeader()来添加 HTTP 头。然后在send()方法中规定您希望发送的数据：
+
+        xmlhttp.open("POST","ajax_test.html",true); 
+        // 添加响应头
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded"); 
+        // 在send中设置想要发送的数据
+        xmlhttp.send("fname=Henry&lname=Ford");
     </script>
 </body>
 </html>
