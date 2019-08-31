@@ -16,9 +16,11 @@
     //   console.log(this.readyState)
     // }
 
+    // 地址必须是同一个网站下的
     xhr.open('GET', './time.php')
 
-    xhr.send()
+    // 开始请求
+    xhr.send() // 没有返回值，为了节省请求时间
 
     // 因为客户端永远不知道服务端何时才能返回我们需要的响应
     // 所以 AJAX API 采用事件的机制（通知的感觉）

@@ -6,16 +6,23 @@
 </head>
 <body>
   <script>
+
+    // AJAX = 异步 JavaScript 和 XML。
+    // AJAX 是一种用于创建快速动态网页的技术.
+
     // 涉及到 AJAX 操作的页面“不能”使用文件协议访问（文件的方式访问）
 
     // AJAX 是一套 API 核心提供的类型：XMLHttpRequest
     // 1. 安装浏览器（用户代理）
     //  xhr 就类似于浏览器的作用（发送请求接收响应）
     var xhr = new XMLHttpRequest()
+    
     // 2. 打开浏览器 输入网址
     xhr.open('GET', 'http://day-11.io/time.php')
+    
     // 3. 敲回车键 开始请求
-    xhr.send()
+    xhr.send(); // 发送请求
+
     // 4. 等待响应
 
     // 5. 看结果
