@@ -2,6 +2,8 @@
 
 // 找一个属于当前访问者的箱子
 // 并且把箱子的钥匙（session_id）交给用户（cookie）
+// session只能在服务端操作
+
 session_start();
 
 // 使用get（有服务端给客户端发送数据）请求是为了得到要猜的随机数
@@ -9,6 +11,8 @@ session_start();
 if (empty($_SESSION['num']) || empty($_GET['num'])) {
   $num = rand(0, 100);
   // 存在 cookie 中不保险，存在服务端的箱子里
+
+  // session是解决cookie问题的手段
   $_SESSION['num'] = $num;
 } else {
   $count = empty($_SESSION['count']) ? 0 : $_SESSION['count'];
