@@ -23,17 +23,17 @@
       switch (this.readyState) {
         case 2:
           // => 2
-          // 已经接受到了响应报文的响应头
+          // 已经接受到了响应报文的响应头(但是没有下载完)
 
           // 可以拿到头
           // console.log(this.getAllResponseHeaders())
-          console.log(this.getResponseHeader('server'))
+          console.log(this.getResponseHeader('server')); // 及受到的响应头
           // 但是还没有拿到体
-          console.log(this.responseText)
+          console.log(this.responseText); // 得不到任何值
           break
 
         case 3:
-          // => 3
+          // => 3 接收响应体
           // 正在下载响应报文的响应体，有可能响应体为空，也有可能不完整
           // 在这里处理响应体不保险（不可靠）
           console.log(this.responseText)
