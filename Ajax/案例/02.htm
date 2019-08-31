@@ -11,6 +11,7 @@
     
         var xhr=new XMLHttpRequest();
         xhr.open('GET','01.php');
+        console.log(xhr.readyState);
         xhr.send();
         // xhr.onreadystatechange=function(){
 
@@ -21,13 +22,17 @@
             // }
             // console.log(this.responseText);
             switch (this.readyState){
-                case 2:
+                case 2: // 取到响应头
+                    console.log(this.readyState);
+                    // 切割
+                    console.log(this.getAllResponseHeaders().split("\n"));
+                    // 取到特定的响应头
+                    console.log(this.getResponseHeader('server'));
+                    break;
+                case 3: // 取到响应体
                     console.log(this.readyState);
                     break;
-                case 3:
-                    console.log(this.readyState);
-                    break;
-                case 4:
+                case 4: // 全部都下载完成
                     console.log(this.readyState);
                     break;
             }
