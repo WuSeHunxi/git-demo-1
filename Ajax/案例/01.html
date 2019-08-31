@@ -61,11 +61,12 @@
 
         // 如果需要像 HTML 表单那样 POST 数据，请使用setRequestHeader()来添加 HTTP 头。然后在send()方法中规定您希望发送的数据：
 
-        xmlhttp.open("POST","ajax_test.html",true); // 打开
-        // 添加响应头
+        xmlhttp.open("POST","ajax_test.html",true); // 打开，设置请求行
+        // 设置请求头  里面的参数和请求体的格式有关
         xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded"); 
         // 在send中设置想要发送的数据
-        xmlhttp.send("fname=Henry&lname=Ford");  // 发送
+        // 以urlencode的格式，设置请求提
+        xmlhttp.send("fname=Henry&lname=Ford");  // 发送想要得到的请求体
     </script>
 </body>
 </html>

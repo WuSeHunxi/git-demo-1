@@ -13,6 +13,12 @@
         xhr.open("GET",'01.php');
         xhr.send();
         xhr.onreadystatechange=function(){
+            switch(this.readyState){
+                case 2:
+                    // 得到所有的响应头
+                    console.log(this.getAllResponseHeaders());
+                    break;
+            }
             if(xhr.readyState!=4){
                 return;
             }

@@ -19,10 +19,11 @@
 
     xhr.send() // 此时的XHR状态是1
 
+    // 开始接收响应体
     xhr.addEventListener('readystatechange', function () {
       switch (this.readyState) {
         case 2:
-          // => 2
+          // => 2  接收到响应头
           // 已经接受到了响应报文的响应头(但是没有下载完)
 
           // 可以拿到头
