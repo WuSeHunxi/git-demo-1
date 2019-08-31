@@ -8,16 +8,16 @@
   <script>
 
     var xhr = new XMLHttpRequest()
-    console.log(xhr.readyState)
+    console.log(xhr.readyState)  // 0表示刚开始什么都没有
     // => 0
     // 初始化 请求代理对象
 
-    xhr.open('GET', 'time.php')
+    xhr.open('GET', 'time.php') // 此时的XHR状态是1
     console.log(xhr.readyState)
     // => 1
     // open 方法已经调用，建立一个与服务端特定端口的连接
 
-    xhr.send()
+    xhr.send() // 此时的XHR状态是1
 
     xhr.addEventListener('readystatechange', function () {
       switch (this.readyState) {

@@ -16,10 +16,21 @@
 
         // }
         xhr.addEventListener('readystatechange',function(){
-            if(this.readyState!=4){
-                return;
+            // if(this.readyState!=4){
+            //     return;
+            // }
+            // console.log(this.responseText);
+            switch (this.readyState){
+                case 2:
+                    console.log(this.readyState);
+                    break;
+                case 3:
+                    console.log(this.readyState);
+                    break;
+                case 4:
+                    console.log(this.readyState);
+                    break;
             }
-            console.log(this.responseText);
         });
     </script>
 </body>
