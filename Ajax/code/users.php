@@ -1,5 +1,6 @@
 <?php
 
+// 设置响应文件类型文件类型 javascript文件
 header('Content-Type: application/json');
 /**
  * 返回的响应就是一个 JSON 内容（返回的就是数据）
