@@ -31,10 +31,13 @@
         button.onclick=function(){
             var xhr=new XMLHttpRequest();
             xhr.open('POST','login.php');
-            xhr.setRequestHeader('');
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.send(`name=${name}&password=${password}`);
             xhr.onreadystatechange=function(){
-                
+                if(this.readyState!=4){
+                    return;
+                }
+                console.log(this.responseText);
             }
         }
     </script>
