@@ -5,7 +5,7 @@ function login(){
         $GLOBALS['message']='请输入用户名';
         return;
     }
-    if(empty($_POST['passeord'])){
+    if(empty($_POST['password'])){
         $GLOBALS['message']="请输入密码";
         return;
     }
@@ -51,14 +51,16 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 </head>
 <body>
     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="mulitypart/form-data" >
-        用户名：<input type="text" name="name" id="name">
         <?php if(isset($message)){?><span><?php echo $message; ?></span><?php } ?>
+        <br>
+        用户名：<input type="text" name="name" id="name">
+        
         <br>
         密码：<input type="password" name="password" id="password">
-        <?php if(isset($message)){?><span><?php echo $message; ?></span><?php } ?>
+      
         <br>
         请选择文件：<input type="file" name="file" id="file">
-        <?php if(isset($message)){?><span><?php echo $message; ?></span><?php } ?>
+        
         <br>
         <button>登录</button>
     </form>
