@@ -1,5 +1,10 @@
 <?php
 
+$json=file_get_contents("data.json");
+$data=json_decode($json,true);
+if(!$data){
+    exit("数据文件异常");
+}
 
 ?>
 
@@ -28,7 +33,17 @@
                     <th class="text-center">操作</th>
                 </tr>
                 <thead class="text-center">
-                    
+                    <?php if(isset($data)){ ?>
+                        <?php foreach($data as $item){?>
+                        <tr>
+                            <td class="align-middle"><?php echo $item['title'];?></td>
+                            <td class="align-middle"><?php echo $item['artist'];?></td>
+                            <td class="align-middle"><?php echo $item['title'];?></td>
+                            <td class="align-middle"><?php echo $item['source'];?></td>
+                            <td class="align-middle"><a href="delete.php?id=<?php echo  $item['id']; ?>"></a><?php echo $item['title'];?></td>
+                        </tr>
+                        <?php } ?>
+                    <?php } ?>
                 </thead>
             </thead>
         </table>
