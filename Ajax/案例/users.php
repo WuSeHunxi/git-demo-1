@@ -14,8 +14,9 @@ if(empty($_GET["id"])){
     $json=json_encode($array);
     echo $json;
 }else{
+    // 遍历的是整个数组
     foreach ($array as $item) {
-        if($item["id"]==$_GET["id"]){
+        if($item["id"]!=$_GET["id"]){
             continue;
         }
         $json=json_encode($item);

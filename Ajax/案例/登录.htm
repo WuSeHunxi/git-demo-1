@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>用户名</td>
+            <td><input type="text" name="name" id="name"></td>
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td><input type="password" name="password" id="password"></td>
+        </tr>
+        <tr>
+            <td><button>登录</button></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <script>
+        var button=document.getElementsByTagName("button")[0];
+        var name=document.getElementById("name");
+        var password=document.getElementById("password");
+        var name=name.value;
+        var password=password.value;
+        button.onclick=function(){
+            var xhr=new XMLHttpRequest();
+            xhr.open('POST','login.php');
+            xhr.setRequestHeader('');
+            xhr.send(`name=${name}&password=${password}`);
+            xhr.onreadystatechange=function(){
+                
+            }
+        }
+    </script>
+</body>
+</html>
