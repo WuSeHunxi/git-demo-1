@@ -12,6 +12,8 @@
     xhr.open('POST', '/add.php') // 设置请求行
 
     xhr.setRequestHeader('Foo', 'Bar') // 设置一个请求头
+
+    // 请求头的参数和请求体的格式有关
     // 一旦你的请求体是 urlencoded 格式的内容，一定要设置请求头中 Content-Type 'application/x-www-form-urlencoded'
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
 
