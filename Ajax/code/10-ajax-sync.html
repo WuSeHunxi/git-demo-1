@@ -18,8 +18,9 @@
 
     var xhr = new XMLHttpRequest()
     xhr.open('GET', 'time.php', true)
-    xhr.send()
+    xhr.send() // 请求过程需要时间
     // 一定要注意事件注册时间问题
+    // 在发送完成之后事件早就注册完了
     xhr.onreadystatechange = function () {
       console.log(this.readyState)
     }

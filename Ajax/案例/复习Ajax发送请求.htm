@@ -7,40 +7,41 @@
     <title>Document</title>
 </head>
 <body>
+
     <ul class="list"></ul>
+
     <script>
-        
-        // Ajax 发送请求显示页面
         var ul=document.getElementsByTagName("ul")[0];
+        // console.log(ul);
         var xhr=new XMLHttpRequest();
-        xhr.open("GET","users.php");
+        xhr.open('GET','users.php');
         xhr.send();
         xhr.onreadystatechange=function(){
-            if(xhr.readyState!=4){
-                return;
+            if(this.readyState!=4){
+                return ;
             }
+            console.log(this.readyState);
             var data=JSON.parse(this.responseText);
             for(var i=0;i<data.length;i++){
                 var li=document.createElement("li");
+                // console.log(li);
                 li.innerHTML=data[i].name;
                 li.id=data[i].id;
                 ul.appendChild(li);
-                li.addEventListener("click",function(){
+                li.addEventListener('click',function(){
                     var xhr1=new XMLHttpRequest();
-                    xhr1.open("GET","users.php?id="+this.id);
+                    xhr1.open('GET','users.php?id='+this.id);
                     xhr1.send();
                     xhr1.onreadystatechange=function(){
                         if(this.readyState!=4){
                             return;
                         }
-                        var obj=JSON.parse(this.responseText);
-                        alert(obj.name);
+                        var data=JSON.parse(this.responseText);
+                        alert(data.name);
                     }
                 });
             }
         }
-
-        
     </script>
 </body>
 </html>

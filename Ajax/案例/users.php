@@ -1,13 +1,13 @@
 <?php
 
-header("Content-Type:application")
+header("Content-Type: application/json");
 
 // 二维数组
 $array=array(
-    array("id"=>11,"name":"ll"),
-    array("id"=>22,"name":"l2"),
-    array("id"=>33,"name":"l3"),
-    array("id"=>44,"name":"l4"),
+    array("id"=>11,"name"=>"ll"),
+    array("id"=>22,"name"=>"l2"),
+    array("id"=>33,"name"=>"l3"),
+    array("id"=>44,"name"=>"l4"),
 );
 
 if(empty($_GET["id"])){
