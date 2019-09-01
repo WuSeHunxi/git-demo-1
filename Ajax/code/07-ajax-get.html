@@ -28,7 +28,7 @@
       for (var i = 0; i < data.length; i++) {
         var liElement = document.createElement('li')
         liElement.innerHTML = data[i].name
-        liElement.id = data[i].id
+        liElement.id = data[i].id // 为了方便接下来的设置
 
         listElement.appendChild(liElement)
 
@@ -49,7 +49,7 @@
     }
 
     // 给每一个 li 注册点击事件
-    // 因为 li 后来动态创建，所以不能这样注册事件
+    // 因为 li 后来动态创建，所以不能这样注册事件，必须得边创建边注册事件
     // for (var i = 0; i < listElement.children.length; i++) {
     //   listElement.children[i].addEventListener('click', function () {
     //     console.log(111)
