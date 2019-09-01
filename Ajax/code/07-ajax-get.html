@@ -9,11 +9,16 @@
 
   <script>
 
+    // 先显示页面，在通过点击取得数据
+
     var listElement = document.getElementById('list')
 
     // 发送请求获取列表数据呈现在页面
     // =======================================
 
+    // 页面的最初显示
+    
+    // 通过Ajax的请求显示动态页面
     var xhr = new XMLHttpRequest()
 
     xhr.open('GET', 'users.php')
