@@ -10,7 +10,7 @@
     <table>
         <tr>
             <td>用户名</td>
-            <td><input type="text" name="name" id="name"></td>
+            <td><input type="text" name="name" id="username"></td>
         </tr>
         <tr>
             <td>密码</td>
@@ -24,15 +24,16 @@
 
     <script>
         var button=document.getElementsByTagName("button")[0];
-        var name=document.getElementById("name");
+        var username=document.getElementById("username");
         var password=document.getElementById("password");
-        var name=name.value;
-        var password=password.value;
+        console.log(name);
         button.onclick=function(){
+            var name=username.value;
+            var word=password.value;
             var xhr=new XMLHttpRequest();
             xhr.open('POST','login.php');
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.send(`name=${name}&password=${password}`);
+            xhr.send(`name=${name}&password=${word}`);
             xhr.onreadystatechange=function(){
                 if(this.readyState!=4){
                     return;
