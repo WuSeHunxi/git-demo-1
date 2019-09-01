@@ -17,7 +17,7 @@
     // =======================================
 
     // 页面的最初显示
-    
+
     // 通过Ajax的请求显示动态页面
     var xhr = new XMLHttpRequest()
 
@@ -42,6 +42,7 @@
           // 如何获取当前被点击元素对应的数据的ID
           // console.log(this.id)
           var xhr1 = new XMLHttpRequest()
+          // 发送一个url参数请求   将点击的id值传送过去
           xhr1.open('GET', 'users.php?id=' + this.id)
           xhr1.send()
           xhr1.onreadystatechange = function () {
