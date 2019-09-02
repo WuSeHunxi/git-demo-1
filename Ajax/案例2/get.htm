@@ -2,21 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ajax请求参数</title>
 </head>
 <body>
-    <ul class="list"></ul>
+    <ul id="list"></ul>
     <script>
 
         // 发送get请求通过后台获取页面信息
-        var ul=document.getElementsByTagName("ul")[0];
+        var listElement = document.getElementById('list')
         var xhr = new XMLHttpRequest()
 
-    xhr.open('GET', 'users.php')
+    xhr.open('GET', 'data.php')
 
-    xhr.send();
+    xhr.send()
 
     xhr.onreadystatechange = function () {
       if (this.readyState !== 4) return

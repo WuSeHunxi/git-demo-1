@@ -7,24 +7,24 @@ $data=array(
         "id"=>11,
         "name"=>"haha",
         
-        "age":141
+        "age"=>141
     ),
     array(
         "id"=>12,
         "name"=>"xiaoxiao",
-        "age":115
+        "age"=>115
     ),
     array(
         "id"=>13,
         "name"=>"lala",
         
-        "age":116
+        "age"=>116
     ),
     array(
         "id"=>14,
         "name"=>"mumu",
         
-        "age":117
+        "age"=>117
     )
 );
 
