@@ -1,5 +1,7 @@
 <?php
 
+header("Content-Type","application/json");
+
 $data=array(
     array("name"=>"haha","id"=>11,"age":141),
     array("name"=>"xiaoxiao","id"=>12,"age":115),
