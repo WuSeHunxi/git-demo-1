@@ -15,7 +15,7 @@
         xhr.send();
         xhr.onreadystatechange=function(){
             if(this.readyState!=4) return;
-            var data=this.responseText;
+            var data=JSON.parse(this.responseText);
             for(var i=0;i<data.length;i++){
                 var li=document.createElement("li");
                 li.innerHTML=data[i].name;
@@ -23,10 +23,10 @@
                 ul.appendChild(li);
                 li.addEventListener("click",function () {
                     var xhr1=new XMLHttpRequest();
-                    xhr1.open("GET","data.php?"+this.id);
+                    xhr1.open("GET","data.php?id="+this.id);
                     xhr1.send();
                     xhr1.onreadystatechange=function(){
-                        var json=this.responseText;
+                        var json=JSON.parse(this.responseText);
                         alert(json.age);
                     }
                 });
