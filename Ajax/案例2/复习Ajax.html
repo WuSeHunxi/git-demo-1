@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    
+        // Ajax为了动态获取数据
+
+        var xhr=new XMLHttpRequest();
+
+        // 请求
+        xhr.open('GET','1.php');
+        xhr.send();
+
+        // 响应
+        xhr.onreadystatechange=function(){
+            if(this.readyState!=4){
+                console.log(this);
+            }
+        }
+
+        // xhr.response===xhr.responeText  --true
+
+        // Ajax是基于Http的请求，因此遵循这个协议，我们发出的http请求也同样符合http约定的格式
+        // 即：method 请求路径 协议版本
+
+        // 设置请求报文的请求行
+        xhr.open("GET",'1.php');
+        // 设置请求头
+        xhr.setRequestHeader('Accept','text/plain');
+        // 设置请求体
+        xhr.send(null);
+
+        // 响应
+        xhr.onreadystatechange=function(){
+            if(this.readyState!=4) return;
+            // 获取响应状态码
+            console.log(this.status);
+            // 获取响应状态描述
+            console.log(this.statusText);
+            // 获取指定响应头
+            console.log(this.getResponseHeader("Content-Type"));
+            // 获取全部响应头
+            console.log(this.getAllResponseHeaders());
+
+            // 获取响应体
+            console.log(this.responseText);
+            console.log(this.responseXML);
+        }
+
+
+        // get请求和post请求都可以设置请求头，但是post请求还需要设置send函数的参数
+    </script>
+
+</body>
+</html>
