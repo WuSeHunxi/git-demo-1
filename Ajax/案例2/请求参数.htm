@@ -9,12 +9,17 @@
 <body>
     <ul class="list"></ul>
     <script>
+
+        // 发送get请求通过后台获取页面信息
         var ul=document.getElementsByTagName("ul")[0];
         var xhr=new XMLHttpRequest();
         xhr.open("GET","data.php");
+        // 
         xhr.send();
+        console.log("ll");
         xhr.onreadystatechange=function(){
             if(this.readyState!=4) return;
+            console.log(this.responseText);
             var data=JSON.parse(this.responseText);
             for(var i=0;i<data.length;i++){
                 var li=document.createElement("li");
