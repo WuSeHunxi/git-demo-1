@@ -10,7 +10,12 @@
     <ul class="list"></ul>
     <script>
         var ul=document.getElementsByTagName("ul")[0];
-        var 
+        var xhr=new XMLHttpRequest();
+        xhr.open("GET","data.php");
+        xhr.send();
+        xhr.onreadystatechange=function(){
+            if(this.readyState!=4) return;
+        }
     </script>
 </body>
 </html>
