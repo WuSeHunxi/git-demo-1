@@ -23,7 +23,7 @@ function login(){
         return;
     }
     $arr=array(".jpg",".png");
-    if(!($_FILES['index'] in $arr)){
+    if(!in_array($_FILES['type'], $arr)){
         $GLOBALS['message']='文件上传失败';
         return;
     }
@@ -32,7 +32,7 @@ function login(){
         return;
     }
     $target='./uploads/'.uniqid().$_FILES['name'];
-    if(!move_uploaded_file($FILES['tmp_name'],$target)){
+    if(!move_uploaded_file($_FILES['tmp_name'],$target)){
         $GLOBALS['message']='文件上传失败'
         return;
     }
@@ -72,6 +72,9 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
             <tr>
                 <td><button>登录</button></td>
             </tr>
+            <?php if(isset($message)) {?>
+                <p><?php echo $message; ?></p>    
+            <?php } ?> 
         </table>
     </form>
 </body>
