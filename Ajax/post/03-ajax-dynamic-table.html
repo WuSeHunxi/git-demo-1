@@ -34,6 +34,9 @@
   <script src="template-web.js"></script>
   <script>
 
+    // 为什么要使用模板引擎？
+    // 在进行模块开发的时候，经常会根据后端返回的json数据，进行页面的渲染，但是想字符串的拼接在简单情况下还可以，复杂的时候不行，这时候就需要使用js模板引擎
+
     var xhr = new XMLHttpRequest()
     xhr.open('GET', 'test.php')
     xhr.send()
