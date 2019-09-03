@@ -12,6 +12,8 @@
     1. innerHTML 永远不会显示在界面上
     2. 如果 type 不等于 text/javascript 的话，内部的内容不会作为 JavaScript 执行
   -->
+
+  <!-- 表示将模板下载了script的标签里面，而不是js代码中 -->
   <script id="tmpl" type="text/x-art-template">
     {{each comments}}
     <!-- each 内部 $value 拿到的是当前被遍历的那个元素 -->
