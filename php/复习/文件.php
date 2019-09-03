@@ -2,36 +2,36 @@
 
 function login(){
     // 判断每一项上传的元素是否为空
-    if(empty($_GET['name'])){
+    if(empty($_POST['name'])){
         $GLOBALS['message']='请输入姓名';
         return;
     }
-    if(empty($_GET['password'])){
+    if(empty($_POST['password'])){
         $GLOBALS['message']="请输入密码";
         return;
     }
-    $name=$_GET['name'];
-    $password=$_GET['password'];
+    $name=$_POST['name'];
+    $password=$_POST['password'];
 
     // 判断文件
     if(empty($_FILES['images'])){
         $GLOBALS['message']="文件操作失败";
         return;
     }
-    if($_FILES['images']['error']!=0){
+    if($_FILES['images']['error']!=UPLOAD_ERR_OK){
         $GLOBALS['message']='文件上传失败';
         return;
     }
-    $arr=array(".jpg",".png");
+    $arr=array("jpg","png");
     if(!in_array($_FILES['images']['type'], $arr)){
-        $GLOBALS['message']='文件上传失败';
+        $GLOBALS['message']='文件类型上传失败';
         return;
     }
     if($_FILES['images']['size']<1*1024*1024){
         $GLOBALS['message']='上传文件过小';
         return;
     }
-    $target='./uploads/'.uniqid().$_FILES['images']['name'];
+    $target='./uploads/'.$_FILES['images']['name'];
     if(!move_uploaded_file($_FILES['images']['tmp_name'],$target)){
         $GLOBALS['message']='文件上传失败'
         return;
@@ -40,10 +40,11 @@ function login(){
 }
 
 // 表单的提交需要判断是否请求成功
-if($_SERVER['REQUEST_METHOD']==='POST'){
+// echo "hhh";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     login();
-    echo "kk";
 }
+// echo "lalal";
 
 ?>
 
