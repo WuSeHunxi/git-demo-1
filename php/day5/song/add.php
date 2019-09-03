@@ -29,6 +29,7 @@ function add () {
     $GLOBALS['error_message'] = '请正常使用表单';
     return;
   }
+  var_dump($_FILES);
 
   $images = $_FILES['images'];
   // 准备一个容器装所有的海报路径

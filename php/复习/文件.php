@@ -14,25 +14,25 @@ function login(){
     $password=$_GET['password'];
 
     // 判断文件
-    if(empty($_FILES)){
+    if(empty($_FILES['images'])){
         $GLOBALS['message']="文件操作失败";
         return;
     }
-    if($_FILES['error']!=0){
+    if($_FILES['images']['error']!=0){
         $GLOBALS['message']='文件上传失败';
         return;
     }
     $arr=array(".jpg",".png");
-    if(!in_array($_FILES['type'], $arr)){
+    if(!in_array($_FILES['images']['type'], $arr)){
         $GLOBALS['message']='文件上传失败';
         return;
     }
-    if($_FILES['size']<1*1024*1024){
+    if($_FILES['images']['size']<1*1024*1024){
         $GLOBALS['message']='上传文件过小';
         return;
     }
-    $target='./uploads/'.uniqid().$_FILES['name'];
-    if(!move_uploaded_file($_FILES['tmp_name'],$target)){
+    $target='./uploads/'.uniqid().$_FILES['images']['name'];
+    if(!move_uploaded_file($_FILES['images']['tmp_name'],$target)){
         $GLOBALS['message']='文件上传失败'
         return;
     }
@@ -42,6 +42,7 @@ function login(){
 // 表单的提交需要判断是否请求成功
 if($_SERVER['REQUEST_METHOD']==='POST'){
     login();
+    echo "kk";
 }
 
 ?>
