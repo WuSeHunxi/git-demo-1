@@ -18,6 +18,15 @@ function login(){
         $GLOBALS['message']="文件操作失败";
         return;
     }
+    $arr=array(".jpg",".png");
+    if(!($_FILES['index'] in $arr)){
+        $GLOBALS['message']='文件上传失败';
+        return;
+    }
+    if($_FILES['size']<1*1024*1024){
+        $GLOBALS['message']='上传文件过小';
+        return;
+    }
     $target='./uploads/'.uniqid().$_FILES['name'];
     if(!move_uploaded_file($FILES['tmp_name'],$target)){
         $GLOBALS['message']='文件上传失败'
