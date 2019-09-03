@@ -2,11 +2,11 @@
 
 function login(){
     // 判断每一项上传的元素是否为空
-    if($_GET['name']){
+    if(empty($_GET['name'])){
         $GLOBALS['message']='请输入姓名';
         return;
     }
-    if($_GET['password']){
+    if(empty($_GET['password'])){
         $GLOBALS['message']="请输入密码";
         return;
     }
@@ -16,6 +16,10 @@ function login(){
     // 判断文件
     if(empty($_FILES)){
         $GLOBALS['message']="文件操作失败";
+        return;
+    }
+    if($_FILES['error']!=0){
+        $GLOBALS['message']='文件上传失败';
         return;
     }
     $arr=array(".jpg",".png");
@@ -36,7 +40,7 @@ function login(){
 }
 
 // 表单的提交需要判断是否请求成功
-if(empty($_SERVER['REQUEST_METHOD'])==="POST"){
+if($_SERVER['REQUEST_METHOD']==='POST'){
     login();
 }
 
