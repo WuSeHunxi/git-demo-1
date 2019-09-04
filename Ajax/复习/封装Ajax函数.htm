@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function ajax(method,url,params,done){
+            method=method.toUpperCase();
+            var xhr=new XMLHttpRequest();
+            if(typeof params==='object'){
+                var tempArr=params[key];
+                for(var key in params){
+                    tempArr.push(key+'='+value);
+                }
+                params=tempArr.join("&");
+            }
+            if(method==="GET"){
+                url+='?'+params;
+            }
+            xhr.open(method,url,false);
+            var data=null;
+            if(method==="POST"){
+                xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+                data=params;
+            }
+            xhr.onreadystatechange=function(){
+                if(this.readyState!=4){
+                    return;
+                }
+                done(this.responseText);
+            }
+            xhr.send(data);
+        }    
+
+        var onDone=function(res){
+            console.log(res);
+        }
+
+        ajax('get','time.php',{},onDone);
+    </script>
+</body>
+</html>
