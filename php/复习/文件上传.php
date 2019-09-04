@@ -6,12 +6,12 @@ function upload_success(){
         return;
     }
     $file=$_FILES['file'];
-    $target='./uploads/'.uniqid().$file['name'];
+    $target='./upload/s'.uniqid().$file['name'];
     if(!move_uploaded_file($file['tmp_name'],$target)){
         $GLOBALS['message']='文件上传失败';
         return;
     }
-    
+
 }
 
 if($_SERVER['REQUEST_METHOD']==='POST'){
@@ -30,6 +30,10 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 <body>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="mulitype/form-data">
         <input type="file" name="file" id="file">
+        <button>文件上传</button>
     </form>
+    <?php if(isset($message)){?>
+    <p><?php echo $message;?></p>
+    <?php } ?>
 </body>
 </html>
