@@ -33,7 +33,7 @@
     //   url: 'json.php',
     //   type: 'get',
     //   success: function (res) {
-    //     // res 会自动根据服务端响应的 content-type 自动转换为对象
+    //     // res 会自动根据服务端响应的 content-type 自动转换为对象，此时的服务端是是application/json
     //     // 这是 jquery 内部实现的
     //     console.log(res)
     //   }
@@ -45,6 +45,7 @@
       // 设置的是请求参数
       data: { id: 1, name: '张三' },
       // 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+      // 此时的服务端响应体类型不是application/json的形式，通过使用dataType来解决该问题
       dataType: 'json',
       success: function (res) {
         // 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
