@@ -39,7 +39,7 @@ function postback () {
   $username = $_POST['username'];
   $password = $_POST['password'];
 
-  // 将数据保存到文本文件中
+  // 将数据保存到文本文件中      使用字符串拼接的方式将数据保存在文件中
   file_put_contents('users.txt', $username . '|' . $password . "\n", FILE_APPEND);
   $GLOBALS['message'] = '注册成功';
 }
