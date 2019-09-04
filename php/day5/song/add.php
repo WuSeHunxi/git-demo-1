@@ -64,10 +64,12 @@ function add () {
       return;
     }
 
-    //添加海报移动之后的路径
+    //添加海报移动之后的路径  $data['images'][]表示数组的添加
     $data['images'][] = substr($dest, 2);
+    // $dest 就是图片的路径
 
     var_dump($data['images']);
+    echo $dest;
   }
 
   // 3. 接收音乐文件

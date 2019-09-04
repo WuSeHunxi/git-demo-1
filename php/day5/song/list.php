@@ -50,6 +50,7 @@ if (!$data) {
             <?php endforeach ?>
           </td>
           <td class="align-middle"><audio src="<?php echo $item['source']; ?>" controls></audio></td>
+          <!-- 利用get请求，发送URL参数，删除所选的那一项 -->
           <td class="align-middle"><a class="btn btn-danger btn-sm" href="delete.php?id=<?php echo $item['id']; ?>">删除</a></td>
         </tr>
         <?php endforeach ?>
