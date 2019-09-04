@@ -9,7 +9,14 @@
 <body>
     <ul id="list"></ul>
     <script>
-        
+        var list=document.getElementById("list");
+        var xhr=new XMLHttpRequest();
+        xhr.open("GET","user.php");
+        xhr.send();
+        xhr.onreadystatechange=function(){
+            var data=JSON.parse(this.responseText);
+            data
+        }
     </script>
 </body>
 </html>
