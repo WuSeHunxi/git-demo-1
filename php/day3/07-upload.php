@@ -8,6 +8,8 @@ function upload () {
     return;
   }
 
+  // $_FILES['avatar']中的参数是file框的name
+
   $avatar = $_FILES['avatar'];
   // $avatar => array(5) {
   //   ["name"]=>
