@@ -1,5 +1,7 @@
 <?php
 
+
+//json形式的数据存储方式
 //字面量用于描述一个有结构的数据，是代码中表述数据的手段.
 [
     {id:1,name:"ll",email:'aaa@.com',url:'ajjaj'},
