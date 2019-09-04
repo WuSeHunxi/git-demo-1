@@ -12,7 +12,9 @@
 //  常见的查询函数
 //  count max min avg
 //  select count(1) as count from users; 求数据条数和
-//  limit 分页限制
+
+//  limit 分页限制  在某一页中取哪几条数据
+
 //  select * from users limit 2; 限制了取两条
 //  select * from users limit 4,2; 越过4条取两条
 
