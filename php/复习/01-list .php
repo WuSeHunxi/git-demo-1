@@ -1,5 +1,13 @@
 <?php
 
+$contents=file_get_contents("name.txt");
+$lines=explode("\n",$contents);
+foreach ($lines as $item) {
+    if(!$item) continue;
+    $cols=explode("|",$item);
+    $data[]=$cols;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +18,25 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <table>
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>邮箱</th>
+            <th>网址</th>
+        </tr>
+    <tbody>
+        <?php foreach ($data as $item ) {
+            foreach ($item as $col ) {
+                $col=trim($col);
+                if(strpos($col,'http://')===0){?>
+                    <td><a href="<?php echo strtolower($col); ?>"<?php echo substr($col,7); ?>></a></td>
+                <?php }
+            }
+        }?>
+
+    </tbody>
+    </table>
 </body>
 </html>
