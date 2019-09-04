@@ -5,7 +5,7 @@
 // header('Content-Type:text/css;charset:UTF-8');
 
 //下载  满足下载条件
-// header('Content-Type:index/css;charset:UTF-8');
+// header('Content-Type:index/css1;charset:UTF-8');
 
 //重定向跳转
 header('Location:text.css');
