@@ -31,12 +31,19 @@ function login(){
         $GLOBALS['message']='上传文件过小';
         return;
     }
+    // $target='./uploads/'.$_FILES['images']['name'];
+    // if(!move_uploaded_file($_FILES['images']['tmp_name'],$target)){
+    //     $GLOBALS['message']='文件上传失败'
+    //     return;
+    // }
+    $source=$_FILES['images']['tmp_name'];
     $target='./uploads/'.$_FILES['images']['name'];
-    if(!move_uploaded_file($_FILES['images']['tmp_name'],$target)){
-        $GLOBALS['message']='文件上传失败'
+    $move=move_uploaded_file($source,$target);
+
+    if(!$move){
+        $GLOBALS['message']='上传失败';
         return;
     }
-
 }
 
 // 表单的提交需要判断是否请求成功
