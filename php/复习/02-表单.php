@@ -18,9 +18,13 @@ function login_success(){
         $GLOBALS['message']='两次输入的密码不一致';
         rteurn;
     }
-    
+    if(!(isset($_POST['check'])&&$_POST['check']=="on")){
+        $GLOBALS['message']='必须同意注册协议';
+        return;
+    }
     $name=$_POST['name'];
     $password=$_POST['password'];
+    $confirm=$_POST['confirm'];
 }
 
 if($_SERVER['REQUEST_METHOD']==='POST'){
@@ -52,9 +56,16 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
             <td><input type="password" name="confirm" id="confirm"></td>
         </tr>
         <tr>
+            <td></td>
+            <td><input type="checkbox" name="check" value="on">同意注册协议</td>
+        </tr>
+        <tr>
             <td><button>登录</button></td>
             <td></td>
         </tr>
+        <?php if(isset($message)){ ?>
+        <p><?php echo $message; ?></p>
+        <?php }?>
     </table>
     </form>
 </body>
