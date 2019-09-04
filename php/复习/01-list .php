@@ -2,9 +2,9 @@
 
 $contents=file_get_contents("name.txt");
 $lines=explode("\n",$contents);
-foreach ($lines as $item) {
+foreach($lines as $item){
     if(!$item) continue;
-    $cols=explode("|",$item);
+    $cols=explode('|',$item);
     $data[]=$cols;
 }
 
@@ -17,30 +17,34 @@ foreach ($lines as $item) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
+    <h1>全部人员信息表</h1>
     <table>
         <thead>
-        <tr>
-            <th>编号</th>
-            <th>姓名</th>
-            <th>年龄</th>
-            <th>邮箱</th>
-            <th>网址</th>
-        </tr>
+            <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>邮箱</th>
+                <th>网址</th>
+            </tr>
         </thead>
-    <tbody>
-        <?php foreach ($data as $item ) {
-            foreach ($item as $col ) {
-                $col=trim($col);
-                if(strpos($col,'http://')===0){?>
-                    <td><a href="<?php echo strtolower($col); ?>"<?php echo substr($col,7); ?>></a></td>
-                <?php }else{ ?>
-                    <td><?php echo  $col; ?></td>
-            <?php }
-            }
-        }?>
-
-    </tbody>
+        <tbody>
+            <?php foreach ($data as $line) {?>
+                <tr>
+                    <?php
+                        foreach ($line as $col) {
+                            $col=trim($col);
+                            if(strpos($col,'http://')===0){?>
+                                <td><a href="<?php echo strtolower($col);?>"><?php echo substr($col, 7);?></a></td>
+                            <?php }else{ ?>
+                                <td><?php echo $col;?></td>
+                    <?php }?>
+                    <?php }?>
+                </tr>
+            <?php }?>
+        </tbody>
     </table>
 </body>
 </html>
