@@ -21,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <!-- 一般为了便于维护，我们将表单提交给当前页面本身 -->
   <!-- <form action="02-form-action.php" method="post"> -->
   <!-- 由于文件重命名会导致代码修改，鲁棒性不强 -->
+  <!-- action是跳转到的页面，PHP_SELF表示在本页面进行跳转 -->
   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
     <div>
       <label for="username">用户名</label>

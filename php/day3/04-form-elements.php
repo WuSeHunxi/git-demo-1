@@ -42,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <br>
 
+    <!-- 单选框，复选框，select列表最重要的是value -->
 
     <select name="status">
       <option>激活</option>
