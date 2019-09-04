@@ -19,6 +19,7 @@ foreach ($lines as $item) {
 </head>
 <body>
     <table>
+        <thead>
         <tr>
             <th>编号</th>
             <th>姓名</th>
@@ -26,13 +27,16 @@ foreach ($lines as $item) {
             <th>邮箱</th>
             <th>网址</th>
         </tr>
+        </thead>
     <tbody>
         <?php foreach ($data as $item ) {
             foreach ($item as $col ) {
                 $col=trim($col);
                 if(strpos($col,'http://')===0){?>
                     <td><a href="<?php echo strtolower($col); ?>"<?php echo substr($col,7); ?>></a></td>
-                <?php }
+                <?php }else{ ?>
+                    <td><?php echo  $col; ?></td>
+            <?php }
             }
         }?>
 
