@@ -25,8 +25,15 @@
             </main>
         </div>
     </div>
+    <script src="jquery.js"></script>
     <script>
-        
+        $(function($){
+            $("list-group-item").on("click",function(){
+                $.get('index.htm',function(res){
+                    console.log(res);
+                });
+            })
+        });
     </script>
 </body>
 </html>
