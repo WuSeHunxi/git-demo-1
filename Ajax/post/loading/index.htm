@@ -28,10 +28,19 @@
     <script src="jquery.js"></script>
     <script>
         $(function($){
-            $("list-group-item").on("click",function(){
-                $.get('index.htm',function(res){
+            // $("list-group-item").on("click",function(){
+            //     $.get('index.htm',function(res){
+            //         console.log(res);
+            //     });
+            // })
+            $.ajax('index.htm',{
+                type:'GET',
+                success:function(status){
+                    console.log(status);
+                },
+                error:function(res){
                     console.log(res);
-                });
+                }
             })
         });
     </script>
