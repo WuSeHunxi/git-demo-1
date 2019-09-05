@@ -14,9 +14,9 @@
         <div class="row">
             <aside class="col-md-3">
                 <div class="list-group">
-                    <a href="index.htm" class="list-group-item"></a>
-                    <a href="cart.htm" class="list-group-item"></a>
-                    <a href="orders.htm" class="list-group-item"></a>
+                    <a href="index.html" class="list-group-item">我的资料</a>
+                    <a href="cart.html" class="list-group-item">我的购物车</a>
+                    <a href="orders.html" class="list-group-item">我的订单</a>
                 </div>
             </aside>
             <main id="mian" class="col-md-9">
@@ -28,20 +28,7 @@
     <script src="jquery.js"></script>
     <script>
         $(function($){
-            // $("list-group-item").on("click",function(){
-            //     $.get('index.htm',function(res){
-            //         console.log(res);
-            //     });
-            // })
-            $.ajax('index.htm',{
-                type:'GET',
-                success:function(status){
-                    console.log(status);
-                },
-                error:function(res){
-                    console.log(res);
-                }
-            })
+
         });
     </script>
 </body>

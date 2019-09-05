@@ -17,17 +17,17 @@
     //   }
     // })
 
-    // $.ajax({
-    //   url: 'time.php',
-    //   type: 'post',
-    //   // 用于提交到服务端的参数，
-    //   // 如果是 GET 请求就通过 url 传递
-    //   // 如果是 POST 请求就通过请求体传递
-    //   data: { id: 1, name: '张三' },
-    //   success: function (res) {
-    //     console.log(res)
-    //   }
-    // })
+    $.ajax({
+      url: 'time.php',
+      type: 'post',
+      // 用于提交到服务端的参数，
+      // 如果是 GET 请求就通过 url 传递
+      // 如果是 POST 请求就通过请求体传递
+      data: { id: 1, name: '张三' },
+      success: function (res) {
+        console.log(res)
+      }
+    })
 
     // $.ajax({
     //   url: 'json.php',
@@ -38,22 +38,28 @@
     //     console.log(res)
     //   }
     // })
-
-    $.ajax({
-      url: 'json.php',
-      type: 'get',
-      // 设置的是请求参数
-      data: { id: 1, name: '张三' },
-      // 用于设置响应体的类型 注意 跟 data 参数没关系！！！
-      // 此时的服务端响应体类型不是application/json的形式，通过使用dataType来解决该问题
-      dataType: 'json',
-      success: function (res) {
-        // 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
-        // 客户端会主观认为服务端返回的就是 JSON 格式的字符串
-        console.log(res)
-      }
-    })
-
+    
+    // var xhr=new XMLHttpRequest();
+    // $.ajax({
+    //   url: 'json.php',
+    //   type: 'get',
+    //   // 设置的是请求参数
+    //   data: { id: 1, name: '张三' },
+    //   // 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+    //   // 此时的服务端响应体类型不是application/json的形式，通过使用dataType来解决该问题
+    //   dataType: 'json',
+    //   success: function (res,status,xhr) {
+    //     // 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+    //     // 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+    //     console.log(res,status,xhr)
+    //   }
+    // })
+    //
+  
+    // $.post() 可根据球球的内容获取数据
+    // $.post('json.php',{id:1},function(data,status,xhr){
+    //   console.log(data,status,xhr);
+    // })
   </script>
 </body>
 </html>
