@@ -27,6 +27,7 @@
       <aside class="col-md-3">
         <div class="list-group">
           <!-- 该项目有三个页面 -->
+          <!-- 为了避免多页面情形下的代码重复，可以利用 load() 方法，将重复的部分（例如导航栏）放入单独的文件 -->
           <a class="list-group-item list-group-item-action" href="index.html">我的资料</a>
           <a class="list-group-item list-group-item-action" href="cart.html">我的购物车</a>
           <a class="list-group-item list-group-item-action" href="orders.html">我的订单</a>
@@ -70,7 +71,13 @@
       // 有一个独立的作用域，顺便确保页面加载完成执行
       $('.list-group-item').on('click', function () {
         var url = $(this).attr('href')
+
+        // load()方法的传递方式根据参数data来自动指定。如果没有参数传递，则采用GET方式传递；反之，则会自动转换为POST方法。
+        // 在load()方法中，无论Ajax请求是否成功，只要当请求完成(complete)后，回调函数(callback)就被触发。
+
         // jQuery的load方法，常用一个url 参数即可
+        // load() 方法从服务器加载数据，并把返回的数据放入被选元素中（将远程的HTML代码插入到DOM中）
+        // 把 jQuery 选择器添加到 URL 参数。
         $('#main').load(url + ' #main > *') // 加上的是选择器
         return false
       })
