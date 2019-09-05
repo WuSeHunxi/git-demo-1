@@ -40,7 +40,10 @@
   <div class="loading">正在玩命加载中...</div>
   <script src="../jquery.js"></script>
   <script>
-    $(function ($) {
+
+    // 使用入口函数的作用：有同一个独立的作用域，确保页面加载完成执行
+
+    $(function ($) { // 此时这个参数$是局部变量，减少作用域链
       // $(document)
       //   .ajaxStart(function () {
       //     // 只要有 ajax 请求发生 就会执行
