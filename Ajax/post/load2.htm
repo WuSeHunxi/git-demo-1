@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>菜鸟教程(runoob.com)</title>
+</head>
+
+<body>
+
+    <p>艺术家</p>
+    <div></div>
+    <button>获取 CD 信息</button>
+    <p> XML 文件实例为 <a href="demo_test.txt" target="_blank">demo_test</a></p>
+
+    <script src="jquery.js">
+        </script>
+        <script>
+            $(document).ready(function () {
+                $("button").click(function () {
+                    $("div").load("demo_test.txt", function (response, status) {
+                        if (status == "success") {
+                            $("div").html("<ol></ol>");
+                            $(response).find("artist").each(function () {
+                                var item_text = $(this).text();
+                                $('<li></li>').html(item_text).appendTo('ol');
+                            });
+                            console.log($(response));
+                            alert("总共有 " + $(response).find("cd").size() + " 张 CD")
+                        }
+                    });
+                });
+
+                // $("button").click(function(){
+                //     $("div").load("demo_test.txt",function(xhr,status){
+
+                //     });
+                // });
+            });
+        </script>
+</body>
+
+</html>
