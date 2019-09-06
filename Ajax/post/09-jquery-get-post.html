@@ -10,13 +10,13 @@
 
     // 请求的地址，参数，回调函数
 
-    $.get('json.php', { name: 'ahahahah' }, function (res) {
-      console.log(res) // 输出的res就是传入的参数
-    })
-
-    // $.post('json.php', { id: 1 }, function (res) {
-    //   console.log(res)
+    // $.get('json.php', { name: 'ahahahah' }, function (res) {
+    //   console.log(res) // 输出的res就是传入的参数
     // })
+
+    $.post('json.php', { id: 1 }, function (res) {
+      console.log(res)
+    })
 
     // $.getJSON('json.php', { id: 1 }, function (res) {
     //   console.log(res)

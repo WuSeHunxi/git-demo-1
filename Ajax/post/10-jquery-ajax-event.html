@@ -18,6 +18,7 @@
 
     $(document)
       .ajaxStart(function () {
+        // 在ajax请求发送前执行函数
         // 只要有 ajax 请求发生 就会执行
         $('.loading').fadeIn()
         // 显示加载提示
