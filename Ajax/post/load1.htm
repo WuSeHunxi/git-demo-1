@@ -10,7 +10,7 @@
         $(document).ready(function () {
             $("input").keyup(function () {
                 txt = $("input").val();
-                $("span").load("time.php", { suggest: txt });
+                $("span").load("demo_test.txt", { suggest: txt });
             });
         });
     </script>
@@ -22,8 +22,43 @@
     第一个名称：
     <input type="text" />
     <p>匹配项: <span></span></p>
-    <p>完整 PHP 代码文件 (<a href="demo_test.txt" target="_blank">demo_ajax_gethint</a>) </p>
+    <p>完整 PHP 代码文件 (<a href="demo_test.txt" target="">demo_ajax_gethint</a>) </p>
 
 </body>
 
 </html>
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<script src="jquery.js">
+</script>
+<script>
+$(document).ready(function(){
+	$("button").click(function(){
+		$("div").load("demo_test.txt",function(response,status){
+			if (status=="success"){
+				$("div").html("<ol></ol>");
+				$(response).find("artist").each(function(){
+					var item_text = $(this).text();
+					$('<li></li>').html(item_text).appendTo('ol');
+				});
+				alert("总共有 "+$(response).find("cd").size()+" 张 CD")
+			}
+		});
+	});
+});
+</script>
+</head>
+<body>
+
+<p>艺术家</p>
+<div></div>
+<button>获取 CD 信息</button>
+<p> XML 文件实例为 <a href="demo_test.txt" target="_blank">demo_cd_catalog</a></p>
+
+</body>
+</html> -->
