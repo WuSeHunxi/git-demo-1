@@ -3,17 +3,17 @@
 // $zhangsan = array('id'=>1,'name' => '张三', 'age' => 18);
 
 $array=(
-    $array=(
+    array(
         "name"=>"lalal",
         "id"=>1,
         "age"=>18
     ),
-    $array=(
+    array(
         "name"=>"hhhh",
         "id"=>2,
         "age"=>14
     ),
-    $array=(
+    array(
         "name"=>"mamama",
         "id"=>2,
         "age"=>10
