@@ -8,8 +8,10 @@
     </script>
     <script>
         $(document).ready(function () {
+            // 输入内容时触发事件
             $("input").keyup(function () {
                 txt = $("input").val();
+                // 当load请求有参数时，次是就是post请求
                 $("span").load("demo_test.txt", { suggest: txt });
             });
         });
