@@ -43,21 +43,25 @@
             ready() 函数仅能用于当前文档，因此无需选择器。            
         */
 
-        
+
         // 带回调函数的load()
-        $(document).ready(function(){  // ready()函数等价于window.onload()
-        // 由于该事件在文档就绪后发生，因此把所有其他的 jQuery 事件和函数置于该事件中是非常好的做法。
-            $("button").click(function(){
-                $("#div1").load("demo_test.txt",function(responseTxt,statusTxt,xhr){
-                    if(statusTxt=='success'){
-                        alert("外部内容加载成功");
-                    }
-                    if(statusTxt=='error'){
-                        alert("Error:"+xhr.status+":"+xhr.statusTxt);
-                    }
-                });
-            });
-        });
+        // $(document).ready(function(){  // ready()函数等价于window.onload()
+        // // 由于该事件在文档就绪后发生，因此把所有其他的 jQuery 事件和函数置于该事件中是非常好的做法。
+        //     $("button").click(function(){
+        //         $("#div1").load("demo_test.txt",function(responseTxt,statusTxt,xhr){
+        //             if(statusTxt=='success'){
+        //                 alert("外部内容加载成功");
+        //             }
+        //             if(statusTxt=='error'){
+        //                 alert("Error:"+xhr.status+":"+xhr.statusTxt);
+        //             }
+        //         });
+        //     });
+        // });
+
+
+
+        
     </script>
 </body>
 </html>
