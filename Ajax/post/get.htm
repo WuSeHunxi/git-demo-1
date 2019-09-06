@@ -7,8 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="get">
+
+    <!-- 提交表单要跳转到新页面的话，比如登陆的时候，提交用户名和密码之后，就会进入一个主界面 -->
+    <form action="time.php" method="post">
         用户名：<input type="text" name="name" id="name">
+        
         <br>
         密码：<input type="password" name="password" id="password">
         <br>
@@ -17,8 +20,9 @@
     <script src="jquery.js"></script>
     <script>
         $(document).ready(function(){
-            $.get("test.php",function(){
-                
+            // var name=data;
+            $.post("time.php",function(data){
+                console.log(data);
             });
         });
     
