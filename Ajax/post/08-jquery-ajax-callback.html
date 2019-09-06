@@ -29,17 +29,17 @@
       success: function (res) {
         // 隐藏 loading
         // 只有请求成功（状态码为200）才会执行这个函数
-        console.log(res)
+        console.log(res,"ppp")
       },
-      error: function (xhr) {
-        // 隐藏 loading
-        // 只有请求不正常（状态码不为200）才会执行
-        console.log('error', xhr)
-      },
-      complete: function (xhr) {
-        // 不管是成功还是失败都是完成，都会执行这个 complete 函数
-        console.log('complete', xhr)
-      }
+      // error: function (xhr) {
+      //   // 隐藏 loading
+      //   // 只有请求不正常（状态码不为200）才会执行
+      //   console.log('error', xhr)
+      // },
+      // complete: function (xhr) {
+      //   // 不管是成功还是失败都是完成，都会执行这个 complete 函数
+      //   console.log('complete', xhr)
+      // }
     })
 
   </script>
