@@ -22,14 +22,14 @@
     // ## 1. img
     // 可以发送不同源地址之间的请求
     // 无法拿到响应结果
-    var img = new Image()
-    img.src = 'http://locally.uieee.com/categories'
+    // var img = new Image()
+    // img.src = 'http://locally.uieee.com/categories'
 
     // ## 2. link
     // 可以发送不同源地址之间的请求
     // 无法拿到响应结果
     // var link = document.createElement('link')
-    // link.rel = 'stylesheet'
+    // link.rel = 'stylesheet'  // link的rel属性不能省略
     // link.href = 'http://locally.uieee.com/categories'
     // document.body.appendChild(link)
 
@@ -37,16 +37,16 @@
     // 可以发送不同源地址之间的请求
     // 无法拿到响应结果
     // 借助于能够作为 JS 执行
-    // var script = document.createElement('script')
-    // script.src = 'http://localhost/time2.php'
-    // document.body.appendChild(script) // 开始发起请求
+    var script = document.createElement('script')
+    script.src = 'http://localhost/time2.php'
+    document.body.appendChild(script) // 开始发起请求
 
-    // // 相当于请求的回调
-    // function foo (res) {
-    //   console.log(res)
-    // }
+    // 相当于请求的回调
+    function foo (res) {  // 在time2.php的文件中得到的响应是通过回调函数得到的
+      console.log(res)
+    }
 
-    // console.log(a)
+    console.log(a)
 
   </script>
 </body>

@@ -1,5 +1,6 @@
 <?php
 
+// 响应的是js代码
 header('Content-Type: application/javascript');
 
 // echo json_encode(array(
