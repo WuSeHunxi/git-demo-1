@@ -17,9 +17,10 @@
         btn.onclick=function(){
             var value=numbers.value;
             var script=document.createElement("script");
-            script.scr='http://localhost/Ajax/post/复习/login.php';
+            script.src='http://localhost/Ajax/post/复习/login.php';
             document.body.appendChild(script);
         }
+        // console.log(info);
         function show(val){
             info.innerText="姓名:"+val.info+"状态:"+val.status;
         }
