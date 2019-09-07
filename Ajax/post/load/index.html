@@ -61,10 +61,10 @@
       //   })
 
       $(document)
-        .ajaxStart(function () {
+        .ajaxStart(function () {  // 在ajax请求开始之前执行该函数
           NProgress.start()
         })
-        .ajaxStop(function () {
+        .ajaxStop(function () {  // 在ajax请求结束之后执行该函数
           NProgress.done()
         })
 
