@@ -19,6 +19,7 @@
             font-size:30px;
         }
     </style>
+    <script src="nprogress.js"></script>
 </head>
 <body>
     <div class="container pt-4">
@@ -27,28 +28,45 @@
         <div class="row">
             <aside class="col-md-3">
                 <div class="list-group">
-                    <a href="index1.html" class="list-group-item list-group-item-action">我的资料</a>
-                    <a href="cart.html" class="list-group-item list-group-item-action">我的</a>
-                    <a href="orders.html" class="list-group-item list-group-item-action"></a>
+                    <a href="index1.htm" class="list-group-item list-group-item-action">我的资料</a>
+                    <a href="cart.html" class="list-group-item list-group-item-action">我的购物车</a>
+                    <a href="orders.html" class="list-group-item list-group-item-action">我的订单</a>
                 </div>
             </aside>
-            <main id="main" class="clo-md-9">
+            <main id="main" class="col-md-9">
                 <h2>我的个人资料</h2>
                 <hr>
             </main>
         </div>
     </div>
+
+    <div class="loading">玩命并加载中。。。</div>
     <script src="jquery.js"></script>
     <script>
         $(function(){
+            // $(document).ajaxStart(function(){
+            //     NProgress.start()
+            // }).ajaxStop(function(){
+            //     NProgress.done()
+            // })
+            // $('.list-group-item').on('click',function(){
+            //     var  url=$(this).attr("href");
+            //     $("#main").load(url+' #main > *');
+            //     return false;
+            // });
+
+
             $(document).ajaxStart(function(){
-                NProgress.start()
+                $(".loading").fadeIn();
+                console.log("注意即将开始请求");
             }).ajaxStop(function(){
-                NProgress.done()
+                $(".loading").fadeOut();
+                console.log("结束请求");
             })
+
             $('.list-group-item').on('click',function(){
                 var  url=$(this).attr("href");
-                $("#main").load(url+'#main > *');
+                $("#main").load(url+' #main > *');
                 return false;
             });
         });
