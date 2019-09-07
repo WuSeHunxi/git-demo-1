@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <input type="text" name="number" id="number" value="" />
+        <p id="info"></p>
+        <input type="button" name="" id="btn" value="查询" />
+        
+        
+        <script type="text/javascript">
+                var btn = document.getElementById("btn");
+                var numbers = document.getElementById("number");
+                var info = document.getElementById("info");
+                btn.onclick=function(){
+                    var value = numbers.value;
+                    var script = document.createElement("script");
+                    script.src = "http://localhost/Ajax/post/logistics.php?kuaidi_id="+value+"&callback=show";
+                    document.body.appendChild(script);
+                }
+                function show(val){ // 插入数据
+                    info.innerText ="姓名:" + val.info + " 状态:" + val.status;
+                }
+        </script>
+    </body>
+    
+</html>

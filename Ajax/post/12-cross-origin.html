@@ -38,7 +38,7 @@
     // 无法拿到响应结果
     // 借助于能够作为 JS 执行
     var script = document.createElement('script')
-    script.src = 'http://localhost/time2.php'
+    script.src = 'http://localhost/Ajax/post/time2.php'
     document.body.appendChild(script) // 开始发起请求
 
     // 相当于请求的回调
@@ -46,7 +46,7 @@
       console.log(res)
     }
 
-    console.log(a)
+    // console.log(a)
 
   </script>
 </body>
