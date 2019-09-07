@@ -22,8 +22,8 @@
     // ## 1. img
     // 可以发送不同源地址之间的请求
     // 无法拿到响应结果
-    // var img = new Image()
-    // img.src = 'http://locally.uieee.com/categories'
+    var img = new Image()
+    img.src = 'http://locally.uieee.com/categories'
 
     // ## 2. link
     // 可以发送不同源地址之间的请求
@@ -37,14 +37,14 @@
     // 可以发送不同源地址之间的请求
     // 无法拿到响应结果
     // 借助于能够作为 JS 执行
-    var script = document.createElement('script')
-    script.src = 'http://localhost/time2.php'
-    document.body.appendChild(script) // 开始发起请求
+    // var script = document.createElement('script')
+    // script.src = 'http://localhost/time2.php'
+    // document.body.appendChild(script) // 开始发起请求
 
-    // 相当于请求的回调
-    function foo (res) {
-      console.log(res)
-    }
+    // // 相当于请求的回调
+    // function foo (res) {
+    //   console.log(res)
+    // }
 
     // console.log(a)
 
