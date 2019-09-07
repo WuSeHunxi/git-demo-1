@@ -7,9 +7,22 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
-        
-        
+    <input type="text" name="number" id="number" value="">
+    <p id="info"></p>
+    <input type="button" value="查询" name="" id="btn">
+    <script type="text/javascript">
+        var btn=document.getElementById("btn");
+        var numbers=document.getElementById("number");
+        var info=document.getElementById("info");
+        btn.onclick=function(){
+            var value=numbers.value;
+            var script=document.createElement("script");
+            script.scr='http://localhost/Ajax/post/复习/login.php';
+            document.body.appendChild(script);
+        }
+        function show(val){
+            info.innerText="姓名:"+val.info+"状态:"+val.status;
+        }
     </script>
 </body>
 </html>
