@@ -41,12 +41,20 @@
     script.src = 'http://localhost/Ajax/post/time2.php'
     document.body.appendChild(script) // 开始发起请求
 
+    // 响应内容不能是直接的一段json数据，而是直接执行一个js函数，也就是cb的参数名 
     // 相当于请求的回调
     function foo (res) {  // 在time2.php的文件中得到的响应是通过回调函数得到的
       console.log(res)
     }
 
-    // console.log(a)
+    /**
+      首先在客户端注册一个回调函数, 然后把回调函数的名字传给服务器。此时，服务器先生成 json 数据。
+      然后以 javascript 语法的方式，生成一个function , function 名字就是传递上来的参数 回调函数名.
+      最后将 json 数据直接以入参的方式，放置到 function 中，这样就生成了一段 js 语法的文档，返回给客户端。
+      客户端浏览器，解析script标签，并执行返回的javascript文档，
+      此时数据作为参数，传入到了客户端预先定义好的 callback 函数里。(动态执行回调函数)
+    
+    */
 
   </script>
 </body>

@@ -6,7 +6,7 @@
     </head>
     <body>
         <input type="text" name="number" id="number" value="" />
-        <p id="info"></p>
+        <p id="info">hahah</p>
         <input type="button" name="" id="btn" value="查询" />
         
         
@@ -20,6 +20,7 @@
                     script.src = "http://localhost/Ajax/post/logistics.php?kuaidi_id="+value+"&callback=show";
                     document.body.appendChild(script);
                 }
+                // console.log(info);
                 function show(val){ // 插入数据
                     info.innerText ="姓名:" + val.info + " 状态:" + val.status;
                 }
