@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var script=document.createElement("script");
+        script.src='http://localhost/post/Ajax/user.php';
+        document.body.appendChild(script);
+        function foo(res){
+            console.log(res);
+        }
+    </script>
+</body>
+</html>
