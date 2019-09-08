@@ -8,9 +8,20 @@
 </head>
 <body>
     <table id="demo"></table>
+    <script id="tmpl" type="text/x-art-template"></script>
+    <script src="template-web.js"></script>
     <script>
         
         var xhr=new XMLHttpRequest();
+        xhr.open('GET','test.php');
+        xhr.send();
+        xhr.onreadystatechange=function(){
+            if(this.readyState!=4){
+                return;
+            }
+            
+            // 模板
+        }
     </script>
 </body>
 </html>
