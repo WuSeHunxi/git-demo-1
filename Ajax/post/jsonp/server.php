@@ -29,5 +29,5 @@ $result = json_encode($arr);
 
 $callback_name = $_GET['callback'];
 
-//   判断callback是不是函数                         回调函数的调用
+//   判断callback是不是函数                         回调函数的调用   参数
 echo "typeof {$callback_name} === 'function' && {$callback_name}({$result})";

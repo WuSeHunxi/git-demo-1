@@ -8,28 +8,50 @@
 </head>
 <body>
     <script>
-          function jsonp(url,params,callback){
-              var funcName='jsonp_'+Date.now()+Math.random().toString();
-              if(typeof params==='object'){
-                  var tempArr=[];
-                  for(var key in params){
-                      var value=params[key];
-                      tempArr.push(key+'='+value);
-                  }
-                  params=tempArr.join('&');
-              }
-              var script=url+'?'+params+'&callback='+funcName;
-              document.body.appendChild(script);
-              window[funcName]=function(data){
-                  callback(data);
-                  delete window[funcName];
-                  document.body.removeChild(script);
-              }
-          }  
 
-          jsonp('http://localhost/Ajax/post/jsonp/server.php',{id:1},function(res){
-              console.log(res);
-          })
+        function jsonp(url,params,callback){
+            var funName='jsonp_'+Date.now()+Math.random().substr(0,2);
+            if(params==='object'){
+                var tempArr=[];
+                for(var key in params){
+                    tempArr.push(key);
+                }
+                params=tempArr.join("&");
+            }
+            var script=document.createElement("script");
+            script.scr=url+'?'+params+'&callback='+funName;
+            document.body.appendChild(script);
+            window[funName]=function(res){
+                callback(res);
+                console.log(res);
+            }
+        }
+        
+
+
+
+        //   function jsonp(url,params,callback){
+        //       var funcName='jsonp_'+Date.now()+Math.random().toString();
+        //       if(typeof params==='object'){
+        //           var tempArr=[];
+        //           for(var key in params){
+        //               var value=params[key];
+        //               tempArr.push(key+'='+value);
+        //           }
+        //           params=tempArr.join('&');
+        //       }
+        //       var script=url+'?'+params+'&callback='+funcName;
+        //       document.body.appendChild(script);
+        //       window[funcName]=function(data){
+        //           callback(data);
+        //           delete window[funcName];
+        //           document.body.removeChild(script);
+        //       }
+        //   }  
+
+        //   jsonp('http://localhost/Ajax/post/jsonp/server.php',{id:1},function(res){
+        //       console.log(res);
+        //   })
     </script>
 </body>
 </html>
