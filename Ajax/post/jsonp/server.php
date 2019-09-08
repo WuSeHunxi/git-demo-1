@@ -12,6 +12,7 @@
 
 $zhangsan = array('id'=>1,'name' => 'ahahahah', 'age' => 18);
 
+// 判断是否传递了回调函数
 if (empty($_GET['callback'])) {
   header('Content-Type: application/json');
   echo json_encode($arr);
@@ -28,5 +29,5 @@ $result = json_encode($arr);
 
 $callback_name = $_GET['callback'];
 
-// echo $result;
+//   判断callback是不是函数                         回调函数的调用
 echo "typeof {$callback_name} === 'function' && {$callback_name}({$result})";

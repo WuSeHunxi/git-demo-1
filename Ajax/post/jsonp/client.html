@@ -40,10 +40,10 @@
     // 封装一个函数   为每一个请求创建一个唯一的函数
     function jsonp (url, params, callback) {
 
-      // 函数名字（通过随机数命名）
+      // 函数名字（通过随机数命名）  substr(2, 5)表示从小数点之后开始截取
       var funcName = 'jsonp_' + Date.now() + Math.random().toString().substr(2, 5)
 
-      // 表示请求参数需要用&连接起来
+      // 表示get请求参数需要用&连接起来
       if (typeof params === 'object') {
         var tempArr = []
         for (var key in params) {
@@ -55,12 +55,13 @@
 
       var script = document.createElement('script')
 
-      // script标签只能发送get请求      callback告诉客户端回调函数的名字是什么
+      // script标签只能发送get请求      callback告诉服务端回调函数的名字是什么
       // 把客户端注册的函数名字传给服务端
       script.src = url + '?' + params + '&callback=' + funcName
       document.body.appendChild(script)
 
-      // 随机生成一个函数名字
+      // 声明一个函数
+      // window[funcName]是全局的，相当于在window对象下声明了一个函数
       window[funcName] = function (data) {
         callback(data)
 
