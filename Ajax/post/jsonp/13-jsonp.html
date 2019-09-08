@@ -7,11 +7,16 @@
 <body>
   <script>
     // http://day-12.io/13-jsonp.html
+
+    // 先使用再引入
     function myonload (data) {
       console.log(data)
     }
   </script>
-  <script src="data.js"></script>
+  <script src="http://localhost/Ajax/post/jsonp/data.js"></script>
+
+  <!-- 用script标签请求一个php文件，该文件返回一个js脚本 -->
+  
   <!-- <script src="http://localhost/data.php"></script> -->
   <!--
     通过 script 标签请求一个服务端的 PHP 文件
