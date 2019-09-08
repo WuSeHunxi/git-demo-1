@@ -9,8 +9,9 @@ while ($row = mysqli_fetch_assoc($query)) {
 }
 
 // 一行代码搞定
-// 允许跨域请求
+// 允许跨域请求          *表示允许所有的源对这个文件进行请求
 header('Access-Control-Allow-Origin: *');
+
 
 header('Content-Type: application/json');
 echo json_encode($data);

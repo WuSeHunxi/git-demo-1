@@ -37,7 +37,7 @@
     // }
 
 
-    // 封装一个函数
+    // 封装一个函数   为每一个请求创建一个唯一的函数
     function jsonp (url, params, callback) {
 
       // 函数名字（通过随机数命名）
@@ -54,7 +54,7 @@
 
       var script = document.createElement('script')
 
-      // script标签只能发送get请求 
+      // script标签只能发送get请求      callback告诉客户端回调函数的名字是什么
       script.src = url + '?' + params + '&callback=' + funcName
       document.body.appendChild(script)
 
@@ -68,11 +68,12 @@
     }
 
 
-    jsonp('http://localhost/jsonp/server.php', { id: 123 }, function (res) {
+    // 方法的调用
+    jsonp('http://localhost/Ajax/post/jsonp/server.php', { id: 123 }, function (res) {
       console.log(res)
     })
 
-    jsonp('http://localhost/jsonp/server.php', { id: 123 }, function (res) {
+    jsonp('http://localhost/Ajax/post/jsonp/server.php', { id: 123 }, function (res) {
       console.log(res)
     })
   </script>
