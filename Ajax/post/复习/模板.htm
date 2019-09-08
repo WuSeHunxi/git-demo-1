@@ -7,8 +7,23 @@
     <title>Document</title>
 </head>
 <body>
+
+    
     <table id="demo"></table>
-    <script id="tmpl" type="text/x-art-template"></script>
+    <script id="tmpl" type="text/x-art-template">
+
+    <!-- 模板的准备         -->
+
+    {{each comments}}
+    <tr>
+        <td>{{$value.author}}</td>
+        <td>{{$value.content}}</td>
+        <td>{{$value.created}}</td>
+    </tr>
+    
+    </script>
+    
+    <!-- 下载模板引擎模板 -->
     <script src="template-web.js"></script>
     <script>
         
@@ -20,7 +35,11 @@
                 return;
             }
             
-            // 模板
+            // 模板引擎的js
+            var context={comments:res.data};
+            var html=template('tmpl',context);
+            console.log(html);
+            document.getElementById('demo').innerHTML=html;
         }
     </script>
 </body>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function ajax(method,url,params,done){
+            var xhr=new XMLHttpRequest();
+            var method=method.toUpperCase();
+            if(typeof params==='object'){
+                var tempArr=[];
+                for(var key in params){
+                    tempArr.push(key+"="+value);
+                }
+                params=tempArr.join("&");
+            }
+            var data=null;  //get 方法另设一个参数
+            if(method==='GET'){
+                url=url+"?"+params;
+                data=params;
+            }
+            xhr.open(methos,url,false);
+            if(method==="POST"){
+                xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+
+            }
+            xhr.onreadystatechange=function(){
+                if(this.readyState!=4){
+                    return;
+                }
+                done(this.responseText);
+            }
+            xhr.send(data);
+        }
+    
+    </script>
+</body>
+</html>
