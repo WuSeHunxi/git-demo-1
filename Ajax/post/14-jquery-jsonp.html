@@ -12,11 +12,11 @@
     // jQuery 实现跨域请求
     $.ajax({
       url: 'http://localhost/Ajax/post/jsonp/server.php',
-      dataType: 'jsonp',
+      dataType: 'jsonp', //用jsonp实现跨域
       success: function (res) {
         console.log(res)
       }
-    })
+    });
 
   </script>
 </body>
