@@ -62,9 +62,8 @@
 
       // 声明一个函数
       // window[funcName]是全局的，相当于在window对象下声明了一个函数
-      window[funcName] = function (data) {
-        callback(data)
-
+      window[funcName] = function (data) { // 在src中请他出入到服务端，并在服务端调用
+        callback(data)  // 调用函数
         delete window[funcName]
         document.body.removeChild(script)
       }

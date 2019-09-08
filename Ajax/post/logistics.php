@@ -18,10 +18,11 @@
      * */
     if(!empty($_GET["kuaidi_id"])){
         //如果没有传回调函数
-        if(empty($_GET["callback"])){
+        if(empty($_GET["callback"])){  // 客户端发送的回调函数
             echo json_encode($kuaidi[$_GET["kuaidi_id"]]);
         }else{
-            //如果有回调函数 那么输出 jsonp
+            //如果有回调函数 那么输出 jsonp    
+            // 回调函数的调用
             echo $_GET["callback"]."(".json_encode($kuaidi[$_GET["kuaidi_id"]]).")";
         }
     }
