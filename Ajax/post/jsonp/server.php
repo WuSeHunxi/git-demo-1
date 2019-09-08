@@ -1,16 +1,35 @@
 <?php
 
-$conn = mysqli_connect('localhost', 'root', '123456', 'demo');
+// $conn = mysqli_connect('localhost', 'root', '123456', 'demo');
 
-$query = mysqli_query($conn, 'select * from users');
+// $query = mysqli_query($conn, 'select * from users');
 
-while ($row = mysqli_fetch_assoc($query)) {
-  $data[] = $row;
-}
+// while ($row = mysqli_fetch_assoc($query)) {
+//   $data[] = $row;
+// }
+
+$array=(
+  array(
+    'id'=>1,
+    'name'=>'lalala',
+    'age'=>11
+  ),
+  array(
+    'id'=>2,
+    'name'=>'oooo',
+    'age'=>12
+  ),
+  array(
+    'id'=>3,
+    'name'=>'apapap',
+    'age'=>13
+  )
+);
+
 
 if (empty($_GET['callback'])) {
   header('Content-Type: application/json');
-  echo json_encode($data);
+  echo json_encode($array);
   exit();
 }
 
@@ -20,7 +39,7 @@ if (empty($_GET['callback'])) {
 // 如果客户端采用的是 script 标记对我发送的请求
 // 一定要返回一段 JavaScript
 header('Content-Type: application/javascript');
-$result = json_encode($data);
+$result = json_encode($array);
 
 $callback_name = $_GET['callback'];
 

@@ -43,6 +43,7 @@
       // 函数名字（通过随机数命名）
       var funcName = 'jsonp_' + Date.now() + Math.random().toString().substr(2, 5)
 
+      // 表示请求参数需要用&连接起来
       if (typeof params === 'object') {
         var tempArr = []
         for (var key in params) {
@@ -55,6 +56,7 @@
       var script = document.createElement('script')
 
       // script标签只能发送get请求      callback告诉客户端回调函数的名字是什么
+      // 把客户端注册的函数名字传给服务端
       script.src = url + '?' + params + '&callback=' + funcName
       document.body.appendChild(script)
 
@@ -69,13 +71,13 @@
 
 
     // 方法的调用
-    jsonp('http://localhost/Ajax/post/jsonp/server.php', { id: 123 }, function (res) {
+    jsonp('http://localhost/Ajax/post/jsonp/server.php', { id: 1 }, function (res) {
       console.log(res)
     })
 
-    jsonp('http://localhost/Ajax/post/jsonp/server.php', { id: 123 }, function (res) {
-      console.log(res)
-    })
+    // jsonp('http://localhost/Ajax/post/jsonp/server.php', { id: 2 }, function (res) {
+    //   console.log(res)
+    // })
   </script>
 </body>
 </html>
