@@ -11,13 +11,13 @@
     <script>
         $(function(){
             $.ajax({
-                url:"user.php",
+                url:"test.php",
                 type:"get",
                 dataType:"json",
                 
                 success:function(res){
-                    console.log(res);
-                },
+                    console.log(res.data);
+                }
                 // error:function(status){
                 //     console.log(status);
                 // }
