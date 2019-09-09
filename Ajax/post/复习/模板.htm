@@ -29,9 +29,10 @@
             var res=JSON.parse(this.responseText);
 
             // 准备数据
-            var context={comment:res.data};
-            // 数据和函数结合
+            var context={comments:res.data};
+            // 数据和模板结合
             var html=template('tmpl',context);
+            console.log(html);
             document.getElementById("demo").innerHTML=html;
         }
     
