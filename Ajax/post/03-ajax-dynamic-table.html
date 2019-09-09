@@ -47,11 +47,11 @@
     xhr.send()
     xhr.onreadystatechange = function () {
       if (this.readyState !== 4) return
-      var res = JSON.parse(this.responseText)
+      var res = JSON.parse(this.responseText) 
 
-      // 模板中需要的
+      // 将模板和数据整合在一起
       // 模板所需数据   这里的comments会在模板中遍历使用
-      var context = { comments: res.data }
+      var context = { comments: res.data } // context是准备的数据
       // 借助模板引擎的API 渲染数据
       var html = template('tmpl', context)
       console.log(html)

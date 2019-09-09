@@ -11,14 +11,16 @@
     <script>
         $(function(){
             $.ajax({
+                url:"user.php",
                 type:"get",
                 dataType:"json",
-                success:function(status){
-                    console.log(status);
+                
+                success:function(res){
+                    console.log(res);
                 },
-                error:function(status){
-                    console.log(status);
-                }
+                // error:function(status){
+                //     console.log(status);
+                // }
             })
         });
         

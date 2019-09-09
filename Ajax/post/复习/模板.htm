@@ -7,40 +7,34 @@
     <title>Document</title>
 </head>
 <body>
-
-    
     <table id="demo"></table>
     <script id="tmpl" type="text/x-art-template">
-
-    <!-- 模板的准备         -->
-
-    {{each comments}}
-    <tr>
-        <td>{{$value.author}}</td>
-        <td>{{$value.content}}</td>
-        <td>{{$value.created}}</td>
-    </tr>
+        {{comment:each}}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    
     
     </script>
-    
-    <!-- 下载模板引擎模板 -->
     <script src="template-web.js"></script>
     <script>
-        
         var xhr=new XMLHttpRequest();
-        xhr.open('GET','test.php');
+        xhr.open('GET',"user.php");
         xhr.send();
         xhr.onreadystatechange=function(){
-            if(this.readyState!=4){
+            if(this.readyState!=4)
                 return;
-            }
-            
-            // 模板引擎的js
-            var context={comments:res.data};
+            var res=JSON.parse(this.responseText);
+
+            // 准备数据
+            var context={comment:res.data};
+            // 数据和函数结合
             var html=template('tmpl',context);
-            console.log(html);
-            document.getElementById('demo').innerHTML=html;
+            document.getElementById("demo").innerHTML=html;
         }
+    
     </script>
 </body>
 </html>
