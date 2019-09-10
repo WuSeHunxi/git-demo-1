@@ -11,44 +11,36 @@
 </head>
 
 <body>
-    <table id="demo"></table>
+    <!-- <table id="demo"></table>
     <script type="text/html" id="tmpl">
-        <h1>{{}}</h1>
-    </script>
+        {{each comments value}}
+        <h1>{{value}}</h1>
+        {{/each}}
+    </script> -->
     <script>
 
-        $(function () {
+       
             // var script=document.createElement("script");
-
-            // $.get('http://localhost/Ajax/post/time2.php', "jsonp",foo);
-
+            // script.src="http://localhost/Ajax/post/jsonp/server.php?callback=foo";
+            // document.body.appendChild(script);
             // function foo(res) {
-            //     var context = { comments: res.data };
+            //     var context = { comments: res };
             //     // console.log(res);
             //     var html = template('tmpl', context);
-            //     console.log(html);
-            //     document.getElementById("demo").html(html);
+            //     console.log(context);
+            //     document.getElementById("demo").innerHTML=html;
             // }
-            // var funcName = 'jsonp_' + Date.now() + Math.random().toString().substr(2, 5)
-            $.ajax({
-                type:'get',
-                url:'http://localhost/Ajax/post/time2.php',
-                dataType:"jsonp",
-                jsonp:'foo',
-                success:function(res){
-                    console.log(res);
-                    var html=template('tmpl',res);
-                    $('#demo').html(html);
-                }
-            })
-           function foo(data) { // 在src中请他出入到服务端，并在服务端调用
-                callback(data)  // 调用函数
-                // delete window[funcName]
-                // document.body.removeChild(script)
+        
+
+
+        // $(function(){
+            function foo(data){
+                // console.log(data);
             }
-        })
+        // });
 
     </script>
+    <script src="http://localhost/Ajax/post/time2.php?callback=foo"></script>
 </body>
 
 </html>

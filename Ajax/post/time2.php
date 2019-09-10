@@ -9,7 +9,12 @@
 
 // => {"time":153142321}
 
-echo 'foo({"time":153142321})';
+// echo 'foo({"time":153142321})';
+
+$callback=$_GET['callback'];
+$data=array('a','b','c');
+echo $callback.'('.json_encode($data).'.';
+
 
 // => foo({"time":153142321})
 
