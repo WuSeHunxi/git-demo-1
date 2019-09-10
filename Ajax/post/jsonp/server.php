@@ -2,7 +2,7 @@
 
 // echo time();
 
-// $conn = mysqli_connect('localhost', 'root', '123456', 'demo');
+// $conn = mysqli_connect('localhost', 'root', '', 'demo');
 
 // $query = mysqli_query($conn, 'select * from users');
 
@@ -10,7 +10,7 @@
 //   $data[] = $row;
 // }
 
-$zhangsan = array('id'=>1,'name' => 'ahahahah', 'age' => 18);
+$zhangsan = array('id'=>2,'name' => 'ahahahah', 'age' => 18);
 
 // 判断是否传递了回调函数
 if (empty($_GET['callback'])) {
