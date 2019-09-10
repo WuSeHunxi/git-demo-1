@@ -15,7 +15,9 @@
     <script src="../jquery.js"></script>
     <script>
         $(function(){
-            $.post()
+            $.post('登录.php','json',function(res){
+                console.log(res);
+            })
         });
     </script>
 </body>
