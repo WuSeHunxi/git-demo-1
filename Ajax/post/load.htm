@@ -17,7 +17,13 @@
     <button>获得外部内容</button>
     <script src="jquery.js"></script>
     <script>
+        $(document).ready(function(){
+            $("button").on("click",function(){
 
+                //load 常用语改变局部页面
+                $("h2").load("demo_test.txt");
+            });
+        });
         /**
         可选的 callback 参数规定当 load() 方法完成后所要允许的回调函数。回调函数可以设置不同的参数：
             responseTxt - 包含调用成功时的结果内容
@@ -59,11 +65,11 @@
         //     });
         // });
         
-        $(document).ready(function(){
-            $("button").click(function(){
-                $("h2").load("demo_test.txt");
-            });
-        });
+        // $(document).ready(function(){
+        //     $("button").click(function(){
+        //         $("h2").load("demo_test.txt");
+        //     });
+        // });
 
 
         
