@@ -9,7 +9,7 @@
 
 // => {"time":153142321}
 
-// echo 'foo({"time":153142321})';
+echo 'foo({"time":153142321})';
 
 // => foo({"time":153142321})
 
@@ -25,7 +25,7 @@
 //响应内容不能是直接的一段json数据，而是直接执行一个js函数，也就是cb的参数名 
 
 
-<?php
+
 
 // echo time();
 
@@ -37,7 +37,7 @@
 //   $data[] = $row;
 // }
 
-$zhangsan = array('id'=>1,'name' => 'ahahahah', 'age' => 18);
+
 
 // 判断是否传递了回调函数
 // if (empty($_GET['callback'])) {
@@ -51,10 +51,4 @@ $zhangsan = array('id'=>1,'name' => 'ahahahah', 'age' => 18);
 
 // 如果客户端采用的是 script 标记对我发送的请求
 // 一定要返回一段 JavaScript
-header('Content-Type: application/javascript');
-$result = json_encode($arr);
 
-$callback_name = $_GET['callback'];
-
-//   判断callback是不是函数                         回调函数的调用   参数
-echo "typeof {$callback_name} === 'function' && {$callback_name}({$result})";
