@@ -19,12 +19,16 @@
 
     // 显示 loading
 
+    
+
+
     $.ajax({
       url: 'time.php',
       type: 'get',
       beforeSend: function (xhr) {
         // 在所有发送请求的操作（open, send）之前执行
-        console.log('beforeSend', xhr)
+        // 在发送请求之前状态码是0
+        console.log('beforeSend', xhr.readyState)
       },
       success: function (res) {
         // 隐藏 loading
@@ -36,10 +40,11 @@
       //   // 只有请求不正常（状态码不为200）才会执行
       //   console.log('error', xhr)
       // },
-      // complete: function (xhr) {
-      //   // 不管是成功还是失败都是完成，都会执行这个 complete 函数
-      //   console.log('complete', xhr)
-      // }
+      // 请求完成
+      complete: function (xhr) {
+        // 不管是成功还是失败都是完成，都会执行这个 complete 函数
+        console.log('complete', xhr.readyState)
+      }
     })
 
   </script>

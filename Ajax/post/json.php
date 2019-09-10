@@ -1,6 +1,11 @@
 <?php
 
-$zhangsan = array('id'=>1,'name' => 'ahahahah', 'age' => 18);
+$zhangsan = array(
+    array('id'=>1,'name' => 'ahahahah', 'age' => 18),
+    array('id'=>2,'name' => 'ahahahah', 'age' => 13),
+    array('id'=>3,'name' => 'ahahahah', 'age' => 14)
+);
+
 // $array=(
 //     array(
 //         "name"=>"lalal",
