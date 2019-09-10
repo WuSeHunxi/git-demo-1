@@ -10,10 +10,13 @@
   <script src="jquery.js"></script>
   <script>
 
-    $.get('http://localhost/cors.php', {}, function (res) {
-      console.log(res)
-    })
+    // $.get('http://localhost/cors.php', {}, function (res) {
+    //   console.log(res)
+    // })
 
+    $.get('http://localhost/Ajax/post/cors.php',{},function(res){
+      console.log(res);
+    })
   </script>
 </body>
 </html>

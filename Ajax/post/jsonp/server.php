@@ -10,7 +10,7 @@
 //   $data[] = $row;
 // }
 
-$zhangsan = array('id'=>2,'name' => 'ahahahah', 'age' => 18);
+$arr = array('id'=>2,'name' => 'ahahahah', 'age' => 18);
 
 // 判断是否传递了回调函数
 if (empty($_GET['callback'])) {
@@ -26,6 +26,7 @@ if (empty($_GET['callback'])) {
 // 一定要返回一段 JavaScript
 header('Content-Type: application/javascript');
 $result = json_encode($arr);
+
 
 $callback_name = $_GET['callback'];
 
