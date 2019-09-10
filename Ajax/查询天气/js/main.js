@@ -1,3 +1,6 @@
+
+// 表示文档全部加载完成
+
 jQuery(document).ready(function(){
 
 	// 按回车键获取到文本框的值
@@ -12,6 +15,8 @@ jQuery(document).ready(function(){
 			getData(param)
 		}
 	});
+
+	// 发请求 设模板
 	function getData(param){
 		var param = param ? param : "北京";
 		$.ajax({
