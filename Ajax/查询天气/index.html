@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>全国天气预报</title>
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/template-web.js"></script>
+    <script src="./js/main.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 版心 S -->
+        <div class="w">
+            <!-- 版心 E -->
+            <!-- 头部 S -->
+            <div class="header">
+                <p class="headerText cssbe6388d2919ac6">全国城市天气查询</p>
+            </div>
+            <!-- 头部 E -->
+            <!-- 文本框 S -->
+            <div class="headerInput">
+                <input type="text" placeholder="请输入城市名称" id="headerGet">
+            </div>
+            <!-- 文本框 E -->
+            <!-- 内容 S -->
+            <div class="lists">
+                <ul id="ulLists">
+                    <script type="text/html" id="tmplt">
+                        <li>
+                            <h3>城市:{{result.city}}</h3>
+                        </li>
+                         <li>
+                            <h3>时间:{{result.date}}</h3>
+                        </li>
+                         <li>
+                            <h3>星期:{{result.week}}</h3>
+                        </li>
+                         <li>
+                            <h3>天气:{{result.weather}}</h3>
+                        </li>
+                        <li>
+                            <h3>风力和风向</h3>
+                            <span>{{result.windpower}}</span>
+                            <span>{{result.winddirect}}</span>
+                        </li>
+                        <li>
+                            <ul>
+                                {{each result.index val index}}
+                                    <h3>{{val.iname}}</h3>
+                                    <li>{{val.ivalue}}</li>
+                                    <li>{{val.detail}}</li>
+                                {{/each}}
+                            </ul>
+                        </li>
+                    </script>
+                </ul>
+            </div>
+            <!-- 内容 E -->
+        </div>
+        <!-- 版心 E -->
+    </div>
+</body>
+
+</html>
