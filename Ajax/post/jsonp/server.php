@@ -10,8 +10,10 @@
 //   $data[] = $row;
 // }
 
-header("Content-Type:application/json");
-header("Access-Control-Allow-Origin:*");
+
+// HTML5中可以直接解决Ajax跨域的问题
+// header("Content-Type:application/json");
+// header("Access-Control-Allow-Origin:*");
 
 $arr = array('id'=>2,'name' => 'ahahahah', 'age' => 18);
 
