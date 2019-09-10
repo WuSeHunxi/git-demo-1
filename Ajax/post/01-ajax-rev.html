@@ -3,17 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>AJAX基础回顾</title>
+  <script src="template-web.js"></script>
+  <script src="jquery.js"></script>
 </head>
 <body>
   <table id="demo"></table>
-  <script src="template-web.js"></script>
-  <script type="text/html">
-    {{each comments}}
-    <h1>{{$value.id}}</h1>
-    <h1>{{$value.name}}</h1>
-    <h1>{{$value.age}}</h1>
+   
+  <script id="tmpl" type="text/x-art-template">
+
+    <!-- 卧槽 可下他妈的出来了！！！-->
+
+    <!-- js使用时的格式 -->
+    <!-- {{each comments as key}}   -->
+    
+    <!-- jQuery使用时的格式 -->
+    {{each comment  value}}
+    <h1>{{value}}</h1>
+    
     {{/each}}
   </script>
+
   <script>
 
     // Ajax发送请求
@@ -25,18 +34,31 @@
     //   console.log(this)
     // }
 
-    var xhr=new XMLHttpRequest();
-    xhr.open('GET','json.php');
-    xhr.send();
-    xhr.onreadystatechange=function(){
-      if(this.readyState!=4){
-        return;
-      }
-      var res=JSON.parse(this.responseText);
-      var context={coments:res.data};
-      var html=template('tmpl',context);
-      $('demo').html(html);
-    }
+    // var xhr=new XMLHttpRequest();
+    // xhr.open('GET','json.php');
+    // xhr.send();
+    // xhr.onreadystatechange=function(){
+    //   if(this.readyState!=4){
+    //     return;
+    //   }
+    //   var res=JSON.parse(this.responseText);
+    //   var context={comments:res};
+    //   // console.log(context);
+    //   var html=template('tmpl',context);
+    //   document.getElementById("demo").innerHTML=html;
+    // }
+
+
+      $.ajax({
+        url:"json.php",
+        type:"get",
+        dataType:"json",
+        success:function(res){
+          var context={comment:res};
+          var html=template('tmpl',context);
+          $("#demo").html(html);
+        }
+      })
 
   </script>
 </body>

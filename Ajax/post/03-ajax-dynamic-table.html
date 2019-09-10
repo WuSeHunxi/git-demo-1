@@ -56,7 +56,7 @@
       var context = { comments: res.data } // context是准备的数据
       // 借助模板引擎的API 渲染数据
       var html = template('tmpl', context)
-      console.log(html)
+      console.log(context)
 
       document.getElementById('demo').innerHTML = html
 
