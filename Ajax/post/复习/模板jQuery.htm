@@ -13,24 +13,33 @@
 <body>
     <table id="demo"></table>
     <script type="text/html" id="tmpl">
-        {{each comments}}
-        <tr>
-            <td>{{$value.author}}</td>
-            <td>{{$value.content}}</td>
-            <td>{{$value.created}}</td>
-        </tr>
-        {{/each}}
+        <h1>{{}}</h1>
     </script>
     <script>
 
         $(function () {
-            $.get('http://localhost/Ajax/post/time2.php', foo);
+            // var script=document.createElement("script");
 
-            function foo(res) {
-                var context = { comments: res.data };
-                var html = template('tmpl', context);
-                document.getElementById("demo").innerHTML = html;
-            }
+            // $.get('http://localhost/Ajax/post/time2.php', "jsonp",foo);
+
+            // function foo(res) {
+            //     var context = { comments: res.data };
+            //     // console.log(res);
+            //     var html = template('tmpl', context);
+            //     console.log(html);
+            //     document.getElementById("demo").html(html);
+            // }
+            $.ajax({
+                type:'get',
+                url:'http://localhost/Ajax/post/time2.php',
+                dataType:"jsonp",
+                jsonp:'callback',
+                success:function(res){
+                    console.log(res);
+                    var html=template('tmpl',res);
+                    $('#demo').html(html);
+                }
+            })
         })
 
     </script>
