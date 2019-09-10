@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery.js"></script>
+    <script src="../template-web.js"></script>
+</head>
+<body>
+    <table id="demo"></table>
+    <script type="text/html" id="tmpl">
+        {{each comments}}
+        <tr>
+            <td>{{$value.author}}</td>
+            <td>{{$value.content}}</td>
+            <td>{{$value.created}}</td>
+        </tr>
+        {{/each}}
+    </script>
+    <script>
+        $(document).ready(function(){
+            $.get('http://localhost/Ajax/jsonp/server.php',function(res){
+                var context={comments:res.data};
+                var html=template('tmpl',context);
+                document.getElementById("demo").innerHTML=html;
+            });
+        });  
+    </script>
+</body>
+</html>
