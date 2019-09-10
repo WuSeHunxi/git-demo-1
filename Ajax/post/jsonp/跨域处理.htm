@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script src="../jquery.js"></script>
+    <script>
+    // var script=document.createElement("script");
+    // script.src='http://localhost/Ajax/post/time2.php';
+    // document.body.appendChild(script);
+    
+    // // 设置一个回调函数
+    // function foo(res)
+    // {
+    //     console.log(res);
+    // }
+    $.ajax({
+        url:'http://localhost/Ajax/post/time2.php',
+        type:"get",
+        dataType:'jsonp',
+        success:foo
+    });
+
+    // 要传递给客户端参数
+    function foo(res){
+        console.log(res);
+    }
+    </script>
+</body>
+</html>
