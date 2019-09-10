@@ -5,15 +5,37 @@
   <title>AJAX基础回顾</title>
 </head>
 <body>
+  <table id="demo"></table>
+  <script src="template-web.js"></script>
+  <script type="text/html">
+    {{each comments}}
+    <h1>{{$value.id}}</h1>
+    <h1>{{$value.name}}</h1>
+    <h1>{{$value.age}}</h1>
+    {{/each}}
+  </script>
   <script>
 
     // Ajax发送请求
-    var xhr = new XMLHttpRequest()
-    xhr.open('GET', 'test.php')
-    xhr.send()
-    xhr.onreadystatechange = function () {
-      if (this.readyState !== 4) return
-      console.log(this)
+    // var xhr = new XMLHttpRequest()
+    // xhr.open('GET', 'test.php')
+    // xhr.send()
+    // xhr.onreadystatechange = function () {
+    //   if (this.readyState !== 4) return
+    //   console.log(this)
+    // }
+
+    var xhr=new XMLHttpRequest();
+    xhr.open('GET','json.php');
+    xhr.send();
+    xhr.onreadystatechange=function(){
+      if(this.readyState!=4){
+        return;
+      }
+      var res=JSON.parse(this.responseText);
+      var context={coments:res.data};
+      var html=template('tmpl',context);
+      $('demo').html(html);
     }
 
   </script>

@@ -29,17 +29,23 @@
             //     console.log(html);
             //     document.getElementById("demo").html(html);
             // }
+            // var funcName = 'jsonp_' + Date.now() + Math.random().toString().substr(2, 5)
             $.ajax({
                 type:'get',
                 url:'http://localhost/Ajax/post/time2.php',
                 dataType:"jsonp",
-                jsonp:'callback',
+                jsonp:'foo',
                 success:function(res){
                     console.log(res);
                     var html=template('tmpl',res);
                     $('#demo').html(html);
                 }
             })
+           function foo(data) { // 在src中请他出入到服务端，并在服务端调用
+                callback(data)  // 调用函数
+                // delete window[funcName]
+                // document.body.removeChild(script)
+            }
         })
 
     </script>
