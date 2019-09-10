@@ -20,12 +20,14 @@ jQuery(document).ready(function(){
 			url:'http://api.jisuapi.com/weather/query',
 			data:{
 				appkey:"eee8cacbc1e612cd",
-				city:param
+				city:param   // 城市名称是变化的
 			},
-			dataType:'jsonp',
-			jsonp:'callback',
+			dataType:'jsonp',  // 跨域
+			jsonp:'callback',  // 回调函数
 			success:function(json){
 				console.log(json);
+
+				// 数据和模板相结合
 				var html = template('tmplt',json);
 				$('#ulLists').html(html);
 			}
