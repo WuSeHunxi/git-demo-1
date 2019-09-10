@@ -10,7 +10,11 @@
     <script src="../jquery.js"></script>
     <script>
         $.ajax({
-            url:""
+            url:"http://localhost/Ajax/post/jsonp/server.php",
+            type:"get",
+            success:function(res){
+                console.log(res);
+            }
         })
     </script>
 </body>

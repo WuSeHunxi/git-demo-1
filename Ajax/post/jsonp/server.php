@@ -10,6 +10,9 @@
 //   $data[] = $row;
 // }
 
+header("Content-Type:application/json");
+header("Access-Control-Allow-Origin:*");
+
 $arr = array('id'=>2,'name' => 'ahahahah', 'age' => 18);
 
 // 判断是否传递了回调函数
