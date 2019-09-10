@@ -15,9 +15,12 @@
     <script src="../jquery.js"></script>
     <script>
         $(function(){
-            $.post('登录.php','json',function(res){
-                console.log(res);
+            $("button").on("click",function(){
+                $.post('登录.php',function(res){
+                    console.log(res);
+                })
             })
+            
         });
     </script>
 </body>
