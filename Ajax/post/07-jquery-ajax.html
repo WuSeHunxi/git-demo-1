@@ -8,6 +8,14 @@
   <script src="jquery.js"></script>
   <script>
 
+    $.ajax({
+      url:"json.php",
+      type:"get",
+      dataType:"json",
+      success:function(res,status){
+        console.log(res,status);
+      }
+    })
     // // 最基础的 调用
     // $.ajax('./time.php', {
     //   type: 'post', // method 请求方法
@@ -29,15 +37,15 @@
     //   }
     // })
 
-    $.ajax({
-      url:"json.php",
-      type:"get",
-      dataType:"json",
-      success:function(res,status){
-        console.log(res);
-        // console.lo("kakka");
-      }
-    })
+    // $.ajax({
+    //   url:"json.php",
+    //   type:"get",
+    //   dataType:"json",
+    //   success:function(res,status){
+    //     console.log(res);
+    //     // console.lo("kakka");
+    //   }
+    // })
     // $.ajax({
     //   url: 'json.php',
     //   type: 'get',
