@@ -14,10 +14,13 @@
     //   console.log(res) // 输出的res就是传入的参数
     // })
 
-    $.post('json.php', { id: 1 }, function (res) {
-      console.log(res)
-    })
+    // $.post('json.php', { id: 1 }, function (res) {
+    //   console.log(res)
+    // })
 
+    $.getJSON('json.php',{id:1},function(res){
+      console.log(res);
+    })
     // $.getJSON('json.php', { id: 1 }, function (res) {
     //   console.log(res)
     // })

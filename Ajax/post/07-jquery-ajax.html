@@ -17,18 +17,27 @@
     //   }
     // })
 
+    // $.ajax({
+    //   url: 'time.php',
+    //   type: 'post',
+    //   // 用于提交到服务端的参数，
+    //   // 如果是 GET 请求就通过 url 传递
+    //   // 如果是 POST 请求就通过请求体传递
+    //   data: { id: 1, name: '张三' },
+    //   success: function (res) {
+    //     console.log(res)
+    //   }
+    // })
+
     $.ajax({
-      url: 'time.php',
-      type: 'post',
-      // 用于提交到服务端的参数，
-      // 如果是 GET 请求就通过 url 传递
-      // 如果是 POST 请求就通过请求体传递
-      data: { id: 1, name: '张三' },
-      success: function (res) {
-        console.log(res)
+      url:"json.php",
+      type:"get",
+      dataType:"json",
+      success:function(res,status){
+        console.log(res);
+        // console.lo("kakka");
       }
     })
-
     // $.ajax({
     //   url: 'json.php',
     //   type: 'get',
