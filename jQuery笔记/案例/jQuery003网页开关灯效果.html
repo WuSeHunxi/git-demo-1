@@ -8,7 +8,7 @@
             background-color: black;
         }
     </style>
-    <script src="jquery-1.12.2.js"></script>
+    <script src="jquery.js"></script>
     <script>
         //页面加载后点击按钮实现开关灯的效果
         $(function () {
@@ -28,6 +28,7 @@
 
             //更简单的代码
             $("#btn").click(function () {
+                // 添加和切换两种状态切换
                 $("body").toggleClass("cls");//切换类样式
             });
 

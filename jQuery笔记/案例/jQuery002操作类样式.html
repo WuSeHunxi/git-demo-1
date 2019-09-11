@@ -16,15 +16,17 @@
             border: 3px solid yellow;
         }
     </style>
-    <script src="jquery-1.12.2.js"></script>
+    <script src="jquery.js"></script>
     <script>
         $(function () {
             //点击第一个按钮为div添加类样式
             $("#btn1").click(function () {
+                // addClass添加类样式
                 $("#dv").addClass("cls");
             });
             //点击第二个按钮查询这个div是否应用了cls类样式
             $("#btn2").click(function () {
+                // hasClass判断是否含有类样式
                 var result=$("#dv").hasClass("cls");
                 console.log(result);
             });
