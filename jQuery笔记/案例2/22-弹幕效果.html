@@ -99,6 +99,8 @@
     
     //注册事件
     var colors = ["red", "green", "hotpink", "pink", "cyan", "yellowgreen", "purple", "deepskyblue"];
+
+    // 按钮点击发送
     $("#btn").click(function () {
       var randomColor = parseInt(Math.random() * colors.length);
       var randomY = parseInt(Math.random() * 400);
@@ -118,7 +120,7 @@
       $("#text").val("");
     });
     
-    
+    // 回车发射
     $("#text").keyup(function (e) {
       if (e.keyCode == 13) {
         $("#btn").click();
