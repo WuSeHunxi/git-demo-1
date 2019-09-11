@@ -23,11 +23,11 @@
         //获取ul中所有的li,有鼠标进入事件,鼠标离开事件,点击事件
         $(function () {
             //获取ul->li
-            $("ul>li").mouseenter(function () {
-                $(this).css("backgroundColor","red").siblings().css("backgroundColor","");
-            }).mouseleave(function () {
-                $(this).css("backgroundColor","").siblings().css("backgroundColor","");
-            }).click(function () {
+            // $("ul>li").mouseenter(function () {
+            //     $(this).css("backgroundColor","red").siblings().css("backgroundColor","");
+            // }).mouseleave(function () {
+            //     $(this).css("backgroundColor","").siblings().css("backgroundColor","");
+            // }).click(function () {
                 //当前元素前面的所有兄弟元素背景颜色为黄色
                 //$(this).prevAll().css("backgroundColor","yellow");
                 //当前元素后面的所有兄弟元素背景颜色为蓝色
@@ -37,8 +37,16 @@
                 //断链:对象调用方法,返回的不是当前的对象,再调用方法,调用不了,
                 //解决断链--->恢复到断链之前的一个效果--修复断链
                 //.end()方法恢复到断链之前的效果
-                $(this).prevAll().css("backgroundColor","yellow").end().nextAll().css("backgroundColor","blue");
-            });
+            //     $(this).prevAll().css("backgroundColor","yellow").end().nextAll().css("backgroundColor","blue");
+            // });
+
+            $("ul>li").on("mouseover",function(){
+                $(this).css("backgroundColor","red").siblings("backgroundColor","");
+            }).on("mouseleave",function(){
+                $(this).css("backgroundColor","").siblings("backgroundColor","");
+            }).click(function(){
+                $(this).prevAll().css("backgroundColor","yellow").end().nextAll().css("backgroudColor","pink");
+            })
         });
     </script>
 </head>
