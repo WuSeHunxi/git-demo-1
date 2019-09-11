@@ -3,7 +3,7 @@
 // 将文本文件中的内容呈现到一个表格中
 // 1. 读取文件内容                  // => 包含文本内容的字符串数据
 $contents = file_get_contents('names.txt');
-
+var_dump($contents);
 // 2. 按照一个特定的规则解析文件内容   // => 数组
 // 2.1. 按照换行拆分
 $lines = explode("\n", $contents);
