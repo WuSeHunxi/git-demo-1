@@ -3,24 +3,33 @@
 
 function login(){
     //判断
-    if(empty($_POST['name'])){
-        $GLOBALS['message']="请输入用户名";
+    // if(empty($_POST['name'])){
+    //     $GLOBALS['message']="请输入用户名";
+    //     return;
+    // }
+    // if(empty($_POST['word'])){
+    //     $GLOBALS['message']='请输入密码';
+    //     return;
+    // }
+    // if(empty($_POST['email'])||strpos($_POST['email'],'@')!=0){
+    //     $GLOBALS['message']="请输入邮箱地址";
+    //     return;
+    // }
+    if(!(isset($_POST['sex'])||$_POST['sex']!=='-1')){
+        $GLOBALS['message']="请输入性别";
         return;
     }
-    if(empty($_POST['word'])){
-        $GLOBALS['message']='请输入密码';
-        return;
-    }
-    if(empty($_POST['email'])||strpos($_POST['email'],'@')!=0){
-        $GLOBALS['message']="请输入邮箱地址";
-        return;
-    }
-    if($_POST['sex']!=-1){
-        
-    }
-    $name=$_POST['name'];
-    $word=$_POST['name'];
-    $email=$_POST['email'];
+    // $name=$_POST['name'];
+    // $word=$_POST['word'];
+    // $email=$_POST['email'];
+    $sex=$_POST['sex'];
+    // echo "用户名".$name;
+    // <br>
+    // echo "密码".$word;
+    // <br>
+    // echo "邮箱".$email;
+    // <br>
+    // echo "性别".$sex;
 }
 
 
@@ -57,10 +66,11 @@ if($_SERVER['REQUEST_METHOD']==="POST"){
         密码：<input type="password" name="word" id="word">
         <br>
         邮箱：<input type="email" name="email" id="email">
-        性别：<select>
-            <option value="-1"></option>
-            <option value="0"></option>
-            <option value="1"></option>
+        <br>
+        性别：<select name="sex" id="sex">
+            <option value="-1">请选择性别</option>
+            <option value="0">男</option>
+            <option value="1">女</option>
         </select>
         <br>
         <button>登录</button>
