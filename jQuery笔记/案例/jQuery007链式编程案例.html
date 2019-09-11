@@ -4,20 +4,27 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-
+        li{
+            cursor: pointer;
+        }
     </style>
-    <script src="jquery-1.12.2.min.js"></script>
+    <script src="jquery.js"></script>
     <script>
         //获取列表中每个li,当鼠标进入后,当前的li有高亮显示,点击的时候可以让当前被点击的li的字体变大,字体的颜色改变,改变字体
 
         //页面加载
         $(function () {
-            $("#uu>li").mouseover(function () {
-                $(this).css("backgroundColor","red").siblings("li").css("backgroundColor","");
-            }).click(function () {
-                $(this).css("fontSize","50px").css("color","green").css("fontFamily","全新硬笔行书简");
-            });
+            // $("#uu>li").mouseover(function () {
+            //     $(this).css("backgroundColor","red").siblings("li").css("backgroundColor","");
+            // }).click(function () {
+            //     $(this).css("fontSize","50px").css("color","green").css("fontFamily","全新硬笔行书简");
+            // });
 
+
+            $("#uu>li").on("mouseover",function(){
+                // 确保当前的变化而其他的不变
+                $(this).css("backgroundColor",'red').siblings("li").css("backgroundColor","");
+            })
         });
     </script>
 </head>
