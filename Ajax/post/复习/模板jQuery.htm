@@ -11,36 +11,61 @@
 </head>
 
 <body>
-    <!-- <table id="demo"></table>
-    <script type="text/html" id="tmpl">
+    <!-- <table id="demo"></table> -->
+    <!-- <script type="text/html" id="tmpl">
         {{each comments value}}
         <h1>{{value}}</h1>
         {{/each}}
     </script> -->
-    <script>
+    <script type="text/javascript">
 
        
+
+            //**************javascript进行跨域*******************
             // var script=document.createElement("script");
             // script.src="http://localhost/Ajax/post/jsonp/server.php?callback=foo";
             // document.body.appendChild(script);
             // function foo(res) {
-            //     var context = { comments: res };
-            //     // console.log(res);
-            //     var html = template('tmpl', context);
-            //     console.log(context);
-            //     document.getElementById("demo").innerHTML=html;
+            //     console.log(res);
+                // var context = { comments: res };
+                // // console.log(res);
+                // var html = template('tmpl', context);
+                // console.log(context);
+                // document.getElementById("demo").innerHTML=html;
             // }
         
 
 
         // $(function(){
-            function foo(data){
-                // console.log(data);
-            }
+        //     function foo(data){
+        //         console.log(data);
+        //     }
         // });
 
+
+        //************$.ajax()方法进行跨域********************
+        //***************************************************
+        // function handleData(rep_data){
+        //     console.log("Data:",rep_data);
+        // }
+
+        // $.ajax({
+        //     url:"http://localhost/Ajax/post/time2.php",
+        //     dataType:"jsonp",
+        //     jsonpCallback:"handleData"
+        // });
+
+
+        //-----*****************************------------------------
+        // ***************$.getJSON()方法跨域******************
+        // $(function(){
+            $.getJSON('http://localhost/Ajax/post/time2.php?callback=?',function(data){
+                console.log(data);
+            });
+        // })
+
     </script>
-    <script src="http://localhost/Ajax/post/time2.php?callback=foo"></script>
+    <!-- <script src="http://localhost/Ajax/post/time2.php?callback=foo"></script> -->
 </body>
 
 </html>
