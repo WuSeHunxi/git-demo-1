@@ -41,9 +41,9 @@
             // });
 
             $("ul>li").on("mouseover",function(){
-                $(this).css("backgroundColor","red").siblings("backgroundColor","");
+                $(this).css("backgroundColor","red").siblings().css("backgroundColor","");
             }).on("mouseleave",function(){
-                $(this).css("backgroundColor","").siblings("backgroundColor","");
+                $(this).css("backgroundColor","").siblings().css("backgroundColor","");
             }).click(function(){
                 $(this).prevAll().css("backgroundColor","yellow").end().nextAll().css("backgroudColor","pink");
             })
