@@ -1,0 +1,40 @@
+<!--jquery 里已经内置这个方法. 通过 $(‘#content‘).data(‘list'); 就能获取数据. 这个方法它能返回相应的data属性.-->
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>jquery操作HTML5 的data-*的用法</title>
+	</head>
+	<script src="jquery.js"></script>
+	<script>
+		$(function() {
+			//读取data-*的值
+			$("li").each(function(v) {
+				console.log($(this).data('name'));
+			});
+
+			//设置data-*的值
+			$("li").eq(0).data('name', 'bryant');
+			$("li").each(function(v) {
+				console.log($(this).data('name'));
+			});
+
+			//删除data-*的值   这里使用的是removeAttr
+			$("li").eq(0).removeAttr('data-name');
+			$("li").each(function(v) {
+				console.log($(this).data('name'));
+			});
+		})
+	</script>
+
+	<body>
+		<ul>
+			<li data-name="kobe">大狗</li>
+			<li data-name="gasol">二狗</li>
+			<li data-name="nash">狗蛋</li>
+			<li data-name="fisher">驴</li>
+		</ul>
+	</body>
+
+</html>

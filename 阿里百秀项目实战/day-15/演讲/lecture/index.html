@@ -1,0 +1,143 @@
+attr  与  prop
+
+
+
+attr和prop的不同：
+
+attr：访问的是元素的属性。                  当属性没有被设置时候，.attr()方法将返回undefined。   src的属性  alt属性  把src属性的值设置为title属性的值。
+
+
+
+prop：访问的是元素对应DOM对象的属性         若要检索和更改DOM属性,比如元素的checked, selected, 或 disabled状态，请使用.prop()方法。
+
+
+
+attr
+概念：获取匹配的元素集合中的第一个元素的属性的值 或 设置每一个匹配元素的一个或多个属性。
+
+
+attr的语法：(谱绕破儿踢死)(内容，属性)
+ attr(name|properties|key,val|fn)
+
+
+name:这里第一个值是属性名；
+作用：这里的name属性返回文档中所有图像的src属性值
+例子：
+$("images").attr("src");
+
+
+properties ：作为属性的“名/值对”对象
+作用：为所有图像设置src和alt属性
+例子：
+$("img").attr({ src: "test.jpg", alt: "Test Image" });
+
+
+
+key,value：属性名，属性值
+作用：为所有图像设置src属性
+例子：
+<script>
+	$("img").attr("src","test.jpg");
+</script>
+
+
+
+key,function(index,attr):1：第一个是属性名，2:返回属性值的函数,第一个参数为当前元素的索引值，第二个参数为原先的属性值。
+作用：把src属性的值设置为title属性的值。
+例子：
+$("img").attr("title", function() { return this.src });
+
+
+
+
+
+
+prop                        (性能)
+概念：获取匹配的元素集中第一个元素的属性（property）值或设置每一个匹配元素的一个或多个属性。
+
+prop的语法：
+prop(name|properties|key,value|fn)
+
+name:这个是属性名称
+作用：选中复选框为true，没选中为false
+例子：
+$("input[type='checkbox']").prop("checked");
+
+properties|：作为属性的“名/值对”对象
+作用：禁用页面上的所有复选框。
+例子：
+$("input[type='checkbox']").prop({
+  disabled: true
+});
+
+
+key,value:属性名称，属性值
+作用：禁用和选中所有页面上的复选框。
+例子：
+$("input[type='checkbox']").prop("disabled", false);
+$("input[type='checkbox']").prop("checked", true);
+
+
+key,function(index, attr)：1:属性名称。
+
+2:返回属性值的函数,第一个参数为当前元素的索引值，第二个参数为原先的属性值。
+作用：通过函数来设置所有页面上的复选框被选中。
+
+例子：
+$("input[type='checkbox']").prop("checked", function( i, val ) {
+  return !val;
+});
+
+
+HTML5 data-* 自定义属性
+
+
+创作者定义的属性。
+HTML 文档的创作者可以定义他们自己的属性。
+必须以 "data-" 开头。
+
+1.设置方法
+A.直接在标签内书写，格式如下
+
+<div id="test" data-age="24">
+    Click Here
+</div>
+
+
+
+B.用 js 设置
+<script>
+	var test = document.getElementById('test');
+	test.dataset.my = 'Byron';
+</script>
+
+
+
+
+2.获取方法
+<script>
+	var test = document.getElementById('test');
+        test.dataset.my = 'Byron';
+        test.dataset.birthDate = '19890615';
+        test.onclick = function () {
+            alert(this.dataset.my + ' ' + this.dataset.age+' '+this.dataset.birthDate);
+        }
+</script>
+
+3.如果使用jQ
+<div id="test" data-name="william" data-age="25" gender="male"></div>
+上述元素几个 data 属性的获取分别为：
+
+var div = $('#test')
+console.log(div.data('name'))  // 'william'
+console.log(div.data('age'))  // 25  (数值)
+console.log(div.attr('gender'))  // 'male'
+
+
+
+
+4.想把一个对象设置到标签里，应该这么写
+div.data('setObj', JSON.stringify({'name': 'william', 'age': 22}))
+但是取的时候，只需要
+
+var obj = div.data('setObj')  //  {'name': 'william', 'age': 22}  (object类型，不需要用 JSON.parse() 转换了)

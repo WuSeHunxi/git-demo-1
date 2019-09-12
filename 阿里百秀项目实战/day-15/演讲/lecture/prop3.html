@@ -1,0 +1,47 @@
+<!--以属性名/值对方式设置所有匹配元素的属性值。-->
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset=" utf-8">
+		<meta />
+		<title>prop()函数</title>
+		<style type="text/css">
+			div {
+				width: 200px;
+				height: 200px;
+				border: 1px solid blue;
+			}
+			
+			.font {
+				font-size: 18px;
+				color: yellow;
+			}
+			
+			.bg {
+				background: #336;
+			}
+			
+			.reset {
+				color: green;
+				font-size: 20px;
+			}
+		</style>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#btn").click(function() {
+					$("div").prop("class", "reset");
+				})
+			})
+		</script>
+	</head>
+
+	<body>
+		<div class="font bg">欢迎您</div>
+		<button id="btn">点击查看效果</button>
+	</body>
+
+</html>
+
+<!--以上代码可以为div设置指定的样式。-->

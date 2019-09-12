@@ -1,0 +1,31 @@
+<!--将“名/值”形式的对象设置为匹配元素的属性。可以一次性设置多组“名/值”对，对匹配元素属性进行设置。-->
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset=" utf-8">
+		<meta />
+		<title>attr()函数</title>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#btn").click(function() {
+					$("td").attr({ width: "200", height: "300" });
+				})
+			})
+		</script>
+	</head>
+
+	<body>
+		<table border="1">
+			<tr>
+				<td>欢迎你</td>
+			</tr>
+		</table>
+		<button id="btn">点击查看效果</button>
+	</body>
+
+</html>
+
+<!--以上代码中，可以设置单元格的宽度和高度。-->

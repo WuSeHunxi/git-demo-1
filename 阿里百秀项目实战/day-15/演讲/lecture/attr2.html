@@ -1,0 +1,48 @@
+<!--为匹配元素指定的属性设置属性值。-->
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset=" utf-8">
+		<meta />
+		<title>attr()函数</title>
+		<style type="text/css">
+			div {
+				width: 200px;
+				height: 200px;
+				border: 1px solid blue
+			}
+
+			.font {
+				font-size: 18px;
+				color: yellow
+			}
+
+			.bg {
+				background: #336;
+			}
+
+			.reset {
+				color: green;
+				font-size: 20px;
+			}
+		</style>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#btn").click(function() {
+					$("div").attr("class", "reset");
+				});
+			})
+		</script>
+	</head>
+
+	<body>
+		<div class="font bg">哈哈</div>
+		<button id="btn">点击查看效果</button>
+	</body>
+
+</html>
+
+<!--以上代码中， 当点击按钮的时候，能够重新设置div元素的class属性值。-->

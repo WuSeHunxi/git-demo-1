@@ -1,0 +1,42 @@
+<!-- 获取第一个匹配元素指定属性的属性值。 -->
+
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset=" utf-8">
+		<meta />
+		<title>attr()函数</title>
+		<style type="text/css">
+			.font {
+				font-size: 18px;
+				color: yellow
+			}
+
+			.bg {
+				background: #336;
+			}
+
+			.second {
+				color: green
+			}
+		</style>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#btn").click(function() {
+					alert($("div").attr("class"));
+				})
+			})
+		</script>
+	</head>
+
+	<body>
+		<div class="font bg">我是第一个div</div>
+		<div class="second">我是第二个div</div>
+		<button id="btn">点击查看效果</button>
+	</body>
+
+</html>
+<!-- 以上代码中，点击按钮可以弹出匹配元素集合中，第一个元素的class属性值。 -->
