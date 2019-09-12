@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>模板引擎</title>
+</head>
+<body>
+  <script src="template-web.js"></script>
+  <script id="tmpl" type="text/x-art-template">
+    <div>{{greeting}}</div>
+    <div>{{obj.name}}</div>
+  </script>
+  <script>
+
+    var data = { greeting: 'HELLO ARTTEMPLATE', obj: { name: 123 } }
+
+    var html = template('tmpl', data)
+
+    console.log(html)
+
+  </script>
+</body>
+</html>
