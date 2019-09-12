@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../查询天气/js/jquery.min.js"></script>
+    <script src="../查询天气/js/template-web.js"></script>
+    <script type="text/html">
+    
+    </script>
+    <script>
+        $(function(){
+            // function foo(data){
+            //     console.log(data);
+            // }
+            // $.ajax({
+            //     url:"http://localhost/Ajax/post/time2.php",
+            //     type:'get',
+            //     dataType:"jsonp",
+            //     jsonpCallback:"callfun"
+            // });
+
+            // $.getJSON('http://localhost/Ajax/post/time2.php?callback=?',function(data){
+            //     console.log(data);
+            // });
+
+
+            var script=document.createElement("script");
+            script.src="http://localhost/Ajax/post/time2.php?callback=foo";
+            document.body.appendChild(script);
+
+            function foo(data){
+                console.log(data);
+            }
+        });
+    
+    </script>
+</body>
+</html>
