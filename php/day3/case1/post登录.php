@@ -3,33 +3,36 @@
 
 function login(){
     //判断
-    // if(empty($_POST['name'])){
-    //     $GLOBALS['message']="请输入用户名";
-    //     return;
-    // }
-    // if(empty($_POST['word'])){
-    //     $GLOBALS['message']='请输入密码';
-    //     return;
-    // }
-    // if(empty($_POST['email'])||strpos($_POST['email'],'@')!=0){
-    //     $GLOBALS['message']="请输入邮箱地址";
-    //     return;
-    // }
-    if(!(isset($_POST['sex'])||$_POST['sex']!=='-1')){
+    if(empty($_POST['name'])){
+        $GLOBALS['message']="请输入用户名";
+        return;
+    }
+    if(empty($_POST['word'])){
+        $GLOBALS['message']='请输入密码';
+        return;
+    }
+
+    //  有问题
+    // ||strpos($_POST['email'],'@')!=0)
+    if(empty($_POST['email'])){
+        $GLOBALS['message']="请输入邮箱地址";
+        return;
+    }
+     if(!(isset($_POST['sex'])&&$_POST['sex']!=='-1')){
         $GLOBALS['message']="请输入性别";
         return;
     }
-    // $name=$_POST['name'];
-    // $word=$_POST['word'];
-    // $email=$_POST['email'];
+    $name=$_POST['name'];
+    $word=$_POST['word'];
+    $email=$_POST['email'];
     $sex=$_POST['sex'];
-    // echo "用户名".$name;
-    // <br>
-    // echo "密码".$word;
-    // <br>
-    // echo "邮箱".$email;
-    // <br>
-    // echo "性别".$sex;
+    echo "用户名".$name;
+    echo "<br>";
+    echo "密码".$word;
+    echo "<br>";
+    echo "邮箱".$email;
+    echo "<br>";
+    echo "性别".$sex;
 }
 
 
