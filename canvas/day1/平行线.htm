@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas wdith="500px" height="300px"></canvas>
+    <script>
+        var canvas=document.querySelector("canvas");
+        var ctx=canvas.getContext("2d");
+
+        // 平行线
+        ctx.moveTo(100,200);
+        ctx.lineTo(100,400);
+        ctx.moveTo(20,200);
+        ctx.lineTo(20,400);
+        ctx.stroke();
+        
+    </script>
+</body>
+</html>

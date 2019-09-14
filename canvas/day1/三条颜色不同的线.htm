@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas wdith="400px" height="300px"></canvas>
+    <script>
+    
+    var canvas=document.querySelector("canvas");
+        var ctx=canvas.getContext("2d");
+
+        ctx.beginPath(); // 开启新路径，解决样式覆盖的问题，让这三条线处在不同的路径中
+        // 平行线
+        ctx.moveTo(100.5,200);
+        ctx.lineTo(100.5,400);       
+        ctx.strokeStyle="yellow";
+        ctx.lineWidth=20;
+        ctx.stroke();
+
+        ctx.beginPath(); // 开启新路径
+        ctx.moveTo(20.5,200);
+        ctx.lineTo(20.5,400);        
+        ctx.strokeStyle="blue";
+        ctx.lineWidth=3;
+        ctx.stroke();
+
+        ctx.beginPath(); // 开启新路径
+        ctx.moveTo(10.5,200);
+        ctx.lineTo(10.5,400);       
+        ctx.strokeStyle="red";
+        ctx.lineWidth=3;
+        ctx.stroke();
+    </script>
+</body>
+</html>
