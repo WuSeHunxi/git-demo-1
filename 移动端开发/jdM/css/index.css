@@ -33,6 +33,7 @@ body{
     top: 4px;
     width: 60px;
     height: 36px;
+    /* 精灵图 二倍图（压缩） */
     background-position: 0 -103px;
 }
 .jd_search .jd_search_box .login{
