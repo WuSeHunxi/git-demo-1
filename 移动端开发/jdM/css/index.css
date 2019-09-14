@@ -33,8 +33,9 @@ body{
     top: 4px;
     width: 60px;
     height: 36px;
-    /* 精灵图 二倍图（压缩） */
-    background-position: 0 -103px;
+    /* 精灵图 二倍图（压缩） */                                  /* 二倍图的压缩 */
+    background:url("../images/sprites.png") no-repeat 0 -103px / 200px 200px;
+    /* background-position: 0 -103px; */
 }
 .jd_search .jd_search_box .login{
     position: absolute;
