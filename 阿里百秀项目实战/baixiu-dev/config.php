@@ -1,6 +1,5 @@
 <?php
 
-require_once 'config.php';
 
 /**
  * 在项目中用到的配置信息
