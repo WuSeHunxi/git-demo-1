@@ -86,6 +86,7 @@ body{
     -webkit-transform: translateX(-10%);
 }
 .jd_banner ul:first-child li{
+    /* 父级的十分之一 */
     width: 10%;
     float: left;
 }
