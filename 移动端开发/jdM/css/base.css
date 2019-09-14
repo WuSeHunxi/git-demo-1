@@ -65,5 +65,6 @@ input,textarea{
 [class^="icon_"],[class*=" icon_"]{
     background-repeat: no-repeat;
     background-image: url("../images/sprites.png");
+    /* 二倍图 */
     background-size: 200px 200px;
 }
