@@ -11,27 +11,19 @@
     <script>
         var canvas=document.querySelector("canvas");
         var ctx=canvas.getContext("2d");
-
         ctx.beginPath();
         ctx.moveTo(100,100);
-        ctx.lineTo(300,100);
-        ctx.lineTo(300,300);
-        ctx.lineTo(100,300);
-        ctx.closePath();
-        ctx.stroke();
-
-        // 里面嵌套的小正方形是逆时针画成的
-        ctx.moveTo(150,150);
-        ctx.lineTo(150,250);
-        ctx.lineTo(250,250);
-        ctx.lineTo(250,150);
-        // ctx.lineTo(150,150); //这种方法也可以闭合路径
-        ctx.closePath();
+        ctx.lineTo(150,80);
+        ctx.lineTo(200,100);
+        ctx.lineWidth=20;
+        ctx.strokeStyle="blue";
+        // 设置线条拐点样式
+        ctx.lineJoin='round';
+        // 设置线条端点样式
+        ctx.lineCap="round";
+        // ctx.closePath();
         ctx.stroke();
         
-        // 填充
-        ctx.fillStyle="yellow";
-        ctx.fill();
     </script>
 </body>
 </html>
