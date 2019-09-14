@@ -60,7 +60,8 @@ input,textarea{
 .m_b10{
     margin-bottom:10px;
 }
-/*使用精灵图的公用样式*/
+
+/*公共选择器，使用精灵图的公用样式*/
 [class^="icon_"],[class*=" icon_"]{
     background-repeat: no-repeat;
     background-image: url("../images/sprites.png");

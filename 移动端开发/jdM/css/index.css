@@ -34,8 +34,8 @@ body{
     width: 60px;
     height: 36px;
     /* 精灵图 二倍图（压缩） */                                  /* 二倍图的压缩 */
-    background:url("../images/sprites.png") no-repeat 0 -103px / 200px 200px;
-    /* background-position: 0 -103px; */
+    /* background:url("../images/sprites.png") no-repeat 0 -103px / 200px 200px; */
+    background-position: 0 -103px;
 }
 .jd_search .jd_search_box .login{
     position: absolute;
@@ -60,6 +60,8 @@ body{
     position: absolute;
     left: 80px;
     top: 10px;
+    /* 相同样式提出来 */
+    /* background:url("../images/sprites.png") no-repeat -60px -109px / 200px 200px; */
     background-position: -60px -109px;
 }
 /*百分比的计算：基于父容器的内容的宽度*/
