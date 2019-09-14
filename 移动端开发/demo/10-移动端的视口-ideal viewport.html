@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>视口</title>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #F7F7F7;
+		}
+
+		.box {
+			height: 300px;
+			text-align: center;
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+<script src="../js/zepto.js"></script>
+<!-- 显示窗口信息 -->
+<div class="info">
+	<span class="width"></span>
+	<span class="height"></span>
+</div>
+	<div class="box">ideal viewport</div>
+	<script>
+		var clientWidth, clientHeight;
+		var width = $('.width'),
+				height = $('.height');
+		// 用来获取viewport
+		function getSize() {
+			clientWidth = window.screen.width;
+			clientHeight = window.screen.height;
+
+			width.text('PC设备Viewport的宽度为：' + clientWidth);
+			height.text('PC设备Viewport的高度为：' + clientHeight);
+		}
+
+		// 调用
+		getSize();
+		var screenWidth = window.screen.width;
+		var screenHeight = window.screen.height;
+
+		console.log('ideal viewport 的宽度为：' + screenWidth);
+		console.log('ideal viewport 的高度为：' + screenHeight);
+
+		console.log('设备像素比例为：' + window.devicePixelRatio);
+
+		// 1dp/pt = 2px
+
+		// 640px / 2 = dp/pt
+
+		// ideal 是我们的屏幕大小
+		// 屏幕大小是以独立像素做为单位的
+		
+	</script>
+</body>
+</html>
