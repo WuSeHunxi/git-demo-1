@@ -106,7 +106,7 @@
             /*点的连线*/
             /*当时第一个点的时候 起点是 x0 y0*/
             /*当时不是第一个点的时候 起点是 上一个点*/
-            if(i == 0){
+            if(i == 0){ // 第一个点和其他点在连线的时候是不同的
                 that.ctx.beginPath();
                 that.ctx.moveTo(that.x0,that.y0);
                 that.ctx.lineTo(canvasX,canvasY);
