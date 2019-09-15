@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas width="600px" height="400px"></canvas>
+    <script>
+        
+
+        var canvas=document.querySelector("canvas");
+        var ctx=canvas.getContext('2d');
+        var coorinate={
+            x:100,
+            y:100
+        };
+        var dottedSize=10;
+        ctx.moveTo(coorinate.x-dottedSize/2,coorinate.y-dottedSize/2);
+        ctx.lineTo(coorinate.x+dottedSize/2,coorinate.y-dottedSize/2);
+        ctx.lineTo(coorinate.x+dottedSize/2,coorinate.y+dottedSize/2);
+        ctx.lineTo(coorinate.x-dottedSize/2,coorinate.y+dottedSize/2);
+        ctx.closePath();
+        ctx.fill();
+    </script>
+</body>
+</html>
