@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas width="400px" height="400px"></canvas>
+    <script>
+        var myCanvas=document.querySelector("canvas");
+        var ctx=myCanvas.getContext("2d");
+        var canvasHeight=ctx.canvas.height;
+        var canvasWidth=ctx.canvas.width;
+        // 设置网格宽度
+        var grid=10;
+        var xLineCount=Math.floor(canvasHeight/grid);
+        var yLineCount=Math.floor(canvasHeight/grid);
+        for(var i=0;i<xLineCount;i++){
+            ctx.beginPath();
+            ctx.moveTo(i*grid-0.5,0);
+            ctx.lineTo(i*grid-0.5,canvasWidth);
+            ctx.strokeStyle="#eee";
+            ctx.stroke();
+            ctx.closePath();
+        }
+        for(var i=0;i<yLineCount;i++){
+            ctx.beginPath();
+            ctx.moveTo(0,i*grid-0.5);
+            ctx.lineTo(canvasHeight,i*grid-0.5);
+            ctx.strokeStyle="#eee";
+            ctx.stroke();
+            ctx.closePath();
+        }
+    
+    
+    </script>
+</body>
+</html>
