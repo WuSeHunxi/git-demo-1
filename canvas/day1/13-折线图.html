@@ -118,6 +118,7 @@
                 that.ctx.lineTo(canvasX,canvasY);
                 that.ctx.stroke();
             }
+            // if完事之后就先直接到这步，然后再进行else，循环往复直到最后一个点
             /*记录当前的坐标，下一次要用*/
             prevCanvasX = canvasX; //每次都要更新
             prevCanvasY = canvasY;
