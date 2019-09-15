@@ -26,11 +26,14 @@
     /*4.需要把数据转出弧度*/
     var angleList = [];
     var total = 0;
+
+    // 求出数据一共的值
     data.forEach(function (item, i) {
         total += item;
     });
     console.log(total);
     /*第二是转换成弧度的时候就可以去绘制扇形 减少一次遍历*/
+    // 根据占比算出弧度值
     data.forEach(function (item, i) {
         var angle = Math.PI * 2 * (item/total);
         angleList.push(angle);
