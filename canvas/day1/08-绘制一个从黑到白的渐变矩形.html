@@ -26,12 +26,22 @@
    /* ctx.stroke();*/
 
     /*线是由点构成的*/
-    ctx.lineWidth = 30;
-    for (var i = 0; i < 255; i++) {
+    // ctx.lineWidth = 30;
+    // for (var i = 0; i < 255; i++) {
+    //     ctx.beginPath();
+    //     // 每一个像素设置一个
+    //     ctx.moveTo(100+i-1,100);
+    //     ctx.lineTo(100+i,100);
+    //     ctx.strokeStyle = 'rgb('+i+',0,0)';
+    //     ctx.stroke();
+    // }
+
+    ctx.lineWidth=50;
+    for(var i=0;i<255;i++){
         ctx.beginPath();
-        ctx.moveTo(100+i-1,100);
-        ctx.lineTo(100+i,100);
-        ctx.strokeStyle = 'rgb('+i+',0,0)';
+        ctx.moveTo(100+i,100);
+        ctx.lineTo(100+i+1,100);
+        ctx.strokeStyle='rgb('+i+',0,0)';
         ctx.stroke();
     }
 
