@@ -76,8 +76,35 @@
         var str='gle';
         console.log(reg.test(str));
 
-        //
+        // [] 表示可以出现的范围
+        var reg=/[0-9]/gi;
+        var str='a4nc';
+        console.log(reg.test(str)); // true
 
+        // \w 表示数字，字母，下划线 --> [0-9a-zA-Z]
+        var reg=/\w+/gi;
+        var str='123';
+        console.log(reg.test(str)); // true
+
+        // \W 表示非数字，字母，下划线
+        var reg=/\W+/gi;
+        var str='123';
+        console.log(reg.test(str)); // false
+
+        // \d 表示数字[0-9] \D 表示非数字
+        var reg=/\d+/gi;
+        var str='123aaa';
+        console.log(str.match(reg)); // 123
+
+        // \s 匹配空格
+        var reg=/\s+/gi;
+        var str='good good doog';
+        console.log(str.replace(reg,"")); // 匹配完空格之后被去掉
+
+        // {m,n} 至少匹配m次，最多匹配n次(最多次数也可以不用加)
+        var reg=/go{3,6}/gi;
+        var str="gooogle";
+        console.log(str.match(reg)); // gooo
     </script>
 </body>
 </html>
