@@ -61,7 +61,23 @@
         var str='googleg--gle';
         console.log(reg.test(str)); // 匹配的模式是相同的，有两个相同的字符连在一起
 
-        
+        // * 重复多次匹配，匹配任意次
+        var reg=/g*gle/; 
+        var str='ggggggle'; // 在字符串中有多个g，而在正则表达式中使用*来表示出现的多个g
+        console.log(reg.test(str),str.match(reg));
+
+        // + 表示至少匹配一次（至少又一次重复匹配）
+        var reg=/g+le/; // 要想匹配成功字符串中至少有一个g
+        var str='ggggle';
+        console.log(reg.test(str)); // true
+
+        // ? 进行0或者1次匹配
+        var reg=/ggg?le/; // ?要和离得近的字符组在一起
+        var str='gle';
+        console.log(reg.test(str));
+
+        //
+
     </script>
 </body>
 </html>
