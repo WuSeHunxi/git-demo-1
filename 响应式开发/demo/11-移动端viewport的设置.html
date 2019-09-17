@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--对viewport的设置的meta建议写在已有的meta标签(<meta charset="UTF-8">)之后-->
+    <!--name="viewport":说明当前meta标签是用来设置viewport的属性的，这个属性只有在移动端才会有效-->
+    <!--content="":进行viewport的设置
+    width:设置viewport的宽度  device-width:获取当前设备的宽度
+    initial-scale=1:设置初始缩放比例  当我们设置width=device-width，也达到了initial-scale=1的效果，得知其实 initial-scale = ideal viewport / layout viewport  意味着，如果initial-scale设置为1，相当于设置了两个viewport的宽度一致
+    maximum-scale:设置最大的缩放比例
+    minimum-scale:设置默认状态下最小的缩放比例-->
+    <!--<meta name="viewport" content="width=device-width">-->
+    <!--<meta name="viewport" content="initial-scale=1
+    user-scalable:设置是否允许用户进行缩放yes/no">-->
+
+    <!--为了达到兼容：-->
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,user-scalable=no">-->
+    <!--meta:vp+tab-->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            width: 100%;
+            height: 200px;
+            background-color: pink;
+
+        }
+    </style>
+</head>
+<body>
+<div>经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置来进行控制，并改变浏览器默认的layout viewport的宽度。经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置来进行控制，并改变浏览器默认的layout viewport的宽度。经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置来进行控制，并改变浏览器默认的layout viewport的宽度。经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置来进行控制，并改变浏览器默认的layout viewport的宽度。经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置来进行控制，并改变浏览器默认的layout viewport的宽度。经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置来进行控制，并改变浏览器默认的layout viewport的宽度。经过分析我们得到，移动页面最理想的状态是，避免滚动条且不被默认缩放处理，我们可以通过设置</div>
+</body>
+</html>

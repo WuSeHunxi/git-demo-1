@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>视口</title>
+	<style>
+		body {
+			padding: 0;
+			margin: 0;
+			background-color: #F7F7F7;
+		}
+
+		.info {
+			line-height: 20px;
+			padding: 10px;
+			background-color: pink;
+		}
+
+		.info span {
+			display: block;
+		}
+
+		.viewport {
+			/*1.如果确定具体的宽高 值，当超出viewport的大小的时候，会出现滚动条
+			2.如果设置的宽度为100%,当子元素宽高大于父容器的时候，会自动换行
+			3.如果不想出现滚动条或者换行，可以将子元素设置为父容器的百分比*/
+			width: 100%;
+			/*width: 1152px;*/
+			height: 200px;
+			background-color: #CCC;
+		}
+
+		.viewport .box {
+			/*width: 288px;*/
+			width: 25%;
+			height: 200px;
+			text-align: center;
+			line-height: 200px;
+			font-size: 28px;
+			float: left;
+			background-color: blue;
+			border-right: 2px solid #ccc;
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+	<!-- 显示窗口信息 -->
+	<div class="info">
+		<span class="width"></span>
+		<span class="height"></span>
+	</div>
+
+	<div class="viewport">
+		<div class="box">1</div>
+		<div class="box">2</div>
+		<div class="box">3</div>
+		<div class="box">4</div>
+	</div>
+	<!-- 一个类似jQuery的库 -->
+	<script src="../js/zepto.js"></script>
+	<script>
+
+		var clientWidth, clientHeight;
+		var width = $('.width'),
+			height = $('.height');
+
+		// 用来获取viewport
+		function getSize() {
+			clientWidth = document.documentElement.clientWidth;
+			clientHeight = document.documentElement.clientHeight;
+
+			width.text('PC设备Viewport的宽度为：' + clientWidth);
+			height.text('PC设备Viewport的高度为：' + clientHeight);
+		}
+
+		// 调用
+		getSize();
+
+		// 监听窗口变化
+		window.onresize = function () {
+			getSize();
+		}
+	</script>
+</body>
+</html>
