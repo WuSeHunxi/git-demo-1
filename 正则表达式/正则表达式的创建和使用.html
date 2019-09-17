@@ -105,6 +105,24 @@
         var reg=/go{3,6}/gi;
         var str="gooogle";
         console.log(str.match(reg)); // gooo
+
+        // /^ 匹配开始  $/ 匹配结尾
+        var reg=/^g.+g$/gi;
+        var str='goog';
+        console.log(reg.test(str),str.match(reg));
+
+        // () 作为一个整体进行匹配
+        var reg=/(google){4,5}/gi; // 指的是连续的匹配4-5次
+        var str='googleaaagooglegooglegooglegoogle';
+        console.log(str.match(reg));
+        console.log(RegExp.$1);
+
+        // $1 $2
+        var reg=/(.*)\s(.*)/;
+        var str='taobao baidu';
+        // 交换百度和淘宝的位置
+        console.log(str.replace(reg,'$2 $1'));
+
     </script>
 </body>
 </html>
