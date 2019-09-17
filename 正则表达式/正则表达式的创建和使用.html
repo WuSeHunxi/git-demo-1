@@ -16,6 +16,24 @@
         */
 
         // 使用
+        //1.test() --> 用来检查字符串中是否含有符合规则（正则表达式）的子串
+        var reg=new RegExp('abc');
+        var str='abc';
+        var flag=reg.test(str);
+
+        // 修饰符：g i
+        // g 表示全局匹配
+        var reg=/abc/g;
+        var str='abcabc';
+
+        // match() -->字符串方法(用来找到在字符串中符合规则的子串)
+        console.log(str.match(reg));
+
+        // i 表示忽略大小写
+        var reg=/abc/i;
+        var str='ABCabc';
+        console.log(str.match(reg));
+
 
         
     
