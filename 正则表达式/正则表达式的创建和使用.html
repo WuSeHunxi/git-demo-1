@@ -30,11 +30,14 @@
         console.log(str.match(reg));
 
         // i 表示忽略大小写
-        var reg=/abc/i;
+        var reg=/abc/i; // 只能忽略一个的大小写
         var str='ABCabc';
         console.log(str.match(reg));
 
-
+        // search() --> 用于查找符合规则的子串位置（只返回第一个匹配的位置）
+        var reg=/abc/;
+        var str="123abc";
+        console.log(str.search(reg)); // 返回a所在的位置
         
     
     </script>
