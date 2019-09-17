@@ -44,6 +44,24 @@
         var str='good good study!';
         console.log(str.split(reg)); // "" '" " " study"
     
+        // replace(reg,xxx) --> 用第二个参数替换第一个参数
+        var reg=/tmd/i;
+        var str='abc tmd abc TMD';
+        console.log(str.replace(reg,'*'));
+
+        // exec() --> 正则表达式的方法（将匹配成功的内容放到数组中，如果没有匹配成功，则返回null）
+        // 如果想通过exec获取所有匹配的值的话需要多次调用该方法
+        var reg=/good/g;
+        var str='good good study';
+        console.log(reg.exec(str)); // 加不加g结果都一样（索引值是0）
+        console.log(reg.exec(str)); // 索引值是5
+
+        // . 除了换行符之外的所有单个字符
+        var reg=/g..gle/;
+        var str='googleg--gle';
+        console.log(reg.test(str)); // 匹配的模式是相同的，有两个相同的字符连在一起
+
+        
     </script>
 </body>
 </html>
