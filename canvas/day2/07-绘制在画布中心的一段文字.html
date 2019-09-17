@@ -39,8 +39,12 @@
     /*注意：起点位置在文字的左下角*/
     /*有文本的属性  尺寸 字体  左右对齐方式  垂直对齐的方式*/
     ctx.font = '40px Microsoft YaHei';
+
+    // 文字的对齐方式都是基于起始坐标的
+    // 往左是左边那条线，往右是右边那条线
+
     /*左右对齐方式 (center left right start end) 基准起始坐标*/
-    ctx.textAlign = 'center';
+    ctx.textAlign = 'left';
     /*垂直对齐的方式 基线 baseline(top,bottom,middle) 基准起始坐标*/
     ctx.textBaseline = 'middle';
     //ctx.direction = 'rtl';
@@ -51,6 +55,7 @@
     /*获取文本的宽度*/
     console.log(ctx.measureText(str));
     var width = ctx.measureText(str).width;
+    // 在文本下方画一条线
     ctx.moveTo(x0-width/2,y0 + 20);
     ctx.lineTo(x0+width/2,y0 + 20);
     ctx.stroke();
