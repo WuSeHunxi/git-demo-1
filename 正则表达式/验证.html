@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    用户名 ：<input type="text" name="name" id="name">
+    <script>
+        var oInput=document.getElementById("name");
+        oInput.onchange=function(){
+            var val=this.value;
+            var reg=/^[a-zA-Z_]\w{5,14}$/; // 表示变量以什么开头
+            if(reg.test(val)){
+                console.log("格式正确");
+            }else{
+                console.log("格式错误");
+            }
+        }
+    </script>
+</body>
+</html>
