@@ -46,6 +46,7 @@
 
 		// 用来获取viewport
 		function getSize() {
+			// 获取窗口的大小
 			clientWidth = document.documentElement.clientWidth;
 			clientHeight = document.documentElement.clientHeight;
 
@@ -56,10 +57,20 @@
 		// 调用
 		getSize();
 
-		// 监听窗口变化
+		//监听窗口变化  想要通过改变窗口的大小动态的获取值
 		window.onresize = function () {
 			getSize();
 		}
+
+		// function getSize(){
+		// 	var clientW=document.documentElement.clientWidth;
+		// 	var clientH=document.documentElement.clientHeight;
+
+		// }
+
+		// window.onresize=function(){
+		// 	getSize();
+		// }
 	</script>
 </body>
 </html>
