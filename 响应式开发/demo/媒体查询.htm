@@ -7,10 +7,10 @@
     <title>Document</title>
     <style>
         body{
-            background-color:yellow;
+            background-color:yellow; /*当宽度杜宇920px的时候显示*/
         }
         
-        @media screen and (min-width: 768px){
+        /* @media screen and (min-width: 768px){
             body{
                 background-color: black;
             }
@@ -19,8 +19,20 @@
             body{
                 background-color: pink;
             }
-        }
+        } */
     
+        @media screen and (max-width:920px){
+            body{
+                background-color: blue;
+            }
+        }
+
+        @media screen and (max-width:768px){ /*小于768一直都显示红色*/
+            body{
+                background-color: red;
+            }
+        }
+
     </style>
 </head>
 <body>
