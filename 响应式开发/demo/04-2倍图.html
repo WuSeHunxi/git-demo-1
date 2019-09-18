@@ -7,19 +7,32 @@
     <title>Title</title>
     <style>
         body {
-            background-color: #000;
+            /* background-color: #000; */
         }
 
-        img{
+        /* img{
             width: 57px;
+        } */
+        div{
+            width: 57px;
+            height: 42px;
+        }
+        .big{
+            background: url("../images/big.png") center ;
+        }
+        .small{
+            background: url("../images/small.png") center;
         }
     </style>
 </head>
 <body>
-<img src="../images/big.png" alt="">
-<img src="../images/small.png" alt="">
+
+    <div class="big"></div>
+    <div class="small"></div>
+<!-- <img src="../images/big.png" alt="">
+<img src="../images/small.png" alt=""> 此时小图片因为设置了img的宽度被放大，但事实上他的像素变得不清晰了 -->
 <script>
-    alert(window.devicePixelRatio);
+    // alert(window.devicePixelRatio);
 </script>
 </body>
 </html>
