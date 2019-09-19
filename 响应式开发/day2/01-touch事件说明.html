@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script>
+    /*1.获取dom元素*/
+    var div=document.querySelector("div");
+    /*2.添加事件*/
+    /*添加开始触摸事件：当手指触摸到屏幕时触发*/
+    div.addEventListener("touchstart",function(){
+        console.log("touchstart");
+    });
+    /*添加手指滑动事件，当手指在屏幕上滑动时触发:move事件是持续触发*/
+    div.addEventListener("touchmove",function(){
+        console.log("touchmove");
+    });
+    /*添加触摸结束事件：当手指离开屏幕时触发*/
+    div.addEventListener("touchend",function(){
+        console.log("touchend");
+    });
+    /*添加触摸意外中断事件*/
+    div.addEventListener("touchcancel",function(){
+
+    });
+</script>
+</body>
+</html>
