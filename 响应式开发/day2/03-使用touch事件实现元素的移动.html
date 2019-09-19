@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            /*background-color: red;*/
+            background: linear-gradient(to right,red,blue);
+        }
+    </style>
+</head>
+<body>
+<div>1</div>
+<div>2</div>
+<script>
+    /*拖拽操作--drag*/
+    var div=document.querySelector("div");
+    var startX,startY,moveX,moveY,distanceX,distanceY;
+    /*开始触摸*/
+    div.addEventListener("touchstart",function(e){
+        startX= e.targetTouches[0].clientX;
+        startY= e.targetTouches[0].clientY;
+        console.log(startX+":"+startY);
+    });
+    /*触摸滑动:持续触发*/
+    div.addEventListener("touchmove",function(e){
+        /*记录手指滑动过程中的坐标值*/
+        moveX= e.targetTouches[0].clientX;
+        moveY= e.targetTouches[0].clientY;
+        console.log(moveX+":"+moveY);
+        /*计算与上一次坐标的差异*/
+        distanceX=moveX-startX;
+        distanceY=moveY-startY;
+        console.log(distanceX+":"+distanceY);
+        /*设置偏移*/
+        div.style.transform="translate("+distanceX+"px,"+distanceY+"px)";
+    });
+    /*触摸结束*/
+    div.addEventListener("touchend",function(e){
+    })
+</script>
+</body>
+</html>
