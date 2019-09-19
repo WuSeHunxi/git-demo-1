@@ -23,7 +23,7 @@
 <script>
     var div=document.querySelector("div");
     /*开始触摸*/
-    div.addEventListener("touchstart",function(e){
+    
 //        console.log(e.touches);
         /*console.log(e.changedTouches);*/
         /**
@@ -51,16 +51,25 @@
         
         */
 
+        /*
+        2. 触点坐标选取
+            touchstart和touchmove使用: e.targetTouches[0].pageX 或 (jquery)e.originalEvent.targetTouches[0].pageX
 
-        console.log(e.targetTouches);
-        console.log(e.touches);
-        console.log(e.changedTouches);
-        // console.log(e.targetTouches[0].clientX +"  : "+e.targetTouches[0].clientY);
-    });
+            touchend使用: e.changedTouches[0].pageX 或 (jquery)e.originalEvent.changedTouches[0].pageX
+        */
+
+        div.addEventListener("touchstart",function(e){
+            console.log(e.targetTouches);
+            console.log(e.touches);
+            console.log(e.changedTouches);
+            // 符合上述说的第二点中的第一小点
+            // console.log(e.targetTouches[0].clientX +"  : "+e.targetTouches[0].clientY);
+        });
     /*触摸滑动*/
     /*触摸结束*/
     div.addEventListener("touchend",function(e){
-//        console.log(e.changedTouches);
+        // 符合上述说的第二点中的第二小点
+        // console.log(e.changedTouches);
     })
 </script>
 </body>
