@@ -42,6 +42,9 @@
 		// 调用
 		getSize();
 
+		window.onresize=function(){
+			getSize();
+		}
 
 		var clientWidth = document.documentElement.clientWidth;
 		var clientHeight = document.documentElement.clientHeight;
