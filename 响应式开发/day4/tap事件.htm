@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            width: 100px;height: 100px;
+            background-color: yellow;
+        }
+    </style>
 </head>
+
 <body>
+    <div class="box"></div>
     <script>
 
         // tap事件：轻击 轻触（响应速度快）
@@ -14,6 +27,42 @@
         // 移动端有click事件（在移动端为了区分到底是滑动还是点击，click点击事件有300ms的延迟，就是为了区分滑动）
         // 结果是用户体验太差，响应太慢
 
+        // 为了解决上述问题可以使用tap事件（但该事件不是原生事件，是通过touch相关事件封装而成的）
+
+        window.onload = function () {
+            // tap事件，要求响应速度要比click快 大约150ms
+            // 不能滑动
+            var bindTapEvent = function (dom, callback) {
+                // 注意：在浏览器上看不到300ms的差距，只有在真机上才能看到
+                // 下列事件的执行效果
+
+                var startTime=0;
+                var isMove=false;
+                dom.addEventListener('touchstart', function (e) {
+                    startTime=Date.now(); //拿到时间戳
+                    // startTime=new Data().getTime(); 拿到时间戳
+                });
+                dom.addEventListener('touchmove', function (e) {
+                    isMove=true;
+                });
+                dom.addEventListener('touchend', function (e) {
+                    // 保证响应够快 并且不滑动
+                    if((Date.now()-startTime)<150&&!isMove){
+                        callback&&callback.call(this,e);
+                    }
+                });
+                dom.addEventListener('touchclick', function () {
+
+                });
+            }
+
+            bindTapEvent(document.querySelector('.box'),function(e){
+                console.log(e);
+                console.log(this);
+                console.log('tap事件');
+            })
+        }
     </script>
 </body>
+
 </html>
