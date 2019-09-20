@@ -150,11 +150,10 @@ function  bannerEffect(){
     }
     startTime();
 
-
-
     // 轮播图的滑动效果
     /*6.实现手动轮播*/
     var startX,moveX,distanceX;
+    var isMove=false;// 用来判断是否进行了滑动
     /*为图片添加触摸事件--触摸开始*/
     imgBox.addEventListener("touchstart",function(e){
         /*清除定时器*/
@@ -176,6 +175,7 @@ function  bannerEffect(){
         /*实现元素的偏移  left参照最原始的坐标
         * 重大细节：本次的滑动操作应该基于之前轮播图已经偏移的距离*/
         imgBox.style.left=(-index*bannerWidth + distanceX)+"px";
+        isMove=true;
     });
     /*添加触摸结束事件*/
 	
@@ -184,29 +184,35 @@ function  bannerEffect(){
     /*touchend:松开手指触发*/
     imgBox.addEventListener("touchend",function(e){
 
-        /*获取当前滑动的距离，判断距离是否超出指定的范围 100px*/
-        if(Math.abs(distanceX) > 100){
-            /*判断滑动的方向*/
-            if(distanceX > 0){//上一张 原值
-                index--;
+        if(isMove){
+                /*获取当前滑动的距离，判断距离是否超出指定的范围 100px*/
+            if(Math.abs(distanceX) > 100){
+                /*判断滑动的方向*/
+                if(distanceX > 0){//上一张 原值
+                    index--;
+                }
+                else{ //下一张 原值
+                    index++;
+                }
+                /*翻页*/
+                imgBox.style.transition="left 0.5s ease-in-out";
+                imgBox.style.left=-index*bannerWidth+"px";
             }
-            else{ //下一张 原值
-                index++;
+
+            //如果滑动的距离没超过的话就要回到之前的位置上去
+            else if(Math.abs(distanceX) > 0){ //得保证用户确实进行过滑动操作
+                /*回弹 具有动画效果，因此加上过渡*/
+                imgBox.style.transition="left 0.5s ease-in-out";
+                imgBox.style.left=-index*bannerWidth+"px";
             }
-            /*翻页*/
-            imgBox.style.transition="left 0.5s ease-in-out";
-            imgBox.style.left=-index*bannerWidth+"px";
+            //重新开启定时器
+            startTime();
+            // setPoint();
         }
 
-        //如果滑动的距离没超过的话就要回到之前的位置上去
-        else if(Math.abs(distanceX) > 0){ //得保证用户确实进行过滑动操作
-            /*回弹 具有动画效果，因此加上过渡*/
-            imgBox.style.transition="left 0.5s ease-in-out";
-            imgBox.style.left=-index*bannerWidth+"px";
-        }
-        //重新开启定时器
-        startTime();
-        setPoint();
+        // 最好最一次重置
+        startX=0;
+        distanceX=0;
     });
     
     var points=document.querySelectorAll('.jd_bannerIndicator');
