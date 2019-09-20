@@ -25,9 +25,36 @@
         // 手势事件和效果
         window.onload=function(){
             // 左滑 右滑 上滑 下滑
-            var bindSwipeEvent=function(dom,callback){
-                
+            var bindSwipeEvent=function(dom,leftCallback,rightCallback){
+                var isMove=false;
+                var startX=0;
+                var distanceX=0;
+                // 手势条件 --> 必须是滑动了+滑动距离大于一定的距离
+                dom.addEventListener('touchstart',function(e){
+                    startX=e.touches[0].clientX;
+                });
+                dom.addEventListener('touchmove',function(e){
+                    isMove=true;
+                    var moveX=e.touches[0].clientX;
+                    distanceX=moveX-startX;
+                });
+                dom.addEventListener('touchend',function(e){
+                    // 滑动结束了表示滑动了，否则不满足条件
+                    if(isMove&&Math.abs(distanceX)>50){
+                        if(distanceX>0){
+                            rightCallback&&rightCallback.call(this);
+                        }else{
+                            leftCallback&&leftCallback.call(this);
+                        }
+                    }
+                });
             }
+
+            bindSwipeEvent(document.querySelector('.box'),function(){
+                console.log("右滑");
+            },function(){
+                console.log('左滑');
+            });
         }
         
     </script>
