@@ -26,6 +26,7 @@
         window.onload=function(){
             // 左滑 右滑 上滑 下滑
             var bindSwipeEvent=function(dom,leftCallback,rightCallback){
+                // 为了让逻辑更具有严谨性 设置移动标志
                 var isMove=false;
                 var startX=0;
                 var distanceX=0;
@@ -34,13 +35,13 @@
                     startX=e.touches[0].clientX;
                 });
                 dom.addEventListener('touchmove',function(e){
-                    isMove=true;
+                    isMove=true; // 表示滑动了
                     var moveX=e.touches[0].clientX;
                     distanceX=moveX-startX;
                 });
                 dom.addEventListener('touchend',function(e){
                     // 滑动结束了表示滑动了，否则不满足条件
-                    if(isMove&&Math.abs(distanceX)>50){
+                    if(isMove&&Math.abs(distanceX)>50){ //--> 表示滑动了，并且滑动距离大于50px
                         if(distanceX>0){
                             rightCallback&&rightCallback.call(this,e);
                         }else{
