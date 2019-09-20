@@ -27,7 +27,8 @@ html,body{
     background-size: 200px 200px;
     padding:14px;
     background-origin: content-box;
-    /*设置是裁切，控制的是显示*/
+    /*设置是背景裁切，控制的是显示*/
+    /*因为背景所在区域比图标的小大，所以为了只显示背景图标，要进行裁剪*/
     background-clip: content-box;
 }
 .ct_back{
