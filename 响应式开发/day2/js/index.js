@@ -73,11 +73,14 @@ function  bannerEffect(){
     * a.在开始位置添加原始的最后一张图片
     * b.在结束位置添加原始的第一张图片*/
     /*1.1.获取轮播图结构*/
+    // 轮播图
     var banner=document.querySelector(".jd_banner");
     /*1.2.获取图片容器*/
     var imgBox=banner.querySelector("ul:first-of-type");
     /*1.3.获取原始的第一张图片*/
     var first=imgBox.querySelector("li:first-of-type");
+
+    // 在首末分别添加两张图片
     /*1.4.获取原始的最后一张图片*/
     var last=imgBox.querySelector("li:last-of-type");
     /*1.5.在首尾插入两张图片   cloneNode:复制一个dom元素*/
@@ -129,6 +132,8 @@ function  bannerEffect(){
             imgBox.style.transition="left 0.5s ease-in-out";
             /*5.3 设置偏移*/
             imgBox.style.left=(-index*bannerWidth)+"px";
+
+            // 滑动的时候也需要无缝连接
             /*5.4 判断是否到最后一张，如果是则*/
             setTimeout(function(){
                 if(index==count-1){
@@ -144,6 +149,8 @@ function  bannerEffect(){
         },2000);
     }
     startTime();
+
+
 
     /*6.实现手动轮播*/
     var startX,moveX,distanceX;
@@ -193,16 +200,29 @@ function  bannerEffect(){
         }
         //重新开启定时器
         startTime();
+        setPoint();
     });
-	
-	
+    
+    var points=document.querySelectorAll('.jd_bannerIndicator');
+    // 点的索引是index-1
+    var setPoint=function(){
+        for(var i=0;i<points.length;i++){
+            var obj=points[i];
+            // 清楚样式
+            obj.classList.remove('active');
+        }
+        // 给对应的加上样式
+        points[index-1].classList.add('active');
+    }
 
+    // 自动滚动是需要无缝连接：当最后一张动画结束后需要判断是否瞬间定位到了第一张
     /*webkitTransitionEnd:可以监听当前元素的过渡效果执行完毕，当一个元素的过渡效果执行完毕的时候，会触发这个事件*/
     imgBox.addEventListener("webkitTransitionEnd",function(){
         /*如果到了最后一张(count-1)，回到索引1*/
         /*如果到了第一张(0)，回到索引count-2*/
         if(index==count-1){
             index=1;
+            // 瞬间定位需要清除过渡
             /*清除过渡*/
             imgBox.style.transition="none";
             /*设置偏移*/
