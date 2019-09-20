@@ -156,7 +156,7 @@ function  bannerEffect(){
     var isMove=false;// 用来判断是否进行了滑动
     /*为图片添加触摸事件--触摸开始*/
     imgBox.addEventListener("touchstart",function(e){
-        /*清除定时器*/
+        /*清除定时器*/ // 防止动画的效果重复
         clearInterval(timerId);
         /*获取当前手指的起始位置*/
         startX= e.targetTouches[0].clientX;
