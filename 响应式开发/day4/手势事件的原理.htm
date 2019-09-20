@@ -42,18 +42,22 @@
                     // 滑动结束了表示滑动了，否则不满足条件
                     if(isMove&&Math.abs(distanceX)>50){
                         if(distanceX>0){
-                            rightCallback&&rightCallback.call(this);
+                            rightCallback&&rightCallback.call(this,e);
                         }else{
-                            leftCallback&&leftCallback.call(this);
+                            leftCallback&&leftCallback.call(this,e);
                         }
                     }
                 });
             }
 
-            bindSwipeEvent(document.querySelector('.box'),function(){
+            bindSwipeEvent(document.querySelector('.box'),function(e){
+                console.log(this);
+                console.log("左滑");
+                console.log(e);
+            },function(e){
+                console.log(this);
                 console.log("右滑");
-            },function(){
-                console.log('左滑');
+                console.log(e);
             });
         }
         
