@@ -19,26 +19,26 @@
     </style>
 </head>
 <body>
-<div>1</div>
+<div class='one'>1</div>
 <div>2</div>
 <script>
     /*拖拽操作--drag*/
-    var div=document.querySelector("div");
+    var div=document.querySelector(".one");
     var startX,startY,moveX,moveY,distanceX,distanceY;
     /*开始触摸
     * 如果为document添加事件，那么就能够自动的捕获到当前响应事件的对象*/
     document.addEventListener("touchstart",function(e){
         /*获取当前第一次触摸时的对象*/
         console.log(e.target);
-        startX= e.targetTouches[0].clientX;
-        startY= e.targetTouches[0].clientY;
+        startX= e.targetTouches[0].pageX;
+        startY= e.targetTouches[0].pageY;
         console.log(startX+":"+startY);
     });
     /*触摸滑动:持续触发*/
     document.addEventListener("touchmove",function(e){
         /*记录手指滑动过程中的坐标值*/
-        moveX= e.targetTouches[0].clientX;
-        moveY= e.targetTouches[0].clientY;
+        moveX= e.targetTouches[0].pageX;
+        moveY= e.targetTouches[0].pageY;
         console.log(moveX+":"+moveY);
         /*计算与上一次坐标的差异*/
         distanceX=moveX-startX;
@@ -50,6 +50,15 @@
     /*触摸结束*/
     document.addEventListener("touchend",function(e){
     })
+
+
+    /*
+    4.Touch.clientX：(基于浏览器窗口)触点相对于可见视区(visual viewport)左边沿的X坐标。不包括任何滚动偏移。只读属性。
+    5.Touch.clientY：触点相对于可见视区(visual viewport)上边沿的Y坐标。不包括任何滚动偏移。只读属性。
+    6.Touch.pageX：(基于页面)触点相对于HTML文档左边沿的X坐标。当存在水平滚动的偏移时，这个值包含了水平滚动的偏移。只读属性。
+    7.Touch.pageY：触点相对于HTML文档上边沿的Y坐标。当存在水平滚动的偏移时，这个值包含了垂直滚动的偏移。只读属性。
+    
+    */
 </script>
 </body>
 </html>

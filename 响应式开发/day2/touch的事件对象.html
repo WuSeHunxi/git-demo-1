@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            width: 100%;
+            height: 300px;
+            background:linear-gradient(to right,red ,blue);
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+
+        /*
+            touches 屏幕触点集合
+            targetTouches touch事件绑定元素身上的触点集合
+            changesTouches 发生改变了的触点集合
+        */
+
+        var div=document.querySelector("div");
+        div.addEventListener('touchstart',function(e){
+            console.log(e.targetTouches); // 当前对象上的所有触发点
+            console.log(e.touches); // 当前屏幕上的所有触发点
+        });
+        div.addEventListener('touchend',function(e){
+            console.log(e.changedTouches); // 当离开屏幕时最后一个接触点
+        });
+        document.addEventListener('touchstart',function(e){
+            console.log(e.touches);
+        })
+    </script>
+</body>
+</html>

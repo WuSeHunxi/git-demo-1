@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .one{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        .two{
+            height: 100px;
+            width: 100px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="one"></div>
+    <div class="two"></div>-->
+    <script>
+        // var one=document.querySelector(".one");
+        // var two=document.querySelector(".two");
+        // // console.log(one);
+        // var startX,startY,moveX,moveY,disX,disY;
+        // one.addEventListener('touchstart',function(e){ 
+        //     startX= e.targetTouches[0].pageX;
+        //     startY= e.targetTouches[0].pageY;
+        //     // console.log(e.targetTouches[0].clientX);
+        //     // console.log(e.targetTouches[0].pageX);
+        // })
+        // one.addEventListener('touchmove',function(e){
+        //     moveX=e.targetTouches[0].pageX;
+        //     moveY=e.targetTouches[0].pageY;
+        //     disX=moveX-startX;
+        //     disY=moveY-startY;
+            // this.style.left=disX+"px";
+            // this.style.top=disY+"px";
+           // this.style.transform="translate("+disX+"px,"+disY+"px)";
+        //});
+        //左右滑动切换
+        var nStartY;
+        var nStartX;
+        var nChangY;
+        var nChangX;
+        document.getElementsByTagName('body')[0].addEventListener('touchstart',function(e){
+            nStartY = e.targetTouches[0].pageY;
+            nStartX = e.targetTouches[0].pageX;
+        });
+        document.getElementsByTagName('body')[0].addEventListener('touchmove',function(e){
+            e.preventDefault();
+        });
+        document.getElementsByTagName('body')[0].addEventListener('touchend',function(e){
+            nChangY = e.changedTouches[0].pageY;
+            nChangX = e.changedTouches[0].pageX;
+            var distance = nChangX - nStartX;
+            var distance1 = nChangY - nStartY;
+
+            if(distance > 50){//左滑
+                alert('左滑');
+            }else if(distance < -50){
+                
+                alert('右滑');
+            }
+        });
+    </script>
+</body>
+</html>

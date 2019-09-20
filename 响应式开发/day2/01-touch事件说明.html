@@ -24,8 +24,9 @@
     var div=document.querySelector("div");
     /*2.添加事件*/
     /*添加开始触摸事件：当手指触摸到屏幕时触发*/
-    div.addEventListener("touchstart",function(){
+    div.addEventListener("touchstart",function(e){
         console.log("touchstart");
+        console.log(e.touches[0].clientX);
     });
     /*添加手指滑动事件，当手指在屏幕上滑动时触发:move事件是持续触发*/
     div.addEventListener("touchmove",function(){

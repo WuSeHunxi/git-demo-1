@@ -23,30 +23,58 @@
 <div>2</div>
 <script>
     /*拖拽操作--drag*/
-    var div=document.querySelector("div");
-    var startX,startY,moveX,moveY,distanceX,distanceY;
-    /*开始触摸*/
-    div.addEventListener("touchstart",function(e){
-        startX= e.targetTouches[0].clientX;
-        startY= e.targetTouches[0].clientY;
-        console.log(startX+":"+startY);
-    });
-    /*触摸滑动:持续触发*/
-    div.addEventListener("touchmove",function(e){
-        /*记录手指滑动过程中的坐标值*/
-        moveX= e.targetTouches[0].clientX;
-        moveY= e.targetTouches[0].clientY;
-        console.log(moveX+":"+moveY);
-        /*计算与上一次坐标的差异*/
-        distanceX=moveX-startX;
-        distanceY=moveY-startY;
-        console.log(distanceX+":"+distanceY);
-        /*设置偏移*/
-        div.style.transform="translate("+distanceX+"px,"+distanceY+"px)";
-    });
-    /*触摸结束*/
-    div.addEventListener("touchend",function(e){
-    })
+    // var div=document.querySelector("div");
+    // var startX,startY,moveX,moveY,distanceX,distanceY;
+    // /*开始触摸*/
+    // div.addEventListener("touchstart",function(e){
+    //     startX= e.targetTouches[0].clientX;
+    //     startY= e.targetTouches[0].clientY;
+    //     console.log(startX+":"+startY);
+    // });
+    // /*触摸滑动:持续触发*/
+    // div.addEventListener("touchmove",function(e){
+    //     /*记录手指滑动过程中的坐标值*/
+    //     moveX= e.targetTouches[0].clientX;  // 可视区域的
+    //     moveY= e.targetTouches[0].clientY;
+    //     console.log(moveX+":"+moveY);
+    //     /*计算与上一次坐标的差异*/
+    //     distanceX=moveX-startX;
+    //     distanceY=moveY-startY;
+    //     console.log(distanceX+":"+distanceY);
+    //     /*设置偏移*/
+    //     div.style.transform="translate("+distanceX+"px,"+distanceY+"px)";
+    // });
+    // /*触摸结束*/
+    // div.addEventListener("touchend",function(e){
+    //     div.style.transform="translate("+0+"px,"+0+"px)";
+    //})
+
+
+        //左右滑动切换
+        var nStartY;
+        var nStartX;
+        var nChangY;
+        var nChangX;
+        document.getElementsByTagName('body')[0].addEventListener('touchstart',function(e){
+            nStartY = e.targetTouches[0].pageY;
+            nStartX = e.targetTouches[0].pageX;
+        });
+        document.getElementsByTagName('body')[0].addEventListener('touchmove',function(e){
+            e.preventDefault();
+        });
+        document.getElementsByTagName('body')[0].addEventListener('touchend',function(e){
+            nChangY = e.changedTouches[0].pageY;
+            nChangX = e.changedTouches[0].pageX;
+            var distance = nChangX - nStartX;
+            var distance1 = nChangY - nStartY;
+
+            if(distance > 50){//左滑
+                alert('左滑');
+            }else if(distance < -50){
+                
+                alert('右滑');
+            }
+        });
 </script>
 </body>
 </html>
