@@ -15,7 +15,11 @@ html,body{
     height: 50px;
     border-bottom: 1px solid #ccc;
     background-color: #eee;
+    /*脱离文档流*/
     position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
 }
 .ct_back,
 .ct_menu{
@@ -55,6 +59,7 @@ html,body{
 }
 
 /*主体内容块样式*/
+/*占满高度*/
 .ct_content{
     width: 100%;
     height: 100%;
