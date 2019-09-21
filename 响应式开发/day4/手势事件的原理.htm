@@ -40,12 +40,15 @@
                     distanceX=moveX-startX;
                 });
                 dom.addEventListener('touchend',function(e){
+                    // e 是事件源
+
                     // 滑动结束了表示滑动了，否则不满足条件
                     if(isMove&&Math.abs(distanceX)>50){ //--> 表示滑动了，并且滑动距离大于50px
                         if(distanceX>0){
-                            rightCallback&&rightCallback.call(this,e);
+                            rightCallback&&rightCallback.call(this);
                         }else{
-                            leftCallback&&leftCallback.call(this,e);
+                            leftCallback&&leftCallback.call(this);
+                            console.log(e);
                         }
                     }
                 });
@@ -54,11 +57,11 @@
             bindSwipeEvent(document.querySelector('.box'),function(e){
                 console.log(this);
                 console.log("左滑");
-                console.log(e);
+                // console.log(e);
             },function(e){
                 console.log(this);
                 console.log("右滑");
-                console.log(e);
+                // console.log(e);
             });
         }
         

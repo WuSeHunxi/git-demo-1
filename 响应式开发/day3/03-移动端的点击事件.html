@@ -44,6 +44,8 @@
         }
         /*判断时间差异  150ms*/
         console.log(Date.now()-startTime);
+
+        // 时间大于150ms 表示长按
         if(Date.now()-startTime > 150){ //长按操作
             return;
         }

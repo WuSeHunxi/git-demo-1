@@ -48,6 +48,7 @@
                 dom.addEventListener('touchend', function (e) {
                     // 保证响应够快 并且不滑动
                     if((Date.now()-startTime)<150&&!isMove){
+                    // 时间小于150ms 才能算作是轻击tap
                         callback&&callback.call(this,e);
                     }
                 });
