@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        var div=document.querySelector("div");
+        window.onload=function(){
+            var startX,startY;
+            var moveX,moveY;
+            var now,end;
+            div.addEventListener('touchstart',function(e){
+                startX=e.targetTouches[0].clientX;
+                startY=e.targetTouches[0].clientY;
+                now=Date.now();
+            });
+
+            div.addEventListener('touchend',function(e){
+                moveX=e.changedTouches[0].clientX;
+                moveY=e.changedTouches[0].clientY;
+                end=Date.now();
+                if(Math.abs(end-start)>150){
+                    console.log("长按");
+                    return;
+                }
+                if(Math.abs(moveX-startX)>6&&Math.abs(moveY-startY)>6){
+                    return;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
