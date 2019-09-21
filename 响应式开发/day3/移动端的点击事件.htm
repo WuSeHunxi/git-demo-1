@@ -36,12 +36,12 @@
                 moveX=e.changedTouches[0].clientX;
                 moveY=e.changedTouches[0].clientY;
                 end=Date.now();
-                if(Math.abs(end-start)>150){
+                if(Math.abs(end-now)>150){
                     console.log("长按");
                     return;
                 }
-                if(Math.abs(moveX-startX)>6&&Math.abs(moveY-startY)>6){
-                    return;
+                if(Math.abs(moveX-startX)<6&&Math.abs(moveY-startY)<6){
+                    console.log("这是tap事件");
                 }
             });
         }
