@@ -20,6 +20,16 @@ window.onload=function(){
     var minBounceTop=minTop-100;
     console.log(maxBounceTop+":"+minBounceTop);
 
+    // 滚动
+    new IScroll(document.querySelector('.ct_cLeft'),{
+        scrollX:false,// 只能竖直方向滚动
+        scrollY:true
+    })
+    new IScroll(document.querySelector(".ct_cRight"),{
+        scrollX:true,// 只能水平滚动
+        scrollY:false
+    })
+
     /*实现滑动*/
     var startY=0;
     var moveY=0;
