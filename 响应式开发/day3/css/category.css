@@ -69,6 +69,7 @@ html,body{
     width: 100px;
     height: 100%;
     float: left;
+    /*不受其他的浮动影响，自己的浮动也不影响别人*/
     overflow: hidden;
     position: relative;
 }
