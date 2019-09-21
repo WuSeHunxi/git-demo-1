@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        window.onload=function(){
+            var bindSwipeEvent=function(dom,leftCallback,rightCallback){
+                var isMove=false;
+                var startX=0;
+                var distanceX=0;
+                dom.addEventListener('touchstart',function(){
+                    startX=e.touches[0].clientX;
+                });
+                dom.addEventListener('touchmove',function(){
+                    isMove=true;
+                    var moveX=e.touches[0].clientX;
+                    distanceX=moveX-startX;
+                });
+                dom.addEventListener('touchend',function(){
+                    // 表示在屏幕上滑动了
+                    if(isMove&&(Math.abs(distanceX))>50){
+                        if(distanceX>0){
+                            leftCallback&leftCallback.call(this,e);
+                        }else{
+                            rightCallback&rightCallback.call(this,e);
+                        }
+                    }
+                });
+            }   
+            bindSwipeEvent(document.querySelector(".box"),function(e){
+                console.log(this);
+                console.log(e);
+                console.log("向左滑");
+            },function(){
+                console.log(e);
+                console.log(this);
+                console.log("向右滑");
+            })
+        }
+        
+    </script>
+</body>
+</html>
