@@ -37,6 +37,11 @@
         .container > .row > div{
             height: 25px;
             border: 1px solid #ccc;
+            background-color: #000;
+        }
+        .container>.myRow{
+            height: 25px;
+            background-color:yellow;
         }
     </style>
 </head>
@@ -47,20 +52,24 @@
     <!--行：row-->
     <!-- .container容器默认有15px的左右内间距  .row 填充父容器的15px的左右内间距   margin-left,margin-right -15px拉伸 -->
     <div class="row">
+        
         <!--列：col-*-*  *不确定（参数） -->
         <!--
             col：列样式
             第一个*：屏幕的大小
             大屏设备     lg   大屏设备以上生效包含本身
             中屏设备     md   中屏设备以上生效包含本身
-            小屏设备     sm   小屏设备以上生效包含本身
-            超小屏设备   xs   超小屏设备以上生效包含本身
+            小屏设备     sm   小屏设备以上生效包含本身(他的以上也都生效)
+            超小屏设备   xs   超小屏设备以上生效包含本身（所有的都生效）
             第二个*：每一行的分等份，默认分成12等份 ，数字代表的是占多少份
         -->
-        <div class="col-xs-4"></div>
-        <div class="col-xs-4"></div>
-        <div class="col-xs-4"></div>
+        <!-- 表示每一格占了4份 -->
+        <div class="col-xs-3"></div>
+        <div class="col-xs-3"></div>
+        <div class="col-xs-3"></div>
+        <div class="col-xs-3"></div>
     </div>
+    <div class="myRow"></div> <!--这个是正常显示的宽度大小  而row则是将其利用margin-left和margin-right拉伸-->
 </div>
 <!-- bootstrap依赖jquery-->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
